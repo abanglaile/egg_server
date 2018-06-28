@@ -1,0 +1,24 @@
+2018-06-16 17:39:45,014 INFO 15052 [Timer] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js next time will execute at 2018-06-17 00:00:00.000
+2018-06-16 17:39:45,015 INFO 15052 [Timer] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js next time will execute at 2018-06-17 00:00:01.000
+2018-06-16 17:50:38,011 INFO 11544 [Timer] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js next time will execute at 2018-06-17 00:00:00.000
+2018-06-16 17:50:38,013 INFO 11544 [Timer] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js next time will execute at 2018-06-17 00:00:01.000
+2018-06-16 18:01:40,697 INFO 14412 [Timer] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js next time will execute at 2018-06-17 00:00:00.000
+2018-06-16 18:01:40,699 INFO 14412 [Timer] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js next time will execute at 2018-06-17 00:00:01.000
+2018-06-19 10:47:53,549 INFO 10200 [Timer] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js next time will execute at 2018-06-20 00:00:00.000
+2018-06-19 10:47:53,550 INFO 10200 [Timer] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js next time will execute at 2018-06-20 00:00:01.000
+2018-06-19 11:52:26,688 INFO 14420 [Timer] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js next time will execute at 2018-06-20 00:00:00.000
+2018-06-19 11:52:26,689 INFO 14420 [Timer] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js next time will execute at 2018-06-20 00:00:01.000
+2018-06-19 15:09:56,472 INFO 6296 [Timer] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js next time will execute at 2018-06-20 00:00:00.000
+2018-06-19 15:09:56,473 INFO 6296 [Timer] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js next time will execute at 2018-06-20 00:00:01.000
+2018-06-19 20:00:08,297 INFO 7268 [Timer] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js next time will execute at 2018-06-20 00:00:00.000
+2018-06-19 20:00:08,298 INFO 7268 [Timer] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js next time will execute at 2018-06-20 00:00:01.000
+2018-06-20 00:00:00,576 INFO 7268 [152942400057635276178543148] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js triggered, send random by agent
+2018-06-20 00:00:00,579 INFO 7268 [Timer] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js next time will execute at 2018-06-21 00:00:00.000
+2018-06-20 00:00:00,578 INFO 7896 [152942400057635276178543148] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js task received by app
+2018-06-20 00:00:00,578 INFO 7896 [152942400057635276178543148] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js executing by app
+2018-06-20 00:00:00,585 INFO 7896 [152942400057635276178543148] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js execute succeed, used 7ms
+2018-06-20 00:00:01,575 INFO 7268 [152942400157535277176977792] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js triggered, send random by agent
+2018-06-20 00:00:01,578 INFO 7268 [Timer] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js next time will execute at 2018-06-21 00:00:01.000
+2018-06-20 00:00:01,575 INFO 7896 [152942400157535277176977792] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js task received by app
+2018-06-20 00:00:01,575 INFO 7896 [152942400157535277176977792] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js executing by app
+2018-06-20 00:00:01,584 INFO 7896 [152942400157535277176977792] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js execute succeed, used 9ms

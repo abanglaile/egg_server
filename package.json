@@ -1,0 +1,25 @@
+{
+  "name": "egg-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "debug": "egg-bin debug",
+    "dev": "egg-bin dev",
+    "start": "egg-scripts start --daemon",
+    "stop": "egg-scripts stop"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "egg": "^2.7.1",
+    "egg-cors": "^2.0.0",
+    "egg-mysql": "^3.0.0",
+    "egg-redis": "^2.0.0",
+    "node-cmd": "^3.0.0",
+    "qiniu": "^7.2.0"
+  },
+  "devDependencies": {
+    "egg-bin": "^4.7.0"
+  }
+}

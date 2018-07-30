@@ -102715,3 +102715,1496 @@ name: 'ECONNABORTEDError'
 pid: 7452
 hostname: USER-D8STTK4RDA
 
+2018-07-16 16:32:52,743 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:32:53,799 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:32:54,904 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:32:56,061 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:32:57,271 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:32:58,526 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:32:59,829 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:01,189 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:02,593 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:04,049 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:05,570 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:07,125 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:08,732 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:10,390 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:12,097 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:13,852 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:15,656 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:17,505 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:19,411 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:21,372 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:23,397 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:25,456 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:27,623 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:29,775 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:31,984 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:34,239 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:36,586 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:38,946 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:41,349 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:43,803 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:46,314 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:48,868 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:51,468 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:54,136 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:56,839 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:33:59,604 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:34:02,420 ERROR 9856 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 9856
+hostname: USER-D8STTK4RDA
+
+2018-07-16 16:35:10,742 ERROR 9340 [-/127.0.0.1/-/148ms GET /klmanager/getBookChapter] nodejs.ER_PARSE_ERRORError: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '? and ch.bookid = b.bookid order by chapterid asc' at line 1
+    at Query.Sequence._packetToError (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:607:20)
+    --------------------
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    at onFulfilled (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:65:19)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:54:5
+    at new Promise (<anonymous>)
+    at RDSClient.co (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:50:10)
+    at RDSClient.createPromise [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:30:15)
+    at bookchapterService.getBookChapter (C:\Users\Administrator\Documents\GitHub\egg_server\app\service\bookchapter.js:6:42)
+    at EntryExerController.getBookChapter (C:\Users\Administrator\Documents\GitHub\egg_server\app\controller\entryexercise.js:10:51)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    sql: select b.bookname, ch.bookid, ch.chapterid, ch.chaptername from chapter ch, book b where b.course_id = ? and ch.bookid = b.bookid order by chapterid asc
+code: 'ER_PARSE_ERROR'
+errno: 1064
+sqlMessage: 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'? and ch.bookid = b.bookid order by chapterid asc\' at line 1'
+sqlState: '42000'
+index: 0
+sql: 'select b.bookname, ch.bookid, ch.chapterid, ch.chaptername from chapter ch, book b where b.course_id = ? and ch.bookid = b.bookid order by chapterid asc'
+name: 'ER_PARSE_ERRORError'
+pid: 9340
+hostname: USER-D8STTK4RDA
+
+2018-07-16 17:02:05,311 ERROR 9684 [-/127.0.0.1/-/218ms GET /klmanager/getBookChapter] nodejs.ER_PARSE_ERRORError: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '? and ch.bookid = b.bookid order by chapterid asc' at line 1
+    at Query.Sequence._packetToError (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:607:20)
+    --------------------
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    at onFulfilled (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:65:19)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:54:5
+    at new Promise (<anonymous>)
+    at RDSClient.co (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:50:10)
+    at RDSClient.createPromise [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:30:15)
+    at bookchapterService.getBookChapter (C:\Users\Administrator\Documents\GitHub\egg_server\app\service\bookchapter.js:6:42)
+    at EntryExerController.getBookChapter (C:\Users\Administrator\Documents\GitHub\egg_server\app\controller\entryexercise.js:10:51)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    sql: select b.bookname, ch.bookid, ch.chapterid, ch.chaptername from chapter ch, book b where b.course_id = ? and ch.bookid = b.bookid order by chapterid asc
+code: 'ER_PARSE_ERROR'
+errno: 1064
+sqlMessage: 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'? and ch.bookid = b.bookid order by chapterid asc\' at line 1'
+sqlState: '42000'
+index: 0
+sql: 'select b.bookname, ch.bookid, ch.chapterid, ch.chaptername from chapter ch, book b where b.course_id = ? and ch.bookid = b.bookid order by chapterid asc'
+name: 'ER_PARSE_ERRORError'
+pid: 9684
+hostname: USER-D8STTK4RDA
+
+2018-07-16 17:05:04,340 ERROR 9684 [-/127.0.0.1/-/428ms GET /klmanager/getBookChapter] nodejs.ER_PARSE_ERRORError: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '? and ch.bookid = b.bookid order by chapterid asc' at line 1
+    at Query.Sequence._packetToError (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:607:20)
+    --------------------
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    at onFulfilled (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:65:19)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:54:5
+    at new Promise (<anonymous>)
+    at RDSClient.co (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:50:10)
+    at RDSClient.createPromise [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:30:15)
+    at bookchapterService.getBookChapter (C:\Users\Administrator\Documents\GitHub\egg_server\app\service\bookchapter.js:6:42)
+    at EntryExerController.getBookChapter (C:\Users\Administrator\Documents\GitHub\egg_server\app\controller\entryexercise.js:10:51)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    sql: select b.bookname, ch.bookid, ch.chapterid, ch.chaptername from chapter ch, book b where b.course_id = ? and ch.bookid = b.bookid order by chapterid asc
+code: 'ER_PARSE_ERROR'
+errno: 1064
+sqlMessage: 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'? and ch.bookid = b.bookid order by chapterid asc\' at line 1'
+sqlState: '42000'
+index: 0
+sql: 'select b.bookname, ch.bookid, ch.chapterid, ch.chaptername from chapter ch, book b where b.course_id = ? and ch.bookid = b.bookid order by chapterid asc'
+name: 'ER_PARSE_ERRORError'
+pid: 9684
+hostname: USER-D8STTK4RDA
+
+2018-07-16 17:14:35,018 ERROR 9684 [-/127.0.0.1/-/156ms GET /klmanager/getBookChapter] nodejs.ER_PARSE_ERRORError: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '? and ch.bookid = b.bookid order by chapterid asc' at line 1
+    at Query.Sequence._packetToError (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:607:20)
+    --------------------
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    at onFulfilled (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:65:19)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:54:5
+    at new Promise (<anonymous>)
+    at RDSClient.co (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:50:10)
+    at RDSClient.createPromise [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:30:15)
+    at bookchapterService.getBookChapter (C:\Users\Administrator\Documents\GitHub\egg_server\app\service\bookchapter.js:6:42)
+    at EntryExerController.getBookChapter (C:\Users\Administrator\Documents\GitHub\egg_server\app\controller\entryexercise.js:10:51)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    sql: select b.bookname, ch.bookid, ch.chapterid, ch.chaptername from chapter ch, book b where b.course_id = ? and ch.bookid = b.bookid order by chapterid asc
+code: 'ER_PARSE_ERROR'
+errno: 1064
+sqlMessage: 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'? and ch.bookid = b.bookid order by chapterid asc\' at line 1'
+sqlState: '42000'
+index: 0
+sql: 'select b.bookname, ch.bookid, ch.chapterid, ch.chaptername from chapter ch, book b where b.course_id = ? and ch.bookid = b.bookid order by chapterid asc'
+name: 'ER_PARSE_ERRORError'
+pid: 9684
+hostname: USER-D8STTK4RDA
+
+2018-07-16 17:47:39,586 ERROR 10440 nodejs.ClusterClientNoResponseError: client no response in 349630ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\cluster-client\lib\leader.js:74:23)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+name: 'ClusterClientNoResponseError'
+pid: 10440
+hostname: USER-D8STTK4RDA
+
+2018-07-16 18:22:29,613 ERROR 10024 [-/127.0.0.1/-/151ms POST /signin] nodejs.Error: Unknown authentication strategy "local"
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:173:37)
+    at authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:349:7)
+    at Promise (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:83:7)
+    at new Promise (<anonymous>)
+    at Object.passportAuthenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:77:11)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    at wrappedController (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\router.js:322:18)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-compose\index.js:42:32)
+    at next (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-compose\index.js:43:18)
+    at passportSession (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:59:12)
+headers: { 'Access-Control-Allow-Origin': '*' }
+pid: 10024
+hostname: USER-D8STTK4RDA
+
+2018-07-16 18:32:18,242 ERROR 1076 nodejs.ClusterClientNoResponseError: client no response in 79233ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\cluster-client\lib\leader.js:74:23)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+name: 'ClusterClientNoResponseError'
+pid: 1076
+hostname: USER-D8STTK4RDA
+
+2018-07-16 18:34:40,628 ERROR 10736 nodejs.ECONNABORTEDError: write ECONNABORTED (address: 127.0.0.1:51817)
+    at _errnoException (util.js:1022:11)
+    at Socket._writeGeneric (net.js:780:25)
+    at Socket._write (net.js:799:8)
+    at doWrite (_stream_writable.js:397:12)
+    at writeOrBuffer (_stream_writable.js:383:5)
+    at Socket.Writable.write (_stream_writable.js:290:11)
+    at Socket.write (net.js:717:40)
+    at Follower.sendHeartBeat (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\tcp-base\lib\base.js:105:18)
+    at Timeout._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\tcp-base\lib\base.js:437:12)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+code: 'ECONNABORTED'
+errno: 'ECONNABORTED'
+syscall: 'write'
+name: 'ECONNABORTEDError'
+pid: 10736
+hostname: USER-D8STTK4RDA
+
+2018-07-16 18:45:34,904 ERROR 9024 [-/127.0.0.1/-/41997ms POST /signin?username=asdasd&password=1233] nodejs.ReferenceError: debug is not defined
+    at Strategy.app.passport.use.LocalStrategy [as _verify] (C:\Users\Administrator\Documents\GitHub\egg_server\app.js:16:5)
+    at Strategy.authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport-local\lib\strategy.js:88:12)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:348:16)
+    at authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:349:7)
+    at Promise (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:83:7)
+    at new Promise (<anonymous>)
+    at Object.passportAuthenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:77:11)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    at wrappedController (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\router.js:322:18)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-compose\index.js:42:32)
+headers: { 'Access-Control-Allow-Origin': '*' }
+pid: 9024
+hostname: USER-D8STTK4RDA
+
+2018-07-16 18:46:24,897 ERROR 9024 [-/127.0.0.1/-/38791ms POST /signin?username=asdasd&password=1233] nodejs.ReferenceError: debug is not defined
+    at Strategy.app.passport.use.LocalStrategy [as _verify] (C:\Users\Administrator\Documents\GitHub\egg_server\app.js:16:5)
+    at Strategy.authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport-local\lib\strategy.js:88:12)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:348:16)
+    at authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:349:7)
+    at Promise (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:83:7)
+    at new Promise (<anonymous>)
+    at Object.passportAuthenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:77:11)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    at wrappedController (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\router.js:322:18)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-compose\index.js:42:32)
+headers: { 'Access-Control-Allow-Origin': '*' }
+pid: 9024
+hostname: USER-D8STTK4RDA
+
+2018-07-16 18:46:28,194 ERROR 9024 [-/127.0.0.1/-/8ms POST /signin?username=asdasd&password=1233] nodejs.ReferenceError: debug is not defined
+    at Strategy.app.passport.use.LocalStrategy [as _verify] (C:\Users\Administrator\Documents\GitHub\egg_server\app.js:16:5)
+    at Strategy.authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport-local\lib\strategy.js:88:12)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:348:16)
+    at authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:349:7)
+    at Promise (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:83:7)
+    at new Promise (<anonymous>)
+    at Object.passportAuthenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:77:11)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    at wrappedController (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\router.js:322:18)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-compose\index.js:42:32)
+headers: { 'Access-Control-Allow-Origin': '*' }
+pid: 9024
+hostname: USER-D8STTK4RDA
+
+2018-07-16 18:46:50,765 ERROR 9024 [-/127.0.0.1/-/7ms POST /signin?username=asdasd&password=1233] nodejs.ReferenceError: debug is not defined
+    at Strategy.app.passport.use.LocalStrategy [as _verify] (C:\Users\Administrator\Documents\GitHub\egg_server\app.js:16:5)
+    at Strategy.authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport-local\lib\strategy.js:88:12)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:348:16)
+    at authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:349:7)
+    at Promise (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:83:7)
+    at new Promise (<anonymous>)
+    at Object.passportAuthenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:77:11)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    at wrappedController (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\router.js:322:18)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-compose\index.js:42:32)
+headers: { 'Access-Control-Allow-Origin': '*' }
+pid: 9024
+hostname: USER-D8STTK4RDA
+
+2018-07-16 20:18:19,773 ERROR 7532 nodejs.ClusterClientNoResponseError: client no response in 65638ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\cluster-client\lib\leader.js:74:23)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+name: 'ClusterClientNoResponseError'
+pid: 7532
+hostname: USER-D8STTK4RDA
+
+2018-07-16 20:23:48,566 ERROR 10060 [-/127.0.0.1/-/392174ms POST /signin?username=asdasd&password=1233] nodejs.TypeError: Cannot read property 'Authorization' of undefined
+    at app.passport.verify (C:\Users\Administrator\Documents\GitHub\egg_server\app.js:33:37)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\passport.js:69:22
+    at EggPassport.doVerify (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\passport.js:75:7)
+    at Strategy.app.passport.use.LocalStrategy [as _verify] (C:\Users\Administrator\Documents\GitHub\egg_server\app.js:17:18)
+    at Strategy.authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport-local\lib\strategy.js:88:12)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:348:16)
+    at authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:349:7)
+    at Promise (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:83:7)
+    at new Promise (<anonymous>)
+    at Object.passportAuthenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:77:11)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    at wrappedController (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\router.js:322:18)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+headers: { 'Access-Control-Allow-Origin': '*' }
+pid: 10060
+hostname: USER-D8STTK4RDA
+
+2018-07-16 20:23:49,033 ERROR 10060 nodejs.ECONNABORTEDError: write ECONNABORTED (address: 127.0.0.1:56143)
+    at _errnoException (util.js:1022:11)
+    at Socket._writeGeneric (net.js:780:25)
+    at Socket._write (net.js:799:8)
+    at doWrite (_stream_writable.js:397:12)
+    at writeOrBuffer (_stream_writable.js:383:5)
+    at Socket.Writable.write (_stream_writable.js:290:11)
+    at Socket.write (net.js:717:40)
+    at Follower.sendHeartBeat (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\tcp-base\lib\base.js:105:18)
+    at Timeout._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\tcp-base\lib\base.js:437:12)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+code: 'ECONNABORTED'
+errno: 'ECONNABORTED'
+syscall: 'write'
+name: 'ECONNABORTEDError'
+pid: 10060
+hostname: USER-D8STTK4RDA
+
+2018-07-16 20:25:34,422 ERROR 8060 nodejs.ClusterClientNoResponseError: client no response in 77256ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\cluster-client\lib\leader.js:74:23)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+name: 'ClusterClientNoResponseError'
+pid: 8060
+hostname: USER-D8STTK4RDA
+
+2018-07-16 20:25:48,295 ERROR 9200 [-/127.0.0.1/-/78694ms POST /signin?username=asdasd&password=1233] nodejs.TypeError: Cannot read property 'Authorization' of undefined
+    at app.passport.verify (C:\Users\Administrator\Documents\GitHub\egg_server\app.js:33:37)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\passport.js:69:22
+    at EggPassport.doVerify (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\passport.js:75:7)
+    at Strategy.app.passport.use.LocalStrategy [as _verify] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport-local\app.js:20:18)
+    at Strategy.authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport-local\lib\strategy.js:88:12)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:348:16)
+    at authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:349:7)
+    at Promise (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:83:7)
+    at new Promise (<anonymous>)
+    at Object.passportAuthenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:77:11)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    at wrappedController (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\router.js:322:18)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+headers: { 'Access-Control-Allow-Origin': '*' }
+pid: 9200
+hostname: USER-D8STTK4RDA
+
+2018-07-16 20:35:34,555 ERROR 8060 nodejs.ClusterClientNoResponseError: client no response in 65681ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\cluster-client\lib\leader.js:74:23)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+name: 'ClusterClientNoResponseError'
+pid: 8060
+hostname: USER-D8STTK4RDA
+
+2018-07-16 20:42:39,641 ERROR 9012 nodejs.ClusterClientNoResponseError: client no response in 64761ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\cluster-client\lib\leader.js:74:23)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+name: 'ClusterClientNoResponseError'
+pid: 9012
+hostname: USER-D8STTK4RDA
+
+2018-07-16 20:45:29,422 ERROR 6468 nodejs.ClusterClientNoResponseError: client no response in 76526ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\cluster-client\lib\leader.js:74:23)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+name: 'ClusterClientNoResponseError'
+pid: 6468
+hostname: USER-D8STTK4RDA
+
+2018-07-16 20:48:14,591 ERROR 6200 nodejs.ECONNABORTEDError: write ECONNABORTED (address: 127.0.0.1:64359)
+    at _errnoException (util.js:1022:11)
+    at Socket._writeGeneric (net.js:780:25)
+    at Socket._write (net.js:799:8)
+    at doWrite (_stream_writable.js:397:12)
+    at writeOrBuffer (_stream_writable.js:383:5)
+    at Socket.Writable.write (_stream_writable.js:290:11)
+    at Socket.write (net.js:717:40)
+    at Follower.sendHeartBeat (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\tcp-base\lib\base.js:105:18)
+    at Timeout._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\tcp-base\lib\base.js:437:12)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+code: 'ECONNABORTED'
+errno: 'ECONNABORTED'
+syscall: 'write'
+name: 'ECONNABORTEDError'
+pid: 6200
+hostname: USER-D8STTK4RDA
+
+2018-07-16 21:19:50,772 ERROR 10312 nodejs.ClusterClientNoResponseError: client no response in 76852ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\cluster-client\lib\leader.js:74:23)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+name: 'ClusterClientNoResponseError'
+pid: 10312
+hostname: USER-D8STTK4RDA
+
+2018-07-16 21:30:21,826 ERROR 9740 nodejs.ECONNABORTEDError: write ECONNABORTED (address: 127.0.0.1:54769)
+    at _errnoException (util.js:1022:11)
+    at Socket._writeGeneric (net.js:780:25)
+    at Socket._write (net.js:799:8)
+    at doWrite (_stream_writable.js:397:12)
+    at writeOrBuffer (_stream_writable.js:383:5)
+    at Socket.Writable.write (_stream_writable.js:290:11)
+    at Socket.write (net.js:717:40)
+    at Follower.sendHeartBeat (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\tcp-base\lib\base.js:105:18)
+    at Timeout._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\tcp-base\lib\base.js:437:12)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+code: 'ECONNABORTED'
+errno: 'ECONNABORTED'
+syscall: 'write'
+name: 'ECONNABORTEDError'
+pid: 9740
+hostname: USER-D8STTK4RDA
+
+2018-07-16 21:45:32,555 ERROR 7260 nodejs.ClusterClientNoResponseError: client no response in 77680ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\cluster-client\lib\leader.js:74:23)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+name: 'ClusterClientNoResponseError'
+pid: 7260
+hostname: USER-D8STTK4RDA
+
+2018-07-16 21:46:12,081 ERROR 12028 A client (::ffff:127.0.0.1:60729) error [ECONNRESET] occurred: read ECONNRESET
+2018-07-16 21:46:43,345 ERROR 12028 A client (undefined:NaN) error [ECONNRESET] occurred: read ECONNRESET
+2018-07-16 21:46:43,355 ERROR 12028 nodejs.Error: [ClusterClient] leader does not be active in 30000ms on port:60409
+    at Function.waitFor (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\cluster-client\lib\server.js:238:15)
+    at <anonymous>
+
+pid: 12028
+hostname: USER-D8STTK4RDA
+
+2018-07-16 21:54:52,626 ERROR 7260 nodejs.ClusterClientNoResponseError: client no response in 76177ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\cluster-client\lib\leader.js:74:23)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+name: 'ClusterClientNoResponseError'
+pid: 7260
+hostname: USER-D8STTK4RDA
+
+2018-07-16 21:55:14,209 ERROR 8492 nodejs.ServerNoResponseError: server 127.0.0.1:60409 no response in 45577ms, maybe the socket is end on the other side. (address: 127.0.0.1:60409)
+    at Timeout._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\tcp-base\lib\base.js:427:21)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+name: 'ServerNoResponseError'
+pid: 8492
+hostname: USER-D8STTK4RDA
+
+2018-07-16 21:59:12,653 ERROR 7260 nodejs.ClusterClientNoResponseError: client no response in 79986ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\cluster-client\lib\leader.js:74:23)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+name: 'ClusterClientNoResponseError'
+pid: 7260
+hostname: USER-D8STTK4RDA
+
+2018-07-16 22:22:38,281 ERROR 8492 nodejs.ECONNABORTEDError: write ECONNABORTED (address: 127.0.0.1:60409)
+    at _errnoException (util.js:1022:11)
+    at Socket._writeGeneric (net.js:780:25)
+    at Socket._write (net.js:799:8)
+    at doWrite (_stream_writable.js:397:12)
+    at writeOrBuffer (_stream_writable.js:383:5)
+    at Socket.Writable.write (_stream_writable.js:290:11)
+    at Socket.write (net.js:717:40)
+    at Follower.sendHeartBeat (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\tcp-base\lib\base.js:105:18)
+    at Timeout._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\tcp-base\lib\base.js:437:12)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+code: 'ECONNABORTED'
+errno: 'ECONNABORTED'
+syscall: 'write'
+name: 'ECONNABORTEDError'
+pid: 8492
+hostname: USER-D8STTK4RDA
+
+2018-07-17 11:46:41,701 ERROR 8208 nodejs.ClusterClientNoResponseError: client no response in 76989ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\cluster-client\lib\leader.js:74:23)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+name: 'ClusterClientNoResponseError'
+pid: 8208
+hostname: USER-D8STTK4RDA
+
+2018-07-17 17:39:11,693 ERROR 10780 nodejs.ClusterClientNoResponseError: client no response in 320531ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\cluster-client\lib\leader.js:74:23)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+name: 'ClusterClientNoResponseError'
+pid: 10780
+hostname: USER-D8STTK4RDA
+
+2018-07-17 18:09:48,337 ERROR 1444 nodejs.TypeError: Cannot read property 'identifier' of undefined
+    at app.passport.serializeUser (C:\Users\Administrator\Documents\GitHub\egg_server\app.js:73:17)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\passport.js:128:29
+    at EggPassport._handleSerializeUser (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\passport.js:135:7)
+    at EggPassport.serializeUser (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\passport.js:96:19)
+    at IncomingMessage.req.login.req.logIn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\http\request.js:50:29)
+    at Promise (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\app\extend\context.js:23:16)
+    at new Promise (<anonymous>)
+    at Object.login (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\app\extend\context.js:22:12)
+    at AuthController.getWxAuth (C:\Users\Administrator\Documents\GitHub\egg_server\app\controller\auth.js:53:14)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    at Object.classControllerMiddleware (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\loader\mixin\controller.js:84:20)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    at wrappedController (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\router.js:322:18)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:346:16
+
+pid: 1444
+hostname: USER-D8STTK4RDA
+
+2018-07-17 18:11:33,024 ERROR 10780 nodejs.ClusterClientNoResponseError: client no response in 68479ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\cluster-client\lib\leader.js:74:23)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+name: 'ClusterClientNoResponseError'
+pid: 10780
+hostname: USER-D8STTK4RDA
+
+2018-07-17 18:16:44,760 ERROR 14016 nodejs.ClusterClientNoResponseError: client no response in 71636ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\cluster-client\lib\leader.js:74:23)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+name: 'ClusterClientNoResponseError'
+pid: 14016
+hostname: USER-D8STTK4RDA
+
+2018-07-17 21:51:52,017 ERROR 4068 nodejs.ECONNABORTEDError: write ECONNABORTED (address: 127.0.0.1:56236)
+    at _errnoException (util.js:1022:11)
+    at Socket._writeGeneric (net.js:780:25)
+    at Socket._write (net.js:799:8)
+    at doWrite (_stream_writable.js:397:12)
+    at writeOrBuffer (_stream_writable.js:383:5)
+    at Socket.Writable.write (_stream_writable.js:290:11)
+    at Socket.write (net.js:717:40)
+    at Follower.sendHeartBeat (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\tcp-base\lib\base.js:105:18)
+    at Timeout._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\tcp-base\lib\base.js:437:12)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+code: 'ECONNABORTED'
+errno: 'ECONNABORTED'
+syscall: 'write'
+name: 'ECONNABORTEDError'
+pid: 4068
+hostname: USER-D8STTK4RDA
+
+2018-07-27 17:00:44,713 ERROR 6828 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 6828
+hostname: USER-D8STTK4RDA
+
+2018-07-28 14:41:55,429 ERROR 7940 [-/127.0.0.1/-/223ms POST /klmanager/updateBreakdown] nodejs.TypeError: Cannot read property 'exercise_id' of undefined
+    at exerciseService.updateOneBreakdown (C:\Users\Administrator\Documents\GitHub\egg_server\app\service\exercise.js:164:62)
+    at EntryExerController.updateBreakdown (C:\Users\Administrator\Documents\GitHub\egg_server\app\controller\entryexercise.js:118:46)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    at Object.classControllerMiddleware (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\loader\mixin\controller.js:84:20)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    at wrappedController (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\router.js:322:18)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-compose\index.js:42:32)
+    at next (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-compose\index.js:43:18)
+    at passportSession (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:59:12)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-compose\index.js:42:32)
+headers: { 'Access-Control-Allow-Origin': '*' }
+pid: 7940
+hostname: USER-D8STTK4RDA
+
+2018-07-28 14:57:31,961 ERROR 10024 [-/127.0.0.1/-/561ms POST /klmanager/updateBreakdown] nodejs.ER_PARSE_ERRORError: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '? , 
+            chapterid = (select chapterid from kptable where kpid = ?), 
+  ' at line 1
+            chapterid = (select chapterid from kptable where kpid = ?), 
+  ' at line 1
+    at Query.Sequence._packetToError (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:607:20)
+    --------------------
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    at onFulfilled (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:65:19)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:54:5
+    at new Promise (<anonymous>)
+    at RDSClient.co (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:50:10)
+    at RDSClient.createPromise [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:30:15)
+    at exerciseService.addKpExercise (C:\Users\Administrator\Documents\GitHub\egg_server\app\service\exercise.js:228:39)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+    sql: insert into kp_exercise set exercise_id = `exercise_id` = 30061, `kpid` = 335545351 , kpid = ? , 
+            chapterid = (select chapterid from kptable where kpid = ?), 
+            course_id = (select b.course_id from kptable k, chapter c, book b 
+            where b.bookid = c.bookid and c.chapterid = k.chapterid and k.kpid = ?);
+code: 'ER_PARSE_ERROR'
+errno: 1064
+sqlMessage: 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'? , \n            chapterid = (select chapterid from kptable where kpid = ?), \n  \' at line 1'
+sqlState: '42000'
+index: 0
+sql: 'insert into kp_exercise set exercise_id = `exercise_id` = 30061, `kpid` = 335545351 , kpid = ? , \n            chapterid = (select chapterid from kptable where kpid = ?), \n            course_id = (select b.course_id from kptable k, chapter c, book b \n            where b.bookid = c.bookid and c.chapterid = k.chapterid and k.kpid = ?);'
+headers: { 'Access-Control-Allow-Origin': '*' }
+name: 'ER_PARSE_ERRORError'
+pid: 10024
+hostname: USER-D8STTK4RDA
+
+2018-07-28 15:05:53,761 ERROR 13088 [-/127.0.0.1/-/667ms POST /klmanager/updateBreakdown] nodejs.ER_PARSE_ERRORError: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '? , 
+            chapterid = (select chapterid from kptable where kpid = ?), 
+  ' at line 1
+            chapterid = (select chapterid from kptable where kpid = ?), 
+  ' at line 1
+    at Query.Sequence._packetToError (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:607:20)
+    --------------------
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    at onFulfilled (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:65:19)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:54:5
+    at new Promise (<anonymous>)
+    at RDSClient.co (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:50:10)
+    at RDSClient.createPromise [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:30:15)
+    at exerciseService.addKpExercise (C:\Users\Administrator\Documents\GitHub\egg_server\app\service\exercise.js:228:39)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+    sql: insert into kp_exercise set exercise_id = `exercise_id` = 30061, `kpid` = 335545351 , kpid = ? , 
+            chapterid = (select chapterid from kptable where kpid = ?), 
+            course_id = (select b.course_id from kptable k, chapter c, book b 
+            where b.bookid = c.bookid and c.chapterid = k.chapterid and k.kpid = ?);
+code: 'ER_PARSE_ERROR'
+errno: 1064
+sqlMessage: 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'? , \n            chapterid = (select chapterid from kptable where kpid = ?), \n  \' at line 1'
+sqlState: '42000'
+index: 0
+sql: 'insert into kp_exercise set exercise_id = `exercise_id` = 30061, `kpid` = 335545351 , kpid = ? , \n            chapterid = (select chapterid from kptable where kpid = ?), \n            course_id = (select b.course_id from kptable k, chapter c, book b \n            where b.bookid = c.bookid and c.chapterid = k.chapterid and k.kpid = ?);'
+headers: { 'Access-Control-Allow-Origin': '*' }
+name: 'ER_PARSE_ERRORError'
+pid: 13088
+hostname: USER-D8STTK4RDA
+
+2018-07-28 15:06:54,320 ERROR 12724 [-/127.0.0.1/-/682ms POST /klmanager/updateBreakdown] nodejs.ER_PARSE_ERRORError: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '? , 
+            chapterid = (select chapterid from kptable where kpid = ?), 
+  ' at line 1
+            chapterid = (select chapterid from kptable where kpid = ?), 
+  ' at line 1
+    at Query.Sequence._packetToError (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:607:20)
+    --------------------
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    at onFulfilled (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:65:19)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:54:5
+    at new Promise (<anonymous>)
+    at RDSClient.co (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:50:10)
+    at RDSClient.createPromise [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:30:15)
+    at exerciseService.addKpExercise (C:\Users\Administrator\Documents\GitHub\egg_server\app\service\exercise.js:229:39)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+    sql: insert into kp_exercise set exercise_id = `exercise_id` = 30061, `kpid` = 335545351 , kpid = ? , 
+            chapterid = (select chapterid from kptable where kpid = ?), 
+            course_id = (select b.course_id from kptable k, chapter c, book b 
+            where b.bookid = c.bookid and c.chapterid = k.chapterid and k.kpid = ?);
+code: 'ER_PARSE_ERROR'
+errno: 1064
+sqlMessage: 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'? , \n            chapterid = (select chapterid from kptable where kpid = ?), \n  \' at line 1'
+sqlState: '42000'
+index: 0
+sql: 'insert into kp_exercise set exercise_id = `exercise_id` = 30061, `kpid` = 335545351 , kpid = ? , \n            chapterid = (select chapterid from kptable where kpid = ?), \n            course_id = (select b.course_id from kptable k, chapter c, book b \n            where b.bookid = c.bookid and c.chapterid = k.chapterid and k.kpid = ?);'
+headers: { 'Access-Control-Allow-Origin': '*' }
+name: 'ER_PARSE_ERRORError'
+pid: 12724
+hostname: USER-D8STTK4RDA
+
+2018-07-28 15:13:27,749 ERROR 6580 [-/127.0.0.1/-/561ms POST /klmanager/updateBreakdown] nodejs.ER_PARSE_ERRORError: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '? , chapterid = (select chapterid from kptable where kpid = ?), course_id = (sel' at line 1
+    at Query.Sequence._packetToError (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:607:20)
+    --------------------
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    at onFulfilled (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:65:19)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:54:5
+    at new Promise (<anonymous>)
+    at RDSClient.co (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:50:10)
+    at RDSClient.createPromise [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:30:15)
+    at exerciseService.addKpExercise (C:\Users\Administrator\Documents\GitHub\egg_server\app\service\exercise.js:229:39)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+    sql: insert into kp_exercise set exercise_id = `exercise_id` = 30061, `kpid` = 335545351 , kpid = ? , chapterid = (select chapterid from kptable where kpid = ?), course_id = (select b.course_id from kptable k, chapter c, book b where b.bookid = c.bookid and c.chapterid = k.chapterid and k.kpid = ?);
+code: 'ER_PARSE_ERROR'
+errno: 1064
+sqlMessage: 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'? , chapterid = (select chapterid from kptable where kpid = ?), course_id = (sel\' at line 1'
+sqlState: '42000'
+index: 0
+sql: 'insert into kp_exercise set exercise_id = `exercise_id` = 30061, `kpid` = 335545351 , kpid = ? , chapterid = (select chapterid from kptable where kpid = ?), course_id = (select b.course_id from kptable k, chapter c, book b where b.bookid = c.bookid and c.chapterid = k.chapterid and k.kpid = ?);'
+headers: { 'Access-Control-Allow-Origin': '*' }
+name: 'ER_PARSE_ERRORError'
+pid: 6580
+hostname: USER-D8STTK4RDA
+
+2018-07-28 15:26:13,347 ERROR 10868 [-/127.0.0.1/-/596ms POST /klmanager/updateBreakdown] nodejs.ER_PARSE_ERRORError: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?, (select chapterid from kptable where kpid = ?), 
+            (select b.course' at line 1
+            (select b.course' at line 1
+    at Query.Sequence._packetToError (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:607:20)
+    --------------------
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    at onFulfilled (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:65:19)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:54:5
+    at new Promise (<anonymous>)
+    at RDSClient.co (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:50:10)
+    at RDSClient.createPromise [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:30:15)
+    at exerciseService.addKpExercise (C:\Users\Administrator\Documents\GitHub\egg_server\app\service\exercise.js:228:39)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+    sql: insert into kp_exercise (exercise_id, kpid, chapterid, course_id) values 
+			(`exercise_id` = 30061, `kpid` = 335545351, ?, (select chapterid from kptable where kpid = ?), 
+            (select b.course_id from kptable k, chapter c, book b where b.bookid = c.bookid and c.chapterid = k.chapterid and k.kpid = ?));
+code: 'ER_PARSE_ERROR'
+errno: 1064
+sqlMessage: 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'?, (select chapterid from kptable where kpid = ?), \n            (select b.course\' at line 1'
+sqlState: '42000'
+index: 0
+sql: 'insert into kp_exercise (exercise_id, kpid, chapterid, course_id) values \n\t\t\t(`exercise_id` = 30061, `kpid` = 335545351, ?, (select chapterid from kptable where kpid = ?), \n            (select b.course_id from kptable k, chapter c, book b where b.bookid = c.bookid and c.chapterid = k.chapterid and k.kpid = ?));'
+headers: { 'Access-Control-Allow-Origin': '*' }
+name: 'ER_PARSE_ERRORError'
+pid: 10868
+hostname: USER-D8STTK4RDA
+
+2018-07-28 15:39:08,649 ERROR 9764 [-/127.0.0.1/-/607ms POST /klmanager/updateBreakdown] nodejs.ER_PARSE_ERRORError: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?, (select chapterid from kptable where kpid = ?), 
+            (select b.course' at line 1
+            (select b.course' at line 1
+    at Query.Sequence._packetToError (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:607:20)
+    --------------------
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    at onFulfilled (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:65:19)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:54:5
+    at new Promise (<anonymous>)
+    at RDSClient.co (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:50:10)
+    at RDSClient.createPromise [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:30:15)
+    at exerciseService.addKpExercise (C:\Users\Administrator\Documents\GitHub\egg_server\app\service\exercise.js:228:39)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+    sql: insert into kp_exercise (exercise_id, kpid, chapterid, course_id) values 
+			(`exercise_id` = 30061, `kpid` = 335545351, ?, (select chapterid from kptable where kpid = ?), 
+            (select b.course_id from kptable k, chapter c, book b where b.bookid = c.bookid and c.chapterid = k.chapterid and k.kpid = ?));
+code: 'ER_PARSE_ERROR'
+errno: 1064
+sqlMessage: 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'?, (select chapterid from kptable where kpid = ?), \n            (select b.course\' at line 1'
+sqlState: '42000'
+index: 0
+sql: 'insert into kp_exercise (exercise_id, kpid, chapterid, course_id) values \n\t\t\t(`exercise_id` = 30061, `kpid` = 335545351, ?, (select chapterid from kptable where kpid = ?), \n            (select b.course_id from kptable k, chapter c, book b where b.bookid = c.bookid and c.chapterid = k.chapterid and k.kpid = ?));'
+headers: { 'Access-Control-Allow-Origin': '*' }
+name: 'ER_PARSE_ERRORError'
+pid: 9764
+hostname: USER-D8STTK4RDA
+
+2018-07-28 15:39:27,232 ERROR 9764 [-/127.0.0.1/-/541ms POST /klmanager/updateBreakdown] nodejs.ER_PARSE_ERRORError: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?, (select chapterid from kptable where kpid = ?), 
+            (select b.course' at line 1
+            (select b.course' at line 1
+    at Query.Sequence._packetToError (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:607:20)
+    --------------------
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    at onFulfilled (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:65:19)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:54:5
+    at new Promise (<anonymous>)
+    at RDSClient.co (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:50:10)
+    at RDSClient.createPromise [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:30:15)
+    at exerciseService.addKpExercise (C:\Users\Administrator\Documents\GitHub\egg_server\app\service\exercise.js:228:39)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+    sql: insert into kp_exercise (exercise_id, kpid, chapterid, course_id) values 
+			(`exercise_id` = 30061, `kpid` = 335545351, ?, (select chapterid from kptable where kpid = ?), 
+            (select b.course_id from kptable k, chapter c, book b where b.bookid = c.bookid and c.chapterid = k.chapterid and k.kpid = ?));
+code: 'ER_PARSE_ERROR'
+errno: 1064
+sqlMessage: 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'?, (select chapterid from kptable where kpid = ?), \n            (select b.course\' at line 1'
+sqlState: '42000'
+index: 0
+sql: 'insert into kp_exercise (exercise_id, kpid, chapterid, course_id) values \n\t\t\t(`exercise_id` = 30061, `kpid` = 335545351, ?, (select chapterid from kptable where kpid = ?), \n            (select b.course_id from kptable k, chapter c, book b where b.bookid = c.bookid and c.chapterid = k.chapterid and k.kpid = ?));'
+headers: { 'Access-Control-Allow-Origin': '*' }
+name: 'ER_PARSE_ERRORError'
+pid: 9764
+hostname: USER-D8STTK4RDA
+
+2018-07-28 15:41:35,049 ERROR 11872 [-/127.0.0.1/-/795ms POST /klmanager/updateBreakdown] nodejs.ER_PARSE_ERRORError: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?, (select chapterid from kptable where kpid = ?), 
+            (select b.course' at line 1
+            (select b.course' at line 1
+    at Query.Sequence._packetToError (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:607:20)
+    --------------------
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    at onFulfilled (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:65:19)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:54:5
+    at new Promise (<anonymous>)
+    at RDSClient.co (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:50:10)
+    at RDSClient.createPromise [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\co\index.js:30:15)
+    at exerciseService.addKpExercise (C:\Users\Administrator\Documents\GitHub\egg_server\app\service\exercise.js:228:39)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+    sql: insert into kp_exercise (exercise_id, kpid, chapterid, course_id) values 
+			(`exercise_id` = 30061, `kpid` = 335545351, ?, (select chapterid from kptable where kpid = ?), 
+            (select b.course_id from kptable k, chapter c, book b where b.bookid = c.bookid and c.chapterid = k.chapterid and k.kpid = ?));
+code: 'ER_PARSE_ERROR'
+errno: 1064
+sqlMessage: 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'?, (select chapterid from kptable where kpid = ?), \n            (select b.course\' at line 1'
+sqlState: '42000'
+index: 0
+sql: 'insert into kp_exercise (exercise_id, kpid, chapterid, course_id) values \n\t\t\t(`exercise_id` = 30061, `kpid` = 335545351, ?, (select chapterid from kptable where kpid = ?), \n            (select b.course_id from kptable k, chapter c, book b where b.bookid = c.bookid and c.chapterid = k.chapterid and k.kpid = ?));'
+headers: { 'Access-Control-Allow-Origin': '*' }
+name: 'ER_PARSE_ERRORError'
+pid: 11872
+hostname: USER-D8STTK4RDA
+

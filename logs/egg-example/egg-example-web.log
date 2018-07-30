@@ -1,0 +1,236 @@
+2018-07-16 18:28:17,561 WARN 10736 [-/127.0.0.1/-/229ms POST /signin] nodejs.AuthenticationError: Bad Request
+    at allFailed (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:159:21)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:167:28)
+    at Strategy.strategy.fail (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:284:9)
+    at Strategy.authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport-local\lib\strategy.js:75:17)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:348:16)
+    at authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:349:7)
+    at Promise (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:83:7)
+    at new Promise (<anonymous>)
+    at Object.passportAuthenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:77:11)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    at wrappedController (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\router.js:322:18)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+name: 'AuthenticationError'
+message: 'Bad Request'
+status: 400
+headers: { 'Access-Control-Allow-Origin': '*' }
+pid: 10736
+hostname: USER-D8STTK4RDA
+
+2018-07-16 18:30:58,964 WARN 10736 [-/127.0.0.1/-/43275ms POST /signin] nodejs.AuthenticationError: Bad Request
+    at allFailed (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:159:21)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:167:28)
+    at Strategy.strategy.fail (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:284:9)
+    at Strategy.authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport-local\lib\strategy.js:75:17)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:348:16)
+    at authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:349:7)
+    at Promise (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:83:7)
+    at new Promise (<anonymous>)
+    at Object.passportAuthenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:77:11)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    at wrappedController (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\router.js:322:18)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+name: 'AuthenticationError'
+message: 'Bad Request'
+status: 400
+headers: { 'Access-Control-Allow-Origin': '*' }
+pid: 10736
+hostname: USER-D8STTK4RDA
+
+2018-07-16 18:34:40,583 WARN 10736 [-/127.0.0.1/-/217857ms POST /signin] nodejs.AuthenticationError: Bad Request
+    at allFailed (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:159:21)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:167:28)
+    at Strategy.strategy.fail (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:284:9)
+    at Strategy.authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport-local\lib\strategy.js:75:17)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:348:16)
+    at authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:349:7)
+    at Promise (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:83:7)
+    at new Promise (<anonymous>)
+    at Object.passportAuthenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:77:11)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    at wrappedController (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\router.js:322:18)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+name: 'AuthenticationError'
+message: 'Bad Request'
+status: 400
+headers: { 'Access-Control-Allow-Origin': '*' }
+pid: 10736
+hostname: USER-D8STTK4RDA
+
+2018-07-16 18:41:57,030 WARN 9024 [-/127.0.0.1/-/31631ms POST /signin] nodejs.AuthenticationError: Bad Request
+    at allFailed (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:159:21)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:167:28)
+    at Strategy.strategy.fail (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:284:9)
+    at Strategy.authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport-local\lib\strategy.js:75:17)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:348:16)
+    at authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:349:7)
+    at Promise (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:83:7)
+    at new Promise (<anonymous>)
+    at Object.passportAuthenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:77:11)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    at wrappedController (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\router.js:322:18)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+name: 'AuthenticationError'
+message: 'Bad Request'
+status: 400
+headers: { 'Access-Control-Allow-Origin': '*' }
+pid: 9024
+hostname: USER-D8STTK4RDA
+
+2018-07-16 18:42:17,939 WARN 9024 [-/127.0.0.1/-/12ms POST /signin] nodejs.AuthenticationError: Bad Request
+    at allFailed (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:159:21)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:167:28)
+    at Strategy.strategy.fail (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:284:9)
+    at Strategy.authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport-local\lib\strategy.js:75:17)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:348:16)
+    at authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:349:7)
+    at Promise (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:83:7)
+    at new Promise (<anonymous>)
+    at Object.passportAuthenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:77:11)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    at wrappedController (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\router.js:322:18)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+name: 'AuthenticationError'
+message: 'Bad Request'
+status: 400
+headers: { 'Access-Control-Allow-Origin': '*' }
+pid: 9024
+hostname: USER-D8STTK4RDA
+
+2018-07-16 18:42:35,211 WARN 9024 [-/127.0.0.1/-/14ms POST /signin] nodejs.AuthenticationError: Bad Request
+    at allFailed (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:159:21)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:167:28)
+    at Strategy.strategy.fail (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:284:9)
+    at Strategy.authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport-local\lib\strategy.js:75:17)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:348:16)
+    at authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:349:7)
+    at Promise (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:83:7)
+    at new Promise (<anonymous>)
+    at Object.passportAuthenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:77:11)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    at wrappedController (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\router.js:322:18)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+name: 'AuthenticationError'
+message: 'Bad Request'
+status: 400
+headers: { 'Access-Control-Allow-Origin': '*' }
+pid: 9024
+hostname: USER-D8STTK4RDA
+
+2018-07-16 21:12:25,718 WARN 9428 [-/127.0.0.1/-/21ms GET /signin] nodejs.AuthenticationError: Bad Request
+    at allFailed (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:159:21)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:167:28)
+    at Strategy.strategy.fail (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:284:9)
+    at Strategy.authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport-local\lib\strategy.js:75:17)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:348:16)
+    at authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:349:7)
+    at Promise (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:83:7)
+    at new Promise (<anonymous>)
+    at Object.passportAuthenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:77:11)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    at wrappedController (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\router.js:322:18)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+name: 'AuthenticationError'
+message: 'Bad Request'
+status: 400
+pid: 9428
+hostname: USER-D8STTK4RDA
+
+2018-07-16 21:17:06,906 WARN 9740 [-/127.0.0.1/-/18ms GET /signin] nodejs.AuthenticationError: Bad Request
+    at allFailed (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:159:21)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:167:28)
+    at Strategy.strategy.fail (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:284:9)
+    at Strategy.authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport-local\lib\strategy.js:75:17)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:348:16)
+    at authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:349:7)
+    at Promise (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:83:7)
+    at new Promise (<anonymous>)
+    at Object.passportAuthenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:77:11)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    at wrappedController (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\router.js:322:18)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+name: 'AuthenticationError'
+message: 'Bad Request'
+status: 400
+pid: 9740
+hostname: USER-D8STTK4RDA
+
+2018-07-16 21:17:36,069 WARN 9740 [-/127.0.0.1/-/8ms GET /signin] nodejs.AuthenticationError: Bad Request
+    at allFailed (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:159:21)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:167:28)
+    at Strategy.strategy.fail (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:284:9)
+    at Strategy.authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport-local\lib\strategy.js:75:17)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:348:16)
+    at authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:349:7)
+    at Promise (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:83:7)
+    at new Promise (<anonymous>)
+    at Object.passportAuthenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:77:11)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    at wrappedController (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\router.js:322:18)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+name: 'AuthenticationError'
+message: 'Bad Request'
+status: 400
+pid: 9740
+hostname: USER-D8STTK4RDA
+
+2018-07-16 21:30:21,888 WARN 9740 [-/127.0.0.1/-/17ms GET /signin] nodejs.AuthenticationError: Bad Request
+    at allFailed (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:159:21)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:167:28)
+    at Strategy.strategy.fail (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:284:9)
+    at Strategy.authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport-local\lib\strategy.js:75:17)
+    at attempt (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:348:16)
+    at authenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\passport\lib\middleware\authenticate.js:349:7)
+    at Promise (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:83:7)
+    at new Promise (<anonymous>)
+    at Object.passportAuthenticate (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-passport\lib\framework.js:77:11)
+    at Object.callFn (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    at wrappedController (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-core\lib\utils\router.js:322:18)
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+name: 'AuthenticationError'
+message: 'Bad Request'
+status: 400
+pid: 9740
+hostname: USER-D8STTK4RDA
+

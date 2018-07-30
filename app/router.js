@@ -1,7 +1,9 @@
 module.exports = app => {
   const { router, controller } = app;
+  const { middlewares: m } = app;
   console.log("controller :"+ controller);
   router.get('/', controller.home.index);
+  router.get('/about', m.isSignined(), controller.home.index);
   router.get('/klmanager/getBookChapter', controller.entryexercise.getBookChapter);
   router.get('/klmanager/getChapterKp', controller.entryexercise.getChapterKp);
   router.get('/klmanager/getExerciseByKp', controller.entryexercise.getExerciseByKp);
@@ -20,6 +22,25 @@ module.exports = app => {
   router.post('/klmanager/queryMediaList', controller.manager.queryMediaList);
   router.post('/klmanager/searchMedia', controller.manager.searchMedia);
 
-  router.get('/klmanager/getMyLadderScore', controller.student.getMyLadderScore);
+  // router.get('/klmanager/getMyLadderScore', controller.student.getMyLadderScore);
+
+  // 1.user
+  // r.get('/signup', c.user.new);
+  // r.post('/signup', c.user.signup);
+
+  // r.get('/signin', c.user.old);
+
+  // const options = {
+  //   successRedirect: '/',
+  //   failureRedirect: '/signin',
+  // };
+
+  // passport-local
+  const local = app.passport.authenticate('local');
+  router.get('/signin', local);
+  //weixin
+  router.get('/klmanager/get_wx_auth',controller.auth.getWxAuth);
+  //邀请码绑定
+  router.post('/klmanager/check_invi_code',controller.auth.checkInviteCode);
 
 };

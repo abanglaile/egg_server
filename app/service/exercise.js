@@ -1,4 +1,3 @@
-import { ENGINE_METHOD_DIGESTS } from 'constants';
 
 const Service = require('egg').Service;
 
@@ -132,7 +131,7 @@ class exerciseService extends Service {
             }
         }
         if(mask){
-          const addkpexer = await this.addKpExercise(exercise_id,exercise.breakdown);
+          const addkpexer = await this.addKpExercise( exercise_id, exercise.breakdown);
           return {"exercise_id":exercise_id};
 
         }else{
@@ -161,20 +160,21 @@ class exerciseService extends Service {
     }
   }
 
-  async updateOneBreakdown(exercise){
-    const update_break = await this.updateBreakdown(exercise.exercise_id,exercise.breakdown);
+  async updateOneBreakdown(exercise_id, breakdown){
+    const update_break = await this.updateBreakdown(exercise_id, breakdown);
     //无主测点时不更新
     var mask = 0;
-    for(var i = 0; i < exercise.breakdown.length; i++){
-        if(exercise.breakdown[i].checked){
+    for(var i = 0; i < breakdown.length; i++){
+        if(breakdown[i].checked){
             mask = 1;
         }
     }
     if(mask){
-      const addkpexer = await this.addKpExercise(exercise_id,ctx.request.body.exercise.breakdown);
-      return {"exercise_id":exercise.exercise_id};
+    //更新主测点信息
+      const addkpexer = await this.addKpExercise(exercise_id, breakdown);
+      return {"exercise_id" : exercise_id};
     }else{
-      return {"exercise_id":exercise.exercise_id};
+      return {"exercise_id" : exercise_id};
     }
   }
 
@@ -212,14 +212,22 @@ class exerciseService extends Service {
   async addKpExercise(exercise_id, breakdown) {
     var sql = "";
     var params = [];
+    console.log("exercise_id :",exercise_id);
+    const res1 = await this.app.mysql.delete('kp_exercise',{
+        exercise_id : exercise_id,
+    });
     for(var i = 0; i < breakdown.length; i++){
         if(breakdown[i].checked){
-            sql = sql + "replace into kp_exercise set ?;"
-            params.push({exercise_id: exercise_id, kpid: breakdown[i].kpid});   
+            var kpid = breakdown[i].kpid;
+            console.log("kpid :",kpid);
+            sql = sql + `insert into kp_exercise (exercise_id, kpid, chapterid, course_id) values 
+			(?, ?, (select chapterid from kptable where kpid = ?), 
+            (select b.course_id from kptable k, chapter c, book b where b.bookid = c.bookid and c.chapterid = k.chapterid and k.kpid = ?));`;
+            params.push(exercise_id, kpid, kpid, kpid);   
         }
     }
-    const res = await this.app.mysql.query(sql,params);
-    return res;
+    const res2 = await this.app.mysql.query(sql,params);
+    return res2;
   }
 
   async updateExercise(exercise) {

@@ -19,6 +19,20 @@
       "GET"
     ],
     "paramNames": [],
+    "path": "/about",
+    "regexp": "/^\\/about(?:\\/(?=$))?$/",
+    "stack": [
+      "anonymous",
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/klmanager/getBookChapter",
     "regexp": "/^\\/klmanager\\/getBookChapter(?:\\/(?=$))?$/",
     "stack": [
@@ -206,6 +220,44 @@
     "paramNames": [],
     "path": "/klmanager/searchMedia",
     "regexp": "/^\\/klmanager\\/searchMedia(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/signin",
+    "regexp": "/^\\/signin(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/klmanager/get_wx_auth",
+    "regexp": "/^\\/klmanager\\/get_wx_auth(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/klmanager/check_invi_code",
+    "regexp": "/^\\/klmanager\\/check_invi_code(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

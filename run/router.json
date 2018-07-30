@@ -231,8 +231,13 @@
       "GET"
     ],
     "paramNames": [],
+<<<<<<< HEAD
     "path": "/signin",
     "regexp": "/^\\/signin(?:\\/(?=$))?$/",
+=======
+    "path": "/klmanager/getHistoryTest",
+    "regexp": "/^\\/klmanager\\/getHistoryTest(?:\\/(?=$))?$/",
+>>>>>>> ef3e120fd62c7ba56e4bf1356ec4aff54554ead1
     "stack": [
       "wrappedController"
     ]
@@ -244,8 +249,39 @@
       "GET"
     ],
     "paramNames": [],
+<<<<<<< HEAD
     "path": "/klmanager/get_wx_auth",
     "regexp": "/^\\/klmanager\\/get_wx_auth(?:\\/(?=$))?$/",
+=======
+    "path": "/klmanager/getNotFinishTest",
+    "regexp": "/^\\/klmanager\\/getNotFinishTest(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/klmanager/getExerciseByTest",
+    "regexp": "/^\\/klmanager\\/getExerciseByTest(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/klmanager/getStuComUsedKp",
+    "regexp": "/^\\/klmanager\\/getStuComUsedKp(?:\\/(?=$))?$/",
+>>>>>>> ef3e120fd62c7ba56e4bf1356ec4aff54554ead1
     "stack": [
       "wrappedController"
     ]
@@ -256,8 +292,65 @@
       "POST"
     ],
     "paramNames": [],
+<<<<<<< HEAD
     "path": "/klmanager/check_invi_code",
     "regexp": "/^\\/klmanager\\/check_invi_code(?:\\/(?=$))?$/",
+=======
+    "path": "/klmanager/submitExerciseLog",
+    "regexp": "/^\\/klmanager\\/submitExerciseLog(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/klmanager/getMyStudentRating",
+    "regexp": "/^\\/klmanager\\/getMyStudentRating(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/klmanager/getChapterKpStatus",
+    "regexp": "/^\\/klmanager\\/getChapterKpStatus(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/klmanager/getMyBookChapter",
+    "regexp": "/^\\/klmanager\\/getMyBookChapter(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/klmanager/getCourseBook",
+    "regexp": "/^\\/klmanager\\/getCourseBook(?:\\/(?=$))?$/",
+>>>>>>> ef3e120fd62c7ba56e4bf1356ec4aff54554ead1
     "stack": [
       "wrappedController"
     ]

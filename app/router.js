@@ -42,5 +42,17 @@ module.exports = app => {
   router.get('/klmanager/get_wx_auth',controller.auth.getWxAuth);
   //邀请码绑定
   router.post('/klmanager/check_invi_code',controller.auth.checkInviteCode);
+  router.get('/klmanager/getHistoryTest', controller.student.getHistoryTest);
+  router.get('/klmanager/getNotFinishTest', controller.student.getNotFinishTest);
+  router.get('/klmanager/getExerciseByTest', controller.student.getExerciseByTest);
+  router.get('/klmanager/getStuComUsedKp', controller.student.getStuComUsedKp);
+  //router.get('/klmanager/getMyBookChapter', controller.student.getMyBookChapter);
+
+  router.post('/klmanager/submitExerciseLog', controller.student.submitExerciseLog);
+  router.get('/klmanager/getMyStudentRating', controller.student.getMyStudentRating);
+  router.get('/klmanager/getChapterKpStatus', controller.student.getChapterKpStatus);
+  router.get('/klmanager/getMyBookChapter', controller.student.getMyBookChapter);
+
+  router.get('/klmanager/getCourseBook', controller.student.getCourseBook);
 
 };

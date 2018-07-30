@@ -4,19 +4,25 @@ const Controller = require('egg').Controller;
 
 class StudentController extends Controller {
 
-    async getMyLadderScore(){
+    async getMyStudentRating(){
         const { ctx, service } = this;
-        const results = await service.rating.getMyLadderScore(ctx.request.query.student_id);
+        const results = await service.rating.getStudentRating(ctx.request.query.student_id, ctx.request.query.course_id);
         console.log(results);
         
         this.ctx.body = results[0];
+    }
+
+    async getCourseBook(){
+        const { ctx, service } = this;
+        const results = await service.book.getCourseBook(ctx.request.query.course_id);
+        this.ctx.body = results;
     }
 
     async getMyBookChapter(){
         const { ctx, service } = this;
         const {query} = ctx.request;
 
-        const results = await service.bookchapter.getMyBookChapter(query.student_id,query.course_id);
+        const results = await service.rating.getMyBookChapter(query.student_id, query.course_id);
         console.log(results);
         
         this.ctx.body = results;
@@ -34,7 +40,7 @@ class StudentController extends Controller {
     async getChapterStatus(){
         const { ctx, service } = this;
         const {query} = ctx.request;
-        const results = await service.status.getChapterStatus(query.student_id,query.chapter_id);
+        const results = await service.status.getChapterStatus(query.student_id, query.chapter_id);
         console.log(results);
         
         this.ctx.body = results[0];
@@ -49,11 +55,23 @@ class StudentController extends Controller {
         this.ctx.body = results;
     }
 
+    // async getExerciseByTest(){
+    //     const { ctx, service } = this;
+    //     const {query} = ctx.request;
+    //     if(query.student_id && query.test_id){
+    //         const results = await service.exercise.getExerciseByTest(query.test_id,query.student_id);
+    //         console.log(results);
+            
+    //         this.ctx.body = results;
+    //     }
+        
+    // }
+
     async getExerciseByTest(){
         const { ctx, service } = this;
         const {query} = ctx.request;
         if(query.student_id && query.test_id){
-            const results = await service.exercise.getExerciseByTest(query.test_id,query.student_id);
+            const results = await service.exerciseLog.getExerciseByTest(query.test_id,query.student_id);
             console.log(results);
             
             this.ctx.body = results;
@@ -61,16 +79,14 @@ class StudentController extends Controller {
         
     }
 
-    async getExerciseByTest2(){
+    async submitExerciseLog(){
         const { ctx, service } = this;
-        const {query} = ctx.request;
-        if(query.student_id && query.test_id){
-            const results = await service.exercise.getExerciseByTest2(query.test_id,query.student_id);
+        const {body} = ctx.request;
+        if(body.exercise_log){
+            const results = await service.exerciseLog.submitExerciseLog(body.exercise_log);
             console.log(results);
-            
             this.ctx.body = results;
         }
-        
     }
 
     async getTestKpReward(){
@@ -108,22 +124,22 @@ class StudentController extends Controller {
         }
     }
 
-    async getMyHistoryTests(){
+    async getHistoryTest(){
         const { ctx, service } = this;
         const {query} = ctx.request;
         if(query.student_id){
-            const results = await service.exercise.getTestLogs(query.student_id);
+            const results = await service.exercise.getStuTestLogs(query.student_id);
             console.log(results);
             
             this.ctx.body = results;
         }
     }
 
-    async getUncompletedTest(){
+    async getNotFinishTest(){
         const { ctx, service } = this;
         const {query} = ctx.request;
         if(query.student_id){
-            const results = await service.exercise.getUncompletedTestLogs(query.student_id);
+            const results = await service.testLog.getStuNotFinishTest(query.student_id);
             console.log(results);
             
             this.ctx.body = results;

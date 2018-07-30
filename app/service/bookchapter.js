@@ -32,8 +32,7 @@ class bookchapterService extends Service {
     return rep;
   }
 
-
-  async getMyBookChapter(student_id,course_id){
+  async getMyBookChapter(student_id, course_id){
 
     const results = await this.app.mysql.query('select bookkp.*,rate.practice,rate.correct from (SELECT b.bookname,ch.bookid,ch.chapterid,'
     +'ch.chaptername from book b,chapter ch where b.bookid = ch.bookid  and b.course_id = ?) '

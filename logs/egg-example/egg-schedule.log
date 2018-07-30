@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2018-06-20 10:30:59,041 INFO 9700 [Timer] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js next time will execute at 2018-06-21 00:00:00.000
 2018-06-20 10:30:59,046 INFO 9700 [Timer] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js next time will execute at 2018-06-21 00:00:01.000
 2018-06-21 10:16:56,847 INFO 7448 [Timer] D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js next time will execute at 2018-06-22 00:00:00.000
@@ -40,3 +41,7 @@
 2018-07-28 14:55:18,521 INFO 13036 [Timer] C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js next time will execute at 2018-07-29 00:00:01.000
 2018-07-28 15:40:54,805 INFO 3984 [Timer] C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js next time will execute at 2018-07-29 00:00:00.000
 2018-07-28 15:40:54,806 INFO 3984 [Timer] C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js next time will execute at 2018-07-29 00:00:01.000
+=======
+2018-07-30 14:15:42,845 INFO 7996 [Timer] D:\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js next time will execute at 2018-07-31 00:00:00.000
+2018-07-30 14:15:42,845 INFO 7996 [Timer] D:\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js next time will execute at 2018-07-31 00:00:01.000
+>>>>>>> ef3e120fd62c7ba56e4bf1356ec4aff54554ead1

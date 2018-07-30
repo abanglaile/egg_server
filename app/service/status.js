@@ -7,22 +7,13 @@ class statusService extends Service {
     return res;    
   }
 
+  
+
   async getChapterStatus(student_id,chapter_id) {
 
-    const res = await this.app.mysql.query('select sum(sk.practice) as practice, '
-    +'sum(sk.correct) as correct from chapter c, '
-    +'kptable k LEFT JOIN student_kp sk on k.kpid = sk.kpid and sk.student_id = ? '
-    +'where c.chapterid = ? and k.chapterid = c.chapterid;'
-    , [student_id,chapter_id]);
-
-    return res;
-  }
-
-  async getChapterKpStatus(student_id,chapter_id) {
-
-    const res = await this.app.mysql.query('select k.kpid, k.kpname, sk.kp_rating, '
+    const res = await this.app.mysql.query('select k.kpid, k.kpname, ks.kp_standard ,sk.kp_rating, '
     +'sk.practice, sk.correct from chapter c, '
-    +'kptable k LEFT JOIN student_kp sk on k.kpid = sk.kpid and sk.student_id = ? '
+    +'kptable k LEFT JOIN kp_standard ks on ks.kpid = k.kpid LEFT JOIN student_kp sk on k.kpid = sk.kpid and sk.student_id = ? '
     +'where c.chapterid = ? and k.chapterid = c.chapterid;'
     , [student_id,chapter_id]);
 

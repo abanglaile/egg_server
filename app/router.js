@@ -20,6 +20,17 @@ module.exports = app => {
   router.post('/klmanager/queryMediaList', controller.manager.queryMediaList);
   router.post('/klmanager/searchMedia', controller.manager.searchMedia);
 
-  router.get('/klmanager/getMyLadderScore', controller.student.getMyLadderScore);
+  router.get('/klmanager/getHistoryTest', controller.student.getHistoryTest);
+  router.get('/klmanager/getNotFinishTest', controller.student.getNotFinishTest);
+  router.get('/klmanager/getExerciseByTest', controller.student.getExerciseByTest);
+  router.get('/klmanager/getStuComUsedKp', controller.student.getStuComUsedKp);
+  //router.get('/klmanager/getMyBookChapter', controller.student.getMyBookChapter);
+
+  router.post('/klmanager/submitExerciseLog', controller.student.submitExerciseLog);
+  router.get('/klmanager/getMyStudentRating', controller.student.getMyStudentRating);
+  router.get('/klmanager/getChapterKpStatus', controller.student.getChapterKpStatus);
+  router.get('/klmanager/getMyBookChapter', controller.student.getMyBookChapter);
+
+  router.get('/klmanager/getCourseBook', controller.student.getCourseBook);
 
 };

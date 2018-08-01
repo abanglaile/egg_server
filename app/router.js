@@ -44,15 +44,26 @@ module.exports = app => {
   router.post('/klmanager/check_invi_code',controller.auth.checkInviteCode);
   router.get('/klmanager/getHistoryTest', controller.student.getHistoryTest);
   router.get('/klmanager/getNotFinishTest', controller.student.getNotFinishTest);
-  router.get('/klmanager/getExerciseByTest', controller.student.getExerciseByTest);
+  router.get('/klmanager/getMyTestData', controller.student.getMyTestData);
   router.get('/klmanager/getStuComUsedKp', controller.student.getStuComUsedKp);
+  router.post('/klmanager/getMyTestStatus',controller.student.getMyTestStatus);
   //router.get('/klmanager/getMyBookChapter', controller.student.getMyBookChapter);
 
   router.post('/klmanager/submitExerciseLog', controller.student.submitExerciseLog);
   router.get('/klmanager/getMyStudentRating', controller.student.getMyStudentRating);
   router.get('/klmanager/getChapterKpStatus', controller.student.getChapterKpStatus);
   router.get('/klmanager/getMyBookChapter', controller.student.getMyBookChapter);
+  
 
   router.get('/klmanager/getCourseBook', controller.student.getCourseBook);
 
+  //个人中心
+  router.post('/klmanager/getStudentInfo',controller.student.getStudentInfo);
+  //个人信息统计
+  router.get('/klmanager/getStuAbility',controller.student.getStuAbility);
+  router.get('/klmanager/getStuLadderWithTime',controller.student.getStuLadderWithTime);
+
+  router.post('/klmanager/getTestStatus',controller.student.getTestStatus);
+  router.post('/klmanager/getTestRankingList',controller.student.getTestRankingList);
+  
 };

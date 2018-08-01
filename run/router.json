@@ -231,13 +231,8 @@
       "GET"
     ],
     "paramNames": [],
-<<<<<<< HEAD
     "path": "/signin",
     "regexp": "/^\\/signin(?:\\/(?=$))?$/",
-=======
-    "path": "/klmanager/getHistoryTest",
-    "regexp": "/^\\/klmanager\\/getHistoryTest(?:\\/(?=$))?$/",
->>>>>>> ef3e120fd62c7ba56e4bf1356ec4aff54554ead1
     "stack": [
       "wrappedController"
     ]
@@ -249,10 +244,44 @@
       "GET"
     ],
     "paramNames": [],
-<<<<<<< HEAD
     "path": "/klmanager/get_wx_auth",
     "regexp": "/^\\/klmanager\\/get_wx_auth(?:\\/(?=$))?$/",
-=======
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/klmanager/check_invi_code",
+    "regexp": "/^\\/klmanager\\/check_invi_code(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/klmanager/getHistoryTest",
+    "regexp": "/^\\/klmanager\\/getHistoryTest(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/klmanager/getNotFinishTest",
     "regexp": "/^\\/klmanager\\/getNotFinishTest(?:\\/(?=$))?$/",
     "stack": [
@@ -266,8 +295,8 @@
       "GET"
     ],
     "paramNames": [],
-    "path": "/klmanager/getExerciseByTest",
-    "regexp": "/^\\/klmanager\\/getExerciseByTest(?:\\/(?=$))?$/",
+    "path": "/klmanager/getMyTestData",
+    "regexp": "/^\\/klmanager\\/getMyTestData(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -281,7 +310,6 @@
     "paramNames": [],
     "path": "/klmanager/getStuComUsedKp",
     "regexp": "/^\\/klmanager\\/getStuComUsedKp(?:\\/(?=$))?$/",
->>>>>>> ef3e120fd62c7ba56e4bf1356ec4aff54554ead1
     "stack": [
       "wrappedController"
     ]
@@ -292,10 +320,18 @@
       "POST"
     ],
     "paramNames": [],
-<<<<<<< HEAD
-    "path": "/klmanager/check_invi_code",
-    "regexp": "/^\\/klmanager\\/check_invi_code(?:\\/(?=$))?$/",
-=======
+    "path": "/klmanager/getMyTestStatus",
+    "regexp": "/^\\/klmanager\\/getMyTestStatus(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
     "path": "/klmanager/submitExerciseLog",
     "regexp": "/^\\/klmanager\\/submitExerciseLog(?:\\/(?=$))?$/",
     "stack": [
@@ -350,7 +386,68 @@
     "paramNames": [],
     "path": "/klmanager/getCourseBook",
     "regexp": "/^\\/klmanager\\/getCourseBook(?:\\/(?=$))?$/",
->>>>>>> ef3e120fd62c7ba56e4bf1356ec4aff54554ead1
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/klmanager/getStudentInfo",
+    "regexp": "/^\\/klmanager\\/getStudentInfo(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/klmanager/getStuAbility",
+    "regexp": "/^\\/klmanager\\/getStuAbility(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/klmanager/getStuLadderWithTime",
+    "regexp": "/^\\/klmanager\\/getStuLadderWithTime(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/klmanager/getTestStatus",
+    "regexp": "/^\\/klmanager\\/getTestStatus(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/klmanager/getTestRankingList",
+    "regexp": "/^\\/klmanager\\/getTestRankingList(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

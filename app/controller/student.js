@@ -49,7 +49,7 @@ class StudentController extends Controller {
     async getChapterKpStatus(){
         const { ctx, service } = this;
         const {query} = ctx.request;
-        const results = await service.status.getChapterKpStatus(query.student_id,query.chapter_id);
+        const results = await service.rating.getChapterKpStatus(query.student_id,query.chapter_id);
         console.log(results);
         
         this.ctx.body = results;
@@ -67,11 +67,11 @@ class StudentController extends Controller {
         
     // }
 
-    async getExerciseByTest(){
+    async getMyTestData(){
         const { ctx, service } = this;
         const {query} = ctx.request;
         if(query.student_id && query.test_id){
-            const results = await service.exerciseLog.getExerciseByTest(query.test_id,query.student_id);
+            const results = await service.exerciseLog.getMyTestData(query.test_id,query.student_id);
             console.log(results);
             
             this.ctx.body = results;
@@ -128,7 +128,7 @@ class StudentController extends Controller {
         const { ctx, service } = this;
         const {query} = ctx.request;
         if(query.student_id){
-            const results = await service.exercise.getStuTestLogs(query.student_id);
+            const results = await service.testLog.getStuTestLogs(query.student_id);
             console.log(results);
             
             this.ctx.body = results;
@@ -167,12 +167,12 @@ class StudentController extends Controller {
             this.ctx.body = results;
         }
     }
-    //查询测试结果数据
-    async getTestResult(){
+    //查询个人测试结果数据（test_kp）
+    async getMyTestStatus(){
         const { ctx, service } = this;
         const {body} = ctx.request;
         if(body.student_id){
-            const results = await service.exercise.getExerciseLogResult(body.student_id,body.test_id);
+            const results = await service.exerciseLog.getMyTestStatus(body.student_id,body.test_id);
             console.log(results);
             
             this.ctx.body = results;

@@ -1,959 +1,235 @@
-<<<<<<< HEAD
-2018-06-20 00:00:01,587 INFO 7896 [egg-logrotator] app logger reload: got log-reload message
-2018-06-20 10:30:58,028 INFO 7392 [egg:logger] init all loggers with options: {"dir":"D:\\server\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-06-20 10:30:58,078 INFO 7392 [egg-schedule]: register schedule D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-06-20 10:30:58,078 INFO 7392 [egg-schedule]: register schedule D:\server\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-06-20 10:30:58,099 INFO 7392 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-06-20 10:30:58,391 INFO 7392 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-06-20 10:30:58,564 INFO 7392 [egg-static] starting static serve /public/ -> D:\server\egg_server\app\public
-2018-06-20 10:30:58,569 INFO 7392 [egg-security] use methodnoallow middleware
-2018-06-20 10:30:58,570 INFO 7392 [egg-security] use noopen middleware
-2018-06-20 10:30:58,570 INFO 7392 [egg-security] use nosniff middleware
-2018-06-20 10:30:58,571 INFO 7392 [egg-security] use xssProtection middleware
-2018-06-20 10:30:58,572 INFO 7392 [egg-security] use xframe middleware
-2018-06-20 10:30:58,573 INFO 7392 [egg-security] use dta middleware
-2018-06-20 10:30:58,573 INFO 7392 [egg-security] compose 6 middlewares into one security middleware
-2018-06-20 10:30:58,657 INFO 7392 [egg-watcher:app] watcher start success
-2018-06-20 10:30:58,708 INFO 7392 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-06-20 10:30:58,855 INFO 7392 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-06-20 10:30:59,018 INFO 7392 [egg-mysql] instance[0] status OK, rds currentTime: Wed Jun 20 2018 10:30:58 GMT+0800 (中国标准时间)
-2018-06-20 10:56:20,194 INFO 10460 [egg:logger] init all loggers with options: {"dir":"D:\\server\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-06-20 10:56:20,322 INFO 10460 [egg-schedule]: register schedule D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-06-20 10:56:20,322 INFO 10460 [egg-schedule]: register schedule D:\server\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-06-20 10:56:20,372 INFO 10460 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-06-20 10:56:20,786 INFO 10460 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-06-20 10:56:21,037 INFO 10460 [egg-static] starting static serve /public/ -> D:\server\egg_server\app\public
-2018-06-20 10:56:21,044 INFO 10460 [egg-security] use methodnoallow middleware
-2018-06-20 10:56:21,045 INFO 10460 [egg-security] use noopen middleware
-2018-06-20 10:56:21,045 INFO 10460 [egg-security] use nosniff middleware
-2018-06-20 10:56:21,046 INFO 10460 [egg-security] use xssProtection middleware
-2018-06-20 10:56:21,047 INFO 10460 [egg-security] use xframe middleware
-2018-06-20 10:56:21,048 INFO 10460 [egg-security] use dta middleware
-2018-06-20 10:56:21,048 INFO 10460 [egg-security] compose 6 middlewares into one security middleware
-2018-06-20 10:56:21,134 INFO 10460 [egg-watcher:app] watcher start success
-2018-06-20 10:56:21,185 INFO 10460 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-06-20 10:56:21,557 INFO 10460 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-06-20 10:56:23,475 INFO 10460 [egg-mysql] instance[0] status OK, rds currentTime: Wed Jun 20 2018 10:56:23 GMT+0800 (中国标准时间)
-2018-06-20 10:58:06,315 INFO 8680 [egg:logger] init all loggers with options: {"dir":"D:\\server\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-06-20 10:58:06,390 INFO 8680 [egg-schedule]: register schedule D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-06-20 10:58:06,390 INFO 8680 [egg-schedule]: register schedule D:\server\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-06-20 10:58:06,416 INFO 8680 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-06-20 10:58:06,658 INFO 8680 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-06-20 10:58:06,804 INFO 8680 [egg-static] starting static serve /public/ -> D:\server\egg_server\app\public
-2018-06-20 10:58:06,809 INFO 8680 [egg-security] use methodnoallow middleware
-2018-06-20 10:58:06,810 INFO 8680 [egg-security] use noopen middleware
-2018-06-20 10:58:06,810 INFO 8680 [egg-security] use nosniff middleware
-2018-06-20 10:58:06,811 INFO 8680 [egg-security] use xssProtection middleware
-2018-06-20 10:58:06,812 INFO 8680 [egg-security] use xframe middleware
-2018-06-20 10:58:06,813 INFO 8680 [egg-security] use dta middleware
-2018-06-20 10:58:06,813 INFO 8680 [egg-security] compose 6 middlewares into one security middleware
-2018-06-20 10:58:06,879 INFO 8680 [egg-watcher:app] watcher start success
-2018-06-20 10:58:06,900 INFO 8680 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-06-20 10:58:07,149 INFO 8680 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-06-20 10:58:13,053 INFO 8680 [egg-mysql] instance[0] status OK, rds currentTime: Wed Jun 20 2018 10:58:13 GMT+0800 (中国标准时间)
-2018-06-20 14:24:37,092 INFO 8680 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-06-20 17:05:36,646 INFO 8680 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-06-21 10:16:55,894 INFO 10208 [egg:logger] init all loggers with options: {"dir":"D:\\server\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-06-21 10:16:55,946 INFO 10208 [egg-schedule]: register schedule D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-06-21 10:16:55,946 INFO 10208 [egg-schedule]: register schedule D:\server\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-06-21 10:16:55,970 INFO 10208 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-06-21 10:16:56,233 INFO 10208 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-06-21 10:16:56,403 INFO 10208 [egg-static] starting static serve /public/ -> D:\server\egg_server\app\public
-2018-06-21 10:16:56,408 INFO 10208 [egg-security] use methodnoallow middleware
-2018-06-21 10:16:56,409 INFO 10208 [egg-security] use noopen middleware
-2018-06-21 10:16:56,410 INFO 10208 [egg-security] use nosniff middleware
-2018-06-21 10:16:56,410 INFO 10208 [egg-security] use xssProtection middleware
-2018-06-21 10:16:56,411 INFO 10208 [egg-security] use xframe middleware
-2018-06-21 10:16:56,412 INFO 10208 [egg-security] use dta middleware
-2018-06-21 10:16:56,412 INFO 10208 [egg-security] compose 6 middlewares into one security middleware
-2018-06-21 10:16:56,492 INFO 10208 [egg-watcher:app] watcher start success
-2018-06-21 10:16:56,572 INFO 10208 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-06-21 10:16:56,733 INFO 10208 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-06-21 10:16:56,819 INFO 10208 [egg-mysql] instance[0] status OK, rds currentTime: Thu Jun 21 2018 10:16:58 GMT+0800 (中国标准时间)
-2018-06-21 10:21:07,239 INFO 7452 [egg:logger] init all loggers with options: {"dir":"D:\\server\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-06-21 10:21:07,306 INFO 7452 [egg-schedule]: register schedule D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-06-21 10:21:07,306 INFO 7452 [egg-schedule]: register schedule D:\server\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-06-21 10:21:07,333 INFO 7452 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-06-21 10:21:07,588 INFO 7452 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-06-21 10:21:07,751 INFO 7452 [egg-static] starting static serve /public/ -> D:\server\egg_server\app\public
-2018-06-21 10:21:07,755 INFO 7452 [egg-security] use methodnoallow middleware
-2018-06-21 10:21:07,756 INFO 7452 [egg-security] use noopen middleware
-2018-06-21 10:21:07,757 INFO 7452 [egg-security] use nosniff middleware
-2018-06-21 10:21:07,757 INFO 7452 [egg-security] use xssProtection middleware
-2018-06-21 10:21:07,758 INFO 7452 [egg-security] use xframe middleware
-2018-06-21 10:21:07,759 INFO 7452 [egg-security] use dta middleware
-2018-06-21 10:21:07,759 INFO 7452 [egg-security] compose 6 middlewares into one security middleware
-2018-06-21 10:21:07,826 INFO 7452 [egg-watcher:app] watcher start success
-2018-06-21 10:21:08,004 INFO 7452 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-06-21 10:21:08,181 INFO 7452 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-06-21 10:21:16,315 INFO 7452 [egg-mysql] instance[0] status OK, rds currentTime: Thu Jun 21 2018 10:21:18 GMT+0800 (中国标准时间)
-2018-06-21 10:40:07,647 INFO 7452 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-06-21 10:56:01,565 INFO 5728 [egg:logger] init all loggers with options: {"dir":"D:\\server\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-06-21 10:56:01,619 INFO 5728 [egg-schedule]: register schedule D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-06-21 10:56:01,619 INFO 5728 [egg-schedule]: register schedule D:\server\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-06-21 10:56:01,646 INFO 5728 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-06-21 10:56:02,152 INFO 5728 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-06-21 10:56:02,376 INFO 5728 [egg-static] starting static serve /public/ -> D:\server\egg_server\app\public
-2018-06-21 10:56:02,380 INFO 5728 [egg-security] use methodnoallow middleware
-2018-06-21 10:56:02,381 INFO 5728 [egg-security] use noopen middleware
-2018-06-21 10:56:02,382 INFO 5728 [egg-security] use nosniff middleware
-2018-06-21 10:56:02,383 INFO 5728 [egg-security] use xssProtection middleware
-2018-06-21 10:56:02,384 INFO 5728 [egg-security] use xframe middleware
-2018-06-21 10:56:02,385 INFO 5728 [egg-security] use dta middleware
-2018-06-21 10:56:02,385 INFO 5728 [egg-security] compose 6 middlewares into one security middleware
-2018-06-21 10:56:02,427 INFO 5728 [egg-watcher:app] watcher start success
-2018-06-21 10:56:02,468 INFO 5728 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-06-21 10:56:02,594 INFO 5728 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-06-21 10:56:08,744 INFO 5728 [egg-mysql] instance[0] status OK, rds currentTime: Thu Jun 21 2018 10:56:10 GMT+0800 (中国标准时间)
-2018-06-21 10:56:59,329 INFO 6364 [egg:logger] init all loggers with options: {"dir":"D:\\server\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-06-21 10:56:59,386 INFO 6364 [egg-schedule]: register schedule D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-06-21 10:56:59,386 INFO 6364 [egg-schedule]: register schedule D:\server\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-06-21 10:56:59,408 INFO 6364 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-06-21 10:56:59,912 INFO 6364 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-06-21 10:57:00,114 INFO 6364 [egg-static] starting static serve /public/ -> D:\server\egg_server\app\public
-2018-06-21 10:57:00,117 INFO 6364 [egg-security] use methodnoallow middleware
-2018-06-21 10:57:00,118 INFO 6364 [egg-security] use noopen middleware
-2018-06-21 10:57:00,119 INFO 6364 [egg-security] use nosniff middleware
-2018-06-21 10:57:00,120 INFO 6364 [egg-security] use xssProtection middleware
-2018-06-21 10:57:00,121 INFO 6364 [egg-security] use xframe middleware
-2018-06-21 10:57:00,122 INFO 6364 [egg-security] use dta middleware
-2018-06-21 10:57:00,122 INFO 6364 [egg-security] compose 6 middlewares into one security middleware
-2018-06-21 10:57:00,193 INFO 6364 [egg-watcher:app] watcher start success
-2018-06-21 10:57:00,265 INFO 6364 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-06-21 10:57:00,482 INFO 6364 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-06-21 10:57:00,485 INFO 6364 [egg-mysql] instance[0] status OK, rds currentTime: Thu Jun 21 2018 10:57:02 GMT+0800 (中国标准时间)
-2018-06-21 11:18:08,914 INFO 10560 [egg:logger] init all loggers with options: {"dir":"D:\\server\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-06-21 11:18:08,994 INFO 10560 [egg-schedule]: register schedule D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-06-21 11:18:08,994 INFO 10560 [egg-schedule]: register schedule D:\server\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-06-21 11:18:09,027 INFO 10560 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-06-21 11:18:09,282 INFO 10560 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-06-21 11:18:09,449 INFO 10560 [egg-static] starting static serve /public/ -> D:\server\egg_server\app\public
-2018-06-21 11:18:09,454 INFO 10560 [egg-security] use methodnoallow middleware
-2018-06-21 11:18:09,455 INFO 10560 [egg-security] use noopen middleware
-2018-06-21 11:18:09,456 INFO 10560 [egg-security] use nosniff middleware
-2018-06-21 11:18:09,456 INFO 10560 [egg-security] use xssProtection middleware
-2018-06-21 11:18:09,457 INFO 10560 [egg-security] use xframe middleware
-2018-06-21 11:18:09,458 INFO 10560 [egg-security] use dta middleware
-2018-06-21 11:18:09,458 INFO 10560 [egg-security] compose 6 middlewares into one security middleware
-2018-06-21 11:18:09,518 INFO 10560 [egg-watcher:app] watcher start success
-2018-06-21 11:18:09,549 INFO 10560 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-06-21 11:18:09,654 INFO 10560 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-06-21 11:18:09,861 INFO 10560 [egg-mysql] instance[0] status OK, rds currentTime: Thu Jun 21 2018 11:18:11 GMT+0800 (中国标准时间)
-2018-06-21 11:26:00,430 INFO 5560 [egg:logger] init all loggers with options: {"dir":"D:\\server\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-06-21 11:26:00,493 INFO 5560 [egg-schedule]: register schedule D:\server\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-06-21 11:26:00,493 INFO 5560 [egg-schedule]: register schedule D:\server\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-06-21 11:26:00,520 INFO 5560 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-06-21 11:26:00,798 INFO 5560 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-06-21 11:26:01,010 INFO 5560 [egg-static] starting static serve /public/ -> D:\server\egg_server\app\public
-2018-06-21 11:26:01,015 INFO 5560 [egg-security] use methodnoallow middleware
-2018-06-21 11:26:01,016 INFO 5560 [egg-security] use noopen middleware
-2018-06-21 11:26:01,017 INFO 5560 [egg-security] use nosniff middleware
-2018-06-21 11:26:01,018 INFO 5560 [egg-security] use xssProtection middleware
-2018-06-21 11:26:01,019 INFO 5560 [egg-security] use xframe middleware
-2018-06-21 11:26:01,020 INFO 5560 [egg-security] use dta middleware
-2018-06-21 11:26:01,020 INFO 5560 [egg-security] compose 6 middlewares into one security middleware
-2018-06-21 11:26:01,104 INFO 5560 [egg-watcher:app] watcher start success
-2018-06-21 11:26:01,165 INFO 5560 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-06-21 11:26:01,320 INFO 5560 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-06-21 11:26:07,361 INFO 5560 [egg-mysql] instance[0] status OK, rds currentTime: Thu Jun 21 2018 11:26:09 GMT+0800 (中国标准时间)
-2018-07-16 16:32:50,230 INFO 9856 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 16:32:50,395 INFO 9856 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 16:32:50,395 INFO 9856 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 16:32:50,473 INFO 9856 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 16:32:51,066 INFO 9856 [egg-redis] connecting redis://:123456@127.0.0.1:6379/0
-2018-07-16 16:32:51,431 INFO 9856 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 16:32:51,441 INFO 9856 [egg-security] use methodnoallow middleware
-2018-07-16 16:32:51,443 INFO 9856 [egg-security] use noopen middleware
-2018-07-16 16:32:51,445 INFO 9856 [egg-security] use nosniff middleware
-2018-07-16 16:32:51,446 INFO 9856 [egg-security] use xssProtection middleware
-2018-07-16 16:32:51,447 INFO 9856 [egg-security] use xframe middleware
-2018-07-16 16:32:51,449 INFO 9856 [egg-security] use dta middleware
-2018-07-16 16:32:51,449 INFO 9856 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 16:32:51,772 INFO 9856 [egg-watcher:app] watcher start success
-2018-07-16 16:32:52,021 INFO 9856 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 16:32:51 GMT+0800 (中国标准时间)
-2018-07-16 16:34:03,580 INFO 9340 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 16:34:03,720 INFO 9340 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 16:34:03,720 INFO 9340 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 16:34:03,784 INFO 9340 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 16:34:04,416 INFO 9340 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 16:34:04,939 INFO 9340 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 16:34:04,945 INFO 9340 [egg-security] use methodnoallow middleware
-2018-07-16 16:34:04,948 INFO 9340 [egg-security] use noopen middleware
-2018-07-16 16:34:04,949 INFO 9340 [egg-security] use nosniff middleware
-2018-07-16 16:34:04,952 INFO 9340 [egg-security] use xssProtection middleware
-2018-07-16 16:34:04,954 INFO 9340 [egg-security] use xframe middleware
-2018-07-16 16:34:04,956 INFO 9340 [egg-security] use dta middleware
-2018-07-16 16:34:04,956 INFO 9340 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 16:34:05,154 INFO 9340 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 16:34:05,184 INFO 9340 [egg-watcher:app] watcher start success
-2018-07-16 16:34:05,628 INFO 9340 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 16:34:05,686 INFO 9340 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 16:34:05 GMT+0800 (中国标准时间)
-2018-07-16 16:42:54,922 INFO 9004 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 16:42:55,059 INFO 9004 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 16:42:55,059 INFO 9004 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 16:42:55,155 INFO 9004 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 16:42:55,869 INFO 9004 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 16:42:56,557 INFO 9004 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 16:42:56,565 INFO 9004 [egg-security] use methodnoallow middleware
-2018-07-16 16:42:56,567 INFO 9004 [egg-security] use noopen middleware
-2018-07-16 16:42:56,569 INFO 9004 [egg-security] use nosniff middleware
-2018-07-16 16:42:56,572 INFO 9004 [egg-security] use xssProtection middleware
-2018-07-16 16:42:56,574 INFO 9004 [egg-security] use xframe middleware
-2018-07-16 16:42:56,576 INFO 9004 [egg-security] use dta middleware
-2018-07-16 16:42:56,577 INFO 9004 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 16:42:56,672 INFO 9004 [egg-watcher:app] watcher start success
-2018-07-16 16:42:56,709 INFO 9004 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 16:42:56,816 INFO 9004 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 16:42:57,990 INFO 9004 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 16:42:57 GMT+0800 (中国标准时间)
-2018-07-16 16:44:08,622 INFO 1800 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 16:44:08,914 INFO 1800 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 16:44:08,914 INFO 1800 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 16:44:08,972 INFO 1800 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 16:44:09,494 INFO 1800 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 16:44:09,885 INFO 1800 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 16:44:09,891 INFO 1800 [egg-security] use methodnoallow middleware
-2018-07-16 16:44:09,893 INFO 1800 [egg-security] use noopen middleware
-2018-07-16 16:44:09,894 INFO 1800 [egg-security] use nosniff middleware
-2018-07-16 16:44:09,896 INFO 1800 [egg-security] use xssProtection middleware
-2018-07-16 16:44:09,897 INFO 1800 [egg-security] use xframe middleware
-2018-07-16 16:44:09,899 INFO 1800 [egg-security] use dta middleware
-2018-07-16 16:44:09,899 INFO 1800 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 16:44:10,182 INFO 1800 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 16:44:10,199 INFO 1800 [egg-watcher:app] watcher start success
-2018-07-16 16:44:10,309 INFO 1800 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 16:44:10,413 INFO 1800 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 16:44:10 GMT+0800 (中国标准时间)
-2018-07-16 17:01:26,964 INFO 9684 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 17:01:27,048 INFO 9684 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 17:01:27,048 INFO 9684 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 17:01:27,090 INFO 9684 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 17:01:27,496 INFO 9684 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 17:01:27,746 INFO 9684 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 17:01:27,751 INFO 9684 [egg-security] use methodnoallow middleware
-2018-07-16 17:01:27,752 INFO 9684 [egg-security] use noopen middleware
-2018-07-16 17:01:27,753 INFO 9684 [egg-security] use nosniff middleware
-2018-07-16 17:01:27,754 INFO 9684 [egg-security] use xssProtection middleware
-2018-07-16 17:01:27,755 INFO 9684 [egg-security] use xframe middleware
-2018-07-16 17:01:27,756 INFO 9684 [egg-security] use dta middleware
-2018-07-16 17:01:27,756 INFO 9684 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 17:01:27,871 INFO 9684 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 17:01:27,885 INFO 9684 [egg-watcher:app] watcher start success
-2018-07-16 17:01:27,988 INFO 9684 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 17:01:28,083 INFO 9684 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 17:01:28 GMT+0800 (中国标准时间)
-2018-07-16 17:27:13,062 INFO 10604 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 17:27:13,216 INFO 10604 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 17:27:13,216 INFO 10604 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 17:27:13,287 INFO 10604 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 17:27:14,003 INFO 10604 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 17:27:14,575 INFO 10604 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 17:27:14,586 INFO 10604 [egg-security] use methodnoallow middleware
-2018-07-16 17:27:14,589 INFO 10604 [egg-security] use noopen middleware
-2018-07-16 17:27:14,590 INFO 10604 [egg-security] use nosniff middleware
-2018-07-16 17:27:14,592 INFO 10604 [egg-security] use xssProtection middleware
-2018-07-16 17:27:14,594 INFO 10604 [egg-security] use xframe middleware
-2018-07-16 17:27:14,596 INFO 10604 [egg-security] use dta middleware
-2018-07-16 17:27:14,596 INFO 10604 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 17:27:14,777 INFO 10604 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 17:27:14,994 INFO 10604 [egg-watcher:app] watcher start success
-2018-07-16 17:27:15,060 INFO 10604 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 17:27:15,122 INFO 10604 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 17:27:15 GMT+0800 (中国标准时间)
-2018-07-16 17:28:08,715 INFO 8884 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 17:28:08,798 INFO 8884 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 17:28:08,798 INFO 8884 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 17:28:08,837 INFO 8884 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 17:28:09,179 INFO 8884 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 17:28:09,482 INFO 8884 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 17:28:09,487 INFO 8884 [egg-security] use methodnoallow middleware
-2018-07-16 17:28:09,488 INFO 8884 [egg-security] use noopen middleware
-2018-07-16 17:28:09,489 INFO 8884 [egg-security] use nosniff middleware
-2018-07-16 17:28:09,490 INFO 8884 [egg-security] use xssProtection middleware
-2018-07-16 17:28:09,492 INFO 8884 [egg-security] use xframe middleware
-2018-07-16 17:28:09,497 INFO 8884 [egg-security] use dta middleware
-2018-07-16 17:28:09,497 INFO 8884 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 17:28:09,759 INFO 8884 [egg-watcher:app] watcher start success
-2018-07-16 17:28:09,798 INFO 8884 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 17:28:09,919 INFO 8884 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 17:28:10,001 INFO 8884 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 17:28:09 GMT+0800 (中国标准时间)
-2018-07-16 17:47:39,567 WARN 8884 [TCPBase] socket is closed by other side while there were still unhandled data in the socket buffer
-2018-07-16 17:47:39,733 WARN 8884 [ClusterClient:Watcher] follower closed, and try to init it again
-2018-07-16 18:21:05,837 INFO 11244 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 18:21:05,938 INFO 11244 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 18:21:05,938 INFO 11244 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 18:21:06,005 INFO 11244 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 18:21:06,468 INFO 11244 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 18:21:06,946 INFO 11244 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 18:21:06,959 INFO 11244 [egg-security] use methodnoallow middleware
-2018-07-16 18:21:06,963 INFO 11244 [egg-security] use noopen middleware
-2018-07-16 18:21:06,965 INFO 11244 [egg-security] use nosniff middleware
-2018-07-16 18:21:06,967 INFO 11244 [egg-security] use xssProtection middleware
-2018-07-16 18:21:06,969 INFO 11244 [egg-security] use xframe middleware
-2018-07-16 18:21:06,973 INFO 11244 [egg-security] use dta middleware
-2018-07-16 18:21:06,973 INFO 11244 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 18:21:07,274 INFO 11244 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 18:21:07,306 INFO 11244 [egg-watcher:app] watcher start success
-2018-07-16 18:21:07,383 INFO 11244 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 18:21:07,693 INFO 11244 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 18:21:07 GMT+0800 (中国标准时间)
-2018-07-16 18:21:54,016 INFO 10024 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 18:21:54,115 INFO 10024 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 18:21:54,115 INFO 10024 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 18:21:54,159 INFO 10024 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 18:21:54,627 INFO 10024 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 18:21:55,087 INFO 10024 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 18:21:55,093 INFO 10024 [egg-security] use methodnoallow middleware
-2018-07-16 18:21:55,099 INFO 10024 [egg-security] use noopen middleware
-2018-07-16 18:21:55,100 INFO 10024 [egg-security] use nosniff middleware
-2018-07-16 18:21:55,102 INFO 10024 [egg-security] use xssProtection middleware
-2018-07-16 18:21:55,103 INFO 10024 [egg-security] use xframe middleware
-2018-07-16 18:21:55,105 INFO 10024 [egg-security] use dta middleware
-2018-07-16 18:21:55,105 INFO 10024 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 18:21:55,343 INFO 10024 [egg-watcher:app] watcher start success
-2018-07-16 18:21:55,372 INFO 10024 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 18:21:55,470 INFO 10024 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 18:21:55,546 INFO 10024 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 18:21:55 GMT+0800 (中国标准时间)
-2018-07-16 18:27:40,578 INFO 10736 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 18:27:40,685 INFO 10736 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 18:27:40,685 INFO 10736 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 18:27:40,730 INFO 10736 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 18:27:41,086 INFO 10736 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 18:27:41,566 INFO 10736 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 18:27:41,572 INFO 10736 [egg-security] use methodnoallow middleware
-2018-07-16 18:27:41,574 INFO 10736 [egg-security] use noopen middleware
-2018-07-16 18:27:41,575 INFO 10736 [egg-security] use nosniff middleware
-2018-07-16 18:27:41,576 INFO 10736 [egg-security] use xssProtection middleware
-2018-07-16 18:27:41,578 INFO 10736 [egg-security] use xframe middleware
-2018-07-16 18:27:41,579 INFO 10736 [egg-security] use dta middleware
-2018-07-16 18:27:41,579 INFO 10736 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 18:27:41,666 INFO 10736 [egg-watcher:app] watcher start success
-2018-07-16 18:27:41,692 INFO 10736 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 18:27:41,805 INFO 10736 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 18:27:41,890 INFO 10736 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 18:27:41 GMT+0800 (中国标准时间)
-2018-07-16 18:34:40,641 WARN 10736 [ClusterClient:Watcher] follower closed, and try to init it again
-2018-07-16 18:41:12,821 INFO 9024 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 18:41:12,936 INFO 9024 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 18:41:12,936 INFO 9024 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 18:41:12,986 INFO 9024 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 18:41:13,436 INFO 9024 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 18:41:13,737 INFO 9024 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 18:41:13,742 INFO 9024 [egg-security] use methodnoallow middleware
-2018-07-16 18:41:13,743 INFO 9024 [egg-security] use noopen middleware
-2018-07-16 18:41:13,744 INFO 9024 [egg-security] use nosniff middleware
-2018-07-16 18:41:13,745 INFO 9024 [egg-security] use xssProtection middleware
-2018-07-16 18:41:13,746 INFO 9024 [egg-security] use xframe middleware
-2018-07-16 18:41:13,747 INFO 9024 [egg-security] use dta middleware
-2018-07-16 18:41:13,747 INFO 9024 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 18:41:13,850 INFO 9024 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 18:41:13,857 INFO 9024 [egg-watcher:app] watcher start success
-2018-07-16 18:41:14,113 INFO 9024 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 18:41:14,169 INFO 9024 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 18:41:13 GMT+0800 (中国标准时间)
-2018-07-16 18:48:20,821 INFO 7068 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 18:48:20,992 INFO 7068 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 18:48:20,992 INFO 7068 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 18:48:21,050 INFO 7068 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 18:48:21,621 INFO 7068 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 18:48:21,962 INFO 7068 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 18:48:21,966 INFO 7068 [egg-security] use methodnoallow middleware
-2018-07-16 18:48:21,967 INFO 7068 [egg-security] use noopen middleware
-2018-07-16 18:48:21,968 INFO 7068 [egg-security] use nosniff middleware
-2018-07-16 18:48:21,969 INFO 7068 [egg-security] use xssProtection middleware
-2018-07-16 18:48:21,970 INFO 7068 [egg-security] use xframe middleware
-2018-07-16 18:48:21,971 INFO 7068 [egg-security] use dta middleware
-2018-07-16 18:48:21,971 INFO 7068 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 18:48:22,094 INFO 7068 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 18:48:22,106 INFO 7068 [egg-watcher:app] watcher start success
-2018-07-16 18:48:22,209 INFO 7068 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 18:48:23,278 INFO 7068 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 18:48:23 GMT+0800 (中国标准时间)
-2018-07-16 20:10:04,016 INFO 9664 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 20:10:04,351 INFO 9664 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 20:10:04,351 INFO 9664 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 20:10:04,424 INFO 9664 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 20:10:04,914 INFO 9664 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 20:10:05,252 INFO 9664 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 20:10:05,258 INFO 9664 [egg-security] use methodnoallow middleware
-2018-07-16 20:10:05,260 INFO 9664 [egg-security] use noopen middleware
-2018-07-16 20:10:05,261 INFO 9664 [egg-security] use nosniff middleware
-2018-07-16 20:10:05,263 INFO 9664 [egg-security] use xssProtection middleware
-2018-07-16 20:10:05,264 INFO 9664 [egg-security] use xframe middleware
-2018-07-16 20:10:05,265 INFO 9664 [egg-security] use dta middleware
-2018-07-16 20:10:05,265 INFO 9664 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 20:10:05,368 INFO 9664 [egg-watcher:app] watcher start success
-2018-07-16 20:10:05,371 INFO 9664 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 20:10:05,488 INFO 9664 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 20:10:05,599 INFO 9664 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 20:10:05 GMT+0800 (中国标准时间)
-2018-07-16 20:14:32,240 INFO 10060 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 20:14:32,408 INFO 10060 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 20:14:32,408 INFO 10060 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 20:14:32,489 INFO 10060 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 20:14:33,274 INFO 10060 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 20:14:33,894 INFO 10060 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 20:14:33,907 INFO 10060 [egg-security] use methodnoallow middleware
-2018-07-16 20:14:33,912 INFO 10060 [egg-security] use noopen middleware
-2018-07-16 20:14:33,915 INFO 10060 [egg-security] use nosniff middleware
-2018-07-16 20:14:33,921 INFO 10060 [egg-security] use xssProtection middleware
-2018-07-16 20:14:33,929 INFO 10060 [egg-security] use xframe middleware
-2018-07-16 20:14:33,932 INFO 10060 [egg-security] use dta middleware
-2018-07-16 20:14:33,932 INFO 10060 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 20:14:34,082 INFO 10060 [egg-watcher:app] watcher start success
-2018-07-16 20:14:34,117 INFO 10060 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 20:14:34,237 INFO 10060 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 20:14:34,339 INFO 10060 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 20:14:34 GMT+0800 (中国标准时间)
-2018-07-16 20:23:49,050 WARN 10060 [ClusterClient:Watcher] follower closed, and try to init it again
-2018-07-16 20:24:16,203 INFO 9200 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 20:24:16,291 INFO 9200 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 20:24:16,291 INFO 9200 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 20:24:16,327 INFO 9200 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 20:24:16,677 INFO 9200 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 20:24:17,048 INFO 9200 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 20:24:17,053 INFO 9200 [egg-security] use methodnoallow middleware
-2018-07-16 20:24:17,054 INFO 9200 [egg-security] use noopen middleware
-2018-07-16 20:24:17,055 INFO 9200 [egg-security] use nosniff middleware
-2018-07-16 20:24:17,056 INFO 9200 [egg-security] use xssProtection middleware
-2018-07-16 20:24:17,057 INFO 9200 [egg-security] use xframe middleware
-2018-07-16 20:24:17,058 INFO 9200 [egg-security] use dta middleware
-2018-07-16 20:24:17,058 INFO 9200 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 20:24:17,153 INFO 9200 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 20:24:17,164 INFO 9200 [egg-watcher:app] watcher start success
-2018-07-16 20:24:17,265 INFO 9200 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 20:24:17,370 INFO 9200 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 20:24:17 GMT+0800 (中国标准时间)
-2018-07-16 20:25:48,762 WARN 9200 [TCPBase] socket is closed by other side while there were still unhandled data in the socket buffer
-2018-07-16 20:25:48,768 WARN 9200 [ClusterClient:Watcher] follower closed, and try to init it again
-2018-07-16 20:37:37,772 INFO 10604 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 20:37:37,891 INFO 10604 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 20:37:37,891 INFO 10604 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 20:37:37,942 INFO 10604 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 20:37:38,313 INFO 10604 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 20:37:38,602 INFO 10604 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 20:37:38,607 INFO 10604 [egg-security] use methodnoallow middleware
-2018-07-16 20:37:38,608 INFO 10604 [egg-security] use noopen middleware
-2018-07-16 20:37:38,609 INFO 10604 [egg-security] use nosniff middleware
-2018-07-16 20:37:38,610 INFO 10604 [egg-security] use xssProtection middleware
-2018-07-16 20:37:38,611 INFO 10604 [egg-security] use xframe middleware
-2018-07-16 20:37:38,612 INFO 10604 [egg-security] use dta middleware
-2018-07-16 20:37:38,612 INFO 10604 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 20:37:38,711 INFO 10604 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 20:37:38,720 INFO 10604 [egg-watcher:app] watcher start success
-2018-07-16 20:37:38,815 INFO 10604 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 20:37:38,941 INFO 10604 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 20:37:38 GMT+0800 (中国标准时间)
-2018-07-16 20:40:23,388 INFO 7712 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 20:40:23,594 INFO 7712 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 20:40:23,594 INFO 7712 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 20:40:23,677 INFO 7712 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 20:40:24,317 INFO 7712 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 20:40:24,911 INFO 7712 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 20:40:24,920 INFO 7712 [egg-security] use methodnoallow middleware
-2018-07-16 20:40:24,922 INFO 7712 [egg-security] use noopen middleware
-2018-07-16 20:40:24,924 INFO 7712 [egg-security] use nosniff middleware
-2018-07-16 20:40:24,926 INFO 7712 [egg-security] use xssProtection middleware
-2018-07-16 20:40:24,930 INFO 7712 [egg-security] use xframe middleware
-2018-07-16 20:40:24,932 INFO 7712 [egg-security] use dta middleware
-2018-07-16 20:40:24,932 INFO 7712 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 20:40:25,057 INFO 7712 [egg-watcher:app] watcher start success
-2018-07-16 20:40:25,074 INFO 7712 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 20:40:25,203 INFO 7712 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 20:40:25,312 INFO 7712 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 20:40:25 GMT+0800 (中国标准时间)
-2018-07-16 20:43:51,141 INFO 6200 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 20:43:51,248 INFO 6200 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 20:43:51,248 INFO 6200 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 20:43:51,302 INFO 6200 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 20:43:51,730 INFO 6200 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 20:43:52,025 INFO 6200 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 20:43:52,029 INFO 6200 [egg-security] use methodnoallow middleware
-2018-07-16 20:43:52,031 INFO 6200 [egg-security] use noopen middleware
-2018-07-16 20:43:52,032 INFO 6200 [egg-security] use nosniff middleware
-2018-07-16 20:43:52,034 INFO 6200 [egg-security] use xssProtection middleware
-2018-07-16 20:43:52,035 INFO 6200 [egg-security] use xframe middleware
-2018-07-16 20:43:52,036 INFO 6200 [egg-security] use dta middleware
-2018-07-16 20:43:52,036 INFO 6200 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 20:43:52,145 INFO 6200 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 20:43:52,157 INFO 6200 [egg-watcher:app] watcher start success
-2018-07-16 20:43:52,268 INFO 6200 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 20:43:52,388 INFO 6200 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 20:43:52 GMT+0800 (中国标准时间)
-2018-07-16 20:48:14,616 WARN 6200 [ClusterClient:Watcher] follower closed, and try to init it again
-2018-07-16 21:02:28,655 INFO 11072 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 21:02:28,855 INFO 11072 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 21:02:28,855 INFO 11072 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 21:02:28,943 INFO 11072 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 21:02:29,691 INFO 11072 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 21:02:30,080 INFO 11072 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 21:02:30,093 INFO 11072 [egg-security] use methodnoallow middleware
-2018-07-16 21:02:30,096 INFO 11072 [egg-security] use noopen middleware
-2018-07-16 21:02:30,098 INFO 11072 [egg-security] use nosniff middleware
-2018-07-16 21:02:30,100 INFO 11072 [egg-security] use xssProtection middleware
-2018-07-16 21:02:30,102 INFO 11072 [egg-security] use xframe middleware
-2018-07-16 21:02:30,104 INFO 11072 [egg-security] use dta middleware
-2018-07-16 21:02:30,104 INFO 11072 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 21:02:30,195 INFO 11072 [egg-watcher:app] watcher start success
-2018-07-16 21:02:30,239 INFO 11072 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 21:02:30,351 INFO 11072 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 21:02:30,413 INFO 11072 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 21:02:30 GMT+0800 (中国标准时间)
-2018-07-16 21:06:29,929 INFO 10756 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 21:06:30,042 INFO 10756 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 21:06:30,042 INFO 10756 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 21:06:30,261 INFO 10756 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 21:06:30,817 INFO 10756 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 21:06:31,310 INFO 10756 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 21:06:31,315 INFO 10756 [egg-security] use methodnoallow middleware
-2018-07-16 21:06:31,317 INFO 10756 [egg-security] use noopen middleware
-2018-07-16 21:06:31,318 INFO 10756 [egg-security] use nosniff middleware
-2018-07-16 21:06:31,320 INFO 10756 [egg-security] use xssProtection middleware
-2018-07-16 21:06:31,322 INFO 10756 [egg-security] use xframe middleware
-2018-07-16 21:06:31,325 INFO 10756 [egg-security] use dta middleware
-2018-07-16 21:06:31,325 INFO 10756 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 21:06:31,462 INFO 10756 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 21:06:31,473 INFO 10756 [egg-watcher:app] watcher start success
-2018-07-16 21:06:31,571 INFO 10756 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 21:06:31,666 INFO 10756 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 21:06:31 GMT+0800 (中国标准时间)
-2018-07-16 21:10:08,903 INFO 9428 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 21:10:09,069 INFO 9428 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 21:10:09,069 INFO 9428 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 21:10:09,117 INFO 9428 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 21:10:09,520 INFO 9428 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 21:10:09,882 INFO 9428 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 21:10:09,887 INFO 9428 [egg-security] use methodnoallow middleware
-2018-07-16 21:10:09,889 INFO 9428 [egg-security] use noopen middleware
-2018-07-16 21:10:09,890 INFO 9428 [egg-security] use nosniff middleware
-2018-07-16 21:10:09,891 INFO 9428 [egg-security] use xssProtection middleware
-2018-07-16 21:10:09,892 INFO 9428 [egg-security] use xframe middleware
-2018-07-16 21:10:09,894 INFO 9428 [egg-security] use dta middleware
-2018-07-16 21:10:09,894 INFO 9428 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 21:10:10,025 INFO 9428 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 21:10:10,039 INFO 9428 [egg-watcher:app] watcher start success
-2018-07-16 21:10:10,264 INFO 9428 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 21:10:10,367 INFO 9428 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 21:10:10 GMT+0800 (中国标准时间)
-2018-07-16 21:16:52,584 INFO 9740 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 21:16:52,689 INFO 9740 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 21:16:52,689 INFO 9740 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 21:16:52,742 INFO 9740 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 21:16:53,223 INFO 9740 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 21:16:53,659 INFO 9740 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 21:16:53,666 INFO 9740 [egg-security] use methodnoallow middleware
-2018-07-16 21:16:53,668 INFO 9740 [egg-security] use noopen middleware
-2018-07-16 21:16:53,670 INFO 9740 [egg-security] use nosniff middleware
-2018-07-16 21:16:53,671 INFO 9740 [egg-security] use xssProtection middleware
-2018-07-16 21:16:53,673 INFO 9740 [egg-security] use xframe middleware
-2018-07-16 21:16:53,674 INFO 9740 [egg-security] use dta middleware
-2018-07-16 21:16:53,674 INFO 9740 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 21:16:53,840 INFO 9740 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 21:16:53,855 INFO 9740 [egg-watcher:app] watcher start success
-2018-07-16 21:16:53,966 INFO 9740 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 21:16:54,332 INFO 9740 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 21:16:54 GMT+0800 (中国标准时间)
-2018-07-16 21:30:21,862 WARN 9740 [ClusterClient:Watcher] follower closed, and try to init it again
-2018-07-16 21:42:54,029 INFO 12028 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 21:42:54,126 INFO 12028 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 21:42:54,126 INFO 12028 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 21:42:54,165 INFO 12028 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 21:42:54,451 INFO 12028 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 21:42:54,681 INFO 12028 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 21:42:54,687 INFO 12028 [egg-security] use methodnoallow middleware
-2018-07-16 21:42:54,689 INFO 12028 [egg-security] use noopen middleware
-2018-07-16 21:42:54,690 INFO 12028 [egg-security] use nosniff middleware
-2018-07-16 21:42:54,691 INFO 12028 [egg-security] use xssProtection middleware
-2018-07-16 21:42:54,693 INFO 12028 [egg-security] use xframe middleware
-2018-07-16 21:42:54,695 INFO 12028 [egg-security] use dta middleware
-2018-07-16 21:42:54,695 INFO 12028 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 21:42:54,825 INFO 12028 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 21:42:54,844 INFO 12028 [egg-watcher:app] watcher start success
-2018-07-16 21:42:54,939 INFO 12028 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 21:42:55,065 INFO 12028 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 21:42:55 GMT+0800 (中国标准时间)
-2018-07-16 21:46:12,120 WARN 12028 [TCPBase] socket is closed by other side while there were still unhandled data in the socket buffer
-2018-07-16 21:46:12,149 WARN 12028 [ClusterClient:Watcher] follower closed, and try to init it again
-2018-07-16 21:52:29,403 INFO 8492 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-16 21:52:29,533 INFO 8492 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-16 21:52:29,533 INFO 8492 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-16 21:52:29,600 INFO 8492 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-16 21:52:30,169 INFO 8492 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-16 21:52:30,749 INFO 8492 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-16 21:52:30,758 INFO 8492 [egg-security] use methodnoallow middleware
-2018-07-16 21:52:30,761 INFO 8492 [egg-security] use noopen middleware
-2018-07-16 21:52:30,763 INFO 8492 [egg-security] use nosniff middleware
-2018-07-16 21:52:30,764 INFO 8492 [egg-security] use xssProtection middleware
-2018-07-16 21:52:30,767 INFO 8492 [egg-security] use xframe middleware
-2018-07-16 21:52:30,768 INFO 8492 [egg-security] use dta middleware
-2018-07-16 21:52:30,768 INFO 8492 [egg-security] compose 6 middlewares into one security middleware
-2018-07-16 21:52:30,862 INFO 8492 [egg-watcher:app] watcher start success
-2018-07-16 21:52:30,887 INFO 8492 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-16 21:52:30,997 INFO 8492 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-16 21:52:31,094 INFO 8492 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 16 2018 21:52:31 GMT+0800 (中国标准时间)
-2018-07-16 21:55:14,219 WARN 8492 [ClusterClient:Watcher] follower closed, and try to init it again
-2018-07-16 22:22:38,290 WARN 8492 [ClusterClient:Watcher] follower closed, and try to init it again
-2018-07-17 11:45:23,652 INFO 11392 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-17 11:45:23,773 INFO 11392 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-17 11:45:23,773 INFO 11392 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-17 11:45:23,817 INFO 11392 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-17 11:45:24,288 INFO 11392 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-17 11:45:24,554 INFO 11392 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-17 11:45:24,558 INFO 11392 [egg-security] use methodnoallow middleware
-2018-07-17 11:45:24,560 INFO 11392 [egg-security] use noopen middleware
-2018-07-17 11:45:24,561 INFO 11392 [egg-security] use nosniff middleware
-2018-07-17 11:45:24,562 INFO 11392 [egg-security] use xssProtection middleware
-2018-07-17 11:45:24,563 INFO 11392 [egg-security] use xframe middleware
-2018-07-17 11:45:24,564 INFO 11392 [egg-security] use dta middleware
-2018-07-17 11:45:24,564 INFO 11392 [egg-security] compose 6 middlewares into one security middleware
-2018-07-17 11:45:24,690 INFO 11392 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-17 11:45:24,702 INFO 11392 [egg-watcher:app] watcher start success
-2018-07-17 11:45:24,815 INFO 11392 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-17 11:45:24,968 INFO 11392 [egg-mysql] instance[0] status OK, rds currentTime: Tue Jul 17 2018 11:45:25 GMT+0800 (中国标准时间)
-2018-07-17 11:46:46,891 WARN 11392 [TCPBase] socket is closed by other side while there were still unhandled data in the socket buffer
-2018-07-17 11:46:46,897 WARN 11392 [ClusterClient:Watcher] follower closed, and try to init it again
-2018-07-17 17:11:49,944 INFO 1620 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-17 17:11:50,032 INFO 1620 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-17 17:11:50,032 INFO 1620 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-17 17:11:50,070 INFO 1620 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-17 17:11:50,412 INFO 1620 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-17 17:11:50,758 INFO 1620 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-17 17:11:50,764 INFO 1620 [egg-security] use methodnoallow middleware
-2018-07-17 17:11:50,767 INFO 1620 [egg-security] use noopen middleware
-2018-07-17 17:11:50,768 INFO 1620 [egg-security] use nosniff middleware
-2018-07-17 17:11:50,770 INFO 1620 [egg-security] use xssProtection middleware
-2018-07-17 17:11:50,771 INFO 1620 [egg-security] use xframe middleware
-2018-07-17 17:11:50,772 INFO 1620 [egg-security] use dta middleware
-2018-07-17 17:11:50,772 INFO 1620 [egg-security] compose 6 middlewares into one security middleware
-2018-07-17 17:11:51,100 INFO 1620 [egg-watcher:app] watcher start success
-2018-07-17 17:11:51,110 INFO 1620 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-17 17:11:51,249 INFO 1620 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-17 17:11:53,882 INFO 1620 [egg-mysql] instance[0] status OK, rds currentTime: Tue Jul 17 2018 17:11:56 GMT+0800 (中国标准时间)
-2018-07-17 17:39:11,701 WARN 1620 [TCPBase] socket is closed by other side while there were still unhandled data in the socket buffer
-2018-07-17 17:39:11,710 WARN 1620 [ClusterClient:Watcher] follower closed, and try to init it again
-2018-07-17 18:06:12,641 INFO 13992 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-17 18:06:12,757 INFO 13992 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-17 18:06:12,757 INFO 13992 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-17 18:06:12,964 INFO 13992 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-17 18:06:13,413 INFO 13992 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-17 18:06:13,768 INFO 13992 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-17 18:06:13,773 INFO 13992 [egg-security] use methodnoallow middleware
-2018-07-17 18:06:13,775 INFO 13992 [egg-security] use noopen middleware
-2018-07-17 18:06:13,776 INFO 13992 [egg-security] use nosniff middleware
-2018-07-17 18:06:13,777 INFO 13992 [egg-security] use xssProtection middleware
-2018-07-17 18:06:13,779 INFO 13992 [egg-security] use xframe middleware
-2018-07-17 18:06:13,780 INFO 13992 [egg-security] use dta middleware
-2018-07-17 18:06:13,780 INFO 13992 [egg-security] compose 6 middlewares into one security middleware
-2018-07-17 18:06:13,896 INFO 13992 [egg-watcher:app] watcher start success
-2018-07-17 18:06:13,901 INFO 13992 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-17 18:06:14,086 INFO 13992 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-17 18:06:14,198 INFO 13992 [egg-mysql] instance[0] status OK, rds currentTime: Tue Jul 17 2018 18:06:14 GMT+0800 (中国标准时间)
-2018-07-17 18:06:53,362 INFO 14316 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-17 18:06:53,463 INFO 14316 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-17 18:06:53,464 INFO 14316 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-17 18:06:53,507 INFO 14316 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-17 18:06:53,919 INFO 14316 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-17 18:06:54,271 INFO 14316 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-17 18:06:54,279 INFO 14316 [egg-security] use methodnoallow middleware
-2018-07-17 18:06:54,281 INFO 14316 [egg-security] use noopen middleware
-2018-07-17 18:06:54,283 INFO 14316 [egg-security] use nosniff middleware
-2018-07-17 18:06:54,284 INFO 14316 [egg-security] use xssProtection middleware
-2018-07-17 18:06:54,286 INFO 14316 [egg-security] use xframe middleware
-2018-07-17 18:06:54,287 INFO 14316 [egg-security] use dta middleware
-2018-07-17 18:06:54,287 INFO 14316 [egg-security] compose 6 middlewares into one security middleware
-2018-07-17 18:06:54,438 INFO 14316 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-17 18:06:54,448 INFO 14316 [egg-watcher:app] watcher start success
-2018-07-17 18:06:54,565 INFO 14316 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-17 18:06:54,674 INFO 14316 [egg-mysql] instance[0] status OK, rds currentTime: Tue Jul 17 2018 18:06:55 GMT+0800 (中国标准时间)
-2018-07-17 18:08:13,691 INFO 6868 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-17 18:08:14,079 INFO 6868 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-17 18:08:14,079 INFO 6868 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-17 18:08:14,152 INFO 6868 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-17 18:08:14,667 INFO 6868 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-17 18:08:14,999 INFO 6868 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-17 18:08:15,006 INFO 6868 [egg-security] use methodnoallow middleware
-2018-07-17 18:08:15,007 INFO 6868 [egg-security] use noopen middleware
-2018-07-17 18:08:15,010 INFO 6868 [egg-security] use nosniff middleware
-2018-07-17 18:08:15,011 INFO 6868 [egg-security] use xssProtection middleware
-2018-07-17 18:08:15,012 INFO 6868 [egg-security] use xframe middleware
-2018-07-17 18:08:15,014 INFO 6868 [egg-security] use dta middleware
-2018-07-17 18:08:15,014 INFO 6868 [egg-security] compose 6 middlewares into one security middleware
-2018-07-17 18:08:15,123 INFO 6868 [egg-watcher:app] watcher start success
-2018-07-17 18:08:15,127 INFO 6868 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-17 18:08:15,405 INFO 6868 [egg-mysql] instance[0] status OK, rds currentTime: Tue Jul 17 2018 18:08:16 GMT+0800 (中国标准时间)
-2018-07-17 18:08:15,621 INFO 6868 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-17 18:08:32,239 INFO 1444 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-17 18:08:32,367 INFO 1444 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-17 18:08:32,367 INFO 1444 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-17 18:08:32,454 INFO 1444 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-17 18:08:33,076 INFO 1444 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-17 18:08:33,657 INFO 1444 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-17 18:08:33,664 INFO 1444 [egg-security] use methodnoallow middleware
-2018-07-17 18:08:33,666 INFO 1444 [egg-security] use noopen middleware
-2018-07-17 18:08:33,668 INFO 1444 [egg-security] use nosniff middleware
-2018-07-17 18:08:33,669 INFO 1444 [egg-security] use xssProtection middleware
-2018-07-17 18:08:33,671 INFO 1444 [egg-security] use xframe middleware
-2018-07-17 18:08:33,672 INFO 1444 [egg-security] use dta middleware
-2018-07-17 18:08:33,672 INFO 1444 [egg-security] compose 6 middlewares into one security middleware
-2018-07-17 18:08:33,758 INFO 1444 [egg-watcher:app] watcher start success
-2018-07-17 18:08:33,789 INFO 1444 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-17 18:08:33,926 INFO 1444 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-17 18:08:33,987 INFO 1444 [egg-mysql] instance[0] status OK, rds currentTime: Tue Jul 17 2018 18:08:34 GMT+0800 (中国标准时间)
-2018-07-17 18:12:28,239 INFO 13644 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-17 18:12:28,369 INFO 13644 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-17 18:12:28,369 INFO 13644 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-17 18:12:28,422 INFO 13644 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-17 18:12:28,947 INFO 13644 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-17 18:12:29,363 INFO 13644 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-17 18:12:29,370 INFO 13644 [egg-security] use methodnoallow middleware
-2018-07-17 18:12:29,371 INFO 13644 [egg-security] use noopen middleware
-2018-07-17 18:12:29,373 INFO 13644 [egg-security] use nosniff middleware
-2018-07-17 18:12:29,374 INFO 13644 [egg-security] use xssProtection middleware
-2018-07-17 18:12:29,376 INFO 13644 [egg-security] use xframe middleware
-2018-07-17 18:12:29,378 INFO 13644 [egg-security] use dta middleware
-2018-07-17 18:12:29,378 INFO 13644 [egg-security] compose 6 middlewares into one security middleware
-2018-07-17 18:12:29,575 INFO 13644 [egg-watcher:app] watcher start success
-2018-07-17 18:12:33,221 INFO 13644 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-17 18:12:34,490 INFO 13644 [egg-mysql] instance[0] status OK, rds currentTime: Tue Jul 17 2018 18:12:35 GMT+0800 (中国标准时间)
-2018-07-17 18:12:43,279 INFO 13644 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-17 18:14:29,418 INFO 5752 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-17 18:14:29,602 INFO 5752 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-17 18:14:29,602 INFO 5752 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-17 18:14:29,659 INFO 5752 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-17 18:14:30,167 INFO 5752 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-17 18:14:30,612 INFO 5752 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-17 18:14:30,620 INFO 5752 [egg-security] use methodnoallow middleware
-2018-07-17 18:14:30,622 INFO 5752 [egg-security] use noopen middleware
-2018-07-17 18:14:30,624 INFO 5752 [egg-security] use nosniff middleware
-2018-07-17 18:14:30,626 INFO 5752 [egg-security] use xssProtection middleware
-2018-07-17 18:14:30,628 INFO 5752 [egg-security] use xframe middleware
-2018-07-17 18:14:30,630 INFO 5752 [egg-security] use dta middleware
-2018-07-17 18:14:30,630 INFO 5752 [egg-security] compose 6 middlewares into one security middleware
-2018-07-17 18:14:30,864 INFO 5752 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-17 18:14:30,878 INFO 5752 [egg-watcher:app] watcher start success
-2018-07-17 18:14:30,997 INFO 5752 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-17 18:14:31,080 INFO 5752 [egg-mysql] instance[0] status OK, rds currentTime: Tue Jul 17 2018 18:14:31 GMT+0800 (中国标准时间)
-2018-07-17 18:15:10,215 INFO 4068 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-17 18:15:10,387 INFO 4068 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-17 18:15:10,387 INFO 4068 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-17 18:15:10,466 INFO 4068 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-17 18:15:10,933 INFO 4068 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-17 18:15:11,453 INFO 4068 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-17 18:15:11,459 INFO 4068 [egg-security] use methodnoallow middleware
-2018-07-17 18:15:11,461 INFO 4068 [egg-security] use noopen middleware
-2018-07-17 18:15:11,463 INFO 4068 [egg-security] use nosniff middleware
-2018-07-17 18:15:11,464 INFO 4068 [egg-security] use xssProtection middleware
-2018-07-17 18:15:11,466 INFO 4068 [egg-security] use xframe middleware
-2018-07-17 18:15:11,467 INFO 4068 [egg-security] use dta middleware
-2018-07-17 18:15:11,467 INFO 4068 [egg-security] compose 6 middlewares into one security middleware
-2018-07-17 18:15:11,542 INFO 4068 [egg-watcher:app] watcher start success
-2018-07-17 18:15:11,582 INFO 4068 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-17 18:15:12,394 INFO 4068 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-17 18:15:14,860 INFO 4068 [egg-mysql] instance[0] status OK, rds currentTime: Tue Jul 17 2018 18:15:15 GMT+0800 (中国标准时间)
-2018-07-17 21:51:52,033 WARN 4068 [ClusterClient:Watcher] follower closed, and try to init it again
-2018-07-27 17:00:41,106 INFO 6828 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-27 17:00:41,271 INFO 6828 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-27 17:00:41,271 INFO 6828 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-27 17:00:41,352 INFO 6828 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-27 17:00:42,342 INFO 6828 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-27 17:00:43,227 INFO 6828 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-27 17:00:43,232 INFO 6828 [egg-security] use methodnoallow middleware
-2018-07-27 17:00:43,234 INFO 6828 [egg-security] use noopen middleware
-2018-07-27 17:00:43,236 INFO 6828 [egg-security] use nosniff middleware
-2018-07-27 17:00:43,239 INFO 6828 [egg-security] use xssProtection middleware
-2018-07-27 17:00:43,241 INFO 6828 [egg-security] use xframe middleware
-2018-07-27 17:00:43,243 INFO 6828 [egg-security] use dta middleware
-2018-07-27 17:00:43,243 INFO 6828 [egg-security] compose 6 middlewares into one security middleware
-2018-07-27 17:00:43,789 INFO 6828 [egg-watcher:app] watcher start success
-2018-07-28 14:39:25,683 INFO 7940 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-28 14:39:25,767 INFO 7940 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-28 14:39:25,767 INFO 7940 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-28 14:39:25,811 INFO 7940 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-28 14:39:26,327 INFO 7940 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-28 14:39:27,006 INFO 7940 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-28 14:39:27,011 INFO 7940 [egg-security] use methodnoallow middleware
-2018-07-28 14:39:27,012 INFO 7940 [egg-security] use noopen middleware
-2018-07-28 14:39:27,013 INFO 7940 [egg-security] use nosniff middleware
-2018-07-28 14:39:27,015 INFO 7940 [egg-security] use xssProtection middleware
-2018-07-28 14:39:27,016 INFO 7940 [egg-security] use xframe middleware
-2018-07-28 14:39:27,017 INFO 7940 [egg-security] use dta middleware
-2018-07-28 14:39:27,017 INFO 7940 [egg-security] compose 6 middlewares into one security middleware
-2018-07-28 14:39:27,096 INFO 7940 [egg-watcher:app] watcher start success
-2018-07-28 14:39:27,122 INFO 7940 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-28 14:39:27,282 INFO 7940 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-28 14:39:27,365 INFO 7940 [egg-mysql] instance[0] status OK, rds currentTime: Sat Jul 28 2018 14:39:31 GMT+0800 (中国标准时间)
-2018-07-28 14:51:04,373 INFO 12324 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-28 14:51:04,518 INFO 12324 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-28 14:51:04,518 INFO 12324 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-28 14:51:04,618 INFO 12324 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-28 14:51:05,233 INFO 12324 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-28 14:51:05,703 INFO 12324 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-28 14:51:05,710 INFO 12324 [egg-security] use methodnoallow middleware
-2018-07-28 14:51:05,712 INFO 12324 [egg-security] use noopen middleware
-2018-07-28 14:51:05,713 INFO 12324 [egg-security] use nosniff middleware
-2018-07-28 14:51:05,715 INFO 12324 [egg-security] use xssProtection middleware
-2018-07-28 14:51:05,716 INFO 12324 [egg-security] use xframe middleware
-2018-07-28 14:51:05,718 INFO 12324 [egg-security] use dta middleware
-2018-07-28 14:51:05,718 INFO 12324 [egg-security] compose 6 middlewares into one security middleware
-2018-07-28 14:51:05,843 INFO 12324 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-28 14:51:05,852 INFO 12324 [egg-watcher:app] watcher start success
-2018-07-28 14:51:06,187 INFO 12324 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-28 14:51:06,237 INFO 12324 [egg-mysql] instance[0] status OK, rds currentTime: Sat Jul 28 2018 14:51:06 GMT+0800 (中国标准时间)
-2018-07-28 14:55:16,607 INFO 10024 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-28 14:55:16,808 INFO 10024 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-28 14:55:16,808 INFO 10024 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-28 14:55:16,873 INFO 10024 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-28 14:55:17,448 INFO 10024 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-28 14:55:17,863 INFO 10024 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-28 14:55:17,871 INFO 10024 [egg-security] use methodnoallow middleware
-2018-07-28 14:55:17,873 INFO 10024 [egg-security] use noopen middleware
-2018-07-28 14:55:17,874 INFO 10024 [egg-security] use nosniff middleware
-2018-07-28 14:55:17,875 INFO 10024 [egg-security] use xssProtection middleware
-2018-07-28 14:55:17,877 INFO 10024 [egg-security] use xframe middleware
-2018-07-28 14:55:17,878 INFO 10024 [egg-security] use dta middleware
-2018-07-28 14:55:17,878 INFO 10024 [egg-security] compose 6 middlewares into one security middleware
-2018-07-28 14:55:18,031 INFO 10024 [egg-watcher:app] watcher start success
-2018-07-28 14:55:18,045 INFO 10024 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-28 14:55:18,332 INFO 10024 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-28 14:55:18,479 INFO 10024 [egg-mysql] instance[0] status OK, rds currentTime: Sat Jul 28 2018 14:55:18 GMT+0800 (中国标准时间)
-2018-07-28 15:05:38,696 INFO 13088 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-28 15:05:38,856 INFO 13088 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-28 15:05:38,856 INFO 13088 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-28 15:05:38,929 INFO 13088 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-28 15:05:39,813 INFO 13088 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-28 15:05:40,218 INFO 13088 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-28 15:05:40,223 INFO 13088 [egg-security] use methodnoallow middleware
-2018-07-28 15:05:40,225 INFO 13088 [egg-security] use noopen middleware
-2018-07-28 15:05:40,226 INFO 13088 [egg-security] use nosniff middleware
-2018-07-28 15:05:40,227 INFO 13088 [egg-security] use xssProtection middleware
-2018-07-28 15:05:40,228 INFO 13088 [egg-security] use xframe middleware
-2018-07-28 15:05:40,229 INFO 13088 [egg-security] use dta middleware
-2018-07-28 15:05:40,229 INFO 13088 [egg-security] compose 6 middlewares into one security middleware
-2018-07-28 15:05:40,331 INFO 13088 [egg-watcher:app] watcher start success
-2018-07-28 15:05:40,404 INFO 13088 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-28 15:05:40,540 INFO 13088 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-28 15:05:40,611 INFO 13088 [egg-mysql] instance[0] status OK, rds currentTime: Sat Jul 28 2018 15:05:40 GMT+0800 (中国标准时间)
-2018-07-28 15:06:42,104 INFO 12724 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-28 15:06:42,229 INFO 12724 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-28 15:06:42,229 INFO 12724 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-28 15:06:42,415 INFO 12724 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-28 15:06:42,849 INFO 12724 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-28 15:06:43,183 INFO 12724 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-28 15:06:43,187 INFO 12724 [egg-security] use methodnoallow middleware
-2018-07-28 15:06:43,189 INFO 12724 [egg-security] use noopen middleware
-2018-07-28 15:06:43,190 INFO 12724 [egg-security] use nosniff middleware
-2018-07-28 15:06:43,191 INFO 12724 [egg-security] use xssProtection middleware
-2018-07-28 15:06:43,193 INFO 12724 [egg-security] use xframe middleware
-2018-07-28 15:06:43,195 INFO 12724 [egg-security] use dta middleware
-2018-07-28 15:06:43,195 INFO 12724 [egg-security] compose 6 middlewares into one security middleware
-2018-07-28 15:06:43,329 INFO 12724 [egg-watcher:app] watcher start success
-2018-07-28 15:06:43,392 INFO 12724 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-28 15:06:43,507 INFO 12724 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-28 15:06:43,688 INFO 12724 [egg-mysql] instance[0] status OK, rds currentTime: Sat Jul 28 2018 15:06:43 GMT+0800 (中国标准时间)
-2018-07-28 15:13:04,137 INFO 6580 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-28 15:13:04,278 INFO 6580 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-28 15:13:04,278 INFO 6580 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-28 15:13:04,371 INFO 6580 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-28 15:13:05,135 INFO 6580 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-28 15:13:05,571 INFO 6580 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-28 15:13:05,579 INFO 6580 [egg-security] use methodnoallow middleware
-2018-07-28 15:13:05,580 INFO 6580 [egg-security] use noopen middleware
-2018-07-28 15:13:05,582 INFO 6580 [egg-security] use nosniff middleware
-2018-07-28 15:13:05,583 INFO 6580 [egg-security] use xssProtection middleware
-2018-07-28 15:13:05,584 INFO 6580 [egg-security] use xframe middleware
-2018-07-28 15:13:05,587 INFO 6580 [egg-security] use dta middleware
-2018-07-28 15:13:05,587 INFO 6580 [egg-security] compose 6 middlewares into one security middleware
-2018-07-28 15:13:05,677 INFO 6580 [egg-watcher:app] watcher start success
-2018-07-28 15:13:05,732 INFO 6580 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-28 15:13:05,878 INFO 6580 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-28 15:13:05,954 INFO 6580 [egg-mysql] instance[0] status OK, rds currentTime: Sat Jul 28 2018 15:13:06 GMT+0800 (中国标准时间)
-2018-07-28 15:25:48,007 INFO 10868 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-28 15:25:48,124 INFO 10868 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-28 15:25:48,124 INFO 10868 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-28 15:25:48,185 INFO 10868 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-28 15:25:48,671 INFO 10868 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-28 15:25:49,008 INFO 10868 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-28 15:25:49,014 INFO 10868 [egg-security] use methodnoallow middleware
-2018-07-28 15:25:49,015 INFO 10868 [egg-security] use noopen middleware
-2018-07-28 15:25:49,017 INFO 10868 [egg-security] use nosniff middleware
-2018-07-28 15:25:49,018 INFO 10868 [egg-security] use xssProtection middleware
-2018-07-28 15:25:49,020 INFO 10868 [egg-security] use xframe middleware
-2018-07-28 15:25:49,021 INFO 10868 [egg-security] use dta middleware
-2018-07-28 15:25:49,021 INFO 10868 [egg-security] compose 6 middlewares into one security middleware
-2018-07-28 15:25:49,152 INFO 10868 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-28 15:25:49,163 INFO 10868 [egg-watcher:app] watcher start success
-2018-07-28 15:25:49,274 INFO 10868 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-28 15:25:49,352 INFO 10868 [egg-mysql] instance[0] status OK, rds currentTime: Sat Jul 28 2018 15:25:49 GMT+0800 (中国标准时间)
-2018-07-28 15:38:57,236 INFO 10852 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-28 15:38:57,386 INFO 10852 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-28 15:38:57,386 INFO 10852 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-28 15:38:57,457 INFO 10852 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-28 15:38:58,133 INFO 10852 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-28 15:38:58,825 INFO 10852 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-28 15:38:58,831 INFO 10852 [egg-security] use methodnoallow middleware
-2018-07-28 15:38:58,833 INFO 10852 [egg-security] use noopen middleware
-2018-07-28 15:38:58,835 INFO 10852 [egg-security] use nosniff middleware
-2018-07-28 15:38:58,837 INFO 10852 [egg-security] use xssProtection middleware
-2018-07-28 15:38:58,839 INFO 10852 [egg-security] use xframe middleware
-2018-07-28 15:38:58,840 INFO 10852 [egg-security] use dta middleware
-2018-07-28 15:38:58,840 INFO 10852 [egg-security] compose 6 middlewares into one security middleware
-2018-07-28 15:38:58,926 INFO 10852 [egg-watcher:app] watcher start success
-2018-07-28 15:38:58,955 INFO 10852 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-28 15:38:59,097 INFO 10852 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-28 15:38:59,174 INFO 10852 [egg-mysql] instance[0] status OK, rds currentTime: Sat Jul 28 2018 15:38:59 GMT+0800 (中国标准时间)
-2018-07-28 15:39:01,488 INFO 9764 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-28 15:39:01,638 INFO 9764 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-28 15:39:01,638 INFO 9764 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-28 15:39:01,677 INFO 9764 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-28 15:39:02,089 INFO 9764 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-28 15:39:02,347 INFO 9764 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-28 15:39:02,351 INFO 9764 [egg-security] use methodnoallow middleware
-2018-07-28 15:39:02,352 INFO 9764 [egg-security] use noopen middleware
-2018-07-28 15:39:02,353 INFO 9764 [egg-security] use nosniff middleware
-2018-07-28 15:39:02,354 INFO 9764 [egg-security] use xssProtection middleware
-2018-07-28 15:39:02,355 INFO 9764 [egg-security] use xframe middleware
-2018-07-28 15:39:02,356 INFO 9764 [egg-security] use dta middleware
-2018-07-28 15:39:02,356 INFO 9764 [egg-security] compose 6 middlewares into one security middleware
-2018-07-28 15:39:02,411 INFO 9764 [egg-watcher:app] watcher start success
-2018-07-28 15:39:02,449 INFO 9764 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-28 15:39:02,555 INFO 9764 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-28 15:39:02,616 INFO 9764 [egg-mysql] instance[0] status OK, rds currentTime: Sat Jul 28 2018 15:39:02 GMT+0800 (中国标准时间)
-2018-07-28 15:40:53,479 INFO 11872 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-28 15:40:53,578 INFO 11872 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-28 15:40:53,578 INFO 11872 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-28 15:40:53,617 INFO 11872 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-28 15:40:53,955 INFO 11872 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-28 15:40:54,263 INFO 11872 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-28 15:40:54,269 INFO 11872 [egg-security] use methodnoallow middleware
-2018-07-28 15:40:54,273 INFO 11872 [egg-security] use noopen middleware
-2018-07-28 15:40:54,274 INFO 11872 [egg-security] use nosniff middleware
-2018-07-28 15:40:54,276 INFO 11872 [egg-security] use xssProtection middleware
-2018-07-28 15:40:54,278 INFO 11872 [egg-security] use xframe middleware
-2018-07-28 15:40:54,279 INFO 11872 [egg-security] use dta middleware
-2018-07-28 15:40:54,279 INFO 11872 [egg-security] compose 6 middlewares into one security middleware
-2018-07-28 15:40:54,591 INFO 11872 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-28 15:40:54,605 INFO 11872 [egg-watcher:app] watcher start success
-2018-07-28 15:40:54,717 INFO 11872 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-28 15:40:54,769 INFO 11872 [egg-mysql] instance[0] status OK, rds currentTime: Sat Jul 28 2018 15:40:55 GMT+0800 (中国标准时间)
-2018-07-28 15:42:45,582 INFO 8504 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-28 15:42:45,704 INFO 8504 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-28 15:42:45,704 INFO 8504 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-28 15:42:45,765 INFO 8504 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-28 15:42:46,393 INFO 8504 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-28 15:42:46,799 INFO 8504 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
-2018-07-28 15:42:46,806 INFO 8504 [egg-security] use methodnoallow middleware
-2018-07-28 15:42:46,808 INFO 8504 [egg-security] use noopen middleware
-2018-07-28 15:42:46,809 INFO 8504 [egg-security] use nosniff middleware
-2018-07-28 15:42:46,811 INFO 8504 [egg-security] use xssProtection middleware
-2018-07-28 15:42:46,812 INFO 8504 [egg-security] use xframe middleware
-2018-07-28 15:42:46,814 INFO 8504 [egg-security] use dta middleware
-2018-07-28 15:42:46,814 INFO 8504 [egg-security] compose 6 middlewares into one security middleware
-2018-07-28 15:42:46,933 INFO 8504 [egg-watcher:app] watcher start success
-2018-07-28 15:42:46,960 INFO 8504 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-28 15:42:47,092 INFO 8504 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-28 15:42:47,156 INFO 8504 [egg-mysql] instance[0] status OK, rds currentTime: Sat Jul 28 2018 15:42:47 GMT+0800 (中国标准时间)
-=======
-2018-07-30 13:59:21,217 INFO 9140 [egg-logrotator] app logger reload: got log-reload message
-2018-07-30 14:01:07,473 INFO 9140 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-30 14:12:30,531 WARN 9140 [TCPBase] socket is closed by other side while there were still unhandled data in the socket buffer
-2018-07-30 14:12:33,026 WARN 9140 [ClusterClient:Watcher] follower closed, and try to init it again
-2018-07-30 14:13:43,450 INFO 9140 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-30 14:15:41,957 INFO 6488 [egg:logger] init all loggers with options: {"dir":"D:\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
-2018-07-30 14:15:41,989 INFO 6488 [egg-schedule]: register schedule D:\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
-2018-07-30 14:15:41,989 INFO 6488 [egg-schedule]: register schedule D:\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
-2018-07-30 14:15:42,004 INFO 6488 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
-2018-07-30 14:15:42,342 INFO 6488 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
-2018-07-30 14:15:42,500 INFO 6488 [egg-static] starting static serve /public/ -> D:\GitHub\egg_server\app\public
-2018-07-30 14:15:42,500 INFO 6488 [egg-security] use methodnoallow middleware
-2018-07-30 14:15:42,500 INFO 6488 [egg-security] use noopen middleware
-2018-07-30 14:15:42,500 INFO 6488 [egg-security] use nosniff middleware
-2018-07-30 14:15:42,500 INFO 6488 [egg-security] use xssProtection middleware
-2018-07-30 14:15:42,500 INFO 6488 [egg-security] use xframe middleware
-2018-07-30 14:15:42,500 INFO 6488 [egg-security] use dta middleware
-2018-07-30 14:15:42,500 INFO 6488 [egg-security] compose 6 middlewares into one security middleware
-2018-07-30 14:15:42,547 INFO 6488 [egg-watcher:app] watcher start success
-2018-07-30 14:15:42,631 INFO 6488 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
-2018-07-30 14:15:42,760 INFO 6488 [egg-redis] instance[0] status OK, redis currentTime: #
-2018-07-30 14:15:42,830 INFO 6488 [egg-mysql] instance[0] status OK, rds currentTime: Mon Jul 30 2018 14:15:42 GMT+0800 (中国标准时间)
->>>>>>> ef3e120fd62c7ba56e4bf1356ec4aff54554ead1
+2018-07-31 08:38:30,767 INFO 5444 [egg-logrotator] app logger reload: got log-reload message
+2018-07-31 08:52:02,086 INFO 11932 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
+2018-07-31 08:52:02,171 INFO 11932 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
+2018-07-31 08:52:02,171 INFO 11932 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2018-07-31 08:52:02,215 INFO 11932 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
+2018-07-31 08:52:02,606 INFO 11932 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
+2018-07-31 08:52:03,085 INFO 11932 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
+2018-07-31 08:52:03,096 INFO 11932 [egg-security] use methodnoallow middleware
+2018-07-31 08:52:03,098 INFO 11932 [egg-security] use noopen middleware
+2018-07-31 08:52:03,099 INFO 11932 [egg-security] use nosniff middleware
+2018-07-31 08:52:03,100 INFO 11932 [egg-security] use xssProtection middleware
+2018-07-31 08:52:03,102 INFO 11932 [egg-security] use xframe middleware
+2018-07-31 08:52:03,103 INFO 11932 [egg-security] use dta middleware
+2018-07-31 08:52:03,103 INFO 11932 [egg-security] compose 6 middlewares into one security middleware
+2018-07-31 08:52:03,181 INFO 11932 [egg-watcher:app] watcher start success
+2018-07-31 08:54:52,109 INFO 12500 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
+2018-07-31 08:54:52,289 INFO 12500 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
+2018-07-31 08:54:52,289 INFO 12500 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2018-07-31 08:54:52,377 INFO 12500 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
+2018-07-31 08:54:52,935 INFO 12500 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
+2018-07-31 08:54:53,628 INFO 12500 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
+2018-07-31 08:54:53,634 INFO 12500 [egg-security] use methodnoallow middleware
+2018-07-31 08:54:53,636 INFO 12500 [egg-security] use noopen middleware
+2018-07-31 08:54:53,638 INFO 12500 [egg-security] use nosniff middleware
+2018-07-31 08:54:53,639 INFO 12500 [egg-security] use xssProtection middleware
+2018-07-31 08:54:53,641 INFO 12500 [egg-security] use xframe middleware
+2018-07-31 08:54:53,643 INFO 12500 [egg-security] use dta middleware
+2018-07-31 08:54:53,644 INFO 12500 [egg-security] compose 6 middlewares into one security middleware
+2018-07-31 08:54:53,783 INFO 12500 [egg-watcher:app] watcher start success
+2018-07-31 08:54:53,799 INFO 12500 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
+2018-07-31 08:54:53,928 INFO 12500 [egg-redis] instance[0] status OK, redis currentTime: #
+2018-07-31 08:54:54,011 INFO 12500 [egg-mysql] instance[0] status OK, rds currentTime: Tue Jul 31 2018 08:54:55 GMT+0800 (中国标准时间)
+2018-07-31 09:26:01,538 INFO 12500 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
+2018-07-31 09:56:42,789 INFO 11664 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
+2018-07-31 09:56:42,899 INFO 11664 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
+2018-07-31 09:56:42,899 INFO 11664 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2018-07-31 09:56:42,941 INFO 11664 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
+2018-07-31 09:56:43,284 INFO 11664 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
+2018-07-31 09:56:43,606 INFO 11664 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
+2018-07-31 09:56:43,613 INFO 11664 [egg-security] use methodnoallow middleware
+2018-07-31 09:56:43,614 INFO 11664 [egg-security] use noopen middleware
+2018-07-31 09:56:43,616 INFO 11664 [egg-security] use nosniff middleware
+2018-07-31 09:56:43,617 INFO 11664 [egg-security] use xssProtection middleware
+2018-07-31 09:56:43,619 INFO 11664 [egg-security] use xframe middleware
+2018-07-31 09:56:43,620 INFO 11664 [egg-security] use dta middleware
+2018-07-31 09:56:43,620 INFO 11664 [egg-security] compose 6 middlewares into one security middleware
+2018-07-31 09:56:43,763 INFO 11664 [egg-watcher:app] watcher start success
+2018-07-31 09:56:43,767 INFO 11664 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
+2018-07-31 09:56:43,904 INFO 11664 [egg-redis] instance[0] status OK, redis currentTime: #
+2018-07-31 09:56:44,220 INFO 11664 [egg-mysql] instance[0] status OK, rds currentTime: Tue Jul 31 2018 09:56:46 GMT+0800 (中国标准时间)
+2018-07-31 10:44:21,159 INFO 11664 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
+2018-07-31 11:01:24,022 INFO 7956 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
+2018-07-31 11:01:24,367 INFO 7956 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
+2018-07-31 11:01:24,367 INFO 7956 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2018-07-31 11:01:24,417 INFO 7956 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
+2018-07-31 11:01:24,912 INFO 7956 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
+2018-07-31 11:01:25,316 INFO 7956 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
+2018-07-31 11:01:25,322 INFO 7956 [egg-security] use methodnoallow middleware
+2018-07-31 11:01:25,324 INFO 7956 [egg-security] use noopen middleware
+2018-07-31 11:01:25,325 INFO 7956 [egg-security] use nosniff middleware
+2018-07-31 11:01:25,327 INFO 7956 [egg-security] use xssProtection middleware
+2018-07-31 11:01:25,328 INFO 7956 [egg-security] use xframe middleware
+2018-07-31 11:01:25,331 INFO 7956 [egg-security] use dta middleware
+2018-07-31 11:01:25,331 INFO 7956 [egg-security] compose 6 middlewares into one security middleware
+2018-07-31 11:01:25,488 INFO 7956 [egg-watcher:app] watcher start success
+2018-07-31 11:01:25,495 INFO 7956 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
+2018-07-31 11:01:25,626 INFO 7956 [egg-redis] instance[0] status OK, redis currentTime: #
+2018-07-31 11:01:25,731 INFO 7956 [egg-mysql] instance[0] status OK, rds currentTime: Tue Jul 31 2018 11:01:27 GMT+0800 (中国标准时间)
+2018-07-31 11:02:09,990 INFO 11644 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
+2018-07-31 11:02:10,240 INFO 11644 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
+2018-07-31 11:02:10,240 INFO 11644 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2018-07-31 11:02:10,292 INFO 11644 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
+2018-07-31 11:02:10,748 INFO 11644 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
+2018-07-31 11:02:11,111 INFO 11644 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
+2018-07-31 11:02:11,121 INFO 11644 [egg-security] use methodnoallow middleware
+2018-07-31 11:02:11,124 INFO 11644 [egg-security] use noopen middleware
+2018-07-31 11:02:11,126 INFO 11644 [egg-security] use nosniff middleware
+2018-07-31 11:02:11,127 INFO 11644 [egg-security] use xssProtection middleware
+2018-07-31 11:02:11,128 INFO 11644 [egg-security] use xframe middleware
+2018-07-31 11:02:11,129 INFO 11644 [egg-security] use dta middleware
+2018-07-31 11:02:11,129 INFO 11644 [egg-security] compose 6 middlewares into one security middleware
+2018-07-31 11:02:11,262 INFO 11644 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
+2018-07-31 11:02:11,269 INFO 11644 [egg-watcher:app] watcher start success
+2018-07-31 11:02:11,422 INFO 11644 [egg-mysql] instance[0] status OK, rds currentTime: Tue Jul 31 2018 11:02:13 GMT+0800 (中国标准时间)
+2018-07-31 11:02:11,424 INFO 11644 [egg-redis] instance[0] status OK, redis currentTime: #
+2018-07-31 11:09:18,608 INFO 1628 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
+2018-07-31 11:09:18,766 INFO 1628 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
+2018-07-31 11:09:18,766 INFO 1628 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2018-07-31 11:09:18,824 INFO 1628 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
+2018-07-31 11:09:19,350 INFO 1628 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
+2018-07-31 11:09:19,681 INFO 1628 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
+2018-07-31 11:09:19,687 INFO 1628 [egg-security] use methodnoallow middleware
+2018-07-31 11:09:19,688 INFO 1628 [egg-security] use noopen middleware
+2018-07-31 11:09:19,690 INFO 1628 [egg-security] use nosniff middleware
+2018-07-31 11:09:19,692 INFO 1628 [egg-security] use xssProtection middleware
+2018-07-31 11:09:19,693 INFO 1628 [egg-security] use xframe middleware
+2018-07-31 11:09:19,695 INFO 1628 [egg-security] use dta middleware
+2018-07-31 11:09:19,695 INFO 1628 [egg-security] compose 6 middlewares into one security middleware
+2018-07-31 11:09:19,980 INFO 1628 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
+2018-07-31 11:09:19,998 INFO 1628 [egg-watcher:app] watcher start success
+2018-07-31 11:09:20,146 INFO 1628 [egg-redis] instance[0] status OK, redis currentTime: #
+2018-07-31 11:09:20,215 INFO 1628 [egg-mysql] instance[0] status OK, rds currentTime: Tue Jul 31 2018 11:09:22 GMT+0800 (中国标准时间)
+2018-07-31 14:17:51,583 INFO 7732 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
+2018-07-31 14:17:51,690 INFO 7732 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
+2018-07-31 14:17:51,690 INFO 7732 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2018-07-31 14:17:51,741 INFO 7732 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
+2018-07-31 14:17:52,184 INFO 7732 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
+2018-07-31 14:17:52,551 INFO 7732 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
+2018-07-31 14:17:52,557 INFO 7732 [egg-security] use methodnoallow middleware
+2018-07-31 14:17:52,559 INFO 7732 [egg-security] use noopen middleware
+2018-07-31 14:17:52,563 INFO 7732 [egg-security] use nosniff middleware
+2018-07-31 14:17:52,565 INFO 7732 [egg-security] use xssProtection middleware
+2018-07-31 14:17:52,566 INFO 7732 [egg-security] use xframe middleware
+2018-07-31 14:17:52,569 INFO 7732 [egg-security] use dta middleware
+2018-07-31 14:17:52,569 INFO 7732 [egg-security] compose 6 middlewares into one security middleware
+2018-07-31 14:17:52,743 INFO 7732 [egg-watcher:app] watcher start success
+2018-07-31 14:25:13,633 INFO 12692 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
+2018-07-31 14:25:13,727 INFO 12692 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
+2018-07-31 14:25:13,727 INFO 12692 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2018-07-31 14:25:13,778 INFO 12692 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
+2018-07-31 14:25:14,086 INFO 12692 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
+2018-07-31 14:25:14,334 INFO 12692 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
+2018-07-31 14:25:14,338 INFO 12692 [egg-security] use methodnoallow middleware
+2018-07-31 14:25:14,339 INFO 12692 [egg-security] use noopen middleware
+2018-07-31 14:25:14,339 INFO 12692 [egg-security] use nosniff middleware
+2018-07-31 14:25:14,340 INFO 12692 [egg-security] use xssProtection middleware
+2018-07-31 14:25:14,342 INFO 12692 [egg-security] use xframe middleware
+2018-07-31 14:25:14,343 INFO 12692 [egg-security] use dta middleware
+2018-07-31 14:25:14,344 INFO 12692 [egg-security] compose 6 middlewares into one security middleware
+2018-07-31 14:25:14,445 INFO 12692 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
+2018-07-31 14:25:14,467 INFO 12692 [egg-watcher:app] watcher start success
+2018-07-31 14:25:14,575 INFO 12692 [egg-redis] instance[0] status OK, redis currentTime: #
+2018-07-31 14:25:14,711 INFO 12692 [egg-mysql] instance[0] status OK, rds currentTime: Tue Jul 31 2018 14:25:17 GMT+0800 (中国标准时间)
+2018-07-31 15:05:25,237 INFO 7428 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
+2018-07-31 15:05:25,339 INFO 7428 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
+2018-07-31 15:05:25,339 INFO 7428 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2018-07-31 15:05:25,380 INFO 7428 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
+2018-07-31 15:05:25,758 INFO 7428 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
+2018-07-31 15:05:26,065 INFO 7428 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
+2018-07-31 15:05:26,070 INFO 7428 [egg-security] use methodnoallow middleware
+2018-07-31 15:05:26,072 INFO 7428 [egg-security] use noopen middleware
+2018-07-31 15:05:26,073 INFO 7428 [egg-security] use nosniff middleware
+2018-07-31 15:05:26,074 INFO 7428 [egg-security] use xssProtection middleware
+2018-07-31 15:05:26,076 INFO 7428 [egg-security] use xframe middleware
+2018-07-31 15:05:26,077 INFO 7428 [egg-security] use dta middleware
+2018-07-31 15:05:26,077 INFO 7428 [egg-security] compose 6 middlewares into one security middleware
+2018-07-31 15:05:26,224 INFO 7428 [egg-watcher:app] watcher start success
+2018-07-31 15:05:26,231 INFO 7428 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
+2018-07-31 15:05:26,384 INFO 7428 [egg-redis] instance[0] status OK, redis currentTime: #
+2018-07-31 15:05:26,500 INFO 7428 [egg-mysql] instance[0] status OK, rds currentTime: Tue Jul 31 2018 15:05:29 GMT+0800 (中国标准时间)
+2018-07-31 15:10:21,445 INFO 13644 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
+2018-07-31 15:10:21,590 INFO 13644 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
+2018-07-31 15:10:21,590 INFO 13644 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2018-07-31 15:10:21,643 INFO 13644 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
+2018-07-31 15:10:22,146 INFO 13644 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
+2018-07-31 15:10:23,416 INFO 13644 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
+2018-07-31 15:10:23,422 INFO 13644 [egg-security] use methodnoallow middleware
+2018-07-31 15:10:23,424 INFO 13644 [egg-security] use noopen middleware
+2018-07-31 15:10:23,425 INFO 13644 [egg-security] use nosniff middleware
+2018-07-31 15:10:23,427 INFO 13644 [egg-security] use xssProtection middleware
+2018-07-31 15:10:23,431 INFO 13644 [egg-security] use xframe middleware
+2018-07-31 15:10:23,433 INFO 13644 [egg-security] use dta middleware
+2018-07-31 15:10:23,433 INFO 13644 [egg-security] compose 6 middlewares into one security middleware
+2018-07-31 15:10:23,558 INFO 13644 [egg-watcher:app] watcher start success
+2018-07-31 15:10:23,684 INFO 13644 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
+2018-07-31 15:10:23,846 INFO 13644 [egg-redis] instance[0] status OK, redis currentTime: #
+2018-07-31 15:10:23,911 INFO 13644 [egg-mysql] instance[0] status OK, rds currentTime: Tue Jul 31 2018 15:10:26 GMT+0800 (中国标准时间)
+2018-07-31 15:11:45,261 INFO 12632 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
+2018-07-31 15:11:45,374 INFO 12632 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
+2018-07-31 15:11:45,375 INFO 12632 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2018-07-31 15:11:45,425 INFO 12632 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
+2018-07-31 15:11:46,099 INFO 12632 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
+2018-07-31 15:11:46,453 INFO 12632 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
+2018-07-31 15:11:46,457 INFO 12632 [egg-security] use methodnoallow middleware
+2018-07-31 15:11:46,459 INFO 12632 [egg-security] use noopen middleware
+2018-07-31 15:11:46,460 INFO 12632 [egg-security] use nosniff middleware
+2018-07-31 15:11:46,461 INFO 12632 [egg-security] use xssProtection middleware
+2018-07-31 15:11:46,463 INFO 12632 [egg-security] use xframe middleware
+2018-07-31 15:11:46,464 INFO 12632 [egg-security] use dta middleware
+2018-07-31 15:11:46,464 INFO 12632 [egg-security] compose 6 middlewares into one security middleware
+2018-07-31 15:11:46,532 INFO 12632 [egg-watcher:app] watcher start success
+2018-07-31 15:11:46,639 INFO 12632 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
+2018-07-31 15:11:46,781 INFO 12632 [egg-redis] instance[0] status OK, redis currentTime: #
+2018-07-31 15:11:46,869 INFO 12632 [egg-mysql] instance[0] status OK, rds currentTime: Tue Jul 31 2018 15:11:49 GMT+0800 (中国标准时间)
+2018-07-31 15:17:15,377 INFO 11388 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
+2018-07-31 15:17:15,480 INFO 11388 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
+2018-07-31 15:17:15,480 INFO 11388 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2018-07-31 15:17:15,528 INFO 11388 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
+2018-07-31 15:17:16,044 INFO 11388 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
+2018-07-31 15:17:16,553 INFO 11388 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
+2018-07-31 15:17:16,561 INFO 11388 [egg-security] use methodnoallow middleware
+2018-07-31 15:17:16,563 INFO 11388 [egg-security] use noopen middleware
+2018-07-31 15:17:16,564 INFO 11388 [egg-security] use nosniff middleware
+2018-07-31 15:17:16,568 INFO 11388 [egg-security] use xssProtection middleware
+2018-07-31 15:17:16,569 INFO 11388 [egg-security] use xframe middleware
+2018-07-31 15:17:16,571 INFO 11388 [egg-security] use dta middleware
+2018-07-31 15:17:16,571 INFO 11388 [egg-security] compose 6 middlewares into one security middleware
+2018-07-31 15:17:16,804 INFO 11388 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
+2018-07-31 15:17:16,814 INFO 11388 [egg-watcher:app] watcher start success
+2018-07-31 15:17:17,043 INFO 11388 [egg-redis] instance[0] status OK, redis currentTime: #
+2018-07-31 15:17:17,211 INFO 11388 [egg-mysql] instance[0] status OK, rds currentTime: Tue Jul 31 2018 15:17:20 GMT+0800 (中国标准时间)
+2018-08-01 16:49:40,113 INFO 9416 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
+2018-08-01 16:49:40,199 INFO 9416 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
+2018-08-01 16:49:40,199 INFO 9416 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2018-08-01 16:49:40,361 INFO 9416 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
+2018-08-01 16:49:40,807 INFO 9416 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
+2018-08-01 16:49:41,180 INFO 9416 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
+2018-08-01 16:49:41,186 INFO 9416 [egg-security] use methodnoallow middleware
+2018-08-01 16:49:41,188 INFO 9416 [egg-security] use noopen middleware
+2018-08-01 16:49:41,190 INFO 9416 [egg-security] use nosniff middleware
+2018-08-01 16:49:41,192 INFO 9416 [egg-security] use xssProtection middleware
+2018-08-01 16:49:41,194 INFO 9416 [egg-security] use xframe middleware
+2018-08-01 16:49:41,196 INFO 9416 [egg-security] use dta middleware
+2018-08-01 16:49:41,196 INFO 9416 [egg-security] compose 6 middlewares into one security middleware
+2018-08-01 16:49:41,368 INFO 9416 [egg-watcher:app] watcher start success
+2018-08-01 16:49:41,379 INFO 9416 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
+2018-08-01 16:49:41,528 INFO 9416 [egg-redis] instance[0] status OK, redis currentTime: #
+2018-08-01 16:49:41,596 INFO 9416 [egg-mysql] instance[0] status OK, rds currentTime: Wed Aug 01 2018 16:49:44 GMT+0800 (中国标准时间)
+2018-08-01 16:55:08,727 INFO 10464 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"application"}
+2018-08-01 16:55:08,856 INFO 10464 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\clean_log.js
+2018-08-01 16:55:08,856 INFO 10464 [egg-schedule]: register schedule C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2018-08-01 16:55:08,902 INFO 10464 [egg-mysql] connecting root@rm-wz9irm56yc8scnyy6o.mysql.rds.aliyuncs.com:3306/knowledge
+2018-08-01 16:55:09,479 INFO 10464 [egg-redis] connecting redis://:123456@119.23.41.237:6379/0
+2018-08-01 16:55:09,860 INFO 10464 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\egg_server\app\public
+2018-08-01 16:55:09,866 INFO 10464 [egg-security] use methodnoallow middleware
+2018-08-01 16:55:09,867 INFO 10464 [egg-security] use noopen middleware
+2018-08-01 16:55:09,868 INFO 10464 [egg-security] use nosniff middleware
+2018-08-01 16:55:09,870 INFO 10464 [egg-security] use xssProtection middleware
+2018-08-01 16:55:09,871 INFO 10464 [egg-security] use xframe middleware
+2018-08-01 16:55:09,872 INFO 10464 [egg-security] use dta middleware
+2018-08-01 16:55:09,872 INFO 10464 [egg-security] compose 6 middlewares into one security middleware
+2018-08-01 16:55:09,939 INFO 10464 [egg-watcher:app] watcher start success
+2018-08-01 16:55:09,990 INFO 10464 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
+2018-08-01 16:55:10,110 INFO 10464 [egg-redis] instance[0] status OK, redis currentTime: #
+2018-08-01 16:55:10,155 INFO 10464 [egg-mysql] instance[0] status OK, rds currentTime: Wed Aug 01 2018 16:55:13 GMT+0800 (中国标准时间)

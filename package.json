@@ -15,6 +15,8 @@
     "egg": "^2.7.1",
     "egg-cors": "^2.0.0",
     "egg-mysql": "^3.0.0",
+    "egg-passport": "^2.0.1",
+    "egg-passport-local": "^1.2.1",
     "egg-redis": "^2.0.0",
     "node-cmd": "^3.0.0",
     "qiniu": "^7.2.0"

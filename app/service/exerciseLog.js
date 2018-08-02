@@ -41,6 +41,16 @@ class ExerciseLogService extends Service {
         return exercise_log;
     }
 
+    async getMyTestStatus(student_id,test_id) {
+        var sql = `select b.kpid, kt.kpname, sk.kp_rating, sk.practice, sk.correct from exercise_test t, 
+                exercise e, kptable kt, breakdown b LEFT JOIN (select * from student_kp where student_id = ?)
+                 as sk on sk.kpid = b.kpid where t.test_id = ? and t.exercise_id = e.exercise_id 
+                 and e.exercise_id = b.exercise_id and kt.kpid = b.kpid;`;
+        const results = await this.app.mysql.query(sql, [student_id,test_id]);
+
+        return ({test_kp : results});
+    }
+
     async submitExerciseLog(exercise_log) {
         const exercise_rating = exercise_log.old_exercise_rating;
         exercise_log.submit_time = new Date();
@@ -263,7 +273,7 @@ class ExerciseLogService extends Service {
         return res;
     }
 
-    async getExerciseByTest(test_id, student_id){
+    async getMyTestData(test_id, student_id){
 
         const test_log_r = await this.getTestLog(student_id, test_id);
         var test_log = test_log_r[0];
@@ -423,6 +433,7 @@ class ExerciseLogService extends Service {
             exercise: exercise,
             exercise_log: exercise_log,
             test_id: test_id,
+            test_log: test_log,
             //student_rating: rating[0].student_rating,
         });
     }

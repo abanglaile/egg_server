@@ -55,10 +55,9 @@ class statusService extends Service {
   }
 
 
-  async getTeacherTest(test_id){
-    const res = await this.app.mysql.query('select t.* from teacher_test t where t.test_id = ?;'
-    +'select count(*) as size from exercise_test et where et.test_id = ?;'
-    , [test_id,test_id]);
+  async getTestSize(test_id){
+    const res = await this.app.mysql.query('select count(*) as size from exercise_test et where et.test_id = ?;'
+    , test_id);
 
     return res;
   }
@@ -73,14 +72,14 @@ class statusService extends Service {
 
   async getTestStatusBytestid(test_id){
 
-    const test = await this.getTeacherTest(test_id);
+    const test = await this.getTestSize(test_id);
     const test_log = await this.getTestStatus(test_id);
 
     console.log("getTestStatus test_log:"+JSON.stringify(test_log));
     var accurracy = 0;//总答对数量
     var bingo = 0;
     var test_submit = 0;
-    var testsize = test[1][0].size;
+    var testsize = test[0].size;
     var time_sum = 0;
     for(var i = 0; i < test_log.length; i++){
         accurracy += test_log[i].correct_exercise;//一共对了多少题
@@ -96,9 +95,8 @@ class statusService extends Service {
     const avg_timeconsuming = Math.round(time_sum/test_submit);
 
     return({
-        test: test[0][0],
         test_status: {
-            test_name: test[0][0].test_name,
+            // test_name: test[0][0].test_name,
             avg_accurracy: avg_accurracy,//平均答对的题目数
             test_students: test_log.length,
             test_submit: test_submit,

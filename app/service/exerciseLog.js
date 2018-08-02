@@ -29,16 +29,16 @@ class ExerciseLogService extends Service {
         return breakdown_sn;
     }
 
-    async submitBreakdownLog(breakdown_log){
-        const breakdown_sn = this.updateKpRating(breakdown_log);
-        const result = await this.app.mysql.insert('breakdown_log', breakdown_sn);
-        // for(var i = 0; i < breakdown_sn.length; i++){
-        //     const kpname = breakdown_sn[i].kpname;
-        //     delete breakdown_sn[i].kpname;
-        //     const result = await this.app.mysql.insert('breakdown_log', breakdown_sn[i]);
-        //     breakdown_sn[i].kpname = kpname;
-        // }
-        return breakdown_sn;
+    async submitBreakdownLog(exercise_log){
+        let breakdown_sn = exercise_log.breakdown_sn;
+        breakdown_sn = this.updateKpRating(breakdown_sn);
+        const insert_result = await this.app.mysql.insert('breakdown_log', breakdown_sn);
+        const update_result = await this.app.mysql.update('exercise_log', {exercise_status: 2},
+            {where: {logid: exercise_log.logid}});
+        
+        exercise_log.exercise_status = 2;
+        exercise_log.breakdown_sn = breakdown_sn;
+        return exercise_log;
     }
 
     async submitExerciseLog(exercise_log) {
@@ -80,17 +80,20 @@ class ExerciseLogService extends Service {
         insert_log.answer = JSON.stringify(insert_log.answer);
         var breakdown_sn = exercise_log.breakdown_sn;
         delete insert_log.breakdown_sn;
-        //const insert_result = await this.app.mysql.insert('exercise_log', exercise_log);
-        exercise_log.logid = 294//insert_result.insertId;
-        exercise_log.breakdown_sn = breakdown_sn;
-        if(result){
-            
-            for(var i = 0; i < breakdown_sn.length; i++){
-                breakdown_sn[i].logid = exercise_log.logid;
+        const insert_result = await this.app.mysql.insert('exercise_log', exercise_log);
+        exercise_log.logid = insert_result.insertId;
+        for(var i = 0; i < breakdown_sn.length; i++){
+            breakdown_sn[i].logid = exercise_log.logid;
+            if(result){
                 breakdown_sn[i].sn_state = 1;
-            }
-            exercise_log.breakdown_sn = await this.submitBreakdownLog(breakdown_sn);
+            }else if(beakdown_sn.length == 1){
+                breakdown_sn[i].sn_state = 0;
+            }    
         }
+        exercise_log.breakdown_sn = breakdown_sn;
+        if(result || breakdown_sn.length == 1)
+            exercise_log.breakdown_sn = await this.submitBreakdownLog(exercise_log);
+        
         return exercise_log; 
     }
 
@@ -98,9 +101,9 @@ class ExerciseLogService extends Service {
         const breakdown_log = await this.app.mysql.query(`select bl.*, el.* ,k.kpname, es.sample, 
         et.exercise_index from exercise_log el left join exercise_sample es on
         es.exercise_id = el.exercise_id and es.sample_index = el.sample_index 
-        left join breakdown_log bl on bl.logid = el.logid, kptable k, exercise_test et where et.test_id = el.test_id
-        and et.exercise_id = el.exercise_id and el.student_id = ? and el.test_id = ? 
-        and k.kpid = bl.kpid;`
+        left join breakdown_log bl on bl.logid = el.logid left join kptable k on k.kpid = bl.kpid,
+        exercise_test et where et.test_id = el.test_id
+        and et.exercise_id = el.exercise_id and el.student_id = ? and el.test_id = ?;`
         , [student_id, test_id]);
 
         var exercise_log = [];
@@ -112,6 +115,9 @@ class ExerciseLogService extends Service {
                     continue;
                 
                 exercise_log[index].breakdown_sn[b.sn-1] = {
+                    student_id: b.student_id,
+                    test_id: b.test_id,
+                    exercise_id: b.exercise_id,
                     sn: b.sn,
                     sn_state: b.sn_state,
                     kpid: b.kpid,
@@ -121,6 +127,7 @@ class ExerciseLogService extends Service {
                 }                
             }else{
                 exercise_log[index] = {
+                    logid: b.logid,
                     student_id: b.student_id,
                     test_id: b.test_id,
                     exercise_id: b.exercise_id,
@@ -134,11 +141,19 @@ class ExerciseLogService extends Service {
                     //sample : b.sample ? b.sample : {},
                     breakdown_sn:[],
                 };
+                if(exercise_log[index].exercise_status == 1)
+                    continue;
+                
                 exercise_log[index].breakdown_sn[b.sn-1] = {
+                    student_id: b.student_id,
+                    test_id: b.test_id,
+                    exercise_id: b.exercise_id,
                     sn: b.sn,
                     sn_state: b.sn_state, 
                     kpid: b.kpid,
-                    kpname:b.kpname
+                    kpname: b.kpname,
+                    kp_old_rating: b.kp_old_rating,
+                    kp_delta_rating: b.kp_delta_rating,
                 }
             }
         }        
@@ -347,7 +362,6 @@ class ExerciseLogService extends Service {
 
         //统一初始化exercise_log
         var exercise = exercise_list;
-        console.log("exercise :"+ JSON.stringify(exercise));
         for(var i = 0; i < exercise.length; i++){
             if(!exercise_log[i]){
                 const breakdown = exercise[i].breakdown;
@@ -356,6 +370,9 @@ class ExerciseLogService extends Service {
                     //如果没有前置步骤的都设为0并在渲染中显示，-1代表不确定在渲染中不显示
                     const sn_state = breakdown[j].presn ? -1 : 0;
                     breakdown_sn[j] = {
+                        student_id: student_id,
+                        test_id: test_id,
+                        exercise_id: exercise[i].exercise_id,
                         sn: breakdown[j].sn, 
                         kpid: breakdown[j].kpid,
                         kpname: breakdown[j].kpname, 
@@ -385,6 +402,10 @@ class ExerciseLogService extends Service {
                     //如果没有前置步骤的都设为0并在渲染中显示，-1代表不确定在渲染中不显示
                     const sn_state = breakdown[j].presn ? -1 : 0;
                     breakdown_sn[j] = {
+                        logid: exercise_log[i].logid,
+                        student_id: student_id,
+                        test_id: test_id,
+                        exercise_id: exercise[i].exercise_id,
                         sn: breakdown[j].sn, 
                         kpid: breakdown[j].kpid,
                         kpname: breakdown[j].kpname, 
@@ -393,6 +414,7 @@ class ExerciseLogService extends Service {
                         kp_old_rating: breakdown[j].kp_rating, 
                     };
                 }
+                exercise_log[i].breakdown_sn = breakdown_sn;
             }
         }
         console.log("after exercise_log :"+ JSON.stringify(exercise_log));

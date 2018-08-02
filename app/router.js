@@ -27,6 +27,7 @@ module.exports = app => {
   //router.get('/klmanager/getMyBookChapter', controller.student.getMyBookChapter);
 
   router.post('/klmanager/submitExerciseLog', controller.student.submitExerciseLog);
+  router.post('/klmanager/submitBreakdownLog', controller.student.submitBreakdownLog);
   router.get('/klmanager/getMyStudentRating', controller.student.getMyStudentRating);
   router.get('/klmanager/getChapterKpStatus', controller.student.getChapterKpStatus);
   router.get('/klmanager/getMyBookChapter', controller.student.getMyBookChapter);

@@ -55,18 +55,6 @@ class StudentController extends Controller {
         this.ctx.body = results;
     }
 
-    // async getExerciseByTest(){
-    //     const { ctx, service } = this;
-    //     const {query} = ctx.request;
-    //     if(query.student_id && query.test_id){
-    //         const results = await service.exercise.getExerciseByTest(query.test_id,query.student_id);
-    //         console.log(results);
-            
-    //         this.ctx.body = results;
-    //     }
-        
-    // }
-
     async getExerciseByTest(){
         const { ctx, service } = this;
         const {query} = ctx.request;
@@ -79,12 +67,30 @@ class StudentController extends Controller {
         
     }
 
+    async submitTestLog(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        if(body.exercise_log){
+            const results = await service.testLog.submitTestLog(body.exercise_log);
+            this.ctx.body = results;
+        }
+    }
+
     async submitExerciseLog(){
         const { ctx, service } = this;
         const {body} = ctx.request;
         if(body.exercise_log){
             const results = await service.exerciseLog.submitExerciseLog(body.exercise_log);
             console.log(results);
+            this.ctx.body = results;
+        }
+    }
+
+    async submitBreakdownLog(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        if(body.exercise_log){
+            const results = await service.exerciseLog.submitBreakdownLog(body.exercise_log);
             this.ctx.body = results;
         }
     }

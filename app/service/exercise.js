@@ -513,7 +513,7 @@ class ExerciseService extends Service {
 //         student_rating: rating[0].student_rating,
 //     });
 
-  }
+//  }
 //根据知识点添加测试test
   async addNewTestByKp(kpid, kpname){
 

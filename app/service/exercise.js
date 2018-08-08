@@ -248,21 +248,6 @@ class ExerciseService extends Service {
     return res;
   }
 
-  // async updateAllSample(sample){
-  //   var sql = "delete from exercise_sample where exercise_id = ?;";
-  //   var params = [exercise_id];
-  //   for(var i = 0; i < sample.length; i++){
-  //       sql = sql + "insert into exercise_sample set ?;"
-  //       params.push({
-  //         exercise_id: exercise_id, 
-  //         sample:sample[i].sample,
-  //         sample_index:sample[i].sample_index
-  //       });
-  //   }
-  //   const res = await this.app.mysql.query(sql,params);
-  //   return res;
-  // }
-
   async updateBreakdown(exercise_id,breakdown) {
     var sql = "delete from breakdown where exercise_id = ?;";
     var params = [exercise_id];
@@ -274,305 +259,73 @@ class ExerciseService extends Service {
     return res;
   }
 
-//   async getExerciseBytestid(test_id, student_id) {
-//     const res = await this.app.mysql.query('select e.* , et.exercise_index, b.*, t.kpname, sk.kp_rating '
-//     +'from exercise_test et, exercise e, kptable t, breakdown b left join '
-//     +'(select * from student_kp where student_id = ?) as sk on b.kpid = sk.kpid '
-//     +'where et.test_id = ? and e.exercise_id = et.exercise_id and b.exercise_id = e.exercise_id ;'
-//     +'and b.kpid = t.kpid order by b.sn', [student_id,test_id]);
-//     return res;
-//   }
 
-//   async getExerciseBytestidSec(test_id, student_id, isFinish) {
-//     var sql = "";
-//     if(isFinish){
-//         sql = "select e.* , et.exercise_index, b.*, t.kpname, sk.kp_rating from exercise_test et, "
-//             + "exercise e, kptable t, "
-//             + "breakdown b left join (select * from student_kp where student_id = ?) as sk on b.kpid = sk.kpid "
-//             + "where et.test_id = ? and e.exercise_id = et.exercise_id and b.exercise_id = e.exercise_id and b.kpid = t.kpid order by b.sn;";
-//     }else{
-//         sql = "select e.* , es.sample, es.`sample_index` , et.exercise_index, b.*, t.kpname, sk.kp_rating "
-//             +"from exercise_test et, kptable t, exercise e left join "
-//             +"(select es.exercise_id, round(max(es.sample_index)*rand()) as sam_index "
-//             +"from exercise_sample es, exercise_test et "
-//             +"where et.test_id = ? and es.exercise_id = et.exercise_id "
-//             +"GROUP BY es.exercise_id) as esi on esi.exercise_id = e.exercise_id LEFT JOIN exercise_sample es "
-//             +"on es.exercise_id = esi.exercise_id and es.sample_index = esi.sam_index, "
-//             +"breakdown b left join (select * from student_kp where student_id = ?) as sk on b.kpid = sk.kpid "
-//             +"where et.test_id = ? and e.exercise_id = et.exercise_id and b.exercise_id = e.exercise_id and b.kpid = t.kpid order by b.sn;";
-              
-//     }    
-//     const res = await this.app.mysql.query(sql, [test_id, student_id, test_id]);
-//     return res;
-//   }
-
-//   async getExerciseByTest(test_id,student_id){
-
-//     const default_rating = 500;
-//     const results = await this.getExerciseBytestid(test_id,student_id);
-//     const rating = await this.Service.getMyLadderScore(student_id);
-
-//     var exercise_list = [];
-//     for(var i = 0; i < results.length; i++){
-//         var e = results[i];
-//         var index = e.exercise_index;
-//         console.log("index:" + index);
-//         if(exercise_list[index]){
-//             exercise_list[index].breakdown[e.sn - 1] = {
-//                 sn: e.sn, 
-//                 content: e.content, 
-//                 presn: e.presn, 
-//                 kpid: e.kpid,
-//                 kpname: e.kpname,
-//                 sn_rating: e.sn_rating,
-//                 kp_rating: e.kp_rating ? e.kp_rating : default_rating,
-//             }
-//         }else {
-//             var breakdown = [];
-//             breakdown[e.sn - 1] = {
-//                 sn: e.sn, 
-//                 content: e.content, 
-//                 presn: e.presn, 
-//                 kpid: e.kpid,
-//                 kpname: e.kpname,
-//                 sn_rating: e.sn_rating,
-//                 kp_rating: e.kp_rating ? e.kp_rating : default_rating,
-//             };
-//             exercise_list[index] = {
-//                 exercise_id: e.exercise_id, 
-//                 exercise_type: e.exercise_type, 
-//                 title: e.title,
-//                 title_img_url: e.title_img_url,
-//                 title_audio_url: e.title_audio_url, 
-//                 answer: JSON.parse(e.answer),
-//                 breakdown: breakdown,
-//                 exercise_rating: e.exercise_rating,
-//             };
-//         }
-//     }
-
-//     return({
-//         exercise: exercise_list,
-//         test_id: test_id,
-//         student_rating: rating[0].student_rating,
-//     });
-
-//   }
-
-//   async getTestLog(student_id, test_id){
-//     const res = await this.app.mysql.query('select t.*, tt.test_type, tt.test_config, tt.test_name '
-//     +'from test_log t, teacher_test tt where t.student_id = ? and tt.test_id = t.test_id and t.test_id = ?;'
-//     , [student_id,test_id]);
-//     return res;
-//   }
-
-//   async getTestLogs(student_id){
-//     const res = await this.app.mysql.query(`select t.*, s.start_time, s.finish_time, s.test_state, `
-//     +`s.correct_exercise, s.total_exercise ,date_format(s.finish_time,'%m/%d') as `
-//     +`formatdate from teacher_test t, test_log s where s.student_id = ? and `
-//     +`t.test_id = s.test_id and s.finish_time is not null ORDER BY s.finish_time DESC;`
-//     , [student_id]);
-//     return res;
-//   }
-
-//   async getExerciseLogResult(student_id, test_id){
-//     const res = await this.app.mysql.query(`select bl.*, el.* ,k.kpname, es.sample, `
-//     +`et.exercise_index from exercise_log el left join exercise_sample es on `
-//     +`es.exercise_id = el.exercise_id and es.sample_index = el.sample_index, `
-//     +`breakdown_log bl ,kptable k, exercise_test et where et.test_id = el.test_id `
-//     +`and et.exercise_id = el.exercise_id and el.student_id = ? and el.test_id = ? `
-//     +`and bl.logid = el.logid and k.kpid = bl.kpid;`
-//     , [student_id, test_id]);
-//     return res;
-//   }
-
-//   async getUncompletedTestLogs(student_id){
-//     const res = await this.app.mysql.query(`select t.*, u.nickname,s.start_time, s.finish_time, s.test_state, `
-//     +`s.correct_exercise, s.total_exercise ,date_format(t.enable_time, '%m/%d') as formatdate `
-//     +`from teacher_test t, test_log s,users u where s.student_id = ? and `
-//     +`u.userid = t.teacher_id and t.test_id = s.test_id and s.finish_time `
-//     +`is null and t.test_type = 1 and t.enable_time IS NOT NULL ORDER BY t.enable_time DESC;`
-//     , [student_id]);
-//     return res;
-//   }
-
-//   async getExerciseByTest2(test_id,student_id){
-
-//     const test_log_r = await this.getTestLog(student_id,test_id);
-//     var test_log = test_log_r[0];
-//     const exercise_r = await this.getExerciseBytestidSec(test_id,student_id,test_log.finish_time);
-//     const breakdown_log = await this.getExerciseLogResult(test_id,student_id);
-//     const rating = await this.Service.getMyLadderScore(student_id);
-
-//     var exercise_list = [];
-//     for(var i = 0; i < exercise_r.length; i++){
-//         var e = exercise_r[i];
-//         var e_sample = e.sample;
-//         var index = e.exercise_index;
-//         console.log("index:" + index);
-//         if(exercise_list[index]){
-//             exercise_list[index].breakdown[e.sn - 1] = {
-//                 sn: e.sn, 
-//                 content: e_sample?  replaceParams(e.content,e_sample) : e.content, 
-//                 presn: e.presn, 
-//                 kpid: e.kpid,
-//                 kpname: e.kpname,
-//                 sn_rating: e.sn_rating,
-//                 kp_rating: e.kp_rating ? e.kp_rating : default_rating,
-//             }
-//         }else {
-//             var breakdown = [];
-//             breakdown[e.sn - 1] = {
-//                 sn: e.sn, 
-//                 content: e_sample?  replaceParams(e.content,e_sample) : e.content, 
-//                 presn: e.presn, 
-//                 kpid: e.kpid,
-//                 kpname: e.kpname,
-//                 sn_rating: e.sn_rating,
-//                 kp_rating: e.kp_rating ? e.kp_rating : default_rating,
-//             };
-//             exercise_list[index] = {
-//                 exercise_id: e.exercise_id, 
-//                 exercise_type: e.exercise_type, 
-//                 title: e_sample?  replaceParams(e.title,e_sample) : e.title, 
-//                 title_img_url: e.title_img_url,
-//                 title_audio_url: e.title_audio_url, 
-//                 // answer: JSON.parse(e.answer),
-//                 answer: e_sample?  replaceAnswers(e.answer,e_sample) : JSON.parse(e.answer), 
-//                 // sample: e.sample ? JSON.parse(e.sample) : {},
-//                 breakdown: breakdown,
-//                 exercise_rating: e.exercise_rating,
-//             };
-//         }
-//     }
-
-//     var exercise_log = [];
-//     for(var i = 0; i < breakdown_log.length; i++){
-//         const b = breakdown_log[i];
-//         var index = b.exercise_index;
-//         if(exercise_log[index]){
-//             // console.log("b.sn:"+b.sn);
-//             exercise_log[index].breakdown_sn[b.sn-1] = {
-//                 sn: b.sn,
-//                 sn_state: b.sn_state,
-//                 kpid: b.kpid,
-//                 kpname:b.kpname
-//             }
-//         }else{
-//             exercise_log[index] = {
-//                 exercise_id: b.exercise_id,
-//                 exercise_state: b.exercise_state,
-//                 exercise_status: b.exercise_status,
-//                 start_time: b.start_time,
-//                 submit_time: b.submit_time,
-//                 answer: JSON.parse(b.answer),
-//                 sample_inedx: b.sample_index ? b.sample_index: null,
-//                 sample : b.sample ? b.sample : {},
-//                 breakdown_sn:[],
-//             };
-//             exercise_log[index].breakdown_sn[b.sn-1] = {
-//                 sn: b.sn,
-//                 sn_state: b.sn_state, 
-//                 kpid: b.kpid,
-//                 kpname:b.kpname
-//             }
-//         }
-//     }
-//     console.log("exercise_log :"+exercise_log);
-
-//     //统一初始化exercise_log
-//     var exercise = exercise_list;
-//     console.log("exercise :"+ JSON.stringify(exercise));
-//     for(var i = 0; i < exercise.length; i++){
-//         if(!exercise_log[i]){
-//             const breakdown = exercise[i].breakdown;
-//             var breakdown_sn = [];
-//             for(var j = 0; j < breakdown.length; j++){
-//               //如果没有前置步骤的都设为0并在渲染中显示，-1代表不确定在渲染中不显示
-//               const sn_state = breakdown[j].presn ? -1 : 0;
-//               breakdown_sn[j] = {
-//                 sn: breakdown[j].sn, 
-//                 kpid: breakdown[j].kpid,
-//                 kpname: breakdown[j].kpname, 
-//                 sn_state: sn_state, 
-//                 presn: breakdown[j].presn, 
-//                 kp_old_rating: breakdown[j].kp_rating, 
-//                 sn_old_rating: breakdown[j].sn_rating
-//               };
-//             }
-//             exercise_log[i] = {
-//                 exercise_id: exercise[i].exercise_id,
-//                 exercise_state: -1,//-1:未做, 0:错误, 1:正确
-//                 answer: exercise[i].answer,
-//                 start_time: new Date(),
-//                 exercise_status: 0,//0: 全新未做，1: 做完待反馈，2：反馈完毕
-//                 sample: exercise[i].sample,
-//                 sample_index : exercise[i].sample_index,
-//                 breakdown_sn: breakdown_sn,
-//                 ac_time: 0,
-//             }
-//         }
-//     }
-//     console.log("after exercise_log :"+ JSON.stringify(exercise_log));
-
-//     return({
-//         exercise: exercise,
-//         exercise_log: exercise_log,
-//         test_id: test_id,
-//         student_rating: rating[0].student_rating,
-//     });
-
-//  }
-//根据知识点添加测试test
-  async addNewTestByKp(kpid, kpname){
-
-    const test_name = "攻克" + kpname;
-    const res = await this.app.mysql.query('insert into teacher_test set test_name=?, teacher_id= -1, '
-    +'group_time=(SELECT now()), enable_time=(SELECT now()), total_exercise = 3, test_type=2, test_config=?;'
-    , [test_name, JSON.stringify({kp: [{kpid: kpid, kpname: kpname}]})]);
-    return res; 
-  }
-//获得主测知识点下的exercise-ids  目前是限制6题   
-  async generateExerByKp(kpid) {
-
-    const res = await this.app.mysql.select('kp_exercise', {
-        where : { kpid : kpid},
-        columns : ['exercise_id'],
-        limit: 3,
-    });
-    return res;
-  }
-//添加 testid与exercise对应关系,test包含哪些测试
-  async generateExerciseTest(test_id, student_id, exercises) {
-    var sql = "insert into test_log set ?;";
-    var params = [{student_id: student_id, test_id: test_id, start_time: new Date(), total_exercise: exercises.length}];
-    for(var i = 0; i < exercises.length; i++){
-      sql = sql + "insert into exercise_test set ?;"
-      params.push({test_id: test_id, exercise_id: exercises[i].exercise_id, exercise_index: i});  
+    //获得主测知识点下的exercise-ids  目前是限制3题   
+    async getExerciseByKpRating(kpid, kp_rating) {
+        const sql = `select ke.exercise_id from kp_exercise ke, exercise e, breakdown b
+            where ke.kpid = ? and e.exercise_id = ke.exercise_id and b.exercise_id = e.exercise_id
+            and b.kpid = ke.kpid and b.sn_rating < ? order by b.sn_rating desc limit 3`;
+        const exercise_list = await this.app.mysql.query(sql, [kpid, 1000]);
+        return exercise_list;
     }
-    const res = await this.app.mysql.query(sql,params);
-    return res;
-  }
 
+    replaceParams(text, sample){
+        var json_sample = JSON.parse(sample);
+        var newtext = text.replace(/(\@.*?\@)/g, function(word){
+            //去掉首尾两个@
+            word = word.substring(1, word.length - 1); 
+            return json_sample[word];
+        });  
+        return newtext;
+    }
 
-  async getExerciseByKpid(kpid,kpname,student_id){
+    replaceAnswers(answer, sample){
+        var answer = JSON.parse(answer);
+        var new_answer = [];
 
-    const default_rating = 500;
-    const test_r = await this.addNewTestByKp(kpid,kpname);
-    const testid = test_r.insertId;
-    const exercises = await this.generateExerByKp(kpid);
-    const gene_test = await this.generateExerciseTest(testid,student_id,exercises);
-    const results = await this.getExerciseBytestid(testid,student_id);
-    const rating = await this.Service.getMyLadderScore(student_id);
+        for(var i=0;i<answer.length;i++){
+            var e =  answer[i];
+            new_answer[i] = {
+                correct : e.correct,
+                value : this.replaceParams(e.value,sample),
+            };
+        } 
+        return new_answer;
+    }
+
+  async getTestExercise(test_id, student_id, isFinish) {
+    var sql = "";
+    var params = [];
+    if(isFinish){
+        params = [student_id, test_id];
+        sql = `select e.* , et.exercise_index, b.*, t.kpname, sk.kp_rating from exercise_test et, 
+            exercise e, kptable t, 
+            breakdown b left join (select * from student_kp where student_id = ?) as sk on b.kpid = sk.kpid
+            where et.test_id = ? and e.exercise_id = et.exercise_id and b.exercise_id = e.exercise_id and b.kpid = t.kpid`;
+    }else{
+        params = [test_id, student_id, test_id];
+        sql = "select e.* , es.sample, es.`sample_index` , et.exercise_index, b.*, t.kpname, sk.kp_rating "
+            +"from exercise_test et, kptable t, exercise e left join "
+            +"(select es.exercise_id, round(max(es.sample_index)*rand()) as sam_index "
+            +"from exercise_sample es, exercise_test et "
+            +"where et.test_id = ? and es.exercise_id = et.exercise_id "
+            +"GROUP BY es.exercise_id) as esi on esi.exercise_id = e.exercise_id LEFT JOIN exercise_sample es "
+            +"on es.exercise_id = esi.exercise_id and es.sample_index = esi.sam_index, "
+            +"breakdown b left join (select * from student_kp where student_id = ?) as sk on b.kpid = sk.kpid "
+            +"where et.test_id = ? and e.exercise_id = et.exercise_id and b.exercise_id = e.exercise_id and b.kpid = t.kpid order by b.sn;";
+              
+    }    
+    const exercise_r = await this.app.mysql.query(sql, params);
 
     var exercise_list = [];
-    for(var i = 0; i < results.length; i++){
-        var e = results[i];
+    for(var i = 0; i < exercise_r.length; i++){
+        var e = exercise_r[i];
+        var e_sample = e.sample;
         var index = e.exercise_index;
         if(exercise_list[index]){
             exercise_list[index].breakdown[e.sn - 1] = {
                 sn: e.sn, 
-                content: e.content, 
+                content: e_sample?  this.replaceParams(e.content,e_sample) : e.content, 
                 presn: e.presn, 
                 kpid: e.kpid,
                 kpname: e.kpname,
@@ -583,7 +336,7 @@ class ExerciseService extends Service {
             var breakdown = [];
             breakdown[e.sn - 1] = {
                 sn: e.sn, 
-                content: e.content, 
+                content: e_sample?  this.replaceParams(e.content,e_sample) : e.content, 
                 presn: e.presn, 
                 kpid: e.kpid,
                 kpname: e.kpname,
@@ -593,21 +346,53 @@ class ExerciseService extends Service {
             exercise_list[index] = {
                 exercise_id: e.exercise_id, 
                 exercise_type: e.exercise_type, 
-                title: e.title,
+                title: e_sample?  this.replaceParams(e.title,e_sample) : e.title, 
                 title_img_url: e.title_img_url,
                 title_audio_url: e.title_audio_url, 
-                answer: JSON.parse(e.answer),
+                // answer: JSON.parse(e.answer),
+                answer: e_sample?  this.replaceAnswers(e.answer,e_sample) : JSON.parse(e.answer), 
+                // sample: e.sample ? JSON.parse(e.sample) : {},
+                sample_index: e.sample_index,
                 breakdown: breakdown,
                 exercise_rating: e.exercise_rating,
             };
         }
     }
+    return exercise_list;
+}
 
-    return({
-        exercise: exercise_list,
-        test_id: testid,
-        student_rating: rating[0].student_rating,
+  async generateTestByKp(kpid, kpname, student_id){
+    const kp_rating = await this.app.mysql.get('student_kp', {
+            student_id: student_id,
+            kpid: kpid,
+        });
+    const exercise_list = await this.getExerciseByKpRating(kpid, kp_rating);
+
+    const start_time = new Date();
+    const test_result = await this.app.mysql.insert('teacher_test', {
+        test_name: "攻克" + kpname,
+        teacher_id: -1,
+        group_time: start_time,
+        enable_time: start_time,
+        total_exercise: exercise_list.length,
+        test_type: 2,
+        test_config: JSON.stringify({kp: [{kpid: kpid, kpname: kpname}]}),
     });
+
+    const test_id = 129;//test_result.insertId;
+    let log_result = await this.app.mysql.insert('test_log', {
+        student_id: student_id, 
+        test_id: test_id, 
+        start_time: start_time, 
+        total_exercise: exercise_list.length
+    })
+
+    var exercise_test = [];
+    for(var i = 0; i < exercise_list.length; i++){
+        exercise_test[i] = {test_id: test_id, exercise_id: exercise_list[i].exercise_id, exercise_index: i};
+    }
+    const exercise_result = await this.app.mysql.insert('exercise_test', exercise_test);
+    return {test_id: test_id};
 
   }
 

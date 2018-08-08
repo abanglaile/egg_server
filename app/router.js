@@ -49,12 +49,16 @@ module.exports = app => {
   router.post('/klmanager/getMyTestStatus',controller.student.getMyTestStatus);
   //router.get('/klmanager/getMyBookChapter', controller.student.getMyBookChapter);
 
+  router.post('/klmanager/generateTestByKp', controller.student.generateTestByKp);
+  router.post('/klmanager/submitTestLog', controller.student.submitTestLog);
   router.post('/klmanager/submitExerciseLog', controller.student.submitExerciseLog);
   router.post('/klmanager/submitBreakdownLog', controller.student.submitBreakdownLog);
   router.get('/klmanager/getMyStudentRating', controller.student.getMyStudentRating);
   router.get('/klmanager/getChapterKpStatus', controller.student.getChapterKpStatus);
   router.get('/klmanager/getMyBookChapter', controller.student.getMyBookChapter);
   
+  router.get('/klmanager/getKpRatingHistory', controller.student.getKpRatingHistory);
+  router.get('/klmanager/getKpAbility', controller.student.getKpAbility);
 
   router.get('/klmanager/getCourseBook', controller.student.getCourseBook);
 

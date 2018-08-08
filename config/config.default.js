@@ -11,7 +11,7 @@ exports.cors = {
   origin: '*',
   allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
   allowHeaders :'Content-Type,Content-Length, Authorization, Accept,X-Requested-With',
-  credentials: false,
+  credentials: true,
 };
 
 exports.keys = 'my-cookie-secret-key';

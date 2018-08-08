@@ -47,10 +47,13 @@ class AuthController extends Controller {
     const { ctx, service } = this;
     const {query} = ctx.request;
 
-    // const results = await service.user.getWxAuth(query.code,query.state);
-    // console.log(results);
-    var results = {identifier : 1};
-    this.ctx.login(results);
+    const results = await service.user.getWxAuth(query.code,query.state);
+    console.log('results :',JSON.stringify(results));
+    // var results = {identifier : 1};
+    //为用户启动一个登录的 session
+    if(results.user_info){
+      this.ctx.login(results.user_info);
+    }
     this.ctx.body = results;
   }
 
@@ -60,7 +63,10 @@ class AuthController extends Controller {
 
     if(body.invitationcode){
       const results = await service.user.checkInviteCode(body.invitationcode,body.wx_info);
-      console.log(results);
+
+      if(results.user_info){
+        this.ctx.login(results.user_info);
+      }
       
       this.ctx.body = results;
     }

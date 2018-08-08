@@ -183,8 +183,9 @@ class StudentController extends Controller {
         const { ctx, service } = this;
         const {body} = ctx.request;
         if(body.student_id){
+            console.log('body.student_id',body.student_id);
             const results = await service.user.getStudentInfo(body.student_id);
-            console.log(results);
+            console.log('getStudentInfo',results);
             
             this.ctx.body = results[0];
         }

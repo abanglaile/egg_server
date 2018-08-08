@@ -75,6 +75,11 @@ class userService extends Service {
     return res;
   }
 
+  async findOneinUsers(user){
+    const res = await this.app.mysql.get('users',{ userid : user.userid });
+    return res;
+  }
+
   async createUser(conditions){
     const res = await this.app.mysql.insert('user_auths', conditions);
     return res;
@@ -124,19 +129,26 @@ class userService extends Service {
     var newuser = 1;
 
     var url1='https://api.weixin.qq.com/sns/oauth2/access_token?appid='+AppID+'&secret='+AppSecret+'&code='+code+'&grant_type=authorization_code';
-    const res1 = await ctx.curl(url1);
-    var access_token = res1.access_token;
-    var openid = res1.openid;
+    const res1 = await ctx.curl(url1,{dataType:'json',});
+    console.log("res1 :",JSON.stringify(res1));
+
+    var access_token = res1.data.access_token;
+    var openid = res1.data.openid;
+    console.log("openid :",JSON.stringify(openid));
 
     var url2 = 'https://api.weixin.qq.com/sns/userinfo?access_token='+access_token+'&openid='+openid+'&lang=zh_CN';
-    const res2 = await ctx.curl(url2);
-    var nickname = res2.nickname;
-    var imgurl = res2.headimgurl;
+    const res2 = await ctx.curl(url2,{dataType:'json',});
+    var nickname = res2.data.nickname;
+    var imgurl = res2.data.headimgurl;
+    console.log("nickname :",JSON.stringify(nickname));
 
     const res3 = await this.isOpenidIn(openid);
+    console.log("res3 :",JSON.stringify(res3));
     if(res3){
       const res4 = await this.updateWxUserInfo(res3.userid,openid,access_token,nickname,imgurl);
+      console.log("res4 :",JSON.stringify(res4));
       const res5 = await this.getStuRealname(res3.userid);
+      console.log("res5 :",JSON.stringify(res5));
 
       var group = {
         redirect_uri : redirect_uri,

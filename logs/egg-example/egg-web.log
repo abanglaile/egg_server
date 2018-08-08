@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2018-07-31 14:18:48,221 INFO 5456 [egg-logrotator] app logger reload: got log-reload message
 2018-07-31 14:20:31,746 INFO 5456 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
 2018-07-31 14:26:57,759 INFO 5456 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
@@ -513,3 +514,6 @@
 2018-08-02 18:55:27,324 INFO 5084 [egg-redis] connect success on redis://:123456@119.23.41.237:6379/0
 2018-08-02 18:55:27,607 INFO 5084 [egg-redis] instance[0] status OK, redis currentTime: #
 2018-08-02 18:55:30,556 INFO 5084 [egg-mysql] instance[0] status OK, rds currentTime: Thu Aug 02 2018 18:55:32 GMT+0800 (中国标准时间)
+=======
+2018-08-08 08:34:41,826 INFO 5848 [egg-logrotator] app logger reload: got log-reload message
+>>>>>>> origin/master

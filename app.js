@@ -66,18 +66,19 @@ module.exports = app => {
     if (!userDoc) ctx.service.router.storeAlertMsg(alertMsg);
     return userDoc;
   });
-
+  //序列化用户信息后存储进 session
   app.passport.serializeUser(async (ctx, user) => {
     // return user.id;
-    console.log("user",user);
-    return user.identifier;
+    console.log("user",JSON.stringify(user));
+    return user.userid;
      
   });
-
+  //反序列化后取出用户信息
   app.passport.deserializeUser(async (ctx, user) => {
     // const userDoc = await ctx.model.User.findOne({ _id: user }).populate('messages');
     // return userDoc;
-    var user = {id: 1, username: 'admin', password: '123456'};
-    return user;
+    const userDoc = await ctx.user.findOneinUsers({ userid: user });
+    // var user = {id: 1, username: 'admin', password: '123456'};
+    return userDoc;
   });
 };

@@ -4,25 +4,25 @@ module.exports = app => {
   console.log("controller :"+ controller);
   router.get('/', controller.home.index);
   router.get('/about', m.isSignined(), controller.home.index);
-  router.get('/klmanager/getBookChapter', controller.entryexercise.getBookChapter);
-  router.get('/klmanager/getChapterKp', controller.entryexercise.getChapterKp);
-  router.get('/klmanager/getExerciseByKp', controller.entryexercise.getExerciseByKp);
-  router.get('/klmanager/getExercise', controller.entryexercise.getExercise);
-  router.get('/klmanager/getSampleList', controller.entryexercise.getSampleList);
-  router.get('/klmanager/getCourse', controller.entryexercise.getCourse);
-  router.post('/klmanager/addExercise', controller.entryexercise.addExercise);
-  router.post('/klmanager/addOneSample', controller.entryexercise.addOneSample);
-  router.post('/klmanager/updateOneSample', controller.entryexercise.updateOneSample);
-  router.post('/klmanager/updateAllSample', controller.entryexercise.updateAllSample);
-  router.post('/klmanager/updateExercise', controller.entryexercise.updateExercise);
-  router.post('/klmanager/updateBreakdown', controller.entryexercise.updateBreakdown);
+  router.get('/api/getBookChapter', controller.entryexercise.getBookChapter);
+  router.get('/api/getChapterKp', controller.entryexercise.getChapterKp);
+  router.get('/api/getExerciseByKp', controller.entryexercise.getExerciseByKp);
+  router.get('/api/getExercise', controller.entryexercise.getExercise);
+  router.get('/api/getSampleList', controller.entryexercise.getSampleList);
+  router.get('/api/getCourse', controller.entryexercise.getCourse);
+  router.post('/api/addExercise', controller.entryexercise.addExercise);
+  router.post('/api/addOneSample', controller.entryexercise.addOneSample);
+  router.post('/api/updateOneSample', controller.entryexercise.updateOneSample);
+  router.post('/api/updateAllSample', controller.entryexercise.updateAllSample);
+  router.post('/api/updateExercise', controller.entryexercise.updateExercise);
+  router.post('/api/updateBreakdown', controller.entryexercise.updateBreakdown);
 
-  router.post('/klmanager/renderly', controller.manager.renderly);
-  router.post('/klmanager/saveTestMedia', controller.manager.saveTestMedia);
-  router.post('/klmanager/queryMediaList', controller.manager.queryMediaList);
-  router.post('/klmanager/searchMedia', controller.manager.searchMedia);
+  router.post('/api/renderly', controller.manager.renderly);
+  router.post('/api/saveTestMedia', controller.manager.saveTestMedia);
+  router.post('/api/queryMediaList', controller.manager.queryMediaList);
+  router.post('/api/searchMedia', controller.manager.searchMedia);
 
-  // router.get('/klmanager/getMyLadderScore', controller.student.getMyLadderScore);
+  // router.get('/api/getMyLadderScore', controller.student.getMyLadderScore);
 
   // 1.user
   // r.get('/signup', c.user.new);
@@ -39,36 +39,35 @@ module.exports = app => {
   const local = app.passport.authenticate('local');
   router.get('/signin', local);
   //weixin
-  router.get('/klmanager/get_wx_auth',controller.auth.getWxAuth);
+  // router.get('/api/get_wx_auth',controller.auth.getWxAuth);
+  router.get('/api/get_wx_auth',controller.auth.getWxAuth);
   //邀请码绑定
-  router.post('/klmanager/check_invi_code',controller.auth.checkInviteCode);
-  router.get('/klmanager/getHistoryTest', controller.student.getHistoryTest);
-  router.get('/klmanager/getNotFinishTest', controller.student.getNotFinishTest);
-  router.get('/klmanager/getMyTestData', controller.student.getMyTestData);
-  router.get('/klmanager/getStuComUsedKp', controller.student.getStuComUsedKp);
-  router.post('/klmanager/getMyTestStatus',controller.student.getMyTestStatus);
-  //router.get('/klmanager/getMyBookChapter', controller.student.getMyBookChapter);
+  // router.post('/api/check_invi_code',controller.auth.checkInviteCode);
+  router.post('/api/check_invi_code',controller.auth.checkInviteCode);
+  router.get('/api/getHistoryTest', controller.student.getHistoryTest);
+  router.get('/api/getNotFinishTest', controller.student.getNotFinishTest);
+  router.get('/api/getMyTestData', controller.student.getMyTestData);
+  router.get('/api/getStuComUsedKp', controller.student.getStuComUsedKp);
+  router.post('/api/getMyTestStatus',controller.student.getMyTestStatus);
+  //router.get('/api/getMyBookChapter', controller.student.getMyBookChapter);
 
-  router.post('/klmanager/generateTestByKp', controller.student.generateTestByKp);
-  router.post('/klmanager/submitTestLog', controller.student.submitTestLog);
-  router.post('/klmanager/submitExerciseLog', controller.student.submitExerciseLog);
-  router.post('/klmanager/submitBreakdownLog', controller.student.submitBreakdownLog);
-  router.get('/klmanager/getMyStudentRating', controller.student.getMyStudentRating);
-  router.get('/klmanager/getChapterKpStatus', controller.student.getChapterKpStatus);
-  router.get('/klmanager/getMyBookChapter', controller.student.getMyBookChapter);
+  router.post('/api/submitExerciseLog', controller.student.submitExerciseLog);
+  router.get('/api/getMyStudentRating', controller.student.getMyStudentRating);
+  router.get('/api/getChapterKpStatus', controller.student.getChapterKpStatus);
+  router.get('/api/getMyBookChapter', controller.student.getMyBookChapter);
   
   router.get('/klmanager/getKpRatingHistory', controller.student.getKpRatingHistory);
   router.get('/klmanager/getKpAbility', controller.student.getKpAbility);
 
-  router.get('/klmanager/getCourseBook', controller.student.getCourseBook);
+  router.get('/api/getCourseBook', controller.student.getCourseBook);
 
   //个人中心
-  router.post('/klmanager/getStudentInfo',controller.student.getStudentInfo);
+  router.post('/api/getStudentInfo',controller.student.getStudentInfo);
   //个人信息统计
-  router.get('/klmanager/getStuAbility',controller.student.getStuAbility);
-  router.get('/klmanager/getStuLadderWithTime',controller.student.getStuLadderWithTime);
+  router.get('/api/getStuAbility',controller.student.getStuAbility);
+  router.get('/api/getStuLadderWithTime',controller.student.getStuLadderWithTime);
 
-  router.post('/klmanager/getTestStatus',controller.student.getTestStatus);
-  router.post('/klmanager/getTestRankingList',controller.student.getTestRankingList);
+  router.post('/api/getTestStatus',controller.student.getTestStatus);
+  router.post('/api/getTestRankingList',controller.student.getTestRankingList);
   
 };

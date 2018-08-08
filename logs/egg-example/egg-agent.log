@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2018-07-31 14:18:48,218 INFO 6860 [egg-logrotator] agent logger reload: got log-reload message
 2018-07-31 14:41:02,068 INFO 5492 [egg:logger] init all loggers with options: {"dir":"D:\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"agent"}
 2018-07-31 14:41:02,389 INFO 5492 [egg-watcher:agent] watcher start success
@@ -126,3 +127,6 @@
 2018-08-02 18:54:24,862 INFO 6136 [egg-watcher:agent] watcher start success
 2018-08-02 18:55:24,355 INFO 10928 [egg:logger] init all loggers with options: {"dir":"D:\\GitHub\\egg_server\\logs\\egg-example","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-example-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":true,"type":"agent"}
 2018-08-02 18:55:25,006 INFO 10928 [egg-watcher:agent] watcher start success
+=======
+2018-08-08 08:34:41,826 INFO 6840 [egg-logrotator] agent logger reload: got log-reload message
+>>>>>>> origin/master

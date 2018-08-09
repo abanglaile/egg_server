@@ -19,5 +19,25 @@ class TestLogService extends Service {
         , [student_id]);
         return res;
     }
+
+    async submitTestLog(exercise_log){
+        var delta_score = 0; 
+        for(var i = 0; i < exercise_log.length; i++){
+            delta_score += exercise_log[i].exercise_state ? 5 : 2;
+        }
+        const res = await this.app.mysql.update('test_log', {finish_time: new Date(), delta_score: delta_score}, {
+            where: {test_id: exercise_log[0].test_id}
+        })
+        const update_result = await this.app.mysql.query('update users set score = score + ? where userid = ?', [delta_score, exercise_log[0].student_id]);
+        return {code: 0};
+    }
+
+    async getTestLog(student_id, test_id){
+        const res = await this.app.mysql.query('select t.*, tt.test_type, tt.test_config, tt.test_name '
+        +'from test_log t, teacher_test tt where t.student_id = ? and tt.test_id = t.test_id and t.test_id = ?;'
+        , [student_id, test_id]);
+
+        return res;
+    }
 }
 module.exports = TestLogService;

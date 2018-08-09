@@ -8,8 +8,19 @@ class StudentController extends Controller {
         const { ctx, service } = this;
         const results = await service.rating.getStudentRating(ctx.request.query.student_id, ctx.request.query.course_id);
         console.log(results);
-        
         this.ctx.body = results[0];
+    }
+
+    async getKpRatingHistory(){
+        const { ctx, service } = this;
+        const results = await service.rating.getKpRatingHistory(ctx.request.query.student_id, ctx.request.query.kpid);
+        this.ctx.body = results;
+    }
+
+    async getKpAbility(){
+        const {ctx, service} = this;
+        const results = await service.rating.getKpAbility(ctx.request.query.student_id, ctx.request.query.kpid);
+        this.ctx.body = results;
     }
 
     async getCourseBook(){
@@ -79,11 +90,41 @@ class StudentController extends Controller {
         
     }
 
+    async submitTestLog(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        if(body.exercise_log){
+            const results = await service.testLog.submitTestLog(body.exercise_log);
+            this.ctx.body = results;
+        }
+    }
+
+    async generateTestByKp(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        if(body.kpid && body.kpname && body.student_id){
+            const results = await service.exercise.generateTestByKp(body.kpid, body.kpname, body.student_id);
+            console.log(results);
+            
+            this.ctx.body = results;
+        }
+    }
+
     async submitExerciseLog(){
         const { ctx, service } = this;
         const {body} = ctx.request;
         if(body.exercise_log){
             const results = await service.exerciseLog.submitExerciseLog(body.exercise_log);
+            console.log(results);
+            this.ctx.body = results;
+        }
+    }
+
+    async submitBreakdownLog(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        if(body.exercise_log){
+            const results = await service.exerciseLog.submitBreakdownLog(body.exercise_log);
             console.log(results);
             this.ctx.body = results;
         }
@@ -111,17 +152,6 @@ class StudentController extends Controller {
             this.ctx.body = results;
         }
         
-    }
-
-    async getExerciseByKpid(){
-        const { ctx, service } = this;
-        const {query} = ctx.request;
-        if(query.kpid){
-            const results = await service.exercise.getExerciseByKpid(query.kpid,query.kpname,query.student_id);
-            console.log(results);
-            
-            this.ctx.body = results;
-        }
     }
 
     async getHistoryTest(){

@@ -56,6 +56,8 @@ module.exports = app => {
   router.get('/api/getChapterKpStatus', controller.student.getChapterKpStatus);
   router.get('/api/getMyBookChapter', controller.student.getMyBookChapter);
   
+  router.get('/klmanager/getKpRatingHistory', controller.student.getKpRatingHistory);
+  router.get('/klmanager/getKpAbility', controller.student.getKpAbility);
 
   router.get('/api/getCourseBook', controller.student.getCourseBook);
 

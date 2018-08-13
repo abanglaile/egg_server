@@ -231,8 +231,8 @@
       "GET"
     ],
     "paramNames": [],
-    "path": "/signin",
-    "regexp": "/^\\/signin(?:\\/(?=$))?$/",
+    "path": "/api/login",
+    "regexp": "/^\\/api\\/login(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -332,49 +332,8 @@
       "POST"
     ],
     "paramNames": [],
-<<<<<<< HEAD
-    "path": "/klmanager/generateTestByKp",
-    "regexp": "/^\\/klmanager\\/generateTestByKp(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
-      "POST"
-    ],
-    "paramNames": [],
-    "path": "/klmanager/submitTestLog",
-    "regexp": "/^\\/klmanager\\/submitTestLog(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
-      "POST"
-    ],
-    "paramNames": [],
-    "path": "/klmanager/submitExerciseLog",
-    "regexp": "/^\\/klmanager\\/submitExerciseLog(?:\\/(?=$))?$/",
-=======
     "path": "/api/submitExerciseLog",
     "regexp": "/^\\/api\\/submitExerciseLog(?:\\/(?=$))?$/",
->>>>>>> origin/master
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
-      "POST"
-    ],
-    "paramNames": [],
-    "path": "/klmanager/submitBreakdownLog",
-    "regexp": "/^\\/klmanager\\/submitBreakdownLog(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -425,7 +384,6 @@
       "GET"
     ],
     "paramNames": [],
-<<<<<<< HEAD
     "path": "/klmanager/getKpRatingHistory",
     "regexp": "/^\\/klmanager\\/getKpRatingHistory(?:\\/(?=$))?$/",
     "stack": [
@@ -452,12 +410,8 @@
       "GET"
     ],
     "paramNames": [],
-    "path": "/klmanager/getCourseBook",
-    "regexp": "/^\\/klmanager\\/getCourseBook(?:\\/(?=$))?$/",
-=======
     "path": "/api/getCourseBook",
     "regexp": "/^\\/api\\/getCourseBook(?:\\/(?=$))?$/",
->>>>>>> origin/master
     "stack": [
       "wrappedController"
     ]

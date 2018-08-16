@@ -8,7 +8,7 @@ class StudentController extends Controller {
         const { ctx, service } = this;
         const results = await service.rating.getStudentRating(ctx.request.query.student_id, ctx.request.query.course_id);
         console.log(results);
-        this.ctx.body = results[0];
+        this.ctx.body = results;
     }
 
     async getKpRatingHistory(){
@@ -32,10 +32,7 @@ class StudentController extends Controller {
     async getMyBookChapter(){
         const { ctx, service } = this;
         const {query} = ctx.request;
-
         const results = await service.rating.getMyBookChapter(query.student_id, query.course_id);
-        console.log(results);
-        
         this.ctx.body = results;
     }
 
@@ -52,8 +49,6 @@ class StudentController extends Controller {
         const { ctx, service } = this;
         const {query} = ctx.request;
         const results = await service.status.getChapterStatus(query.student_id, query.chapter_id);
-        console.log(results);
-        
         this.ctx.body = results[0];
     }
 
@@ -233,13 +228,13 @@ class StudentController extends Controller {
         }
     }
 
-    //根据学生id  获取所有时间节点天梯分变化情况  
+    //根据student_id,course_id获取所有时间节点天梯分变化情况  
     //在 kl_api
-    async getStuLadderWithTime(){
+    async getStuRatingHistory(){
         const { ctx, service } = this;
         const {query} = ctx.request;
         if(query.student_id){
-            const results = await service.status.getLadderChangeWithTime(query.student_id);
+            const results = await service.rating.getStuRatingHistory(query.student_id, query.course_id);
             console.log(results);
             
             this.ctx.body = results;

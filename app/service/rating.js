@@ -33,16 +33,26 @@ class RatingService extends Service {
     }
 
     async getStudentRating(student_id, course_id){
-        const res = await this.app.mysql.query('select t.student_rating from student_rating t where t.student_id = ? and t.course_id = ? ORDER BY update_time DESC LIMIT 1', [student_id, course_id]);
+        const res = await this.app.mysql.get('student_rating', {student_id: student_id, course_id: course_id});
         return res;     
     }
 
-    async getChapterKpStatus(student_id,chapter_id) {
+    //根据student_id, course_id获取所有时间节点天梯分变化情况
+    async getStuRatingHistory(student_id, course_id){
+        const res = await this.app.mysql.query(`SELECT a.update_time ,a.student_rating from
+        (SELECT s.* from student_rating_history s where s.student_id = ? and s.course_id = ?) a 
+        where not EXISTS (select 1 from (SELECT s.* from student_rating_history s where s.student_id = ? and s.course_id = ?) b 
+        where datediff(a.update_time, b.update_time)=0 and b.id > a.id)`
+        , [student_id, course_id, student_id, course_id]);
 
-        let chapter_status = this.app.mysql.query('select c.chaptername, sum(sk.practice) as practice, '
-        +'sum(sk.correct) as correct from chapter c, '
-        +'kptable k LEFT JOIN student_kp sk on k.kpid = sk.kpid and sk.student_id = ? '
-        +'where c.chapterid = ? and k.chapterid = c.chapterid;'
+        return res;
+    }
+
+    async getChapterKpStatus(student_id,chapter_id) {
+        let chapter_status = this.app.mysql.query(`select c.chaptername, sum(sk.practice) as practice, 
+        sum(sk.correct) as correct from chapter c, 
+        kptable k LEFT JOIN student_kp sk on k.kpid = sk.kpid and sk.student_id = ? 
+        where c.chapterid = ? and k.chapterid = c.chapterid;`
         , [student_id,chapter_id]);
 
         let kp_status = this.app.mysql.query('select k.kpid, k.kpname, ks.kp_standard ,sk.kp_rating, '

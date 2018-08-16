@@ -61,6 +61,7 @@ module.exports = app => {
       ctx.logger.debug('verify by Local');
       // 2. Local
       userDoc = await ctx.service.user.signin(user.username, user.password);
+      // ctx.body = userDoc;
       if (!userDoc) alertMsg = '用户名或密码不正确。';
     }
     if (!userDoc) ctx.service.router.storeAlertMsg(alertMsg);
@@ -77,7 +78,7 @@ module.exports = app => {
   app.passport.deserializeUser(async (ctx, user) => {
     // const userDoc = await ctx.model.User.findOne({ _id: user }).populate('messages');
     // return userDoc;
-    const userDoc = await ctx.user.findOneinUsers({ userid: user });
+    const userDoc = await ctx.service.user.findOneinUsers({ userid: user });
     // var user = {id: 1, username: 'admin', password: '123456'};
     return userDoc;
   });

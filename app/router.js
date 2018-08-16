@@ -2,7 +2,7 @@ module.exports = app => {
   const { router, controller } = app;
   const { middlewares: m } = app;
   console.log("controller :"+ controller);
-  router.get('/', controller.home.index);
+  router.get('/api/home', controller.home.index);
   router.get('/about', m.isSignined(), controller.home.index);
   router.get('/api/getBookChapter', controller.entryexercise.getBookChapter);
   router.get('/api/getChapterKp', controller.entryexercise.getChapterKp);
@@ -30,14 +30,14 @@ module.exports = app => {
 
   // r.get('/signin', c.user.old);
 
-  // const options = {
-  //   successRedirect: '/',
-  //   failureRedirect: '/signin',
-  // };
+  const options = {
+    successRedirect: '/api/home',
+    failureRedirect: '/api/home',
+  };
 
   // passport-local
-  const local = app.passport.authenticate('local');
-  router.get('/signin', local);
+  const local = app.passport.authenticate('local',options);
+  router.get('/api/login', local);
   //weixin
   // router.get('/api/get_wx_auth',controller.auth.getWxAuth);
   router.get('/api/get_wx_auth',controller.auth.getWxAuth);

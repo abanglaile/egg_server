@@ -76,7 +76,7 @@ class userService extends Service {
   }
 
   async findOneinUsers(user){
-    const res = await this.app.mysql.get('users',{ userid : user.userid });
+    const res = await this.app.mysql.get('user_auths',{ userid : user.userid });
     return res;
   }
 

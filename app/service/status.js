@@ -48,14 +48,13 @@ class statusService extends Service {
 
   async getTestStatusBytestid(test_id){
 
-    const test_size = this.app.mysql.query('select count(*) as size from exercise_test et where et.test_id = ?', test_id);
+    const test_size =await this.app.mysql.query('select count(*) as size from exercise_test et where et.test_id = ?', test_id);
     const test_log = await this.getTestStatus(test_id);
 
     console.log("getTestStatus test_log:"+JSON.stringify(test_log));
     var accurracy = 0;//总答对数量
     var bingo = 0;
     var test_submit = 0;
-    var testsize = test[0].size;
     var time_sum = 0;
     for(var i = 0; i < test_log.length; i++){
         accurracy += test_log[i].correct_exercise;//一共对了多少题
@@ -67,7 +66,7 @@ class statusService extends Service {
             bingo++;
         }
     }
-    const avg_accurracy = (accurracy/(test_submit*testsize))? (accurracy/(test_submit*testsize)).toFixed(1) : 0;
+    const avg_accurracy = (accurracy/(test_submit*test_size))? (accurracy/(test_submit*testsize)).toFixed(1) : 0;
     const avg_timeconsuming = Math.round(time_sum/test_submit);
 
     return({
@@ -78,7 +77,7 @@ class statusService extends Service {
             test_submit: test_submit,
             bingo: bingo,
             avg_timeconsuming: avg_timeconsuming,
-            test_size: await test_size//test中的题目个数
+            test_size: test_size//test中的题目个数
         }
     });
 

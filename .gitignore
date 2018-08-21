@@ -3,3 +3,5 @@ node_modules/**
 logs/
 run/**
 *.log
+logs/egg-example/egg-agent.log
+*.log

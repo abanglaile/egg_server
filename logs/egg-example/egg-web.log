@@ -138,3 +138,7 @@
 2018-08-21 15:02:21,205 INFO 8072 [egg-mysql] instance[0] status OK, rds currentTime: Tue Aug 21 2018 15:02:24 GMT+0800 (中国标准时间)
 2018-08-21 16:22:27,562 WARN 8072 [TCPBase] socket is closed by other side while there were still unhandled data in the socket buffer
 2018-08-21 16:22:27,577 WARN 8072 [ClusterClient:Watcher] follower closed, and try to init it again
+2018-08-21 18:58:19,792 WARN 8072 [TCPBase] socket is closed by other side while there were still unhandled data in the socket buffer
+2018-08-21 18:58:22,028 WARN 8072 [ClusterClient:Watcher] follower closed, and try to init it again
+2018-08-21 19:09:25,988 WARN 8072 [TCPBase] socket is closed by other side while there were still unhandled data in the socket buffer
+2018-08-21 19:09:25,991 WARN 8072 [ClusterClient:Watcher] follower closed, and try to init it again

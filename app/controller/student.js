@@ -23,9 +23,9 @@ class StudentController extends Controller {
         this.ctx.body = results;
     }
 
-    async getCourseBook(){
+    async getCourse(){
         const { ctx, service } = this;
-        const results = await service.book.getCourseBook(ctx.request.query.course_id);
+        const results = await service.bookchapter.getCourse();
         this.ctx.body = results;
     }
 
@@ -123,18 +123,6 @@ class StudentController extends Controller {
             console.log(results);
             this.ctx.body = results;
         }
-    }
-
-    async getTestKpReward(){
-        const { ctx, service } = this;
-        const {query} = ctx.request;
-        if(query.student_id && query.test_id){
-            const results = await service.status.getTestKpReward(query.student_id,query.test_id);
-            console.log(results[0]);
-            
-            this.ctx.body = results[0];
-        }
-        
     }
 
     async getTestRatingReward(){
@@ -256,11 +244,11 @@ class StudentController extends Controller {
 
     //根据学生id  获取最常训练到的知识点（3个）
     //在 kl_api
-    async getStuComUsedKp(){
+    async getStuPoorKp(){
         const { ctx, service } = this;
         const {query} = ctx.request;
         if(query.student_id){
-            const results = await service.status.getStuComUsedKp(query.student_id);
+            const results = await service.status.getStuPoorKp(query.student_id);
             console.log(results);
             
             this.ctx.body = results;

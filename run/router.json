@@ -308,8 +308,8 @@
       "GET"
     ],
     "paramNames": [],
-    "path": "/api/getStuComUsedKp",
-    "regexp": "/^\\/api\\/getStuComUsedKp(?:\\/(?=$))?$/",
+    "path": "/api/getStuPoorKp",
+    "regexp": "/^\\/api\\/getStuPoorKp(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -422,8 +422,8 @@
       "GET"
     ],
     "paramNames": [],
-    "path": "/api/getCourseBook",
-    "regexp": "/^\\/api\\/getCourseBook(?:\\/(?=$))?$/",
+    "path": "/api/getCourse",
+    "regexp": "/^\\/api\\/getCourse(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -462,6 +462,19 @@
     "paramNames": [],
     "path": "/api/getStuRatingHistory",
     "regexp": "/^\\/api\\/getStuRatingHistory(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getTestRatingReward",
+    "regexp": "/^\\/api\\/getTestRatingReward(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

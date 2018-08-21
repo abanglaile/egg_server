@@ -8,7 +8,6 @@ class RatingService extends Service {
             chapter c left join student_chapter sc on sc.chapterid = c.chapterid and sc.student_id = ? 
                     left join chapter_standard cs on c.chapterid = cs.chapterid
             where b.course_id = ? and c.bookid = b.bookid ORDER BY chindex`, [student_id, course_id]);
-        console.log(results.length);
         const books = [];
         let m = {};
         for(var i = 0; i < results.length; i++){

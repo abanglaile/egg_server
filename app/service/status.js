@@ -2,39 +2,23 @@
 const Service = require('egg').Service;
 
 class statusService extends Service {
-  
-
-  async getTestKpReward(student_id, test_id){
-
-    const res = await this.app.mysql.query('SELECT sum(bl.kp_delta_rating) '
-    +'as kp_delta_rating, bl.kp_old_rating, bl.kpid, kt.kpname FROM '
-    +'exercise_log el, breakdown_log bl, kptable kt where el.student_id = ? and'
-    +' el.test_id = ? and bl.logid = el.logid and kt.kpid = bl.kpid GROUP BY bl.kpid;'
-    , [student_id,test_id]);
-
-    return res;
-
-  }
 
   async getTestRatingReward(student_id, test_id){
 
-    const stu_r = await this.app.mysql.query('SELECT sum(el.delta_student_rating) as '
-    +'delta_student_rating, el.old_student_rating FROM exercise_log el where el.student_id = ? and el.test_id = ?'
+    let stu_r = this.app.mysql.query(`SELECT sum(el.delta_student_rating) as delta_student_rating,
+     el.old_student_rating FROM exercise_log el where el.student_id = ? and el.test_id = ?`
     , [student_id,test_id]);
 
-    const kp_r = await this.getTestKpReward(student_id, test_id);
+    let kp_r = this.app.mysql.query(`SELECT sum(bl.kp_delta_rating) as kp_delta_rating, 
+    bl.kp_old_rating, bl.kpid, kt.kpname FROM 
+    exercise_log el, breakdown_log bl, kptable kt where el.student_id = ? and
+    el.test_id = ? and bl.logid = el.logid and kt.kpid = bl.kpid GROUP BY bl.kpid;`
+    , [student_id,test_id]);
 
-    console.log(stu_r[0]);
-    console.log(kp_r);
-
+    stu_r = await stu_r;
     return ({
-        kp_rating: kp_r,
+        kp_rating: await kp_r,
         rating: stu_r[0],
-        credit: {
-            delta_credit: 5,
-            old_credit: 30,
-            new_credit: 35,
-        }
     });
   }
 
@@ -160,29 +144,35 @@ class statusService extends Service {
   }
 
 
-  //根据student_id 获取最常训练到的知识点（3个）
-  async getStuComUsedKp(student_id){
+  //根据student_id 获取最近薄弱知识点（3个）
+  async getStuPoorKp(student_id){
+    // const results = await this.app.mysql.query('SELECT r.c,r.kpid,r.kpname,sum(r.exercise_state) '
+    // +'as cc from (SELECT temp.c,temp.kpid,temp.kpname,temp.student_id,l.exercise_state from '
+    // +'(SELECT t.c,t.kpid,k.kpname,t.student_id from (SELECT count(s.kpid) as c,s.kpid,s.`student_id` '
+    // +'from `student_kp_history` s where s.`student_id` =?  GROUP BY kpid) t,`kptable` k '
+    // +'where k.kpid=t.kpid ORDER BY t.c DESC  LIMIT 3) as temp,`kptable` k,`kp_exercise` e,'
+    // +'`exercise_log` l where k.kpid=temp.kpid and k.kpid = e.kpid and e.exercise_id = l.exercise_id'
+    // +'and temp.student_id = l.student_id) as r GROUP BY kpid;'
+    // , student_id);
 
-    var usedkp = [];
-    const results = await this.app.mysql.query('SELECT r.c,r.kpid,r.kpname,sum(r.exercise_state) '
-    +'as cc from (SELECT temp.c,temp.kpid,temp.kpname,temp.student_id,l.exercise_state from '
-    +'(SELECT t.c,t.kpid,k.kpname,t.student_id from (SELECT count(s.kpid) as c,s.kpid,s.`student_id` '
-    +'from `student_kp_history` s where s.`student_id` =?  GROUP BY kpid) t,`kptable` k '
-    +'where k.kpid=t.kpid ORDER BY t.c DESC  LIMIT 3) as temp,`kptable` k,`kp_exercise` e,'
-    +'`exercise_log` l where k.kpid=temp.kpid and k.kpid = e.kpid and e.exercise_id = l.exercise_id'
-    +'and temp.student_id = l.student_id) as r GROUP BY kpid;'
-    , student_id);
+    
+    const poorkp = await this.app.mysql.query(`select bl.kpid, count(bl.logid) as count, kt.kpname, sk.kp_rating  
+    from (select logid from exercise_log where student_id = ? order by logid desc limit 50) el
+    ,breakdown_log bl left join kptable kt on kt.kpid = bl.kpid 
+    left join student_kp sk on sk.student_id = ? and sk.kpid = bl.kpid
+    where bl.logid = el.logid and sn_state = 0 
+    group by bl.kpid order by count(bl.logid) desc limit 3`
+    , [student_id, student_id]);
 
-    for(var i = 0; i < results.length; i++){
-        usedkp.push({
-            kpid : results[i].kpid,
-            kpname : results[i].kpname,
-            usedcount : results[i].c,
-            rate : ((results[i].cc/results[i].c)*100).toFixed(1),
-        });
-    }
-    console.log('usedkp:'+JSON.stringify(usedkp));
-    return usedkp;
+    // for(var i = 0; i < results.length; i++){
+    //     usedkp.push({
+    //         kpid : results[i].kpid,
+    //         kpname : results[i].kpname,
+    //         count : results[i].count,
+    //         kp_rating : ((results[i].cc/results[i].c)*100).toFixed(1),
+    //     });
+    // }
+    return poorkp;
 
   }
 

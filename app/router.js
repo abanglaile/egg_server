@@ -46,7 +46,7 @@ module.exports = app => {
   router.get('/api/getHistoryTest', controller.student.getHistoryTest);
   router.get('/api/getNotFinishTest', controller.student.getNotFinishTest);
   router.get('/api/getMyTestData', controller.student.getMyTestData);
-  router.get('/api/getStuComUsedKp', controller.student.getStuComUsedKp);
+  router.get('/api/getStuPoorKp', controller.student.getStuPoorKp);
   router.post('/api/getMyTestStatus',controller.student.getMyTestStatus);
   router.post('/api/generateTestByKp', controller.student.generateTestByKp)
   //router.get('/api/getMyBookChapter', controller.student.getMyBookChapter);
@@ -59,7 +59,7 @@ module.exports = app => {
   router.get('/api/getKpRatingHistory', controller.student.getKpRatingHistory);
   router.get('/api/getKpAbility', controller.student.getKpAbility);
 
-  router.get('/api/getCourseBook', controller.student.getCourseBook);
+  router.get('/api/getCourse', controller.student.getCourse);
 
   //个人中心
   router.post('/api/getStudentInfo',controller.student.getStudentInfo);
@@ -68,6 +68,7 @@ module.exports = app => {
   router.get('/api/getStuAbility',controller.student.getStuAbility);
   router.get('/api/getStuRatingHistory', controller.student.getStuRatingHistory);
 
+  router.get('/api/getTestRatingReward', controller.student.getTestRatingReward);
   router.post('/api/getTestStatus',controller.student.getTestStatus);
   router.post('/api/getTestRankingList',controller.student.getTestRankingList);
   

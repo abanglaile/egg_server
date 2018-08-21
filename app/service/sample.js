@@ -5,6 +5,7 @@ class sampleService extends Service {
 
   async getSampleList(exercise_id) {
     const sample_list = await this.getExerciseSample(exercise_id);
+    console.log("sample_list :",sample_list);
     var json_list = [];
     if(sample_list){
       for(let i = 0;i < sample_list.length; i++){

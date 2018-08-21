@@ -39738,3 +39738,731 @@ name: 'ECONNREFUSEDError'
 pid: 8072
 hostname: USER-D8STTK4RDA
 
+2018-08-21 19:12:50,628 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:12:53,670 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:12:56,716 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:12:59,723 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:13:02,736 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:13:05,752 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:13:08,767 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:13:11,773 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:13:14,800 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:13:17,823 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:13:20,934 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:13:23,958 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:13:26,973 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:13:30,001 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:13:33,010 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:13:36,015 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:13:39,038 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:13:42,051 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:13:45,071 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:13:48,095 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:13:51,109 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:13:54,124 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:13:57,141 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:14:00,146 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:14:03,152 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:14:06,160 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:14:09,191 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:14:12,230 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:14:15,244 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:14:18,264 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:14:21,271 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:14:24,280 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:14:27,286 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:14:30,301 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:14:33,317 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:14:36,347 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:14:39,369 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:14:42,377 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:14:45,383 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:14:48,394 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:14:51,419 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:14:54,448 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:14:57,458 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:15:00,479 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:15:03,485 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:15:06,521 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:15:09,540 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:15:12,549 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:15:15,633 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:15:18,638 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:15:21,669 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:15:24,768 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:15:27,786 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:15:30,808 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:15:33,833 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+
+2018-08-21 19:15:36,940 ERROR 8072 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 8072
+hostname: USER-D8STTK4RDA
+

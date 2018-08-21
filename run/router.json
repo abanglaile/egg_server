@@ -332,6 +332,18 @@
       "POST"
     ],
     "paramNames": [],
+    "path": "/api/generateTestByKp",
+    "regexp": "/^\\/api\\/generateTestByKp(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
     "path": "/api/submitExerciseLog",
     "regexp": "/^\\/api\\/submitExerciseLog(?:\\/(?=$))?$/",
     "stack": [
@@ -384,8 +396,8 @@
       "GET"
     ],
     "paramNames": [],
-    "path": "/klmanager/getKpRatingHistory",
-    "regexp": "/^\\/klmanager\\/getKpRatingHistory(?:\\/(?=$))?$/",
+    "path": "/api/getKpRatingHistory",
+    "regexp": "/^\\/api\\/getKpRatingHistory(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -397,8 +409,8 @@
       "GET"
     ],
     "paramNames": [],
-    "path": "/klmanager/getKpAbility",
-    "regexp": "/^\\/klmanager\\/getKpAbility(?:\\/(?=$))?$/",
+    "path": "/api/getKpAbility",
+    "regexp": "/^\\/api\\/getKpAbility(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -448,8 +460,8 @@
       "GET"
     ],
     "paramNames": [],
-    "path": "/api/getStuLadderWithTime",
-    "regexp": "/^\\/api\\/getStuLadderWithTime(?:\\/(?=$))?$/",
+    "path": "/api/getStuRatingHistory",
+    "regexp": "/^\\/api\\/getStuRatingHistory(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

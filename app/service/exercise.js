@@ -379,7 +379,7 @@ class ExerciseService extends Service {
         test_config: JSON.stringify({kp: [{kpid: kpid, kpname: kpname}]}),
     });
 
-    const test_id = 129;//test_result.insertId;
+    const test_id = test_result.insertId;
     let log_result = await this.app.mysql.insert('test_log', {
         student_id: student_id, 
         test_id: test_id, 

@@ -54,15 +54,10 @@ class ExerciseLogService extends Service {
     async submitExerciseLog(exercise_log) {
         const exercise_rating = exercise_log.old_exercise_rating;
         exercise_log.submit_time = new Date();
-        let student_rating = this.app.mysql.query(`select sr.student_rating 
-            from student_rating sr, kp_exercise ke 
-            where ke.exercise_id = ? and sr.course_id = ke.course_id and sr.student_id = ?`,
-            [exercise_log.exercise_id, exercise_log.student_id]);
+        let kp_exercise = await this.app.mysql.get('kp_exercise', {exercise_id: exercise_log.exercise_id});
         
-        let chapter_rating = this.app.mysql.query(`select sc.chapter_rating 
-            from student_chapter sc, kp_exercise ke 
-            where ke.exercise_id = ? and sc.chapterid = ke.chapterid and sc.student_id = ?`,
-            [exercise_log.exercise_id, exercise_log.student_id]);
+        let student_rating = this.service.rating.getStudentRating(student_id, kp_exercise.course_id);
+        let chapter_rating = this.app.mysql.get('student_chapter', {student_id: student_id, course_id: kp_exercise.chapter_id});
 
         student_rating = await student_rating;
         chapter_rating = await chapter_rating;
@@ -91,6 +86,19 @@ class ExerciseLogService extends Service {
         var breakdown_sn = exercise_log.breakdown_sn;
         delete exercise_log.breakdown_sn;
         const insert_result = await this.app.mysql.insert('exercise_log', exercise_log);
+
+        //更新学生总体、章节天梯分
+        const rating_result = await this.app.mysql.insert('student_rating_history', {
+            student_id: student_id,
+            student_rating: student_rating + st_delta,
+            course_id: kp_exercise.course_id,
+        })
+        const chapter_result = await this.app.mysql.update('student_chapter', {
+            student_id: student_id,
+            student_rating: chapter_rating + ch_delta,
+            chapter_id: kp_exercise.chapterid,
+        })
+
         exercise_log.logid = insert_result.insertId;
         for(var i = 0; i < breakdown_sn.length; i++){
             breakdown_sn[i].logid = exercise_log.logid;

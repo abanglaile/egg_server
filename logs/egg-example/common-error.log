@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2018-08-19 00:35:55,590 ERROR 3736 nodejs.ClusterClientNoResponseError: client no response in 2043962ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
     at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\cluster-client\lib\leader.js:74:23)
     at ontimeout (timers.js:482:11)
@@ -19,6 +20,146 @@ hostname: USER-D8STTK4RDA
 
 2018-08-19 21:34:29,528 ERROR 6204 nodejs.ETIMEDOUTError: connect ETIMEDOUT
     at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+=======
+2018-08-13 00:38:13,204 ERROR 5432 [-/127.0.0.1/-/143ms GET /api/getStuRatingHistory?student_id=1&course_id=3] nodejs.ER_PARSE_ERRORError: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''3') b
+        where datediff(a.update_time, b.update_time)=0 and b.id > a.id)' at line 1
+        where datediff(a.update_time, b.update_time)=0 and b.id > a.id)' at line 1
+    at Query.Sequence._packetToError (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:607:20)
+    --------------------
+    at Pool.query (D:\GitHub\egg_server\node_modules\mysql\lib\Pool.js:199:23)
+    at D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (D:\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (D:\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    at onFulfilled (D:\GitHub\egg_server\node_modules\co\index.js:65:19)
+    at D:\GitHub\egg_server\node_modules\co\index.js:54:5
+    at new Promise (<anonymous>)
+    at RDSClient.co (D:\GitHub\egg_server\node_modules\co\index.js:50:10)
+    at RDSClient.createPromise [as query] (D:\GitHub\egg_server\node_modules\co\index.js:30:15)
+    at RatingService.getStuRatingHistory (D:\GitHub\egg_server\app\service\rating.js:42:42)
+    at StudentController.getStuRatingHistory (D:\GitHub\egg_server\app\controller\student.js:237:50)
+    at Object.callFn (D:\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    sql: SELECT a.update_time ,a.student_rating from
+        (SELECT s.* from student_rating_history s where s.student_id = '1' and s.course_id = '3') a where not EXISTS
+        (select 1 from (SELECT s.* from student_rating_history s where s.student_id = '1', s.course_id = '3') b
+        where datediff(a.update_time, b.update_time)=0 and b.id > a.id);
+code: 'ER_PARSE_ERROR'
+errno: 1064
+sqlMessage: 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'3\') b\n        where datediff(a.update_time, b.update_time)=0 and b.id > a.id)\' at line 1'
+sqlState: '42000'
+index: 0
+sql: 'SELECT a.update_time ,a.student_rating from\n        (SELECT s.* from student_rating_history s where s.student_id = \'1\' and s.course_id = \'3\') a where not EXISTS\n        (select 1 from (SELECT s.* from student_rating_history s where s.student_id = \'1\', s.course_id = \'3\') b\n        where datediff(a.update_time, b.update_time)=0 and b.id > a.id);'
+headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
+name: 'ER_PARSE_ERRORError'
+pid: 5432
+hostname: USER-D8STTK4RDA
+
+2018-08-13 00:43:19,920 ERROR 8372 [-/127.0.0.1/-/175ms GET /api/getStuRatingHistory?student_id=1&course_id=3] nodejs.ER_PARSE_ERRORError: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''3') b
+        where datediff(a.update_time, b.update_time)=0 and b.id > a.id)' at line 1
+        where datediff(a.update_time, b.update_time)=0 and b.id > a.id)' at line 1
+    at Query.Sequence._packetToError (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Query.ErrorPacket (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+    at Protocol._parsePacket (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:607:20)
+    --------------------
+    at Pool.query (D:\GitHub\egg_server\node_modules\mysql\lib\Pool.js:199:23)
+    at D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (D:\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (D:\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    at onFulfilled (D:\GitHub\egg_server\node_modules\co\index.js:65:19)
+    at D:\GitHub\egg_server\node_modules\co\index.js:54:5
+    at new Promise (<anonymous>)
+    at RDSClient.co (D:\GitHub\egg_server\node_modules\co\index.js:50:10)
+    at RDSClient.createPromise [as query] (D:\GitHub\egg_server\node_modules\co\index.js:30:15)
+    at RatingService.getStuRatingHistory (D:\GitHub\egg_server\app\service\rating.js:42:42)
+    at StudentController.getStuRatingHistory (D:\GitHub\egg_server\app\controller\student.js:237:50)
+    at Object.callFn (D:\GitHub\egg_server\node_modules\egg-core\lib\utils\index.js:36:21)
+    sql: SELECT a.update_time ,a.student_rating from
+        (SELECT s.* from student_rating_history s where s.student_id = '1' and s.course_id = '3') a where not EXISTS
+        (select 1 from (SELECT s.* from student_rating_history s where s.student_id = '1', s.course_id = '3') b
+        where datediff(a.update_time, b.update_time)=0 and b.id > a.id)
+code: 'ER_PARSE_ERROR'
+errno: 1064
+sqlMessage: 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\'3\') b\n        where datediff(a.update_time, b.update_time)=0 and b.id > a.id)\' at line 1'
+sqlState: '42000'
+index: 0
+sql: 'SELECT a.update_time ,a.student_rating from\n        (SELECT s.* from student_rating_history s where s.student_id = \'1\' and s.course_id = \'3\') a where not EXISTS\n        (select 1 from (SELECT s.* from student_rating_history s where s.student_id = \'1\', s.course_id = \'3\') b\n        where datediff(a.update_time, b.update_time)=0 and b.id > a.id)'
+headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
+name: 'ER_PARSE_ERRORError'
+pid: 8372
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:29:41,830 ERROR 468 [-/127.0.0.1/-/411ms POST /api/getTestStatus] nodejs.ReferenceError: test is not defined
+    at statusService.getTestStatusBytestid (D:\GitHub\egg_server\app\service\status.js:58:20)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:30:15,932 ERROR 468 [-/127.0.0.1/-/123ms POST /api/getTestStatus] nodejs.ReferenceError: test is not defined
+    at statusService.getTestStatusBytestid (D:\GitHub\egg_server\app\service\status.js:58:20)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:32:31,770 ERROR 468 [-/127.0.0.1/-/135ms POST /api/getTestStatus] nodejs.ReferenceError: test is not defined
+    at statusService.getTestStatusBytestid (D:\GitHub\egg_server\app\service\status.js:58:20)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:51:11,515 ERROR 6692 nodejs.ClusterClientNoResponseError: client no response in 568657ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (D:\GitHub\egg_server\node_modules\cluster-client\lib\leader.js:74:23)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+name: 'ClusterClientNoResponseError'
+pid: 6692
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:51:18,957 ERROR 468 nodejs.ECONNRESETError: read ECONNRESET
+    at _errnoException (util.js:1022:11)
+    at TCP.onread (net.js:628:25)
+code: 'ECONNRESET'
+errno: 'ECONNRESET'
+syscall: 'read'
+name: 'ECONNRESETError'
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:51:29,025 ERROR 468 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
     at Object.onceWrapper (events.js:313:30)
     at emitNone (events.js:106:13)
     at Socket.emit (events.js:208:7)
@@ -30,6 +171,104 @@ errorno: 'ETIMEDOUT'
 code: 'ETIMEDOUT'
 syscall: 'connect'
 name: 'ETIMEDOUTError'
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:51:39,135 ERROR 468 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:51:49,297 ERROR 468 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:51:59,522 ERROR 468 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:52:09,791 ERROR 468 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:52:20,106 ERROR 468 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:52:30,478 ERROR 468 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+>>>>>>> 0fda95db8953d367a838b95d93086ad42858610b
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+<<<<<<< HEAD
 pid: 6204
 hostname: USER-D8STTK4RDA
 
@@ -186,6 +425,3529 @@ pid: 6204
 hostname: USER-D8STTK4RDA
 
 2018-08-19 21:34:36,939 ERROR 6204 nodejs.ENETUNREACHError: connect ENETUNREACH 119.23.41.237:6379
+=======
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:52:40,902 ERROR 468 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:52:51,379 ERROR 468 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:53:01,907 ERROR 468 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:53:12,498 ERROR 468 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:53:23,137 ERROR 468 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:53:33,797 ERROR 468 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:53:34,088 ERROR 468 [-/127.0.0.1/-/10026ms GET /api/getMyTestData?test_id=82&student_id=1] nodejs.PROTOCOL_SEQUENCE_TIMEOUTError: Handshake inactivity timeout
+    at Handshake.<anonymous> (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:164:17)
+    at emitNone (events.js:106:13)
+    at Handshake.emit (events.js:208:7)
+    at Handshake._onTimeout (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:129:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+    --------------------
+    at Protocol._enqueue (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (D:\GitHub\egg_server\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (D:\GitHub\egg_server\node_modules\mysql\lib\Pool.js:48:16)
+    at D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at Pool.query (D:\GitHub\egg_server\node_modules\mysql\lib\Pool.js:202:8)
+    at D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (D:\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (D:\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: select t.*, tt.test_type, tt.test_config, tt.test_name from test_log t, teacher_test tt where t.student_id = '1' and tt.test_id = t.test_id and t.test_id = '82';
+code: 'PROTOCOL_SEQUENCE_TIMEOUT'
+fatal: true
+timeout: 10000
+headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
+name: 'PROTOCOL_SEQUENCE_TIMEOUTError'
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:53:34,130 ERROR 468 nodejs.unhandledRejectionError: Handshake inactivity timeout
+    at Handshake.<anonymous> (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:164:17)
+    at emitNone (events.js:106:13)
+    at Handshake.emit (events.js:208:7)
+    at Handshake._onTimeout (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:129:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+    --------------------
+    at Protocol._enqueue (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (D:\GitHub\egg_server\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (D:\GitHub\egg_server\node_modules\mysql\lib\Pool.js:48:16)
+    at D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at Pool.query (D:\GitHub\egg_server\node_modules\mysql\lib\Pool.js:202:8)
+    at D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (D:\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (D:\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: select count(*) as size from exercise_test et where et.test_id = '82'
+code: 'PROTOCOL_SEQUENCE_TIMEOUT'
+fatal: true
+timeout: 10000
+name: 'unhandledRejectionError'
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:53:34,212 ERROR 468 [-/127.0.0.1/-/10083ms POST /api/getTestRankingList] nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at PoolConnection.Connection._handleConnectTimeout (D:\GitHub\egg_server\node_modules\mysql\lib\Connection.js:419:13)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+    --------------------
+    at Protocol._enqueue (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (D:\GitHub\egg_server\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (D:\GitHub\egg_server\node_modules\mysql\lib\Pool.js:48:16)
+    at D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at Pool.query (D:\GitHub\egg_server\node_modules\mysql\lib\Pool.js:202:8)
+    at D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (D:\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (D:\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: SELECT s.`finish_time` ,s.`start_time`,timestampdiff(SECOND,s.start_time,s.finish_time) as time_consuming,s.`correct_exercise`,s.`total_exercise` ,g.`student_name` from `test_log` s ,group_student g where s.`test_id` = '82' and g.`student_id` = s.`student_id` and s.`correct_exercise` is not null and s.`finish_time` is not null ORDER BY correct_exercise DESC LIMIT 7;
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+fatal: true
+headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
+name: 'ETIMEDOUTError'
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:53:34,222 ERROR 468 [-/127.0.0.1/-/10082ms POST /api/getMyTestStatus] nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at PoolConnection.Connection._handleConnectTimeout (D:\GitHub\egg_server\node_modules\mysql\lib\Connection.js:419:13)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+    --------------------
+    at Protocol._enqueue (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (D:\GitHub\egg_server\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (D:\GitHub\egg_server\node_modules\mysql\lib\Pool.js:48:16)
+    at D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at Pool.query (D:\GitHub\egg_server\node_modules\mysql\lib\Pool.js:202:8)
+    at D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (D:\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (D:\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: select b.kpid, kt.kpname, sk.kp_rating, sk.practice, sk.correct from exercise_test t, 
+                exercise e, kptable kt, breakdown b LEFT JOIN (select * from student_kp where student_id = 1)
+                 as sk on sk.kpid = b.kpid where t.test_id = '82' and t.exercise_id = e.exercise_id 
+                 and e.exercise_id = b.exercise_id and kt.kpid = b.kpid;
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+fatal: true
+headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
+name: 'ETIMEDOUTError'
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:53:34,239 ERROR 468 [-/127.0.0.1/-/10139ms POST /api/getTestStatus] nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at PoolConnection.Connection._handleConnectTimeout (D:\GitHub\egg_server\node_modules\mysql\lib\Connection.js:419:13)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+    --------------------
+    at Protocol._enqueue (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (D:\GitHub\egg_server\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (D:\GitHub\egg_server\node_modules\mysql\lib\Pool.js:48:16)
+    at D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at Pool.query (D:\GitHub\egg_server\node_modules\mysql\lib\Pool.js:202:8)
+    at D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (D:\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (D:\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: select tl.*,timestampdiff(SECOND,tl.start_time,tl.finish_time) as time_consuming from test_log tl where tl.test_id = '82';
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+fatal: true
+headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
+name: 'ETIMEDOUTError'
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:53:44,506 ERROR 468 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 468
+hostname: USER-D8STTK4RDA
+
+2018-08-16 16:55:57,587 ERROR 952 [-/127.0.0.1/-/389ms POST /api/getTestStatus] nodejs.ReferenceError: test is not defined
+    at statusService.getTestStatusBytestid (D:\GitHub\egg_server\app\service\status.js:58:20)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:03,569 ERROR 952 nodejs.ECONNRESETError: read ECONNRESET
+    at _errnoException (util.js:1022:11)
+    at TCP.onread (net.js:628:25)
+code: 'ECONNRESET'
+errno: 'ECONNRESET'
+syscall: 'read'
+name: 'ECONNRESETError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:04,697 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:05,818 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:06,983 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:08,189 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:09,503 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:10,812 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:12,170 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:13,576 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:15,038 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:16,612 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:18,171 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:19,792 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:21,474 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:23,210 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:24,998 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:26,824 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:28,683 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:30,608 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:32,627 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:34,765 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:36,821 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:38,925 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:41,168 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:43,382 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:45,669 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:48,031 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:50,515 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:52,989 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:55,453 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:24:57,996 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:25:00,581 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:25:03,246 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:25:05,904 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:25:08,616 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:25:11,413 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:25:14,251 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:25:17,214 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:25:20,140 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:25:23,114 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:25:26,137 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:25:29,146 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:25:32,168 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:25:35,246 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:25:38,362 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:25:41,461 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:25:44,553 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:25:47,577 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:25:50,618 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:25:53,624 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:25:56,701 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:25:59,705 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:26:02,784 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:26:05,792 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:26:08,813 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:26:11,834 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:26:14,869 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:26:17,902 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:26:20,913 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:26:23,920 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:26:27,008 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:26:30,024 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:26:33,048 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:26:36,070 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:26:39,084 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:26:42,127 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:26:45,169 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:26:48,205 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:26:51,211 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:26:54,243 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:26:57,265 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:27:00,349 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:27:03,365 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:27:06,430 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:27:09,446 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:27:12,464 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:27:15,514 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:27:18,606 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:27:21,708 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:27:24,962 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:27:27,987 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:27:31,013 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:27:34,047 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:27:37,098 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:27:40,144 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:27:43,198 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:27:46,413 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:27:49,451 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:27:52,527 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:27:55,553 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:27:58,570 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:28:01,578 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:28:04,624 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:28:07,637 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:28:10,652 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:28:13,663 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:28:16,680 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:28:19,699 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:28:22,719 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:28:25,738 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:28:28,761 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:28:31,772 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:28:34,788 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:28:37,798 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:28:40,835 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:28:43,856 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:28:46,889 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:28:49,906 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:28:52,918 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:28:55,928 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:28:58,951 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:29:01,958 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:29:04,968 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:29:07,983 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:29:11,005 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:29:14,017 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:29:17,040 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:29:20,064 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:29:23,099 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:29:26,113 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:29:29,131 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:29:32,145 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:29:35,159 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:29:38,195 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:29:41,204 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:29:44,255 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:29:47,263 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:29:50,282 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:29:53,289 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:29:56,315 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:29:59,332 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:30:02,347 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:30:05,372 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:30:08,383 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:30:11,390 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:30:14,400 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:30:17,419 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:30:20,438 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:30:23,457 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:30:26,462 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:30:29,486 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:30:32,515 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:30:35,523 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:30:38,555 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:30:41,661 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:30:44,674 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:30:47,689 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:30:50,708 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:30:53,724 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:30:56,730 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:30:59,741 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:31:02,760 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:31:05,774 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:31:08,782 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:31:11,795 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:31:14,954 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:31:17,962 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:31:20,993 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:31:24,005 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:31:27,026 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:31:30,043 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:31:33,061 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:31:36,091 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:31:39,109 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:31:42,124 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:31:45,135 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:31:48,158 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:31:51,166 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:31:54,201 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:31:57,212 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:32:00,241 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:32:03,261 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:32:06,274 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:32:09,289 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:32:12,311 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:32:15,416 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:32:18,519 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:32:21,612 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:32:24,629 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:32:27,638 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:32:30,646 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:32:33,658 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:32:36,681 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:32:39,723 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:32:42,756 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:32:45,785 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:32:48,800 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:32:51,825 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:32:54,840 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:32:57,842 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:33:00,863 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:33:03,910 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:33:06,947 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:33:09,955 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:33:13,030 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:33:16,057 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:33:19,095 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:33:22,134 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:33:25,154 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:33:28,165 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:33:31,195 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:33:34,280 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:33:37,308 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:33:40,327 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:33:43,339 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:33:46,376 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:33:49,543 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:33:52,744 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:33:55,751 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:33:58,779 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:34:01,890 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:34:04,916 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:34:07,949 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:34:10,959 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:34:14,004 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:34:17,005 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:34:20,027 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:34:23,045 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:34:26,256 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:34:29,275 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:34:32,283 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:34:35,295 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:34:38,318 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:34:41,364 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:34:44,387 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:34:47,406 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:34:50,436 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:34:53,492 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:34:56,569 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:34:59,587 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:35:02,604 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:35:05,615 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:35:08,624 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:35:11,650 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:35:14,662 ERROR 952 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNREFUSEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:35:16,724 ERROR 952 nodejs.EHOSTUNREACHError: connect EHOSTUNREACH 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'EHOSTUNREACH'
+errno: 'EHOSTUNREACH'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'EHOSTUNREACHError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:35:18,743 ERROR 952 nodejs.EHOSTUNREACHError: connect EHOSTUNREACH 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'EHOSTUNREACH'
+errno: 'EHOSTUNREACH'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'EHOSTUNREACHError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:35:30,762 ERROR 952 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:35:42,769 ERROR 952 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:35:54,783 ERROR 952 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:36:06,798 ERROR 952 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:36:18,803 ERROR 952 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:36:30,811 ERROR 952 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:36:42,818 ERROR 952 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (D:\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:36:54,248 ERROR 952 nodejs.ECONNABORTEDError: connect ECONNABORTED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNABORTED'
+errno: 'ECONNABORTED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNABORTEDError'
+pid: 952
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:43:11,541 ERROR 6060 [-/127.0.0.1/-/360ms POST /api/getTestStatus] nodejs.ReferenceError: test is not defined
+    at statusService.getTestStatusBytestid (D:\GitHub\egg_server\app\service\status.js:58:20)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
+pid: 6060
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:43:46,343 ERROR 8872 [-/127.0.0.1/-/352ms POST /api/getTestStatus] nodejs.ReferenceError: testsize is not defined
+    at statusService.getTestStatusBytestid (D:\GitHub\egg_server\app\service\status.js:69:51)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
+pid: 8872
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:53:33,708 ERROR 8912 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+>>>>>>> 0fda95db8953d367a838b95d93086ad42858610b
     at Object._errnoException (util.js:1022:11)
     at _exceptionWithHostPort (util.js:1044:20)
     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
@@ -194,11 +3956,19 @@ errno: 'ENETUNREACH'
 syscall: 'connect'
 address: '119.23.41.237'
 port: 6379
+<<<<<<< HEAD
 name: 'ENETUNREACHError'
 pid: 6204
 hostname: USER-D8STTK4RDA
 
 2018-08-19 21:34:37,644 ERROR 6204 nodejs.ENETUNREACHError: connect ENETUNREACH 119.23.41.237:6379
+=======
+name: 'ECONNREFUSEDError'
+pid: 8912
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:53:34,769 ERROR 8912 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+>>>>>>> 0fda95db8953d367a838b95d93086ad42858610b
     at Object._errnoException (util.js:1022:11)
     at _exceptionWithHostPort (util.js:1044:20)
     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
@@ -207,11 +3977,19 @@ errno: 'ENETUNREACH'
 syscall: 'connect'
 address: '119.23.41.237'
 port: 6379
+<<<<<<< HEAD
 name: 'ENETUNREACHError'
 pid: 6204
 hostname: USER-D8STTK4RDA
 
 2018-08-19 21:34:38,400 ERROR 6204 nodejs.ENETUNREACHError: connect ENETUNREACH 119.23.41.237:6379
+=======
+name: 'ECONNREFUSEDError'
+pid: 8912
+hostname: USER-D8STTK4RDA
+
+2018-08-16 17:53:35,989 ERROR 8912 nodejs.ECONNREFUSEDError: connect ECONNREFUSED 119.23.41.237:6379
+>>>>>>> 0fda95db8953d367a838b95d93086ad42858610b
     at Object._errnoException (util.js:1022:11)
     at _exceptionWithHostPort (util.js:1044:20)
     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
@@ -220,7 +3998,12 @@ errno: 'ENETUNREACH'
 syscall: 'connect'
 address: '119.23.41.237'
 port: 6379
+<<<<<<< HEAD
 name: 'ENETUNREACHError'
 pid: 6204
+=======
+name: 'ECONNREFUSEDError'
+pid: 8912
+>>>>>>> 0fda95db8953d367a838b95d93086ad42858610b
 hostname: USER-D8STTK4RDA
 

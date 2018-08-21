@@ -1,24 +1,8 @@
+
 const Service = require('egg').Service;
 
 class statusService extends Service {
-
-  async getMyLadderScore(student_id){
-    const res = await this.app.mysql.query('select t.student_rating from student_rating t where t.student_id = ? ORDER BY update_time DESC LIMIT 1', student_id);
-    return res;    
-  }
-
   
-
-  async getChapterStatus(student_id,chapter_id) {
-
-    const res = await this.app.mysql.query('select k.kpid, k.kpname, ks.kp_standard ,sk.kp_rating, '
-    +'sk.practice, sk.correct from chapter c, '
-    +'kptable k LEFT JOIN kp_standard ks on ks.kpid = k.kpid LEFT JOIN student_kp sk on k.kpid = sk.kpid and sk.student_id = ? '
-    +'where c.chapterid = ? and k.chapterid = c.chapterid;'
-    , [student_id,chapter_id]);
-
-    return res;
-  }
 
   async getTestKpReward(student_id, test_id){
 
@@ -54,14 +38,6 @@ class statusService extends Service {
     });
   }
 
-
-  async getTestSize(test_id){
-    const res = await this.app.mysql.query('select count(*) as size from exercise_test et where et.test_id = ?;'
-    , test_id);
-
-    return res;
-  }
-
   async getTestStatus(test_id){
     const res = await this.app.mysql.query('select tl.*,timestampdiff(SECOND,tl.start_time,tl.finish_time) '
     +'as time_consuming from test_log tl where tl.test_id = ?;'
@@ -72,14 +48,13 @@ class statusService extends Service {
 
   async getTestStatusBytestid(test_id){
 
-    const test = await this.getTestSize(test_id);
+    const test_size =await this.app.mysql.query('select count(*) as size from exercise_test et where et.test_id = ?', test_id);
     const test_log = await this.getTestStatus(test_id);
 
     console.log("getTestStatus test_log:"+JSON.stringify(test_log));
     var accurracy = 0;//总答对数量
     var bingo = 0;
     var test_submit = 0;
-    var testsize = test[0].size;
     var time_sum = 0;
     for(var i = 0; i < test_log.length; i++){
         accurracy += test_log[i].correct_exercise;//一共对了多少题
@@ -91,7 +66,7 @@ class statusService extends Service {
             bingo++;
         }
     }
-    const avg_accurracy = (accurracy/(test_submit*testsize))? (accurracy/(test_submit*testsize)).toFixed(1) : 0;
+    const avg_accurracy = (accurracy/(test_submit*test_size))? (accurracy/(test_submit*testsize)).toFixed(1) : 0;
     const avg_timeconsuming = Math.round(time_sum/test_submit);
 
     return({
@@ -102,7 +77,7 @@ class statusService extends Service {
             test_submit: test_submit,
             bingo: bingo,
             avg_timeconsuming: avg_timeconsuming,
-            test_size: testsize//test中的题目个数
+            test_size: test_size//test中的题目个数
         }
     });
 
@@ -122,8 +97,7 @@ class statusService extends Service {
   async getAlltestProfile(student_id){
     var sql1 = "select count(*) as c from exercise_log l where l.student_id = ?";
     var sql2 = "select count(*) as c from exercise_log l where l.student_id = ? and l.exercise_state = 1";
-    var sql3 = "select t.student_rating from student_rating t where t.student_id = ? ORDER BY update_time DESC LIMIT 1";
-    var sql = sql1+';'+sql2+';'+sql3+';';
+    var sql = sql1+';'+sql2+';';
 
     const res = await this.app.mysql.query(sql, [student_id,student_id,student_id]);
     return res;
@@ -149,16 +123,17 @@ class statusService extends Service {
     return res;
   }
 
-  async getStuAbility(student_id){
+  async getStuAbility(student_id, course_id){
 
     var capatity = [];
 
     const res_all = await this.getAlltestProfile(student_id);
+    const rating = this.service.rating.getStudentRating(student_id, course_id);
     var group1 = {
         key : '1',
         exercount : res_all[0][0].c,   //做过的题目总数
         rate : ((res_all[1][0].c/res_all[0][0].c)*100).toFixed(1),  //总正确率
-        ladderscore : res_all[2][0].student_rating,  //最新的天梯分
+        ladderscore : await rating,  //最新的天梯分
     };
     capatity.push(group1);
 
@@ -184,37 +159,6 @@ class statusService extends Service {
     return capatity;
   }
 
-  //根据student_id 获取所有时间节点天梯分变化情况
-  async getLadderChangeWithTime(student_id){
-    const res = await this.app.mysql.query('SELECT a.`update_time` ,a.student_rating from '
-    +'(SELECT s.* from student_rating s where s.`student_id` = ? ) a where not EXISTS '
-    +'(select 1 from (SELECT s.* from student_rating s where s.`student_id` = ?) b '
-    +'where datediff(a.update_time,b.update_time)=0 and b.id>a.id);'
-    , [student_id,student_id]);
-
-    return res;
-  }
-
-  // //根据学生id,kpid  获取kpid各时间节点天梯分变化情况
-  // async getKpLadderChange(student_id,kpid){
-  //   const res = await this.app.mysql.query('select a.update_time ,a.kp_rating from '
-  //   +'(SELECT s.* from student_kp_history s where s.student_id = ? and s.kpid=?) a '
-  //   +'where not EXISTS (select 1 from (SELECT s.*  from student_kp_history s '
-  //   +'where s.student_id = ? and s.kpid=?) b where datediff(a.update_time,b.update_time)=0 and b.logid>a.logid);'
-  //   , [student_id,kpid,student_id,kpid]);
-
-  //   return res;
-  // }
-
-  // //根据学生id,kpid 获取学生知识点能力综合概况（天梯分，正确率，练习次数）
-  // async getKpAbility(student_id,kpid){
-  //   const res = await this.app.mysql.query('select s.`kp_rating` , s.`practice` , s.`correct`,k.kpname,'
-  //   +'c.chaptername  from `student_kp` s,kptable k,`chapter` c where s.`student_id` =?'
-  //   +' and s.`kpid` = ? and  s.kpid=k.kpid and k.chapterid=c.chapterid;'
-  //   , [student_id,kpid]);
-
-  //   return res;
-  // }
 
   //根据student_id 获取最常训练到的知识点（3个）
   async getStuComUsedKp(student_id){

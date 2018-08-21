@@ -95,7 +95,7 @@ class EntryExerController extends Controller {
 
         for(let i = 0;i < body.sample_list.length; i++){
             let item = body.sample_list[i];
-            reply = await service.exercise.updateOneSample(item,item.exercise_id,item.sample_index);
+            reply = await service.sample.updateOneSample(item,item.exercise_id,item.sample_index);
         }
 
         this.ctx.body = reply;
@@ -124,7 +124,7 @@ class EntryExerController extends Controller {
         const { ctx, service } = this;
         const {body} = ctx.request;
         console.log("body :"+JSON.stringify(body));
-        const reply = await service.exercise.updateSample(body.sample_list);
+        const reply = await service.sample.updateSample(body.sample_list);
 
         this.ctx.body = reply;
               

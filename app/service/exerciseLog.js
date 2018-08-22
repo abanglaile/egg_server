@@ -41,14 +41,21 @@ class ExerciseLogService extends Service {
         return exercise_log;
     }
 
-    async getMyTestStatus(student_id,test_id) {
-        var sql = `select b.kpid, kt.kpname, sk.kp_rating, sk.practice, sk.correct from exercise_test t, 
-                exercise e, kptable kt, breakdown b LEFT JOIN (select * from student_kp where student_id = ?)
-                 as sk on sk.kpid = b.kpid where t.test_id = ? and t.exercise_id = e.exercise_id 
-                 and e.exercise_id = b.exercise_id and kt.kpid = b.kpid;`;
-        const results = await this.app.mysql.query(sql, [student_id,test_id]);
+    async getMyTestStatus(student_id, test_id) {
+        const test_kp = this.app.mysql.query(`select b.kpid, kt.kpname, sk.kp_rating, sk.practice, sk.correct from exercise_test t, 
+        exercise e, kptable kt, breakdown b LEFT JOIN (select * from student_kp where student_id = ?)
+         as sk on sk.kpid = b.kpid where t.test_id = ? and t.exercise_id = e.exercise_id 
+         and e.exercise_id = b.exercise_id and kt.kpid = b.kpid`, [student_id,test_id]);
 
-        return ({test_kp : results});
+        const test_log = this.service.testLog.getTestLog(student_id, test_id);
+        const exercise_log = this.app.mysql.query(`select et.*, el.exercise_state from exercise_test et left join exercise_log el
+            on et.exercise_id = el.exercise_id and el.student_id = ? where et.test_id = ? order by et.exercise_index`, 
+            [student_id, test_id]); 
+        return {
+            test_kp: await test_kp,
+            test_log: await test_log,
+            exercise_log: await exercise_log,
+        };
     }
 
     async submitExerciseLog(exercise_log) {

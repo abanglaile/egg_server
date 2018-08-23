@@ -22,45 +22,6 @@ class statusService extends Service {
     });
   }
 
-  async getTestStatus(test_id){
-    const res = await this.app.mysql.query('select tl.*,timestampdiff(SECOND,tl.start_time,tl.finish_time) '
-    +'as time_consuming from test_log tl where tl.test_id = ?;'
-    , test_id);
-
-    return res;
-  }
-
-  async getTestStatusBytestid(test_id){      
-    const test_log = await this.getTestStatus(test_id);
-    const test_size = test_log[0].total_exercise;
-    console.log("getTestStatus test_log:"+JSON.stringify(test_log));
-    var accurracy = 0;//总答对数量
-    var bingo = 0;
-    var test_submit = 0;
-    var time_sum = 0;
-    for(var i = 0; i < test_log.length; i++){
-        accurracy += test_log[i].correct_exercise;//一共对了多少题
-        if(test_log[i].finish_time){
-            test_submit++;
-            time_sum = time_sum+test_log[i].time_consuming;
-        }
-        if(test_log[i].test_state == 100){
-            bingo++;
-        }
-    }
-    const avg_accurracy = (accurracy/(test_submit*test_size))? (accurracy/(test_submit*test_size)).toFixed(1) : 0;
-    const avg_timeconsuming = Math.round(time_sum/test_submit);
-
-    return {
-        avg_accurracy: avg_accurracy,//平均答对的题目数
-        test_students: test_log.length,
-        test_submit: test_submit,
-        bingo: bingo,
-        avg_timeconsuming: avg_timeconsuming,
-    };
-
-  }
-
   //根据student_id 获取综合概况能力数据(全部题目情况)
   async getAlltestProfile(student_id){
     var sql1 = "select count(*) as c from exercise_log l where l.student_id = ?";

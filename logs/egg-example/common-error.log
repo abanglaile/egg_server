@@ -1830,3 +1830,11 @@ name: 'ER_BAD_FIELD_ERRORError'
 pid: 8668
 hostname: USER-D8STTK4RDA
 
+2018-08-23 15:07:43,674 ERROR 5040 [-/127.0.0.1/-/201ms GET /api/getMyTestData?test_id=131&student_id=1] nodejs.ReferenceError: test_log_r is not defined
+    at ExerciseLogService.getMyTestData (D:\GitHub\egg_server\app\service\exerciseLog.js:265:21)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
+pid: 5040
+hostname: USER-D8STTK4RDA
+

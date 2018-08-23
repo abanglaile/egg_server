@@ -42,20 +42,16 @@ class ExerciseLogService extends Service {
     }
 
     async getMyTestStatus(student_id, test_id) {
-        const test_kp = this.app.mysql.query(`select b.kpid, kt.kpname, sk.kp_rating, sk.practice, sk.correct from exercise_test t, 
+        const test_kp = await this.app.mysql.query(`select b.kpid, kt.kpname, sk.kp_rating, sk.practice, sk.correct from exercise_test t, 
         exercise e, kptable kt, breakdown b LEFT JOIN student_kp sk on sk.kpid = b.kpid and student_id = ?
         where t.test_id = ? and t.exercise_id = e.exercise_id 
         and e.exercise_id = b.exercise_id and kt.kpid = b.kpid`, [student_id,test_id]);
 
-        const test_log = this.service.testLog.getTestLog(student_id, test_id);
-        const exercise_log = this.app.mysql.query(`select et.*, el.exercise_state from exercise_test et left join exercise_log el
-            on et.exercise_id = el.exercise_id and el.student_id = ? where et.test_id = ? order by et.exercise_index`, 
-            [student_id, test_id]); 
-        return {
-            test_kp: await test_kp,
-            test_log: await test_log,
-            exercise_log: await exercise_log,
-        };
+        // const test_log = this.service.testLog.getTestLog(student_id, test_id);
+        // const exercise_log = this.app.mysql.query(`select et.*, el.exercise_state from exercise_test et left join exercise_log el
+        //     on et.exercise_id = el.exercise_id and el.student_id = ? where et.test_id = ? order by et.exercise_index`, 
+        //     [student_id, test_id]); 
+        return test_kp;
     }
 
     async submitExerciseLog(exercise_log) {
@@ -266,7 +262,6 @@ class ExerciseLogService extends Service {
 
     async getMyTestData(test_id, student_id){
         const test_log = await this.service.testLog.getTestLog(student_id, test_id);
-        console.log(test_log_r);
 
         if(!test_log.start_time){
             test_log.start_time = new Date();

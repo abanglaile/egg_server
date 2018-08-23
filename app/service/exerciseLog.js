@@ -43,9 +43,9 @@ class ExerciseLogService extends Service {
 
     async getMyTestStatus(student_id, test_id) {
         const test_kp = this.app.mysql.query(`select b.kpid, kt.kpname, sk.kp_rating, sk.practice, sk.correct from exercise_test t, 
-        exercise e, kptable kt, breakdown b LEFT JOIN (select * from student_kp where student_id = ?)
-         as sk on sk.kpid = b.kpid where t.test_id = ? and t.exercise_id = e.exercise_id 
-         and e.exercise_id = b.exercise_id and kt.kpid = b.kpid`, [student_id,test_id]);
+        exercise e, kptable kt, breakdown b LEFT JOIN student_kp sk on sk.kpid = b.kpid and student_id = ?
+        where t.test_id = ? and t.exercise_id = e.exercise_id 
+        and e.exercise_id = b.exercise_id and kt.kpid = b.kpid`, [student_id,test_id]);
 
         const test_log = this.service.testLog.getTestLog(student_id, test_id);
         const exercise_log = this.app.mysql.query(`select et.*, el.exercise_state from exercise_test et left join exercise_log el
@@ -265,8 +265,7 @@ class ExerciseLogService extends Service {
     // }
 
     async getMyTestData(test_id, student_id){
-        const test_log_r = await this.service.testLog.getTestLog(student_id, test_id);
-        var test_log = test_log_r[0];
+        const test_log = await this.service.testLog.getTestLog(student_id, test_id);
         console.log(test_log_r);
 
         if(!test_log.start_time){

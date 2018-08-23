@@ -174,7 +174,7 @@ class StudentController extends Controller {
         const { ctx, service } = this;
         const {body} = ctx.request;
         if(body.test_id){
-            const results = await service.status.getTestRankingList(body.test_id);
+            const results = await service.testLog.getTestRankingList(body.test_id);
             console.log(results);
             
             this.ctx.body = results;

@@ -37,7 +37,19 @@ class TestLogService extends Service {
         +'from test_log t, teacher_test tt where t.student_id = ? and tt.test_id = t.test_id and t.test_id = ?;'
         , [student_id, test_id]);
 
+        return res[0];
+    }
+
+    async getTestRankingList(test_id){
+        const res = await this.app.mysql.query(`SELECT s.finish_time, s.start_time,
+        timestampdiff(SECOND, s.start_time, s.finish_time) as time_consuming,
+        s.correct_exercise, s.total_exercise, u.realname from test_log s,
+        users u where s.test_id = ? and s.student_id = u.userid and 
+        s.correct_exercise is not null and s.finish_time is not null ORDER BY correct_exercise DESC LIMIT 7`
+        , test_id);
+        
         return res;
     }
+
 }
 module.exports = TestLogService;

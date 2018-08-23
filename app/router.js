@@ -69,7 +69,7 @@ module.exports = app => {
   router.get('/api/getStuRatingHistory', controller.student.getStuRatingHistory);
 
   router.get('/api/getTestRatingReward', controller.student.getTestRatingReward);
-  router.post('/api/getTestStatus',controller.student.getTestStatus);
-  router.post('/api/getTestRankingList',controller.student.getTestRankingList);
+  router.post('/api/getTestStatus', controller.student.getTestStatus);
+  router.post('/api/getTestRankingList', controller.student.getTestRankingList);
   
 };

@@ -30,11 +30,9 @@ class statusService extends Service {
     return res;
   }
 
-  async getTestStatusBytestid(test_id){
-
-    const test_size =await this.app.mysql.query('select count(*) as size from exercise_test et where et.test_id = ?', test_id);
+  async getTestStatusBytestid(test_id){      
     const test_log = await this.getTestStatus(test_id);
-
+    const test_size = test_log[0].total_exercise;
     console.log("getTestStatus test_log:"+JSON.stringify(test_log));
     var accurracy = 0;//总答对数量
     var bingo = 0;
@@ -50,33 +48,19 @@ class statusService extends Service {
             bingo++;
         }
     }
-    const avg_accurracy = (accurracy/(test_submit*test_size))? (accurracy/(test_submit*testsize)).toFixed(1) : 0;
+    const avg_accurracy = (accurracy/(test_submit*test_size))? (accurracy/(test_submit*test_size)).toFixed(1) : 0;
     const avg_timeconsuming = Math.round(time_sum/test_submit);
 
-    return({
-        test_status: {
-            // test_name: test[0][0].test_name,
-            avg_accurracy: avg_accurracy,//平均答对的题目数
-            test_students: test_log.length,
-            test_submit: test_submit,
-            bingo: bingo,
-            avg_timeconsuming: avg_timeconsuming,
-            test_size: test_size//test中的题目个数
-        }
-    });
+    return {
+        avg_accurracy: avg_accurracy,//平均答对的题目数
+        test_students: test_log.length,
+        test_submit: test_submit,
+        bingo: bingo,
+        avg_timeconsuming: avg_timeconsuming,
+    };
 
   }
 
-  async getTestRankingList(test_id){
-    const res = await this.app.mysql.query('SELECT s.`finish_time` ,s.`start_time`,'
-    +'timestampdiff(SECOND,s.start_time,s.finish_time) as time_consuming,'
-    +'s.`correct_exercise`,s.`total_exercise` ,g.`student_name` from `test_log` s ,'
-    +'group_student g where s.`test_id` = ? and g.`student_id` = s.`student_id` and '
-    +'s.`correct_exercise` is not null and s.`finish_time` is not null ORDER BY correct_exercise DESC LIMIT 7;'
-    , test_id);
-
-    return res;
-  }
   //根据student_id 获取综合概况能力数据(全部题目情况)
   async getAlltestProfile(student_id){
     var sql1 = "select count(*) as c from exercise_log l where l.student_id = ?";

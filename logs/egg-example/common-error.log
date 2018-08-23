@@ -2017,3 +2017,221 @@ name: 'ECONNREFUSEDError'
 pid: 10208
 hostname: USER-D8STTK4RDA
 
+2018-08-23 17:20:13,537 ERROR 12100 nodejs.ClusterClientNoResponseError: client no response in 78075ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (D:\GitHub\egg_server\node_modules\cluster-client\lib\leader.js:74:23)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+name: 'ClusterClientNoResponseError'
+pid: 12100
+hostname: USER-D8STTK4RDA
+
+2018-08-23 17:20:41,628 ERROR 1840 [-/127.0.0.1/-/23952ms GET /api/getMyBookChapter?student_id=1&course_id=3] nodejs.PROTOCOL_SEQUENCE_TIMEOUTError: Handshake inactivity timeout
+    at Handshake.<anonymous> (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:164:17)
+    at emitNone (events.js:106:13)
+    at Handshake.emit (events.js:208:7)
+    at Handshake._onTimeout (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:129:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+    --------------------
+    at Protocol._enqueue (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (D:\GitHub\egg_server\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (D:\GitHub\egg_server\node_modules\mysql\lib\Pool.js:48:16)
+    at D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at Pool.query (D:\GitHub\egg_server\node_modules\mysql\lib\Pool.js:202:8)
+    at D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (D:\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (D:\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: select b.bookid, b.bookname, c.chapterid, c.chaptername, sc.chapter_rating, cs.chapter_standard 
+            from book b, 
+            chapter c left join student_chapter sc on sc.chapterid = c.chapterid and sc.student_id = '1' 
+                    left join chapter_standard cs on c.chapterid = cs.chapterid
+            where b.course_id = '3' and c.bookid = b.bookid ORDER BY chindex
+code: 'PROTOCOL_SEQUENCE_TIMEOUT'
+fatal: true
+timeout: 10000
+headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
+name: 'PROTOCOL_SEQUENCE_TIMEOUTError'
+pid: 1840
+hostname: USER-D8STTK4RDA
+
+2018-08-23 17:20:41,650 ERROR 1840 [-/127.0.0.1/-/15282ms GET /api/getCourse] nodejs.PROTOCOL_SEQUENCE_TIMEOUTError: Handshake inactivity timeout
+    at Handshake.<anonymous> (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:164:17)
+    at emitNone (events.js:106:13)
+    at Handshake.emit (events.js:208:7)
+    at Handshake._onTimeout (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:129:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+    --------------------
+    at Protocol._enqueue (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (D:\GitHub\egg_server\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (D:\GitHub\egg_server\node_modules\mysql\lib\Pool.js:48:16)
+    at D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at Pool.query (D:\GitHub\egg_server\node_modules\mysql\lib\Pool.js:202:8)
+    at D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (D:\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (D:\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: SELECT * FROM `course`
+code: 'PROTOCOL_SEQUENCE_TIMEOUT'
+fatal: true
+timeout: 10000
+headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
+name: 'PROTOCOL_SEQUENCE_TIMEOUTError'
+pid: 1840
+hostname: USER-D8STTK4RDA
+
+2018-08-23 17:20:41,655 ERROR 1840 [-/127.0.0.1/-/24097ms GET /api/getMyStudentRating?student_id=1&course_id=3] nodejs.PROTOCOL_SEQUENCE_TIMEOUTError: Handshake inactivity timeout
+    at Handshake.<anonymous> (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:164:17)
+    at emitNone (events.js:106:13)
+    at Handshake.emit (events.js:208:7)
+    at Handshake._onTimeout (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:129:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+    --------------------
+    at Protocol._enqueue (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (D:\GitHub\egg_server\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (D:\GitHub\egg_server\node_modules\mysql\lib\Pool.js:48:16)
+    at D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at Pool.query (D:\GitHub\egg_server\node_modules\mysql\lib\Pool.js:202:8)
+    at D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (D:\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (D:\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: SELECT * FROM `student_rating` WHERE `student_id` = '1' AND `course_id` = '3' LIMIT 0, 1
+code: 'PROTOCOL_SEQUENCE_TIMEOUT'
+fatal: true
+timeout: 10000
+headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
+name: 'PROTOCOL_SEQUENCE_TIMEOUTError'
+pid: 1840
+hostname: USER-D8STTK4RDA
+
+2018-08-23 17:22:13,547 ERROR 12100 nodejs.ClusterClientNoResponseError: client no response in 67137ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (D:\GitHub\egg_server\node_modules\cluster-client\lib\leader.js:74:23)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+name: 'ClusterClientNoResponseError'
+pid: 12100
+hostname: USER-D8STTK4RDA
+
+2018-08-23 17:27:01,141 ERROR 1840 nodejs.ECONNABORTEDError: write ECONNABORTED (address: 127.0.0.1:50669)
+    at _errnoException (util.js:1022:11)
+    at Socket._writeGeneric (net.js:780:25)
+    at Socket._write (net.js:799:8)
+    at doWrite (_stream_writable.js:397:12)
+    at writeOrBuffer (_stream_writable.js:383:5)
+    at Socket.Writable.write (_stream_writable.js:290:11)
+    at Socket.write (net.js:717:40)
+    at Follower.sendHeartBeat (D:\GitHub\egg_server\node_modules\tcp-base\lib\base.js:105:18)
+    at Timeout._heartbeatTimer.setInterval [as _onTimeout] (D:\GitHub\egg_server\node_modules\tcp-base\lib\base.js:437:12)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+code: 'ECONNABORTED'
+errno: 'ECONNABORTED'
+syscall: 'write'
+name: 'ECONNABORTEDError'
+pid: 1840
+hostname: USER-D8STTK4RDA
+
+2018-08-23 17:27:12,431 ERROR 1840 [-/undefined/-/11190ms GET /api/getMyBookChapter?student_id=1&course_id=3] nodejs.PROTOCOL_SEQUENCE_TIMEOUTError: Handshake inactivity timeout
+    at Handshake.<anonymous> (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:164:17)
+    at emitNone (events.js:106:13)
+    at Handshake.emit (events.js:208:7)
+    at Handshake._onTimeout (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:129:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+    --------------------
+    at Protocol._enqueue (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (D:\GitHub\egg_server\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (D:\GitHub\egg_server\node_modules\mysql\lib\Pool.js:48:16)
+    at D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at Pool.query (D:\GitHub\egg_server\node_modules\mysql\lib\Pool.js:202:8)
+    at D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (D:\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (D:\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: select b.bookid, b.bookname, c.chapterid, c.chaptername, sc.chapter_rating, cs.chapter_standard 
+            from book b, 
+            chapter c left join student_chapter sc on sc.chapterid = c.chapterid and sc.student_id = '1' 
+                    left join chapter_standard cs on c.chapterid = cs.chapterid
+            where b.course_id = '3' and c.bookid = b.bookid ORDER BY chindex
+code: 'PROTOCOL_SEQUENCE_TIMEOUT'
+fatal: true
+timeout: 10000
+headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
+headerSent: true
+name: 'PROTOCOL_SEQUENCE_TIMEOUTError'
+pid: 1840
+hostname: USER-D8STTK4RDA
+
+2018-08-23 17:27:12,441 ERROR 1840 [-/undefined/-/11238ms GET /api/getCourse] nodejs.PROTOCOL_SEQUENCE_TIMEOUTError: Handshake inactivity timeout
+    at Handshake.<anonymous> (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:164:17)
+    at emitNone (events.js:106:13)
+    at Handshake.emit (events.js:208:7)
+    at Handshake._onTimeout (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:129:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+    --------------------
+    at Protocol._enqueue (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (D:\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (D:\GitHub\egg_server\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (D:\GitHub\egg_server\node_modules\mysql\lib\Pool.js:48:16)
+    at D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at Pool.query (D:\GitHub\egg_server\node_modules\mysql\lib\Pool.js:202:8)
+    at D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (D:\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (D:\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (D:\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: SELECT * FROM `course`
+code: 'PROTOCOL_SEQUENCE_TIMEOUT'
+fatal: true
+timeout: 10000
+headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
+headerSent: true
+name: 'PROTOCOL_SEQUENCE_TIMEOUTError'
+pid: 1840
+hostname: USER-D8STTK4RDA
+

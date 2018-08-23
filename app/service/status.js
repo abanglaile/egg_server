@@ -4,7 +4,6 @@ const Service = require('egg').Service;
 class statusService extends Service {
 
   async getTestRatingReward(student_id, test_id){
-
     let stu_r = this.app.mysql.query(`SELECT sum(el.delta_student_rating) as delta_student_rating,
      el.old_student_rating FROM exercise_log el where el.student_id = ? and el.test_id = ?`
     , [student_id,test_id]);

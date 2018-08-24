@@ -101,8 +101,8 @@ class statusService extends Service {
 
     
     const poorkp = await this.app.mysql.query(`select bl.kpid, count(bl.logid) as count, kt.kpname, sk.kp_rating  
-    from (select logid from exercise_log where student_id = ? order by logid desc limit 50) el
-    ,breakdown_log bl left join kptable kt on kt.kpid = bl.kpid 
+    , ks.kp_standard from (select logid from exercise_log where student_id = ? order by logid desc limit 50) el
+    ,breakdown_log bl left join kptable kt on kt.kpid = bl.kpid left join kp_standard ks on ks.kpid = bl.kpid 
     left join student_kp sk on sk.student_id = ? and sk.kpid = bl.kpid
     where bl.logid = el.logid and sn_state = 0 
     group by bl.kpid order by count(bl.logid) desc limit 3`

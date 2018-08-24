@@ -56,12 +56,12 @@ class statusService extends Service {
     var capatity = [];
 
     const res_all = await this.getAlltestProfile(student_id);
-    const rating = this.service.rating.getStudentRating(student_id, course_id);
+    const rating = await this.service.rating.getStudentRating(student_id, course_id);
     var group1 = {
         key : '1',
         exercount : res_all[0][0].c,   //做过的题目总数
         rate : ((res_all[1][0].c/res_all[0][0].c)*100).toFixed(1),  //总正确率
-        ladderscore : await rating,  //最新的天梯分
+        ladderscore : rating,  //最新的天梯分
     };
     capatity.push(group1);
 
@@ -101,8 +101,8 @@ class statusService extends Service {
 
     
     const poorkp = await this.app.mysql.query(`select bl.kpid, count(bl.logid) as count, kt.kpname, sk.kp_rating  
-    from (select logid from exercise_log where student_id = ? order by logid desc limit 50) el
-    ,breakdown_log bl left join kptable kt on kt.kpid = bl.kpid 
+    , ks.kp_standard from (select logid from exercise_log where student_id = ? order by logid desc limit 50) el
+    ,breakdown_log bl left join kptable kt on kt.kpid = bl.kpid left join kp_standard ks on ks.kpid = bl.kpid 
     left join student_kp sk on sk.student_id = ? and sk.kpid = bl.kpid
     where bl.logid = el.logid and sn_state = 0 
     group by bl.kpid order by count(bl.logid) desc limit 3`

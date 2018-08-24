@@ -3803,3 +3803,67 @@ name: 'ECONNABORTEDError'
 pid: 13556
 hostname: USER-D8STTK4RDA
 
+2018-08-24 15:00:23,923 ERROR 13812 nodejs.ClusterClientNoResponseError: client no response in 77491ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\cluster-client\lib\leader.js:74:23)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+name: 'ClusterClientNoResponseError'
+pid: 13812
+hostname: USER-D8STTK4RDA
+
+2018-08-24 14:59:06,444 ERROR 12656 [-/172.20.10.3/-/25190ms GET /api/getStuRatingHistory?student_id=1&course_id=3] nodejs.PROTOCOL_SEQUENCE_TIMEOUTError: Handshake inactivity timeout
+    at Handshake.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:164:17)
+    at emitNone (events.js:106:13)
+    at Handshake.emit (events.js:208:7)
+    at Handshake._onTimeout (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:129:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+    --------------------
+    at Protocol._enqueue (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: SELECT a.update_time ,a.student_rating from
+        (SELECT s.* from student_rating_history s where s.student_id = '1' and s.course_id = '3') a 
+        where not EXISTS (select 1 from (SELECT s.* from student_rating_history s where s.student_id = '1' and s.course_id = '3') b 
+        where datediff(a.update_time, b.update_time)=0 and b.id > a.id)
+code: 'PROTOCOL_SEQUENCE_TIMEOUT'
+fatal: true
+timeout: 10000
+headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
+name: 'PROTOCOL_SEQUENCE_TIMEOUTError'
+pid: 12656
+hostname: USER-D8STTK4RDA
+
+2018-08-24 15:12:42,718 ERROR 9884 A client (undefined:NaN) error [ECONNRESET] occurred: read ECONNRESET
+2018-08-24 15:12:42,863 ERROR 9884 [-/undefined/-/57911ms GET /api/getStuAbility?student_id=1&course_id=1] nodejs.TypeError: Cannot read property 'student_rating' of null
+    at RatingService.getStudentRating (C:\Users\Administrator\Documents\GitHub\egg_server\app\service\rating.js:36:20)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
+headerSent: true
+pid: 9884
+hostname: USER-D8STTK4RDA
+
+2018-08-24 15:25:04,951 ERROR 12260 [-/172.20.10.3/-/242ms GET /api/getStuAbility?student_id=1&course_id=1] nodejs.TypeError: Cannot read property 'student_rating' of null
+    at RatingService.getStudentRating (C:\Users\Administrator\Documents\GitHub\egg_server\app\service\rating.js:36:20)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
+pid: 12260
+hostname: USER-D8STTK4RDA
+

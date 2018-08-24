@@ -33,7 +33,7 @@ class RatingService extends Service {
 
     async getStudentRating(student_id, course_id){
         const res = await this.app.mysql.get('student_rating', {student_id: student_id, course_id: course_id});
-        return res;     
+        return (res ? res.student_rating : null);     
     }
 
     //根据student_id, course_id获取所有时间节点天梯分变化情况

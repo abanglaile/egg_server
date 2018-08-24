@@ -209,7 +209,7 @@ class StudentController extends Controller {
         const { ctx, service } = this;
         const {query} = ctx.request;
         if(query.student_id){
-            const results = await service.status.getStuAbility(query.student_id);
+            const results = await service.status.getStuAbility(query.student_id,  query.course_id);
             console.log(results);
             
             this.ctx.body = results;

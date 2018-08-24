@@ -56,12 +56,12 @@ class statusService extends Service {
     var capatity = [];
 
     const res_all = await this.getAlltestProfile(student_id);
-    const rating = this.service.rating.getStudentRating(student_id, course_id);
+    const rating = await this.service.rating.getStudentRating(student_id, course_id);
     var group1 = {
         key : '1',
         exercount : res_all[0][0].c,   //做过的题目总数
         rate : ((res_all[1][0].c/res_all[0][0].c)*100).toFixed(1),  //总正确率
-        ladderscore : await rating,  //最新的天梯分
+        ladderscore : rating,  //最新的天梯分
     };
     capatity.push(group1);
 

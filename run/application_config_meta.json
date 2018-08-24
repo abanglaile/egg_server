@@ -1,288 +1,288 @@
 {
   "security": {
     "csrf": {
-      "enable": "D:\\GitHub\\egg_server\\config\\config.default.js",
-      "useSession": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
-      "ignoreJSON": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
-      "cookieName": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
-      "sessionName": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
-      "headerName": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
-      "bodyName": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
-      "queryName": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
+      "enable": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\config.default.js",
+      "useSession": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
+      "ignoreJSON": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
+      "cookieName": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
+      "sessionName": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
+      "headerName": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
+      "bodyName": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
+      "queryName": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
     },
-    "domainWhiteList": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
-    "protocolWhiteList": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
-    "defaultMiddleware": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
+    "domainWhiteList": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
+    "protocolWhiteList": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
+    "defaultMiddleware": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
     "xframe": {
-      "enable": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
-      "value": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
+      "enable": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
     },
     "hsts": {
-      "enable": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.local.js",
-      "maxAge": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
-      "includeSubdomains": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
+      "enable": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.local.js",
+      "maxAge": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
+      "includeSubdomains": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
     },
     "dta": {
-      "enable": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
+      "enable": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
     },
     "methodnoallow": {
-      "enable": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
+      "enable": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
     },
     "noopen": {
-      "enable": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
+      "enable": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
     },
     "nosniff": {
-      "enable": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
+      "enable": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
     },
     "referrerPolicy": {
-      "enable": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
-      "value": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
+      "enable": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
     },
     "xssProtection": {
-      "enable": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
-      "value": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
+      "enable": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
     },
     "csp": {
-      "enable": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
-      "policy": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
+      "enable": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
+      "policy": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
     },
     "ssrf": {
-      "ipBlackList": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
-      "checkAddress": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
+      "ipBlackList": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js",
+      "checkAddress": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
     }
   },
   "cors": {
-    "origin": "D:\\GitHub\\egg_server\\config\\config.default.js",
-    "allowMethods": "D:\\GitHub\\egg_server\\config\\config.default.js",
-    "allowHeaders": "D:\\GitHub\\egg_server\\config\\config.default.js",
-    "credentials": "D:\\GitHub\\egg_server\\config\\config.default.js"
+    "origin": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\config.default.js",
+    "allowMethods": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\config.default.js",
+    "allowHeaders": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\config.default.js",
+    "credentials": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\config.default.js"
   },
-  "keys": "D:\\GitHub\\egg_server\\config\\config.default.js",
+  "keys": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\config.default.js",
   "mysql": {
     "client": {
-      "host": "D:\\GitHub\\egg_server\\config\\config.default.js",
-      "user": "D:\\GitHub\\egg_server\\config\\config.default.js",
-      "port": "D:\\GitHub\\egg_server\\config\\config.default.js",
-      "password": "D:\\GitHub\\egg_server\\config\\config.default.js",
-      "database": "D:\\GitHub\\egg_server\\config\\config.default.js",
-      "multipleStatements": "D:\\GitHub\\egg_server\\config\\config.default.js"
+      "host": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\config.default.js",
+      "user": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\config.default.js",
+      "port": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\config.default.js",
+      "password": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\config.default.js",
+      "database": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\config.default.js",
+      "multipleStatements": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\config.default.js"
     },
-    "app": "D:\\GitHub\\egg_server\\config\\config.default.js",
-    "agent": "D:\\GitHub\\egg_server\\config\\config.default.js",
+    "app": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\config.default.js",
+    "agent": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\config.default.js",
     "default": {
-      "database": "D:\\GitHub\\egg_server\\node_modules\\egg-mysql\\config\\config.default.js",
-      "connectionLimit": "D:\\GitHub\\egg_server\\node_modules\\egg-mysql\\config\\config.default.js"
+      "database": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-mysql\\config\\config.default.js",
+      "connectionLimit": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-mysql\\config\\config.default.js"
     }
   },
   "redis": {
     "client": {
-      "port": "D:\\GitHub\\egg_server\\config\\config.default.js",
-      "host": "D:\\GitHub\\egg_server\\config\\config.default.js",
-      "password": "D:\\GitHub\\egg_server\\config\\config.default.js",
-      "db": "D:\\GitHub\\egg_server\\config\\config.default.js"
+      "port": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\config.default.js",
+      "host": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\config.default.js",
+      "password": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\config.default.js",
+      "db": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\config.default.js"
     },
-    "default": "D:\\GitHub\\egg_server\\node_modules\\egg-redis\\config\\config.default.js",
-    "app": "D:\\GitHub\\egg_server\\node_modules\\egg-redis\\config\\config.default.js",
-    "agent": "D:\\GitHub\\egg_server\\node_modules\\egg-redis\\config\\config.default.js"
+    "default": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-redis\\config\\config.default.js",
+    "app": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-redis\\config\\config.default.js",
+    "agent": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-redis\\config\\config.default.js"
   },
   "session": {
-    "maxAge": "D:\\GitHub\\egg_server\\node_modules\\egg-session\\config\\config.default.js",
-    "key": "D:\\GitHub\\egg_server\\node_modules\\egg-session\\config\\config.default.js",
-    "httpOnly": "D:\\GitHub\\egg_server\\node_modules\\egg-session\\config\\config.default.js",
-    "encrypt": "D:\\GitHub\\egg_server\\node_modules\\egg-session\\config\\config.default.js"
+    "maxAge": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-session\\config\\config.default.js",
+    "key": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-session\\config\\config.default.js",
+    "httpOnly": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-session\\config\\config.default.js",
+    "encrypt": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-session\\config\\config.default.js"
   },
   "helper": {
-    "shtml": "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
+    "shtml": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\config.default.js"
   },
   "jsonp": {
-    "limit": "D:\\GitHub\\egg_server\\node_modules\\egg-jsonp\\config\\config.default.js",
-    "callback": "D:\\GitHub\\egg_server\\node_modules\\egg-jsonp\\config\\config.default.js",
-    "csrf": "D:\\GitHub\\egg_server\\node_modules\\egg-jsonp\\config\\config.default.js"
+    "limit": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-jsonp\\config\\config.default.js",
+    "callback": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-jsonp\\config\\config.default.js",
+    "csrf": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-jsonp\\config\\config.default.js"
   },
   "onerror": {
-    "errorPageUrl": "D:\\GitHub\\egg_server\\node_modules\\egg-onerror\\config\\config.default.js",
-    "appErrorFilter": "D:\\GitHub\\egg_server\\node_modules\\egg-onerror\\config\\config.default.js"
+    "errorPageUrl": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-onerror\\config\\config.default.js",
+    "appErrorFilter": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-onerror\\config\\config.default.js"
   },
   "i18n": {
-    "defaultLocale": "D:\\GitHub\\egg_server\\node_modules\\egg-i18n\\config\\config.default.js",
-    "dirs": "D:\\GitHub\\egg_server\\node_modules\\egg-i18n\\config\\config.default.js",
-    "queryField": "D:\\GitHub\\egg_server\\node_modules\\egg-i18n\\config\\config.default.js",
-    "cookieField": "D:\\GitHub\\egg_server\\node_modules\\egg-i18n\\config\\config.default.js",
-    "cookieMaxAge": "D:\\GitHub\\egg_server\\node_modules\\egg-i18n\\config\\config.default.js"
+    "defaultLocale": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-i18n\\config\\config.default.js",
+    "dirs": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-i18n\\config\\config.default.js",
+    "queryField": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieField": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieMaxAge": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-i18n\\config\\config.default.js"
   },
   "watcher": {
-    "type": "D:\\GitHub\\egg_server\\node_modules\\egg-watcher\\config\\config.local.js",
+    "type": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-watcher\\config\\config.local.js",
     "eventSources": {
-      "default": "D:\\GitHub\\egg_server\\node_modules\\egg-watcher\\config\\config.default.js",
-      "development": "D:\\GitHub\\egg_server\\node_modules\\egg-watcher\\config\\config.default.js"
+      "default": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-watcher\\config\\config.default.js",
+      "development": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-watcher\\config\\config.default.js"
     }
   },
   "multipart": {
-    "autoFields": "D:\\GitHub\\egg_server\\node_modules\\egg-multipart\\config\\config.default.js",
-    "defaultCharset": "D:\\GitHub\\egg_server\\node_modules\\egg-multipart\\config\\config.default.js",
-    "fieldNameSize": "D:\\GitHub\\egg_server\\node_modules\\egg-multipart\\config\\config.default.js",
-    "fieldSize": "D:\\GitHub\\egg_server\\node_modules\\egg-multipart\\config\\config.default.js",
-    "fields": "D:\\GitHub\\egg_server\\node_modules\\egg-multipart\\config\\config.default.js",
-    "fileSize": "D:\\GitHub\\egg_server\\node_modules\\egg-multipart\\config\\config.default.js",
-    "files": "D:\\GitHub\\egg_server\\node_modules\\egg-multipart\\config\\config.default.js",
-    "fileExtensions": "D:\\GitHub\\egg_server\\node_modules\\egg-multipart\\config\\config.default.js",
-    "whitelist": "D:\\GitHub\\egg_server\\node_modules\\egg-multipart\\config\\config.default.js"
+    "autoFields": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-multipart\\config\\config.default.js",
+    "defaultCharset": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fieldNameSize": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fieldSize": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fields": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fileSize": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-multipart\\config\\config.default.js",
+    "files": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fileExtensions": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-multipart\\config\\config.default.js",
+    "whitelist": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-multipart\\config\\config.default.js"
   },
   "development": {
-    "watchDirs": "D:\\GitHub\\egg_server\\node_modules\\egg-development\\config\\config.default.js",
-    "ignoreDirs": "D:\\GitHub\\egg_server\\node_modules\\egg-development\\config\\config.default.js",
-    "fastReady": "D:\\GitHub\\egg_server\\node_modules\\egg-development\\config\\config.default.js",
-    "reloadOnDebug": "D:\\GitHub\\egg_server\\node_modules\\egg-development\\config\\config.default.js",
-    "overrideDefault": "D:\\GitHub\\egg_server\\node_modules\\egg-development\\config\\config.default.js"
+    "watchDirs": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-development\\config\\config.default.js",
+    "ignoreDirs": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-development\\config\\config.default.js",
+    "fastReady": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-development\\config\\config.default.js",
+    "reloadOnDebug": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-development\\config\\config.default.js",
+    "overrideDefault": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-development\\config\\config.default.js"
   },
   "customLogger": {
     "scheduleLogger": {
-      "consoleLevel": "D:\\GitHub\\egg_server\\node_modules\\egg-schedule\\config\\config.default.js",
-      "file": "D:\\GitHub\\egg_server\\node_modules\\egg-schedule\\config\\config.default.js"
+      "consoleLevel": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-schedule\\config\\config.default.js",
+      "file": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-schedule\\config\\config.default.js"
     }
   },
   "logrotator": {
-    "filesRotateByHour": "D:\\GitHub\\egg_server\\node_modules\\egg-logrotator\\config\\config.default.js",
-    "hourDelimiter": "D:\\GitHub\\egg_server\\node_modules\\egg-logrotator\\config\\config.default.js",
-    "filesRotateBySize": "D:\\GitHub\\egg_server\\node_modules\\egg-logrotator\\config\\config.default.js",
-    "maxFileSize": "D:\\GitHub\\egg_server\\node_modules\\egg-logrotator\\config\\config.default.js",
-    "maxFiles": "D:\\GitHub\\egg_server\\node_modules\\egg-logrotator\\config\\config.default.js",
-    "rotateDuration": "D:\\GitHub\\egg_server\\node_modules\\egg-logrotator\\config\\config.default.js",
-    "maxDays": "D:\\GitHub\\egg_server\\node_modules\\egg-logrotator\\config\\config.default.js"
+    "filesRotateByHour": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "hourDelimiter": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "filesRotateBySize": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxFileSize": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxFiles": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "rotateDuration": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxDays": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-logrotator\\config\\config.default.js"
   },
   "static": {
-    "prefix": "D:\\GitHub\\egg_server\\node_modules\\egg-static\\config\\config.default.js",
-    "dir": "D:\\GitHub\\egg_server\\node_modules\\egg-static\\config\\config.default.js",
-    "dynamic": "D:\\GitHub\\egg_server\\node_modules\\egg-static\\config\\config.default.js",
-    "preload": "D:\\GitHub\\egg_server\\node_modules\\egg-static\\config\\config.default.js",
-    "buffer": "D:\\GitHub\\egg_server\\node_modules\\egg-static\\config\\config.default.js",
-    "maxFiles": "D:\\GitHub\\egg_server\\node_modules\\egg-static\\config\\config.default.js"
+    "prefix": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-static\\config\\config.default.js",
+    "dir": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-static\\config\\config.default.js",
+    "dynamic": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-static\\config\\config.default.js",
+    "preload": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-static\\config\\config.default.js",
+    "buffer": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-static\\config\\config.default.js",
+    "maxFiles": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-static\\config\\config.default.js"
   },
   "view": {
-    "root": "D:\\GitHub\\egg_server\\node_modules\\egg-view\\config\\config.default.js",
-    "cache": "D:\\GitHub\\egg_server\\node_modules\\egg-view\\config\\config.local.js",
-    "defaultExtension": "D:\\GitHub\\egg_server\\node_modules\\egg-view\\config\\config.default.js",
-    "defaultViewEngine": "D:\\GitHub\\egg_server\\node_modules\\egg-view\\config\\config.default.js",
-    "mapping": "D:\\GitHub\\egg_server\\node_modules\\egg-view\\config\\config.default.js"
+    "root": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-view\\config\\config.default.js",
+    "cache": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-view\\config\\config.local.js",
+    "defaultExtension": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-view\\config\\config.default.js",
+    "defaultViewEngine": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-view\\config\\config.default.js",
+    "mapping": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-view\\config\\config.default.js"
   },
-  "passportLocal": "D:\\GitHub\\egg_server\\node_modules\\egg-passport-local\\config\\config.default.js",
-  "env": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-  "name": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-  "proxy": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-  "protocolHeaders": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-  "ipHeaders": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-  "hostHeaders": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+  "passportLocal": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-passport-local\\config\\config.default.js",
+  "env": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+  "name": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+  "proxy": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+  "protocolHeaders": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+  "ipHeaders": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+  "hostHeaders": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
   "pkg": {
-    "name": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "version": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "description": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "main": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "name": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "version": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "description": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "main": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
     "scripts": {
-      "debug": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-      "dev": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-      "start": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-      "stop": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
+      "debug": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+      "dev": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+      "start": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+      "stop": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
     },
-    "author": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "license": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "author": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "license": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
     "dependencies": {
-      "egg": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-      "egg-cors": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-      "egg-mysql": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-      "egg-passport": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-      "egg-passport-local": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-      "egg-redis": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-      "node-cmd": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-      "qiniu": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
+      "egg": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+      "egg-cors": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+      "egg-mysql": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+      "egg-passport": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+      "egg-passport-local": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+      "egg-redis": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+      "node-cmd": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+      "qiniu": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
     },
     "devDependencies": {
-      "egg-bin": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
+      "egg-bin": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
     }
   },
-  "baseDir": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-  "HOME": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-  "rundir": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+  "baseDir": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+  "HOME": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+  "rundir": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
   "dump": {
-    "ignore": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
+    "ignore": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
   },
   "confusedConfigurations": {
-    "bodyparser": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "notFound": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "sitefile": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "middlewares": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "httpClient": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
+    "bodyparser": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "notFound": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "sitefile": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "middlewares": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "httpClient": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
   },
   "notfound": {
-    "pageUrl": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
+    "pageUrl": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
   },
   "siteFile": {
-    "/favicon.ico": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
+    "/favicon.ico": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
   },
   "bodyParser": {
-    "enable": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "encoding": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "formLimit": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "jsonLimit": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "strict": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "enable": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "encoding": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "formLimit": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "jsonLimit": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "strict": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
     "queryString": {
-      "arrayLimit": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-      "depth": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-      "parameterLimit": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
+      "arrayLimit": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+      "depth": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+      "parameterLimit": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
     }
   },
   "logger": {
-    "dir": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "encoding": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "env": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "level": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "consoleLevel": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "disableConsoleAfterReady": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "outputJSON": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "buffer": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "appLogName": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "coreLogName": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "agentLogName": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "errorLogName": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "dir": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "encoding": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "env": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "level": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "consoleLevel": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "disableConsoleAfterReady": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "outputJSON": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "buffer": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "appLogName": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "coreLogName": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "agentLogName": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "errorLogName": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
     "coreLogger": {
-      "consoleLevel": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.local.js"
+      "consoleLevel": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.local.js"
     },
-    "allowDebugAtProd": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
+    "allowDebugAtProd": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
   },
   "httpclient": {
-    "enableDNSCache": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "dnsCacheMaxLength": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "dnsCacheMaxAge": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "enableDNSCache": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "dnsCacheMaxLength": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "dnsCacheMaxAge": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
     "request": {
-      "timeout": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
+      "timeout": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
     },
     "httpAgent": {
-      "keepAlive": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-      "freeSocketKeepAliveTimeout": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-      "maxSockets": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-      "maxFreeSockets": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
+      "keepAlive": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+      "freeSocketKeepAliveTimeout": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+      "maxSockets": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+      "maxFreeSockets": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
     },
     "httpsAgent": {
-      "keepAlive": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-      "freeSocketKeepAliveTimeout": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-      "maxSockets": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-      "maxFreeSockets": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
+      "keepAlive": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+      "freeSocketKeepAliveTimeout": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+      "maxSockets": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+      "maxFreeSockets": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
     }
   },
   "meta": {
-    "enable": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-    "logging": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
+    "enable": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+    "logging": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
   },
-  "coreMiddleware": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-  "workerStartTimeout": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+  "coreMiddleware": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+  "workerStartTimeout": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
   "cluster": {
     "listen": {
-      "path": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-      "port": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
-      "hostname": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+      "port": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js",
+      "hostname": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
     }
   },
   "clusterClient": {
-    "responseTimeout": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
+    "responseTimeout": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
   },
-  "onClientError": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
+  "onClientError": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\config.default.js"
 }

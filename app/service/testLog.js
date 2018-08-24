@@ -59,16 +59,17 @@ class TestLogService extends Service {
         var test_submit = 0;
         var time_sum = 0;
         for(var i = 0; i < test_log.length; i++){
-            accurracy += test_log[i].correct_exercise;//一共对了多少题
             if(test_log[i].finish_time){
+                accurracy += test_log[i].correct_exercise;//一共对了多少题
+                let time_consuming = test_log[i].finish_time - test_log[i].start_time;
                 test_submit++;
-                time_sum = time_sum+test_log[i].time_consuming;
+                time_sum = time_sum+time_consuming/1000;
             }
             if(test_log[i].test_state == 100){
                 bingo++;
             }
         }
-        const avg_accurracy = (accurracy/(test_submit*test_size))? (accurracy/(test_submit*test_size)).toFixed(1) : 0;
+        const avg_accurracy = (accurracy/(test_submit))? (accurracy/(test_submit)).toFixed(1) : 0;
         const avg_timeconsuming = Math.round(time_sum/test_submit);
     
         return {

@@ -87,25 +87,25 @@
     "i18n": {
       "defaultLocale": "en_US",
       "dirs": [
-        "D:\\GitHub\\egg_server\\node_modules\\egg-session\\config\\locales",
-        "D:\\GitHub\\egg_server\\node_modules\\egg-security\\config\\locales",
-        "D:\\GitHub\\egg_server\\node_modules\\egg-jsonp\\config\\locales",
-        "D:\\GitHub\\egg_server\\node_modules\\egg-onerror\\config\\locales",
-        "D:\\GitHub\\egg_server\\node_modules\\egg-i18n\\config\\locales",
-        "D:\\GitHub\\egg_server\\node_modules\\egg-watcher\\config\\locales",
-        "D:\\GitHub\\egg_server\\node_modules\\egg-multipart\\config\\locales",
-        "D:\\GitHub\\egg_server\\node_modules\\egg-development\\config\\locales",
-        "D:\\GitHub\\egg_server\\node_modules\\egg-schedule\\config\\locales",
-        "D:\\GitHub\\egg_server\\node_modules\\egg-logrotator\\config\\locales",
-        "D:\\GitHub\\egg_server\\node_modules\\egg-static\\config\\locales",
-        "D:\\GitHub\\egg_server\\node_modules\\egg-view\\config\\locales",
-        "D:\\GitHub\\egg_server\\node_modules\\egg-mysql\\config\\locales",
-        "D:\\GitHub\\egg_server\\node_modules\\egg-redis\\config\\locales",
-        "D:\\GitHub\\egg_server\\node_modules\\egg-cors\\config\\locales",
-        "D:\\GitHub\\egg_server\\node_modules\\egg-passport\\config\\locales",
-        "D:\\GitHub\\egg_server\\node_modules\\egg-passport-local\\config\\locales",
-        "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\locales",
-        "D:\\GitHub\\egg_server\\config\\locales"
+        "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-session\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-jsonp\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-onerror\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-i18n\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-watcher\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-multipart\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-development\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-schedule\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-logrotator\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-static\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-view\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-mysql\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-redis\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-cors\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-passport\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-passport-local\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\locales"
       ],
       "queryField": "locale",
       "cookieField": "locale",
@@ -115,8 +115,8 @@
     "watcher": {
       "type": "development",
       "eventSources": {
-        "default": "D:\\GitHub\\egg_server\\node_modules\\egg-watcher\\lib\\event-sources\\default",
-        "development": "D:\\GitHub\\egg_server\\node_modules\\egg-watcher\\lib\\event-sources\\development"
+        "default": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-watcher\\lib\\event-sources\\default",
+        "development": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-watcher\\lib\\event-sources\\development"
       }
     },
     "multipart": {
@@ -140,7 +140,7 @@
     "customLogger": {
       "scheduleLogger": {
         "consoleLevel": "NONE",
-        "file": "D:\\GitHub\\egg_server\\logs\\egg-example\\egg-schedule.log"
+        "file": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example\\egg-schedule.log"
       }
     },
     "logrotator": {
@@ -154,7 +154,7 @@
     },
     "static": {
       "prefix": "/public/",
-      "dir": "D:\\GitHub\\egg_server\\app\\public",
+      "dir": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\app\\public",
       "dynamic": true,
       "preload": false,
       "buffer": false,
@@ -162,7 +162,7 @@
       "files": "<LRU>"
     },
     "view": {
-      "root": "D:\\GitHub\\egg_server\\app\\view",
+      "root": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\app\\view",
       "cache": false,
       "defaultExtension": ".html",
       "defaultViewEngine": "",
@@ -238,9 +238,9 @@
         "egg-bin": "^4.7.0"
       }
     },
-    "baseDir": "D:\\GitHub\\egg_server",
+    "baseDir": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server",
     "HOME": "C:\\Users\\Administrator",
-    "rundir": "D:\\GitHub\\egg_server\\run",
+    "rundir": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\run",
     "dump": {
       "ignore": "<Set>"
     },
@@ -271,7 +271,7 @@
       "returnRawBody": true
     },
     "logger": {
-      "dir": "D:\\GitHub\\egg_server\\logs\\egg-example",
+      "dir": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\logs\\egg-example",
       "encoding": "utf8",
       "env": "local",
       "level": "INFO",
@@ -363,8 +363,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\GitHub\\egg_server\\node_modules\\egg-session",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-session",
       "version": "3.1.0"
     },
     "security": {
@@ -376,8 +376,8 @@
         "session"
       ],
       "env": [],
-      "from": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\GitHub\\egg_server\\node_modules\\egg-security",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-security",
       "version": "2.2.2"
     },
     "jsonp": {
@@ -389,8 +389,8 @@
         "security"
       ],
       "env": [],
-      "from": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\GitHub\\egg_server\\node_modules\\egg-jsonp",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-jsonp",
       "version": "2.0.0"
     },
     "onerror": {
@@ -402,8 +402,8 @@
         "jsonp"
       ],
       "env": [],
-      "from": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\GitHub\\egg_server\\node_modules\\egg-onerror",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-onerror",
       "version": "2.0.0"
     },
     "i18n": {
@@ -413,8 +413,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\GitHub\\egg_server\\node_modules\\egg-i18n",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-i18n",
       "version": "2.0.0"
     },
     "watcher": {
@@ -424,8 +424,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\GitHub\\egg_server\\node_modules\\egg-watcher",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-watcher",
       "version": "3.0.0"
     },
     "multipart": {
@@ -435,8 +435,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\GitHub\\egg_server\\node_modules\\egg-multipart",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-multipart",
       "version": "2.0.0"
     },
     "development": {
@@ -450,8 +450,8 @@
       "env": [
         "local"
       ],
-      "from": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\GitHub\\egg_server\\node_modules\\egg-development",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-development",
       "version": "2.2.0"
     },
     "schedule": {
@@ -461,8 +461,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\GitHub\\egg_server\\node_modules\\egg-schedule",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-schedule",
       "version": "3.3.0"
     },
     "logrotator": {
@@ -474,8 +474,8 @@
       ],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\GitHub\\egg_server\\node_modules\\egg-logrotator",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-logrotator",
       "version": "3.0.3"
     },
     "static": {
@@ -485,8 +485,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\GitHub\\egg_server\\node_modules\\egg-static",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-static",
       "version": "2.1.0"
     },
     "view": {
@@ -496,8 +496,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\GitHub\\egg_server\\node_modules\\egg-view",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-view",
       "version": "2.1.0"
     },
     "mysql": {
@@ -507,8 +507,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\GitHub\\egg_server\\config\\plugin.js",
-      "path": "D:\\GitHub\\egg_server\\node_modules\\egg-mysql",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-mysql",
       "version": "3.0.0"
     },
     "redis": {
@@ -518,8 +518,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\GitHub\\egg_server\\config\\plugin.js",
-      "path": "D:\\GitHub\\egg_server\\node_modules\\egg-redis",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-redis",
       "version": "2.0.0"
     },
     "cors": {
@@ -529,8 +529,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\GitHub\\egg_server\\config\\plugin.js",
-      "path": "D:\\GitHub\\egg_server\\node_modules\\egg-cors",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-cors",
       "version": "2.0.0"
     },
     "passport": {
@@ -542,8 +542,8 @@
       ],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\GitHub\\egg_server\\config\\plugin.js",
-      "path": "D:\\GitHub\\egg_server\\node_modules\\egg-passport",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-passport",
       "version": "2.0.1"
     },
     "passportLocal": {
@@ -555,8 +555,8 @@
       ],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\GitHub\\egg_server\\config\\plugin.js",
-      "path": "D:\\GitHub\\egg_server\\node_modules\\egg-passport-local",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\egg_server\\node_modules\\egg-passport-local",
       "version": "1.2.1"
     }
   }

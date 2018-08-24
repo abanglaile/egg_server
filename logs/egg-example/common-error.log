@@ -2235,3 +2235,1571 @@ name: 'PROTOCOL_SEQUENCE_TIMEOUTError'
 pid: 1840
 hostname: USER-D8STTK4RDA
 
+2018-08-24 11:32:57,797 ERROR 880 nodejs.ECONNRESETError: read ECONNRESET
+    at _errnoException (util.js:1022:11)
+    at TCP.onread (net.js:628:25)
+code: 'ECONNRESET'
+errno: 'ECONNRESET'
+syscall: 'read'
+name: 'ECONNRESETError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:33:07,869 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:33:17,978 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:33:28,137 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:33:38,347 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:33:48,605 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:33:58,907 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:34:09,265 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:34:19,672 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:34:30,128 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:34:40,636 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:34:51,192 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:35:01,799 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:35:12,461 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:35:23,168 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:35:33,928 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:35:44,736 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:35:55,596 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:36:06,510 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:36:17,467 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:36:28,477 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:36:39,532 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:36:50,639 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:37:01,798 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:37:13,005 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:37:24,264 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:37:35,572 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:37:46,929 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:37:58,352 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:38:09,810 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:38:21,318 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:38:32,876 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:38:44,496 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:38:56,156 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:39:07,861 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:39:19,622 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:39:31,427 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:39:43,286 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:39:55,191 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:40:07,146 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:40:19,156 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:40:31,160 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:40:43,165 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:40:55,169 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:41:07,174 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:41:19,179 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:41:31,184 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:41:43,191 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:41:55,196 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:42:07,201 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:42:19,204 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:42:31,211 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:42:43,222 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:42:55,227 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:43:07,233 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:43:19,241 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:43:31,244 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:43:43,256 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:43:55,261 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:44:07,270 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:44:19,278 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:44:31,284 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:44:43,296 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:44:55,302 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:45:07,307 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:45:19,317 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:45:31,335 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:45:43,342 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:45:55,347 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:46:07,355 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:46:19,361 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:46:31,380 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:46:43,387 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:46:55,395 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:47:07,400 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:47:19,416 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:47:31,424 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 11:47:43,439 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 12:14:58,534 ERROR 5464 nodejs.ClusterClientNoResponseError: client no response in 1635108ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\cluster-client\lib\leader.js:74:23)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+name: 'ClusterClientNoResponseError'
+pid: 5464
+hostname: USER-D8STTK4RDA
+
+2018-08-24 12:14:58,575 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 12:15:00,685 ERROR 880 nodejs.EHOSTUNREACHError: connect EHOSTUNREACH 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'EHOSTUNREACH'
+errno: 'EHOSTUNREACH'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'EHOSTUNREACHError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 12:15:12,917 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 12:15:24,920 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 12:15:36,922 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 12:15:48,923 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 12:16:00,931 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 12:16:12,931 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 12:16:24,937 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 12:16:36,941 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 12:16:48,946 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 12:17:00,957 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 12:17:12,974 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 12:17:24,990 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 12:17:36,982 ERROR 880 nodejs.ETIMEDOUTError: connect ETIMEDOUT
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ioredis\lib\redis.js:289:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Socket.emit (events.js:208:7)
+    at Socket._onTimeout (net.js:420:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+errorno: 'ETIMEDOUT'
+code: 'ETIMEDOUT'
+syscall: 'connect'
+name: 'ETIMEDOUTError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 12:17:43,137 ERROR 880 nodejs.ECONNABORTEDError: connect ECONNABORTED 119.23.41.237:6379
+    at Object._errnoException (util.js:1022:11)
+    at _exceptionWithHostPort (util.js:1044:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1198:14)
+code: 'ECONNABORTED'
+errno: 'ECONNABORTED'
+syscall: 'connect'
+address: '119.23.41.237'
+port: 6379
+name: 'ECONNABORTEDError'
+pid: 880
+hostname: USER-D8STTK4RDA
+
+2018-08-24 12:22:49,597 ERROR 13800 nodejs.ClusterClientNoResponseError: client no response in 78902ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\cluster-client\lib\leader.js:74:23)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+name: 'ClusterClientNoResponseError'
+pid: 13800
+hostname: USER-D8STTK4RDA
+
+2018-08-24 12:26:10,821 ERROR 13556 [-/172.20.10.3/-/272558ms POST /api/getTestRankingList] nodejs.PROTOCOL_SEQUENCE_TIMEOUTError: Handshake inactivity timeout
+    at Handshake.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:164:17)
+    at emitNone (events.js:106:13)
+    at Handshake.emit (events.js:208:7)
+    at Handshake._onTimeout (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\sequences\Sequence.js:129:8)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+    --------------------
+    at Protocol._enqueue (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: SELECT s.finish_time, s.start_time,
+        timestampdiff(SECOND, s.start_time, s.finish_time) as time_consuming,
+        s.correct_exercise, s.total_exercise, u.realname from test_log s,
+        users u where s.test_id = '124' and s.student_id = u.userid and 
+        s.correct_exercise is not null and s.finish_time is not null ORDER BY correct_exercise DESC LIMIT 7
+code: 'PROTOCOL_SEQUENCE_TIMEOUT'
+fatal: true
+timeout: 10000
+headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true' }
+name: 'PROTOCOL_SEQUENCE_TIMEOUTError'
+pid: 13556
+hostname: USER-D8STTK4RDA
+
+2018-08-24 12:26:10,884 ERROR 13556 nodejs.ECONNABORTEDError: write ECONNABORTED (address: 127.0.0.1:58298)
+    at _errnoException (util.js:1022:11)
+    at Socket._writeGeneric (net.js:780:25)
+    at Socket._write (net.js:799:8)
+    at doWrite (_stream_writable.js:397:12)
+    at writeOrBuffer (_stream_writable.js:383:5)
+    at Socket.Writable.write (_stream_writable.js:290:11)
+    at Socket.write (net.js:717:40)
+    at Follower.sendHeartBeat (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\tcp-base\lib\base.js:105:18)
+    at Timeout._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\egg_server\node_modules\tcp-base\lib\base.js:437:12)
+    at ontimeout (timers.js:482:11)
+    at tryOnTimeout (timers.js:317:5)
+    at Timer.listOnTimeout (timers.js:277:5)
+code: 'ECONNABORTED'
+errno: 'ECONNABORTED'
+syscall: 'write'
+name: 'ECONNABORTEDError'
+pid: 13556
+hostname: USER-D8STTK4RDA
+

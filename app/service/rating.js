@@ -47,12 +47,16 @@ class RatingService extends Service {
         return res;
     }
 
-    async getChapterKpStatus(student_id,chapter_id) {
-        let chapter_status = this.app.mysql.query(`select c.chaptername, sum(sk.practice) as practice, 
-        sum(sk.correct) as correct from chapter c, 
-        kptable k LEFT JOIN student_kp sk on k.kpid = sk.kpid and sk.student_id = ? 
-        where c.chapterid = ? and k.chapterid = c.chapterid;`
-        , [student_id,chapter_id]);
+    async getChapterKpStatus(student_id, chapter_id) {
+        let chapter_status = this.app.mysql.query(`select sc.chapter_rating, cs.chapter_standard, c.chaptername from chapter c
+        left join student_chapter sc on sc.student_id = ? and sc.chapterid = c.chapterid 
+        LEFT JOIN chapter_standard cs on c.chapterid = cs.chapterid where c.chapterid = ?`
+        , [student_id, chapter_id]);
+
+        let chapter_pratice = this.app.mysql.query(`select sum(sk.practice) as practice, 
+        sum(sk.correct) as correct from chapter c, kptable kt 
+        left join student_kp sk on sk.student_id = ? and kt.kpid = sk.kpid
+        where c.chapterid = kt.chapterid and c.chapterid = ?`, [student_id, chapter_id]);
 
         let kp_status = this.app.mysql.query('select k.kpid, k.kpname, ks.kp_standard ,sk.kp_rating, '
         +'sk.practice, sk.correct from chapter c, '
@@ -61,10 +65,15 @@ class RatingService extends Service {
         , [student_id,chapter_id]);
 
         chapter_status = await chapter_status;
+        chapter_pratice = await chapter_pratice;
 
         return {
             chapterid: chapter_id,
-            chapter_status: chapter_status[0],
+            chaptername: chapter_status[0].chaptername,
+            chapter_rating: chapter_status[0].chapter_rating,
+            chapter_standard: chapter_status[0].chapter_standard,
+            practice: chapter_pratice[0].practice,
+            correct: chapter_pratice[0].correct,
             kp_status: await kp_status,
         }
         //return res;

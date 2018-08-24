@@ -55,7 +55,7 @@ class StudentController extends Controller {
     async getChapterKpStatus(){
         const { ctx, service } = this;
         const {query} = ctx.request;
-        const results = await service.rating.getChapterKpStatus(query.student_id,query.chapter_id);
+        const results = await service.rating.getChapterKpStatus(query.student_id, query.chapter_id);
         console.log(results);
         
         this.ctx.body = results;

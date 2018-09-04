@@ -90,9 +90,9 @@ class RatingService extends Service {
 
     //根据学生id,kpid 获取学生知识点能力综合概况（天梯分，正确率，练习次数）
     async getKpAbility(student_id, kpid){
-        const res = await this.app.mysql.query('select s.`kp_rating` , s.`practice` , s.`correct`,k.kpname,'
-        +'c.chaptername  from `student_kp` s,kptable k,`chapter` c where s.`student_id` =?'
-        +' and s.`kpid` = ? and  s.kpid=k.kpid and k.chapterid=c.chapterid;'
+        const res = await this.app.mysql.query('select k.kpname,c.chaptername,s.`student_id`,'
+        +'s.`kp_rating` , s.`practice` ,s.`correct` from chapter c,kptable k left JOIN  student_kp s '
+        +'on k.kpid=s.kpid and s.`student_id` =?  where k.`kpid` = ? and k.chapterid = c.chapterid;'
         , [student_id,kpid]);
 
         return res[0];

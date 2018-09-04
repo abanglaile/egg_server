@@ -88,7 +88,7 @@ class bookchapterService extends Service {
 
 
   async getCourse() {
-    const res = await this.app.mysql.select('course');
+    const res = await this.app.mysql.select('course',{where : {course_id : 3}});
     return res;
   }
 

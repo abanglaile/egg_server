@@ -130,7 +130,7 @@ class StudentController extends Controller {
         const {query} = ctx.request;
         if(query.student_id && query.test_id){
             const results = await service.status.getTestRatingReward(query.student_id,query.test_id);
-            console.log(results);
+            console.log('getTestRatingReward: ',results);
             
             this.ctx.body = results;
         }

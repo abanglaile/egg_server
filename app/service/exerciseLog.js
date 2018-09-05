@@ -57,6 +57,7 @@ class ExerciseLogService extends Service {
 
     async submitExerciseLog(exercise_log) {
         const exercise_rating = exercise_log.old_exercise_rating;
+        const student_id = exercise_log.student_id;
         exercise_log.submit_time = new Date();
         let kp_exercise = await this.app.mysql.get('kp_exercise', {exercise_id: exercise_log.exercise_id});
         
@@ -277,6 +278,7 @@ class ExerciseLogService extends Service {
         }
 
         const exercise_list = await this.service.exercise.getTestExercise(test_id, student_id, test_log.finish_time);
+        // console.log("exercise_list: ",JSON.stringify(exercise_list));
         const exercise_log = await this.getTestExerciseLog(test_id, student_id);
 
         //统一初始化exercise_log
@@ -336,7 +338,7 @@ class ExerciseLogService extends Service {
                 exercise_log[i].breakdown_sn = breakdown_sn;
             }
         }
-        console.log("after exercise_log :"+ JSON.stringify(exercise_log));
+        // console.log("after exercise_log :"+ JSON.stringify(exercise_log));
 
         return({
             exercise: exercise,

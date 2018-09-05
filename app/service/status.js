@@ -8,6 +8,8 @@ class statusService extends Service {
      el.old_student_rating FROM exercise_log el where el.student_id = ? and el.test_id = ?`
     , [student_id,test_id]);
 
+    let score = this.app.mysql.query(`select t.delta_score from test_log t where t.student_id = ? and t.test_id = ?;`,[student_id,test_id]);
+
     let kp_r = this.app.mysql.query(`SELECT sum(bl.kp_delta_rating) as kp_delta_rating, 
     bl.kp_old_rating, bl.kpid, kt.kpname FROM 
     exercise_log el, breakdown_log bl, kptable kt where el.student_id = ? and
@@ -15,8 +17,11 @@ class statusService extends Service {
     , [student_id,test_id]);
 
     stu_r = await stu_r;
+    score = await score;
+    
     return ({
         kp_rating: await kp_r,
+        score : score[0],
         rating: stu_r[0],
     });
   }

@@ -271,31 +271,35 @@ class ExerciseService extends Service {
 
     replaceParams(text, sample){
         var json_sample = JSON.parse(sample);
+        console.log("text :",text);
         var newtext = text.replace(/(\@.*?\@)/g, function(word){
             //去掉首尾两个@
             word = word.substring(1, word.length - 1); 
             return json_sample[word];
         });  
+        console.log("newtext :",newtext);
         return newtext;
     }
 
     replaceAnswers(answer, sample){
         var answer = JSON.parse(answer);
         var new_answer = [];
-
+        console.log("answer: ",answer); 
         for(var i=0;i<answer.length;i++){
             var e =  answer[i];
             new_answer[i] = {
                 correct : e.correct,
                 value : this.replaceParams(e.value,sample),
             };
-        } 
+        }
+        console.log("new_answer: ",new_answer); 
         return new_answer;
     }
 
   async getTestExercise(test_id, student_id, isFinish) {
     var sql = "";
     var params = [];
+    console.log("isFinish :",isFinish);
     if(isFinish){
         params = [student_id, test_id];
         sql = `select e.* , et.exercise_index, b.*, t.kpname, sk.kp_rating from exercise_test et, 
@@ -304,7 +308,8 @@ class ExerciseService extends Service {
             where et.test_id = ? and e.exercise_id = et.exercise_id and b.exercise_id = e.exercise_id and b.kpid = t.kpid`;
     }else{
         params = [test_id, student_id, test_id];
-        sql = "select e.* , es.sample, es.`sample_index` , et.exercise_index, b.*, t.kpname, sk.kp_rating "
+        sql = "select e.* , es.sample, es.`sample_index` , es.answer as s_answer, "
+            +"es.title_img_url as s_title_img_url, es.title_audio_url as s_title_audio_url, et.exercise_index, b.*, t.kpname, sk.kp_rating "
             +"from exercise_test et, kptable t, exercise e left join "
             +"(select es.exercise_id, round(max(es.sample_index)*rand()) as sam_index "
             +"from exercise_sample es, exercise_test et "
@@ -321,6 +326,7 @@ class ExerciseService extends Service {
     for(var i = 0; i < exercise_r.length; i++){
         var e = exercise_r[i];
         var e_sample = e.sample;
+        console.log("e_sample :",e_sample);
         var index = e.exercise_index;
         if(exercise_list[index]){
             exercise_list[index].breakdown[e.sn - 1] = {
@@ -347,10 +353,10 @@ class ExerciseService extends Service {
                 exercise_id: e.exercise_id, 
                 exercise_type: e.exercise_type, 
                 title: e_sample?  this.replaceParams(e.title,e_sample) : e.title, 
-                title_img_url: e.title_img_url,
-                title_audio_url: e.title_audio_url, 
+                title_img_url: e_sample?  e.s_title_img_url : e.title_img_url, 
+                title_audio_url: e_sample?  e.s_title_audio_url : e.title_audio_url,
                 // answer: JSON.parse(e.answer),
-                answer: e_sample?  this.replaceAnswers(e.answer,e_sample) : JSON.parse(e.answer), 
+                answer: e_sample?  JSON.parse(e.s_answer): JSON.parse(e.answer), 
                 // sample: e.sample ? JSON.parse(e.sample) : {},
                 sample_index: e.sample_index,
                 breakdown: breakdown,

@@ -52,6 +52,7 @@ module.exports = app => {
   //router.get('/api/getMyBookChapter', controller.student.getMyBookChapter);
 
   router.post('/api/submitExerciseLog', controller.student.submitExerciseLog);
+  router.post('/api/submitTestLog', controller.student.submitTestLog);
   router.get('/api/getMyStudentRating', controller.student.getMyStudentRating);
   router.get('/api/getChapterKpStatus', controller.student.getChapterKpStatus);
   router.get('/api/getMyBookChapter', controller.student.getMyBookChapter);

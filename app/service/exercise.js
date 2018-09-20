@@ -299,6 +299,7 @@ class ExerciseService extends Service {
   async getTestExercise(test_id, student_id, isFinish) {
     var sql = "";
     var params = [];
+    var default_rating = 500;
     console.log("isFinish :",isFinish);
     if(isFinish){
         params = [student_id, test_id];

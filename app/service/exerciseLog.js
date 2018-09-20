@@ -62,24 +62,31 @@ class ExerciseLogService extends Service {
         let kp_exercise = await this.app.mysql.get('kp_exercise', {exercise_id: exercise_log.exercise_id});
         
         let student_rating = this.service.rating.getStudentRating(student_id, kp_exercise.course_id);
-        let chapter_rating = this.app.mysql.get('student_chapter', {student_id: student_id, course_id: kp_exercise.chapter_id});
+        let chapter_rating = this.app.mysql.get('student_chapter', {student_id: student_id, chapterid: kp_exercise.chapterid});
 
         student_rating = await student_rating;
         chapter_rating = await chapter_rating;
+        // console.log("student_rating",student_rating);
+        console.log("chapter_rating1",chapter_rating);
 
-        student_rating = student_rating[0] ? student_rating[0].student_rating : 500;
-        chapter_rating = chapter_rating[0] ? chapter_rating[0].chapter_rating : 500;
+        student_rating = student_rating ? student_rating : 500;
+        chapter_rating = chapter_rating.chapter_rating ? chapter_rating.chapter_rating : 500;
         
+
+        console.log("chapter_rating2",chapter_rating);
         const result = exercise_log.exercise_state;
 
         //计算学生、章节、题目得分
         const st_delta = this.elo_rating(student_rating, exercise_rating);
         const ex_delta = this.elo_rating(exercise_rating, student_rating);
         const ch_delta = this.elo_rating(chapter_rating, exercise_rating);
-        
+        console.log("st_delta ",st_delta);
+
         const K = 32;
         const ex_SA = result ? 0 : 1;
         const st_SA = result ? 1 : 0;
+
+        const delta_chapter_rating = Math.ceil(K*(st_SA - ch_delta));
 
         exercise_log.old_student_rating = student_rating
         exercise_log.delta_exercise_rating = Math.ceil(K*(ex_SA - ex_delta))
@@ -93,16 +100,30 @@ class ExerciseLogService extends Service {
         const insert_result = await this.app.mysql.insert('exercise_log', exercise_log);
 
         //更新学生总体、章节天梯分
-        const rating_result = await this.app.mysql.insert('student_rating_history', {
+        const rating_history_result = await this.app.mysql.insert('student_rating_history', {
             student_id: student_id,
-            student_rating: student_rating + st_delta,
+            student_rating: student_rating + exercise_log.delta_student_rating,
             course_id: kp_exercise.course_id,
         })
-        const chapter_result = await this.app.mysql.update('student_chapter', {
-            student_id: student_id,
-            student_rating: chapter_rating + ch_delta,
-            chapter_id: kp_exercise.chapterid,
-        })
+        console.log("student_rating ",student_rating);
+        console.log("st_delta", st_delta);
+        const rating_result = await this.app.mysql.query(`replace into student_rating
+        (student_id,student_rating ,course_id) VALUES(?,?,?);`
+        ,[student_id,(student_rating + exercise_log.delta_student_rating),kp_exercise.course_id]);
+        // console.log("ch_delta", ch_delta);
+        // const chapter_result = await this.app.mysql.replace('student_chapter', {
+        //     chapter_rating: chapter_rating + ch_delta,
+        // }, {
+        //     where: {
+        //         student_id: student_id,
+        //         chapterid: kp_exercise.chapterid,
+        //     }
+        // });
+        console.log("chapter_rating ",chapter_rating);
+        console.log("delta_chapter_rating", delta_chapter_rating);
+        const chapter_result = await this.app.mysql.query(`replace into student_chapter 
+        (student_id,chapter_rating ,chapterid) VALUES(?,?,?);`
+        ,[student_id,(chapter_rating + delta_chapter_rating),kp_exercise.chapterid]);
 
         exercise_log.logid = insert_result.insertId;
         for(var i = 0; i < breakdown_sn.length; i++){
@@ -123,6 +144,7 @@ class ExerciseLogService extends Service {
 
     async getTestExerciseLog(test_id, student_id){
         const breakdown_log = await this.app.mysql.query(`select bl.*, el.* ,k.kpname, es.sample, 
+        es.answer as s_answer, es.title_img_url,es.title_audio_url,  
         et.exercise_index from exercise_log el left join exercise_sample es on
         es.exercise_id = el.exercise_id and es.sample_index = el.sample_index 
         left join breakdown_log bl on bl.logid = el.logid left join kptable k on k.kpid = bl.kpid,
@@ -160,9 +182,15 @@ class ExerciseLogService extends Service {
                     start_time: b.start_time,
                     submit_time: b.submit_time,
                     answer: JSON.parse(b.answer),
-                    sample_inedx: b.sample_index,
+                    sample_index: b.sample_index,
                     delta_student_rating: b.delta_student_rating,
                     //sample : b.sample ? b.sample : {},
+                    exercise_sample : {
+                        sample : b.sample,
+                        answer : JSON.parse(b.s_answer),
+                        title_img_url : b.title_img_url,
+                        title_audio_url : b.title_audio_url,
+                    },
                     breakdown_sn:[],
                 };
                 if(exercise_log[index].exercise_status == 1)
@@ -280,7 +308,7 @@ class ExerciseLogService extends Service {
         const exercise_list = await this.service.exercise.getTestExercise(test_id, student_id, test_log.finish_time);
         // console.log("exercise_list: ",JSON.stringify(exercise_list));
         const exercise_log = await this.getTestExerciseLog(test_id, student_id);
-
+        console.log("this.getTestExerciseLog: ",JSON.stringify(exercise_log));
         //统一初始化exercise_log
         var exercise = exercise_list;
         for(var i = 0; i < exercise.length; i++){
@@ -315,27 +343,41 @@ class ExerciseLogService extends Service {
                     old_exercise_rating: exercise[i].exercise_rating,
                 }
             }
-            else if(exercise_log[i].exercise_status == 1){
-                //已提交但未反馈
-                const breakdown = exercise[i].breakdown;
-                var breakdown_sn = [];
-                for(var j = 0; j < breakdown.length; j++){
-                    //如果没有前置步骤的都设为0并在渲染中显示，-1代表不确定在渲染中不显示
-                    const sn_state = breakdown[j].presn ? -1 : 0;
-                    breakdown_sn[j] = {
-                        logid: exercise_log[i].logid,
-                        student_id: student_id,
-                        test_id: test_id,
-                        exercise_id: exercise[i].exercise_id,
-                        sn: breakdown[j].sn, 
-                        kpid: breakdown[j].kpid,
-                        kpname: breakdown[j].kpname, 
-                        sn_state: sn_state, 
-                        sn_old_rating: breakdown[j].sn_rating, 
-                        kp_old_rating: breakdown[j].kp_rating, 
-                    };
+            else{//将已做过的exercise根据 exercise_log中的sample_index替换为确定性的参数题。
+                // console.log("thicexercise_log[i].sample_index:",exercise_log[i].sample_index);
+                if(exercise_log[i].sample_index != null){
+                    var e_s = exercise_log[i].exercise_sample;
+                    // console.log("e_s:  ",e_s);
+                    exercise[i].title = this.service.exercise.replaceParams(exercise[i].title,e_s.sample);
+                    exercise[i].answer = e_s.answer;
+                    for(var m = 0; m < exercise[i].breakdown.length; m++){
+                        exercise[i].breakdown[m].content = this.service.exercise.replaceParams(exercise[i].breakdown[m].content,e_s.sample);
+                    }
+                    exercise[i].title_img_url = e_s.title_img_url;
+                    exercise[i].title_audio_url = e_s.title_audio_url;
                 }
-                exercise_log[i].breakdown_sn = breakdown_sn;
+                if(exercise_log[i].exercise_status == 1){
+                    //已提交但未反馈
+                    const breakdown = exercise[i].breakdown;
+                    var breakdown_sn = [];
+                    for(var j = 0; j < breakdown.length; j++){
+                        //如果没有前置步骤的都设为0并在渲染中显示，-1代表不确定在渲染中不显示
+                        const sn_state = breakdown[j].presn ? -1 : 0;
+                        breakdown_sn[j] = {
+                            logid: exercise_log[i].logid,
+                            student_id: student_id,
+                            test_id: test_id,
+                            exercise_id: exercise[i].exercise_id,
+                            sn: breakdown[j].sn, 
+                            kpid: breakdown[j].kpid,
+                            kpname: breakdown[j].kpname, 
+                            sn_state: sn_state, 
+                            sn_old_rating: breakdown[j].sn_rating, 
+                            kp_old_rating: breakdown[j].kp_rating, 
+                        };
+                    }
+                    exercise_log[i].breakdown_sn = breakdown_sn;
+                }
             }
         }
         // console.log("after exercise_log :"+ JSON.stringify(exercise_log));

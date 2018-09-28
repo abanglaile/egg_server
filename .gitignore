@@ -3,3 +3,7 @@ node_modules/**
 logs/
 run/**
 *.log
+*.log
+logs/egg-example/common-error.log
+*.log
+run/router.json

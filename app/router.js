@@ -72,4 +72,8 @@ module.exports = app => {
   router.post('/api/getTestStatus', controller.student.getTestStatus);
   router.post('/api/getTestRankingList', controller.student.getTestRankingList);
   
+
+  //slide
+  router.get('/api/getLessonSlide', controller.slide.getLessonSlide);
+  router.get('/api/getLessonSlideFeedback', controller.slide.getLessonSlideFeedback);
 };

@@ -11,6 +11,13 @@ class TestLogService extends Service {
         return res;
     }
 
+    async getLessonTest(lesson_id){
+        const res = await this.app.mysql.query(`select t.*, u.nickname, date_format(t.enable_time, '%m/%d') as formatdate
+        from teacher_test t, lesson_test lt, users u 
+        where lt.lesson_id = ? and lt.test_id = t.test_id and u.userid = t.teacher_id;`, lesson_id);
+        return res;
+    }
+
     async getStuTestLogs(student_id){
         const res = await this.app.mysql.query(`select t.*, s.start_time, s.finish_time, s.test_state, `
         +`s.correct_exercise, s.total_exercise ,date_format(s.finish_time,'%m/%d') as `

@@ -73,4 +73,23 @@ module.exports = app => {
   router.post('/api/getTestStatus', controller.student.getTestStatus);
   router.post('/api/getTestRankingList', controller.student.getTestRankingList);
   
+  /*教师端接口*/
+  router.get('/api/getTestTable', controller.teacher.getTestTable);
+  router.post('/api/addNewTest', controller.teacher.addNewTest);
+  router.post('/api/deleteOneTest', controller.teacher.deleteOneTest);
+  router.post('/api/distributeTest', controller.teacher.distributeTest);
+  router.get('/api/getTestDetail', controller.teacher.getTestDetail);
+  router.get('/api/getTestInfoById', controller.teacher.getTestInfoById);
+  router.get('/api/getTestKpResult', controller.teacher.getTestKpResult);
+  router.get('/api/getTestResultInfo', controller.teacher.getTestResultInfo);
+
+  router.get('/api/getClassGroup', controller.teacher.getClassGroup);
+  router.get('/api/getGroupData', controller.teacher.getGroupData);
+  router.post('/api/addNewGroup', controller.teacher.addNewGroup);
+  router.post('/api/deleteOneGroup', controller.teacher.deleteOneGroup);
+  router.post('/api/deleteOneStudent', controller.teacher.deleteOneStudent);
+  router.post('/api/addOneStudent', controller.teacher.addOneStudent);
+
+  router.get('/api/getBookChapter', controller.teacher.getBookChapter);
+  router.get('/api/getChapterKp', controller.teacher.getChapterKp);
 };

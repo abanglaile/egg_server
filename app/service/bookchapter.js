@@ -19,7 +19,7 @@ class bookchapterService extends Service {
                 m = false;
                 break;
             }
-        }
+        }   
         //插入新的bookid
         if(m){
             var book = {bookid: chapter.bookid, bookname: chapter.bookname, chapters: [{

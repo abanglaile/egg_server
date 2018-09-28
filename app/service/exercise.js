@@ -265,7 +265,7 @@ class ExerciseService extends Service {
         const sql = `select ke.exercise_id from kp_exercise ke, exercise e, breakdown b
             where ke.kpid = ? and e.exercise_id = ke.exercise_id and b.exercise_id = e.exercise_id
             and b.kpid = ke.kpid and b.sn_rating < ? order by b.sn_rating desc limit 3`;
-        const exercise_list = await this.app.mysql.query(sql, [kpid, 1000]);
+        const exercise_list = await this.app.mysql.query(sql, [kpid, kp_rating]);
         return exercise_list;
     }
 
@@ -373,7 +373,7 @@ class ExerciseService extends Service {
             student_id: student_id,
             kpid: kpid,
         });
-    const exercise_list = await this.getExerciseByKpRating(kpid, kp_rating);
+    const exercise_list = await this.getExerciseByKpRating(kpid, kp_rating.kp_rating);
 
     const start_time = new Date();
     const test_result = await this.app.mysql.insert('teacher_test', {

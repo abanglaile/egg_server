@@ -68,6 +68,9 @@ module.exports = app => {
   //个人信息统计
   router.get('/api/getStuAbility',controller.student.getStuAbility);
   router.get('/api/getStuRatingHistory', controller.student.getStuRatingHistory);
+  router.get('/api/getStuComUsedKp', controller.student.getStuComUsedKp);
+  router.get('/api/getStuRecentKp', controller.student.getStuRecentKp);
+  router.get('/api/getKpWithScore', controller.student.getKpWithScore);
 
   router.get('/api/getTestRatingReward', controller.student.getTestRatingReward);
   router.post('/api/getTestStatus', controller.student.getTestStatus);
@@ -92,4 +95,6 @@ module.exports = app => {
 
   router.get('/api/getBookChapter', controller.teacher.getBookChapter);
   router.get('/api/getChapterKp', controller.teacher.getChapterKp);
+
+  router.get('/api/getStuInfoById', controller.teacher.getStuInfoById);
 };

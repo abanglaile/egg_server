@@ -10,7 +10,7 @@ var options = {
     scope: bucket,
   };
 var putPolicy = new qiniu.rs.PutPolicy(options);
-const uploadToken = putPolicy.uploadToken(mac);
+// const uploadToken = putPolicy.uploadToken(mac);
 var config = new qiniu.conf.Config();
 // 空间对应的机房
 config.zone = qiniu.zone.Zone_z2;
@@ -22,6 +22,7 @@ var putFile = promise.promisify(formUploader.putFile, { multiArgs: true, context
 class qiniuService extends Service {
 
     async uploadTestFile(filename) {
+        const uploadToken = putPolicy.uploadToken(mac);
         let putExtra = new qiniu.form_up.PutExtra();
         //要上传文件的本地路径
         let filePath = '/usr/local/www/kpmanager/img/test.png';

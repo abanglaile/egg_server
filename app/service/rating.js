@@ -19,7 +19,7 @@ class RatingService extends Service {
             }else{
                 let index = books.length;
                 m[chapter.bookid] = index;
-
+    
                 books[index] = {
                     bookid: chapter.bookid,
                     bookname: chapter.bookname,
@@ -96,6 +96,15 @@ class RatingService extends Service {
         , [student_id,kpid]);
 
         return res[0];
+    }
+
+    async getKpWithScore(student_id, chapter_id){
+        const res = await this.app.mysql.query(`SELECT t.kpid,t.kpname,ss.kp_rating,ss.update_time 
+        from (SELECT k.kpid,k.kpname FROM kptable k WHERE k.chapterid = ?) as t LEFT JOIN 
+        (SELECT s.kpid,s.kp_rating ,s.update_time from student_kp s WHERE s.student_id = ?) as ss on t.kpid = ss.kpid;`
+        , [chapter_id,student_id]);
+
+        return res;
     }
 
 }

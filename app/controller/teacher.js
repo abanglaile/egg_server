@@ -140,6 +140,14 @@ class TeacherController extends Controller {
         const results = await service.testLog.getTestResultInfo(query.test_id);
         this.ctx.body = results;
     }
+
+    async getStuInfoById(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.group.getStuInfoById(query.student_id);
+        this.ctx.body = results;
+    }
+    
 }
 
 module.exports = TeacherController;

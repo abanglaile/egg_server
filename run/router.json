@@ -485,6 +485,45 @@
       "GET"
     ],
     "paramNames": [],
+    "path": "/api/getStuComUsedKp",
+    "regexp": "/^\\/api\\/getStuComUsedKp(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getStuRecentKp",
+    "regexp": "/^\\/api\\/getStuRecentKp(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getKpWithScore",
+    "regexp": "/^\\/api\\/getKpWithScore(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/api/getTestRatingReward",
     "regexp": "/^\\/api\\/getTestRatingReward(?:\\/(?=$))?$/",
     "stack": [
@@ -712,6 +751,19 @@
     "paramNames": [],
     "path": "/api/getChapterKp",
     "regexp": "/^\\/api\\/getChapterKp(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getStuInfoById",
+    "regexp": "/^\\/api\\/getStuInfoById(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

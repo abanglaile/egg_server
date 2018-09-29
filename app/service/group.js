@@ -3,12 +3,16 @@ const Service = require('egg').Service;
 class GroupService extends Service {
 
     async getClassGroup(teacher_id){
-        const name = await this.app.mysql.select('teacher_group',{ teacher_id : teacher_id });
+        const name = await this.app.mysql.select('teacher_group',{ 
+            where : { teacher_id : teacher_id }, 
+        });
         return name;
     }
 
     async getGroupData(stu_group_id){
-        const group = await this.app.mysql.select('group_student',{ stu_group_id : stu_group_id });
+        const group = await this.app.mysql.select('group_student',{ 
+            where : {stu_group_id : stu_group_id },
+        });
         return group;
     }
 
@@ -44,6 +48,12 @@ class GroupService extends Service {
         return addres.insertId;
     }
 
+    async getStuInfoById(student_id){
+        const res = await this.app.mysql.query(`select g.student_name,t.group_name 
+        from group_student g,teacher_group t where t.stu_group_id=g.stu_group_id and g.student_id = ?;`, student_id);
+
+        return res;
+    } 
     
 }
 

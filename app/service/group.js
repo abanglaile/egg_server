@@ -15,18 +15,24 @@ class GroupService extends Service {
     }
 
     async addNewGroup(teacher_id,group_name){
-        const addres = await this.app.mysql.insert('teacher_group',{ teacher_id: teacher_id, group_name:group_name});
+        //school_id 先写死
+        const addres = await this.app.mysql.insert('school_group',{ school_id: 1, group_name:group_name});
+        const addres2 = await this.app.mysql.insert('teacher_group',{ teacher_id: teacher_id, stu_group_id:addres.insertId});
+
         return addres.insertId;
     }
 
     async deleteOneGroup(stu_group_id){
-        const del1 = await this.app.mysql.delete('teacher_group', {
+        const del1 = await this.app.mysql.delete('school_group', {
             stu_group_id: stu_group_id,
         });
-        const del2 = await this.app.mysql.delete('group_student', {
+        const del2 = await this.app.mysql.delete('teacher_group', {
             stu_group_id: stu_group_id,
         });
-        return del2;
+        const del3 = await this.app.mysql.delete('group_student', {
+            stu_group_id: stu_group_id,
+        });
+        return del3;
     }
 
     async deleteOneStudent(student_id){

@@ -105,8 +105,8 @@ class TestLogService extends Service {
         and e.exercise_id = b.exercise_id and b.kpid = k.kpid;`, test_id);
         //获取题目正确率
         const res2 = await this.app.mysql.query(`select l.exercise_state,l.student_id,
-        l.exercise_id,g.student_name from exercise_log l, group_student g where l.test_id = ? 
-        and g.student_id = l.student_id;`, test_id);
+        l.exercise_id,g.realname from exercise_log l, users g where l.test_id = ? 
+        and g.users = l.student_id;`, test_id);
         //获取各知识点完成率
         const res3 = await this.app.mysql.query(`select g.sn,g.exercise_id,g.sn_state from
          breakdown_log g where g.test_id = ? and g.sn_state >=0;`, test_id);
@@ -156,7 +156,7 @@ class TestLogService extends Service {
                 if(e.exercise_state == 0 ){
                     stu_res[index].stu_false.push({
                         student_id : e.student_id,
-                        student_name : e.student_name,
+                        student_name : e.realname,
                     });
                 }
             }else{
@@ -164,7 +164,7 @@ class TestLogService extends Service {
                 var right = e.exercise_state? 1 : 0;
                 var stu_false = e.exercise_state? [] : [{
                         student_id : e.student_id,
-                        student_name : e.student_name,
+                        student_name : e.realname,
                     }];
                 stu_res.push({
                     exercise_id : e.exercise_id,
@@ -237,9 +237,9 @@ class TestLogService extends Service {
     }
 
     async getTestKpResult(test_id){
-        const results = await this.app.mysql.query(`select b.kpid, k.kpname,l.student_id,g.student_name,
-        l.sn_state from breakdown b, breakdown_log l ,kptable k,group_student g where l.test_id = ? 
-        and l.exercise_id = b.exercise_id and l.sn = b.sn and l.student_id = g.student_id and 
+        const results = await this.app.mysql.query(`select b.kpid, k.kpname,l.student_id,g.realname,
+        l.sn_state from breakdown b, breakdown_log l ,kptable k,users g where l.test_id = ? 
+        and l.exercise_id = b.exercise_id and l.sn = b.sn and l.student_id = g.userid and 
         b.kpid = k.kpid and l.sn_state >= 0;`, test_id);
 
         var kp_data = [];
@@ -264,7 +264,7 @@ class TestLogService extends Service {
                     }
                     var newstu = {
                         student_id: e.student_id, 
-                        student_name: e.student_name, 
+                        student_name: e.realname, 
                         stu_count: e.sn_state>0 ? 0 : 1,
                         stu_rate:0,
                     }
@@ -274,7 +274,7 @@ class TestLogService extends Service {
             }else{//kpid 为新增id时
                 var stu_mistake = [{
                     student_id: e.student_id, 
-                    student_name: e.student_name, 
+                    student_name: e.realname, 
                     stu_count : e.sn_state>0 ? 0 : 1,
                     stu_rate:0,
                 }];
@@ -308,7 +308,7 @@ class TestLogService extends Service {
         console.log('getTestResultInfo  test_id: ',test_id);
         const results = await this.app.mysql.query(`select s.student_id,s.finish_time,`
         +`timestampdiff(MINUTE,s.start_time,s.finish_time) as time_consuming,s.test_state,`
-        +`g.student_name from test_log s, group_student g where s.test_id = ? and s.student_id = g.student_id;`, test_id);
+        +`u.realname from test_log s, users u where s.test_id = ? and s.student_id = u.userid;`, test_id);
 
         console.log('results: ',results);
         var test_data = [];
@@ -329,7 +329,7 @@ class TestLogService extends Service {
             }
             test_data.push({
                 student_id:results[i].student_id,
-                studentname:results[i].student_name,
+                studentname:results[i].realname,
                 completion: results[i].finish_time? true : false,
                 score:results[i].test_state,
                 end_time:results[i].finish_time,

@@ -1,9 +1,9 @@
 module.exports = app => {
   const { router, controller } = app;
   const { middlewares: m } = app;
-  console.log("controller :"+ controller);
-  router.get('/api/home', controller.home.index);
-  router.get('/about', m.isSignined(), controller.home.index);
+  // console.log("controller :"+ controller);
+  // router.get('/api/home', controller.home.index);
+  // router.get('/about', m.isSignined(), controller.home.index);
   router.get('/api/getBookChapter', controller.entryexercise.getBookChapter);
   router.get('/api/getChapterKp', controller.entryexercise.getChapterKp);
   router.get('/api/getExerciseByKp', controller.entryexercise.getExerciseByKp);
@@ -31,10 +31,11 @@ module.exports = app => {
   // r.get('/signin', c.user.old);
 
   const options = {
-    successRedirect: '/api/home',
-    failureRedirect: '/api/home',
+    successRedirect: '/api/authsuc',
+    failureRedirect: '/api/authfail',
   };
-
+  router.get('/api/authsuc',controller.home.authsuc);
+  router.get('/api/authfail',controller.home.authfail);
   // passport-local
   const local = app.passport.authenticate('local',options);
   router.get('/api/login', local);

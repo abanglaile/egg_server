@@ -104,11 +104,13 @@ class userService extends Service {
     const ctx = this.ctx;
     const user = await this.findOne({ username });
     if (user) {
+      if(user.credential === password){
+        return user;
+      }
       // const attemptKey = crypto.pbkdf2Sync(password, user.salt, 100000, 512, 'sha512');
       // const attemptPassword = attemptKey.toString('hex');
       // if (user.password === attemptPassword) return user;
       // return null;
-      return user;
     }
     return null;
 

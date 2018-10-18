@@ -100,49 +100,107 @@ class TestLogService extends Service {
 
     async getTestDetail(test_id){
         //题目详情
-        const res1 = await this.app.mysql.query(`select e.*,b.*,k.kpname from exercise e, 
-        breakdown b ,kptable k ,exercise_test t where t.test_id = ? and t.exercise_id = e.exercise_id 
-        and e.exercise_id = b.exercise_id and b.kpid = k.kpid;`, test_id);
+        const res1 = await this.app.mysql.query(`select a.*,s.sample,s.answer as sample_answer,
+        s.title_img_url as sam_title_img,s.title_audio_url as sam_title_audio from 
+        (select e.* , b.sn,b.content ,b.presn ,b.kpid , t.kpname from exercise_test k, exercise e, 
+        breakdown b, kptable t where k.test_id = ? and e.exercise_id = k.exercise_id and 
+        b.exercise_id = e.exercise_id and b.kpid = t.kpid) as a LEFT JOIN  exercise_sample s on 
+        a.exercise_id = s.exercise_id and s.sample_index = 0;`, test_id);
         //获取题目正确率
         const res2 = await this.app.mysql.query(`select l.exercise_state,l.student_id,
         l.exercise_id,g.realname from exercise_log l, users g where l.test_id = ? 
-        and g.users = l.student_id;`, test_id);
+        and g.userid = l.student_id;`, test_id);
         //获取各知识点完成率
         const res3 = await this.app.mysql.query(`select g.sn,g.exercise_id,g.sn_state from
          breakdown_log g where g.test_id = ? and g.sn_state >=0;`, test_id);
 
+        // var test_data = [];
+        // var index_sn = [];
+        // for(var i = 0; i < res1.length; i++){
+        //     var e = res1[i];
+        //     const index = index_sn[e.exercise_id.toString()];
+        //     if(index >= 0){
+        //         test_data[index].breakdown.push({
+        //             sn :e.sn,
+        //             content : e.content,
+        //             presn: e.presn, 
+        //             kpid : e.kpid,
+        //             kpname : e.kpname,
+        //         });
+        //     }else{
+        //         var breakdown = [{
+        //             sn :e.sn,
+        //             content : e.content,
+        //             presn: e.presn, 
+        //             kpid : e.kpid,
+        //             kpname : e.kpname,
+        //         }];
+        //         test_data.push({
+        //             exercise_id : e.exercise_id,
+        //             title : e.title,
+        //             answer : e.answer,
+        //             type : e.exercise_type,
+        //             title_img_url: e.title_img_url,
+        //             title_audio_url:e.title_audio_url,
+        //             correct_rate : 0, //此题正确率，需根据后面数据完善
+        //             stu_false : [],  //该题错误的同学，需根据后面数据完善
+        //             kp_rate : [],  // 每个sn（知识点）完成率，先为空
+        //             breakdown : breakdown,
+        //         });  
+        //         index_sn[e.exercise_id.toString()] = test_data.length -1;
+        //     }
+        // }
         var test_data = [];
-        var index_sn = [];
+        var exercise_index = [];
+        var list_index = 0;
         for(var i = 0; i < res1.length; i++){
             var e = res1[i];
-            const index = index_sn[e.exercise_id.toString()];
+            const index = exercise_index[e.exercise_id.toString()];
+            console.log(i + " " + index);
             if(index >= 0){
-                test_data[index].breakdown.push({
-                    sn :e.sn,
-                    content : e.content,
-                    kpid : e.kpid,
-                    kpname : e.kpname,
+                console.log(index);
+                test_data[index].exercise.breakdown.push({
+                    sn: e.sn, 
+                    content: e.content, 
+                    presn: e.presn, 
+                    kpid: e.kpid,
+                    kpname: e.kpname,
                 });
             }else{
-                var breakdown = [{
-                    sn :e.sn,
-                    content : e.content,
-                    kpid : e.kpid,
-                    kpname : e.kpname,
-                }];
-                test_data.push({
-                    exercise_id : e.exercise_id,
-                    title : e.title,
-                    answer : e.answer,
-                    type : e.exercise_type,
-                    title_img_url: e.title_img_url,
-                    title_audio_url:e.title_audio_url,
+                var breakdown = [];
+                breakdown.push({
+                    sn: e.sn, 
+                    content: e.content, 
+                    presn: e.presn, 
+                    kpid: e.kpid,
+                    kpname: e.kpname,
+                });
+                var exercise = {
+                    exercise_id: e.exercise_id, 
+                    exercise_type: e.exercise_type, 
+                    title: e.title, 
+                    answer: JSON.parse(e.answer),
+                    breakdown: breakdown,
+                    title_img_url : e.title_img_url,
+                    title_audio_url : e.title_audio_url,
+                };
+                var exercise_sample = {
+                    sample : JSON.parse(e.sample),
+                    answer : JSON.parse(e.sample_answer),
+                    title_img_url : e.sam_title_img,
+                    title_audio_url : e.sam_title_audio,
+                };
+                var one_exercise = {
+                    exercise : exercise,
+                    exercise_sample : exercise_sample,
                     correct_rate : 0, //此题正确率，需根据后面数据完善
                     stu_false : [],  //该题错误的同学，需根据后面数据完善
                     kp_rate : [],  // 每个sn（知识点）完成率，先为空
-                    breakdown : breakdown,
-                });  
-                index_sn[e.exercise_id.toString()] = test_data.length -1;
+                };
+
+                test_data[list_index] = one_exercise;
+                exercise_index[e.exercise_id] = list_index;
+                list_index++;
             }
         }
         var stu_res = [];
@@ -218,13 +276,13 @@ class TestLogService extends Service {
         console.log('kp_res---------------------------');
         for(var i = 0; i < kp_res.length; i++){  //将res3 中的知识点完成率赋予到 test_data 中
             var e = kp_res[i];
-            const index = index_sn[e.exercise_id.toString()];
+            const index = exercise_index[e.exercise_id.toString()];
             test_data[index].kp_rate = e.sn_correct;
         }
         console.log('stu_res---------------------------');
         for(var i = 0; i < stu_res.length; i++){  //将res2 中的题目正确率和该题错误的学生赋值给 test_data
             var e = stu_res[i];
-            const index = index_sn[e.exercise_id.toString()];
+            const index = exercise_index[e.exercise_id.toString()];
             if(e.count > 0){
                 test_data[index].correct_rate = Math.round((e.right/e.count)*100);
             }else{
@@ -232,7 +290,7 @@ class TestLogService extends Service {
             }
             test_data[index].stu_false = e.stu_false;
         }
-
+        console.log("test_data",JSON.stringify(test_data));
         return test_data;
     }
 

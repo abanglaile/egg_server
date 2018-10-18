@@ -25,6 +25,7 @@ class TeacherController extends Controller {
     async addNewTest(){
         const { ctx, service } = this;
         const {body} = ctx.request;
+        // console.log("body",JSON.stringify(body));
         if(body.test_name){
             const results = await service.test.addNewTest(body);
             this.ctx.body = results;

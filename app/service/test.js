@@ -28,7 +28,7 @@ class TestService extends Service {
     async getTestTable(teacher_id) {
 
         const results = await this.app.mysql.query(`select t.test_id,t.test_name,t.enable_time from
-         teacher_test t where t.teacher_id = ?;`, [teacher_id]);
+         teacher_test t where t.teacher_id = ? ORDER BY t.group_time desc;`, [teacher_id]);
         var test_data = [];
         for(var i = 0; i < results.length; i++){
             var e = results[i];
@@ -43,13 +43,13 @@ class TestService extends Service {
     }
 
     async addNewTest(req){
-
+        console.log("req",JSON.stringify(req));
         const addres = await this.app.mysql.query(`insert into teacher_test set test_name=?,
          teacher_id=?,group_time=(SELECT now()),test_type=1,total_exercise=?;`, [req.test_name,req.teacher_id,req.test_exercise.length]);
         
         const res = await this.addExerciseTest(addres.insertId,req.test_exercise);
 
-
+        console.log("addres.insertId",addres.insertId);
         return addres.insertId;
     }
 

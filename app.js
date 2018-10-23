@@ -62,9 +62,9 @@ module.exports = app => {
       // 2. Local
       userDoc = await ctx.service.user.signin(user.username, user.password);
       // ctx.body = userDoc;
-      if (!userDoc) alertMsg = '用户名或密码不正确。';
+      // if (!userDoc) alertMsg = '用户名或密码不正确。';
     }
-    if (!userDoc) ctx.service.router.storeAlertMsg(alertMsg);
+    // if (!userDoc) ctx.service.router.storeAlertMsg(alertMsg);
     return userDoc;
   });
   //序列化用户信息后存储进 session

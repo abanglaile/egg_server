@@ -125,6 +125,35 @@ class statusService extends Service {
 
   }
 
+  //根据学生id  获取最常训练到的知识点（3个）
+  async getStuComUsedKp(student_id){
+    var usedkp = [];
+    const results = await this.app.mysql.query(`SELECT r.c,r.kpid,r.kpname,sum(r.exercise_state) as cc
+     from (SELECT temp.c,temp.kpid,temp.kpname,temp.student_id,l.exercise_state from 
+      (SELECT t.c,t.kpid,k.kpname,t.student_id from (SELECT count(s.kpid) as c,s.kpid,s.student_id 
+      from student_kp_history s where s.student_id =?  GROUP BY kpid) t,kptable k 
+      where k.kpid=t.kpid ORDER BY t.c DESC  LIMIT 3) as temp,kptable k,kp_exercise e,exercise_log l 
+      where k.kpid=temp.kpid and k.kpid = e.kpid and e.exercise_id = l.exercise_id and temp.student_id = l.student_id)
+       as r GROUP BY kpid;`, [student_id]);
+
+    for(var i = 0; i < results.length; i++){
+        usedkp.push({
+            kpid : results[i].kpid,
+            kpname : results[i].kpname,
+            usedcount : results[i].c,
+            rate : ((results[i].cc/results[i].c)*100).toFixed(1),
+        });
+    }
+    return usedkp;
+  }
+
+  async getStuRecentKp(student_id){
+    const results = await this.app.mysql.query(`SELECT s.kpid, s.kp_rating,k.kpname from 
+    student_kp s, kptable k where s.kpid=k.kpid and s.student_id = ? ORDER BY update_time DESC LIMIT 7`, [student_id]);
+    
+    return results;
+  }
+
 
 
 }

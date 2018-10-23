@@ -69,8 +69,6 @@ class bookchapterService extends Service {
     }
     return rep;
   }
-    
-
 
   async getChapterKp(chapter_id) {
     const res = await this.app.mysql.select('kptable', {where : { chapterid : chapter_id}});

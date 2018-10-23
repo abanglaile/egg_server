@@ -1,6 +1,6 @@
-'use strict';
 const Service = require('egg').Service;
 const crypto = require('crypto');
+const uuid = require('uuid');
 
 /* 微信登陆 */
 // var AppID = 'wx6f3a777231ad1747';
@@ -81,12 +81,19 @@ class userService extends Service {
   }
 
   async createUser(conditions){
-    const res = await this.app.mysql.insert('user_auths', conditions);
+    const res = await this.app.mysql.insert('user_auths', {
+      userid : conditions.userid,
+      identity_type : 'username',
+      identifier : conditions.username,
+      credential : conditions.password,
+      salt : conditions.salt,
+    });
     return res;
   }
 
   async signup(conditions) {
     if (conditions.password) {
+      console.log("uudi.v1():",uuid.v1());
       // salt:推荐使用16字节（128位）以上，因使用十六进制保存，所以除以2;
       const salt = crypto.randomBytes(128 / 2).toString('hex');
       // 进行pbkdf2加密，迭代100000次，返回key长度512字节
@@ -94,21 +101,24 @@ class userService extends Service {
       // 以16进制形式保存，所以字符长度会double，所以数据库中的密码字符长度是1024
       conditions.password = key.toString('hex');
       conditions.salt = salt;
+      conditions.userid = uuid.v1().replace(/-/g,'');
     }
     // conditions.created_time = moment().unix();
     const newUser = await this.createUser(conditions);
-    return newUser;
+    return conditions.userid;
   }
 
   async signin(username, password) {
     const ctx = this.ctx;
     const user = await this.findOne({ username });
     if (user) {
+      if(user.credential === password){
+        return user;
+      }
       // const attemptKey = crypto.pbkdf2Sync(password, user.salt, 100000, 512, 'sha512');
       // const attemptPassword = attemptKey.toString('hex');
       // if (user.password === attemptPassword) return user;
       // return null;
-      return user;
     }
     return null;
 

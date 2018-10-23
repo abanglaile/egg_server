@@ -14,6 +14,7 @@ class mediaService extends Service {
     async saveTestMedia(url){
         let filename = url.substring(url.lastIndexOf("/") + 1, url.length);
         const ret = await this.service.qiniu.uploadTestFile(filename);
+        console.log("saveTestMedia ret:   ",ret);
         const code = await this.service.lily.getTestly();
         const insert_ret = await this.app.mysql.query(`INSERT INTO media_res
             (code, url) VALUES(?, ?)
@@ -23,7 +24,7 @@ class mediaService extends Service {
         return {
             code: code,
             url: url,
-            ret: insert_ret,
+            ret: ret,
         }
     }
 

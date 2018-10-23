@@ -1,9 +1,9 @@
 module.exports = app => {
   const { router, controller } = app;
   const { middlewares: m } = app;
-  console.log("controller :"+ controller);
-  router.get('/api/home', controller.home.index);
-  router.get('/about', m.isSignined(), controller.home.index);
+  // console.log("controller :"+ controller);
+  // router.get('/api/home', controller.home.index);
+  // router.get('/about', m.isSignined(), controller.home.index);
   router.get('/api/getBookChapter', controller.entryexercise.getBookChapter);
   router.get('/api/getChapterKp', controller.entryexercise.getChapterKp);
   router.get('/api/getExerciseByKp', controller.entryexercise.getExerciseByKp);
@@ -26,15 +26,16 @@ module.exports = app => {
 
   // 1.user
   // r.get('/signup', c.user.new);
-  // r.post('/signup', c.user.signup);
+  router.post('/api/signup', controller.auth.signup);
 
   // r.get('/signin', c.user.old);
 
   const options = {
-    successRedirect: '/api/home',
-    failureRedirect: '/api/home',
+    successRedirect: '/api/authsuc',
+    failureRedirect: '/api/authfail',
   };
-
+  router.get('/api/authsuc',controller.home.authsuc);
+  router.get('/api/authfail',controller.home.authfail);
   // passport-local
   const local = app.passport.authenticate('local',options);
   router.get('/api/login', local);
@@ -68,6 +69,9 @@ module.exports = app => {
   //个人信息统计
   router.get('/api/getStuAbility',controller.student.getStuAbility);
   router.get('/api/getStuRatingHistory', controller.student.getStuRatingHistory);
+  router.get('/api/getStuComUsedKp', controller.student.getStuComUsedKp);
+  router.get('/api/getStuRecentKp', controller.student.getStuRecentKp);
+  router.get('/api/getKpWithScore', controller.student.getKpWithScore);
 
   router.get('/api/getTestRatingReward', controller.student.getTestRatingReward);
   router.post('/api/getTestStatus', controller.student.getTestStatus);
@@ -93,6 +97,7 @@ module.exports = app => {
   router.get('/api/getBookChapter', controller.teacher.getBookChapter);
   router.get('/api/getChapterKp', controller.teacher.getChapterKp);
 
+<<<<<<< HEAD
   router.get('/api/getOptionData', controller.teacher.getOptionData);
   router.get('/api/getTeacherLesson', controller.teacher.getTeacherLesson);
   router.get('/api/getOneLesson', controller.teacher.getOneLesson);
@@ -101,4 +106,7 @@ module.exports = app => {
   router.post('/api/updateLessonCourse',controller.teacher.updateLessonCourse);
   router.post('/api/updateLessonRange',controller.teacher.updateLessonRange);
   router.post('/api/updateLessonLabel',controller.teacher.updateLessonLabel);
+=======
+  router.get('/api/getStuInfoById', controller.teacher.getStuInfoById);
+>>>>>>> origin/master
 };

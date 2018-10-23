@@ -209,8 +209,8 @@ class StudentController extends Controller {
         const { ctx, service } = this;
         const {query} = ctx.request;
         if(query.student_id){
-            const results = await service.status.getStuAbility(query.student_id,  query.course_id);
-            console.log(results);
+            const results = await service.status.getStuAbility(query.student_id, query.course_id);
+            console.log('getStuAbility: ',results);
             
             this.ctx.body = results;
         }
@@ -266,7 +266,34 @@ class StudentController extends Controller {
             this.ctx.body = results[0];
         }
     }
-
+    //根据学生id  获取最常训练到的知识点（3个）
+    async getStuComUsedKp(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        if(query.student_id){
+            const results = await service.status.getStuComUsedKp(query.student_id);
+            console.log(results);
+            this.ctx.body = results;
+        }
+    }
+    //根据学生id  获取最近训练的知识点 (7个)
+    async getStuRecentKp(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        if(query.student_id){
+            const results = await service.status.getStuRecentKp(query.student_id);
+            this.ctx.body = results;
+        }
+    }
+    //根据chapterid 获取知识点（包含知识点天梯分和最新更新时间）
+    async getKpWithScore(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        if(query.student_id){
+            const results = await service.rating.getKpWithScore(query.student_id,query.chapter_id);
+            this.ctx.body = results;
+        }
+    }
 
     
 }

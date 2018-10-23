@@ -17,23 +17,24 @@ class AuthController extends Controller {
 
     // post /signup
   async signup() {
-    const username = this.ctx.request.body.username;
-    const existUserDoc = await this.ctx.model.User.findOne({ username });
-    let alertMsg = '注册失败。';
+    const { ctx, service } = this;
+    const username = ctx.request.body.username;
+    const existUserDoc = await service.user.findOne({ username });
+    var msg = {};
+    msg.signMsg = 'failed';
     if (existUserDoc) {
-      alertMsg = '用户名已存在。';
+      msg.signMsg = 'existed';
     } else {
-      const password = this.ctx.request.body.password;
-      const newUser = await this.ctx.service.user.signup({ username, password });
+      const password = ctx.request.body.password;
+      const newUser = await service.user.signup({ username, password });
       if (newUser) {
-        // 自动登录并跳转到主页
         this.ctx.login(newUser);
-        this.ctx.redirect('/');
-        return;
+        // this.ctx.redirect('/');
+        msg.signMsg = 'sucess';
+        msg.userid = newUser;
       }
     }
-    this.ctx.service.router.storeAlertMsg(alertMsg);
-    this.ctx.redirect('/signup');
+    this.ctx.body = msg;
   }
 
   // get /signout

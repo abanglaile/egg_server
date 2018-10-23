@@ -26,7 +26,7 @@ module.exports = app => {
 
   // 1.user
   // r.get('/signup', c.user.new);
-  // r.post('/signup', c.user.signup);
+  router.post('/api/signup', controller.auth.signup);
 
   // r.get('/signin', c.user.old);
 

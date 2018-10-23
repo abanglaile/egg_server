@@ -5,6 +5,7 @@ const qiniu = require("qiniu");
 const accessKey = "oJ6oH5Zzo6e_dW21Q4UKCnmwCRwfJ9OaqlC9yK5k";
 const secretKey = "Fkau1rsZ1I7CuoMJ6Ns1UfwPljrXeAWr-ecqGwSS";
 const mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
+console.log(mac);
 const bucket = 'exercise-pic';
 var options = {
     scope: bucket,
@@ -24,7 +25,8 @@ class qiniuService extends Service {
     async uploadTestFile(filename) {
         let putExtra = new qiniu.form_up.PutExtra();
         //要上传文件的本地路径
-        let filePath = '/usr/local/www/kpmanager/img/test.png';
+         let filePath = '/usr/local/www/kpmanager/img/test.png';
+        //let filePath = 'D:\\www\\kpmanager\\img\\test.png';
         var ret = await putFile(uploadToken, filename, filePath, putExtra);
         console.log(ret);
         return ret;

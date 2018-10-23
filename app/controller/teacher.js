@@ -140,6 +140,64 @@ class TeacherController extends Controller {
         const results = await service.testLog.getTestResultInfo(query.test_id);
         this.ctx.body = results;
     }
+
+    async getTeacherLesson(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.lesson.getTeacherLesson(query.teacher_id, query.start_time, query.end_time, query.stu_group_id);
+        this.ctx.body = results;
+    }
+
+    async getOptionData(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.teacher.getOptionData(query.teacher_id, query.school_id);
+        this.ctx.body = results;
+    }
+
+    async getOneLesson(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.lesson.getOneLesson(query.lesson_id);
+        this.ctx.body = results;
+    }
+
+    async updateLessonTeacher(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.updateLessonTeacher(body.lesson_id, body.lesson_teacher);
+        ctx.body = results;
+    }
+
+    async updateLessonGroup(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.updateLessonGroup(body.lesson_id, body.group_id);
+        ctx.body = results;
+    }
+
+    async updateLessonCourse(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.updateLessonCourse(body.lesson_id, body.course_id);
+        ctx.body = results;
+    }
+
+    async updateLessonRange(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.updateLessonRange(body.lesson_id, body.start_time, body.end_time);
+        ctx.body = results;
+    }
+
+    async updateLessonLabel(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.updateLessonLabel(body.lesson_id, body.label_id);
+        ctx.body = results;
+    }
+
+    
 }
 
 module.exports = TeacherController;

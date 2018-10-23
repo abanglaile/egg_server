@@ -3,8 +3,9 @@ const Service = require('egg').Service;
 class GroupService extends Service {
 
     async getClassGroup(teacher_id){
-        const name = await this.app.mysql.select('teacher_group',{ teacher_id : teacher_id });
-        return name;
+        const group = await this.app.mysql.query(`select sg.* from teacher_group tg, school_group sg 
+            where tg.teacher_id = ? and tg.stu_group_id = sg.stu_group_id`,[teacher_id]);
+        return group;
     }
 
     async getGroupData(stu_group_id){

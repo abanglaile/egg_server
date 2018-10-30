@@ -3,10 +3,10 @@ const Service = require('egg').Service;
 class LessonService extends Service {
 
     async getTeacherLesson(teacher_id, start_time, end_time, stu_group_id){
-        let query = `select l.*, u.nickname, r.room_name, g.group_name, c.course_name, ll.label_name
-        from lesson l, users u, lesson_teacher lt, school_room r, school_group g, course c, lesson_label ll 
+        let query = `select l.*, u.nickname, r.room_name, g.group_name, c.course_label, ll.label_name
+        from lesson l, users u, lesson_teacher lt, school_room r, school_group g, lesson_label ll 
         where l.lesson_id = lt.lesson_id and lt.teacher_id = u.userid 
-            and l.stu_group_id = g.stu_group_id and l.course_id = c.course_id and l.label_id = ll.label_id`;
+            and l.stu_group_id = g.stu_group_id and l.label_id = ll.label_id`;
         let params = [];
 
         if(teacher_id){
@@ -80,8 +80,8 @@ class LessonService extends Service {
         return uret;
     }
 
-    async updateLessonCourse(lesson_id, course_id){
-        const uret = await this.app.mysql.update('lesson', {course_id: course_id},
+    async updateLessonCourse(lesson_id, course_label){
+        const uret = await this.app.mysql.update('lesson', {course_label: course_label},
             {where: {lesson_id: lesson_id}})
         return uret;
     }

@@ -180,7 +180,7 @@ class TeacherController extends Controller {
     async updateLessonCourse(){
         const { ctx, service } = this;
         const {body} = ctx.request;
-        const results = await service.lesson.updateLessonCourse(body.lesson_id, body.course_id);
+        const results = await service.lesson.updateLessonCourse(body.lesson_id, body.course_label);
         ctx.body = results;
     }
 

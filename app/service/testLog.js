@@ -20,10 +20,10 @@ class TestLogService extends Service {
         return res;
     }
 
-    async getLessonTest(lesson_id){
+    async getLessonContentTest(lesson_id){
         const res = await this.app.mysql.query(`select t.*, u.nickname, date_format(t.enable_time, '%m/%d') as formatdate
-        from teacher_test t, lesson_test lt, users u 
-        where lt.lesson_id = ? and lt.test_id = t.test_id and u.userid = t.teacher_id;`, lesson_id);
+        from teacher_test t, lesson_content lc, users u 
+        where lc.lesson_id = ? and lc.test_id = t.test_id and u.userid = t.teacher_id;`, lesson_id);
         return res;
     }
 

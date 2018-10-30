@@ -6,33 +6,6 @@
       "GET"
     ],
     "paramNames": [],
-    "path": "/api/home",
-    "regexp": "/^\\/api\\/home(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
-      "HEAD",
-      "GET"
-    ],
-    "paramNames": [],
-    "path": "/about",
-    "regexp": "/^\\/about(?:\\/(?=$))?$/",
-    "stack": [
-      "anonymous",
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
-      "HEAD",
-      "GET"
-    ],
-    "paramNames": [],
     "path": "/api/getBookChapter",
     "regexp": "/^\\/api\\/getBookChapter(?:\\/(?=$))?$/",
     "stack": [
@@ -220,6 +193,44 @@
     "paramNames": [],
     "path": "/api/searchMedia",
     "regexp": "/^\\/api\\/searchMedia(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/signup",
+    "regexp": "/^\\/api\\/signup(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/authsuc",
+    "regexp": "/^\\/api\\/authsuc(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/authfail",
+    "regexp": "/^\\/api\\/authfail(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -474,6 +485,45 @@
     "paramNames": [],
     "path": "/api/getStuRatingHistory",
     "regexp": "/^\\/api\\/getStuRatingHistory(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getStuComUsedKp",
+    "regexp": "/^\\/api\\/getStuComUsedKp(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getStuRecentKp",
+    "regexp": "/^\\/api\\/getStuRecentKp(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getKpWithScore",
+    "regexp": "/^\\/api\\/getKpWithScore(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -811,6 +861,19 @@
     "paramNames": [],
     "path": "/api/updateLessonLabel",
     "regexp": "/^\\/api\\/updateLessonLabel(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getStuInfoById",
+    "regexp": "/^\\/api\\/getStuInfoById(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

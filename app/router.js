@@ -97,7 +97,6 @@ module.exports = app => {
   router.get('/api/getBookChapter', controller.teacher.getBookChapter);
   router.get('/api/getChapterKp', controller.teacher.getChapterKp);
 
-<<<<<<< HEAD
   router.get('/api/getOptionData', controller.teacher.getOptionData);
   router.get('/api/getTeacherLesson', controller.teacher.getTeacherLesson);
   router.get('/api/getOneLesson', controller.teacher.getOneLesson);
@@ -106,7 +105,6 @@ module.exports = app => {
   router.post('/api/updateLessonCourse',controller.teacher.updateLessonCourse);
   router.post('/api/updateLessonRange',controller.teacher.updateLessonRange);
   router.post('/api/updateLessonLabel',controller.teacher.updateLessonLabel);
-=======
   router.get('/api/getStuInfoById', controller.teacher.getStuInfoById);
->>>>>>> origin/master
+
 };

@@ -99,6 +99,7 @@ module.exports = app => {
 
   router.get('/api/getLessonSlide', controller.slide.getLessonSlide);
   router.get('/api/getLessonSlideFeedback', controller.slide.getLessonSlideFeedback);
+  router.post('/api/updateQFeedback', controller.slide.updateQFeedback);
   router.get('/api/getOptionData', controller.teacher.getOptionData);
   router.get('/api/getTeacherLesson', controller.teacher.getTeacherLesson);
   router.get('/api/getOneLesson', controller.teacher.getOneLesson);

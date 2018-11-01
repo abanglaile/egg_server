@@ -15,6 +15,15 @@ class SlideController extends Controller {
         this.ctx.body = results;
     }
 
+    async updateQFeedback(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        if(body.userid){
+            const results = await service.slide.updateQFeedback(body.lesson_slide_id, body.q, body.indexh, body.userid);
+            this.ctx.body = results;
+        }
+    }
+
     
 }
 

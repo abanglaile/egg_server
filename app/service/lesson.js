@@ -1,4 +1,5 @@
 const Service = require('egg').Service;
+const uuid = require('uuid');
 
 class LessonService extends Service {
 
@@ -31,14 +32,21 @@ class LessonService extends Service {
     }
 
     async getOneLesson(lesson_id){
-        const lesson = await this.app.mysql.query(`select l.*, r.room_name, g.group_name, c.course_name, ll.label_name
-            from lesson l, school_room r, school_group g, course c, lesson_label ll 
-            where l.lesson_id = ? and l.stu_group_id = g.stu_group_id 
-            and l.course_id = c.course_id and l.label_id = ll.label_id`, 
+        const lesson = await this.app.mysql.query(`select l.*, r.room_name, g.group_name, l.course_label, ll.label_name
+            from lesson l, school_room r, school_group g, lesson_label ll 
+            where l.lesson_id = ? and l.stu_group_id = g.stu_group_id and l.label_id = ll.label_id`, 
             [lesson_id]);
-        
-        lesson[0].lesson_teacher = await this.getLessonTeacher(lesson_id);
+        let lesson_content = this.getLessonContent(lesson_id);
+        let lesson_teacher = this.getLessonTeacher(lesson_id);
+        lesson[0].lesson_teacher = await lesson_teacher;
+        lesson[0].lesson_content = await lesson_content;
         return lesson[0];
+    }
+
+    async getLessonContent(lesson_id){
+        const lesson_content = await this.app.mysql.select('lesson_content',
+            {where: {lesson_id: lesson_id}});
+        return lesson_content;
     }
 
     async getLessonTeacher(lesson_id){
@@ -54,6 +62,22 @@ class LessonService extends Service {
         const ret = await this.app.mysql.insert('lesson', lesson);
         const iret = await this.app.mysql.insert('lesson_teacher', lesson_teacher);
         return ret;
+    }
+
+    async addLessonContent(lesson_content){
+        lesson_content.lesson_content_id = uuid.v1();
+        const iret = await this.app.mysql.insert('lesson_content', lesson_content);
+        return await this.getLessonContent(lesson_content.lesson_id);
+    }
+
+    async updateLessonContent(lesson_content){
+        const iret = await this.app.mysql.update('lesson_content', {
+            content: lesson_content.content,
+            resource: lesson_content.resource,
+            content_type: lesson_content.content_type,
+            kpids: lesson_content.kpids,
+        }, {where: {lesson_id: lesson_content.lesson_id, index: lesson_content.index}});
+        return await this.getLessonContent(lesson_content.lesson_id);
     }
 
     async updateLessonTeacher(lesson_id, lesson_teacher){

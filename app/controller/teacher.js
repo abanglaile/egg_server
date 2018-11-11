@@ -170,6 +170,20 @@ class TeacherController extends Controller {
         this.ctx.body = results;
     }
 
+    async addLessonContent(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.addLessonContent(body.lesson_content);
+        ctx.body = results;
+    }
+
+    async updateLessonContent(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.updateLessonContent(body.lesson_content);
+        ctx.body = results;
+    }
+
     async updateLessonTeacher(){
         const { ctx, service } = this;
         const {body} = ctx.request;

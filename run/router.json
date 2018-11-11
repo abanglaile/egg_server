@@ -238,8 +238,7 @@
   {
     "name": null,
     "methods": [
-      "HEAD",
-      "GET"
+      "POST"
     ],
     "paramNames": [],
     "path": "/api/login",
@@ -695,6 +694,19 @@
   {
     "name": null,
     "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getStudentGroup",
+    "regexp": "/^\\/api\\/getStudentGroup(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
       "POST"
     ],
     "paramNames": [],
@@ -800,6 +812,19 @@
     "paramNames": [],
     "path": "/api/updateQFeedback",
     "regexp": "/^\\/api\\/updateQFeedback(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getFeedbackStu",
+    "regexp": "/^\\/api\\/getFeedbackStu(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

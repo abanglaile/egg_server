@@ -38,7 +38,8 @@ module.exports = app => {
   router.get('/api/authfail',controller.home.authfail);
   // passport-local
   const local = app.passport.authenticate('local',options);
-  router.get('/api/login', local);
+  // router.get('/api/login', local);
+  router.post('/api/login', controller.auth.login);
   //weixin
   // router.get('/api/get_wx_auth',controller.auth.getWxAuth);
   router.get('/api/get_wx_auth',controller.auth.getWxAuth);
@@ -89,6 +90,7 @@ module.exports = app => {
 
   router.get('/api/getClassGroup', controller.teacher.getClassGroup);
   router.get('/api/getGroupData', controller.teacher.getGroupData);
+  router.get('/api/getStudentGroup', controller.teacher.getStudentGroup);
   router.post('/api/addNewGroup', controller.teacher.addNewGroup);
   router.post('/api/deleteOneGroup', controller.teacher.deleteOneGroup);
   router.post('/api/deleteOneStudent', controller.teacher.deleteOneStudent);
@@ -100,6 +102,8 @@ module.exports = app => {
   router.get('/api/getLessonSlide', controller.slide.getLessonSlide);
   router.get('/api/getLessonSlideFeedback', controller.slide.getLessonSlideFeedback);
   router.post('/api/updateQFeedback', controller.slide.updateQFeedback);
+  router.get('/api/getFeedbackStu', controller.slide.getFeedbackStu);
+
   router.get('/api/getOptionData', controller.teacher.getOptionData);
   router.get('/api/getTeacherLesson', controller.teacher.getTeacherLesson);
   router.get('/api/getOneLesson', controller.teacher.getOneLesson);

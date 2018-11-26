@@ -207,6 +207,33 @@ class userService extends Service {
     }
   }
 
+  async setUserInfo(realname,wx_info){
+    var userid = uuid.v1().replace(/-/g,'');
+    console.log("userid: ",userid);
+    const res1 = await this.app.mysql.insert('user_auths', {
+      userid : userid,
+      identity_type : 'weixin',
+      identifier : wx_info.openid,
+      credential : wx_info.access_token,
+    });
+
+    const res2 = await this.app.mysql.insert('users', {
+      userid : userid,
+      nickname : wx_info.nickname,
+      avatar : wx_info.imgurl,
+      role : 2,
+      realname : realname,
+    });
+
+    return ({
+        userid : userid,
+        nickname : wx_info.nickname,
+        imgurl : wx_info.imgurl,
+        realname : realname,          
+    });
+
+  }
+
 }
 
 module.exports = userService;

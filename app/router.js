@@ -45,6 +45,8 @@ module.exports = app => {
   router.get('/api/get_wx_auth',controller.auth.getWxAuth);
   //邀请码绑定
   router.post('/api/check_invi_code',controller.auth.checkInviteCode);
+  router.post('/api/set_userinfo',controller.auth.setUserInfo);
+
   router.get('/api/getHistoryTest', controller.student.getHistoryTest);
   router.get('/api/getNotFinishTest', controller.student.getNotFinishTest);
   router.get('/api/getMyTestData', controller.student.getMyTestData);

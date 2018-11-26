@@ -275,6 +275,18 @@
   {
     "name": null,
     "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/set_userinfo",
+    "regexp": "/^\\/api\\/set_userinfo(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
       "HEAD",
       "GET"
     ],
@@ -819,30 +831,6 @@
   {
     "name": null,
     "methods": [
-      "POST"
-    ],
-    "paramNames": [],
-    "path": "/api/addLessonContent",
-    "regexp": "/^\\/api\\/addLessonContent(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
-      "POST"
-    ],
-    "paramNames": [],
-    "path": "/api/updateLessonContent",
-    "regexp": "/^\\/api\\/updateLessonContent(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
       "HEAD",
       "GET"
     ],
@@ -888,6 +876,30 @@
     "paramNames": [],
     "path": "/api/getOneLesson",
     "regexp": "/^\\/api\\/getOneLesson(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/addLessonContent",
+    "regexp": "/^\\/api\\/addLessonContent(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/updateLessonContent",
+    "regexp": "/^\\/api\\/updateLessonContent(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

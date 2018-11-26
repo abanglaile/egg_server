@@ -73,6 +73,16 @@ class AuthController extends Controller {
     }
     
   }
+
+  async setUserInfo(){
+    const { ctx, service } = this;
+    const {body} = ctx.request;
+
+    if(body.realname){
+      const results = await service.user.setUserInfo(body.realname,body.wx_info);
+      this.ctx.body = results;
+    }
+  }
     
 }
 

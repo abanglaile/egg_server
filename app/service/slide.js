@@ -58,7 +58,7 @@ class slideService extends Service {
   }
 
   async getFeedbackStu(lesson_content_id, indexh){
-    const res = await this.app.mysql.query(`select u.nickname  from slide_feedback s, 
+    const res = await this.app.mysql.query(`select u.realname,u.avatar  from slide_feedback s, 
                 users u where s.lesson_content_id = ? and s.indexh = ? and
                  s.userid = u.userid;`, [lesson_content_id, indexh]);
 

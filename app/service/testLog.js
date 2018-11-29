@@ -23,7 +23,7 @@ class TestLogService extends Service {
     async getLessonContentTest(lesson_id){
         const res = await this.app.mysql.query(`select t.*, u.nickname, date_format(t.enable_time, '%m/%d') as formatdate
         from teacher_test t, lesson_content lc, users u 
-        where lc.lesson_id = ? and lc.test_id = t.test_id and u.userid = t.teacher_id;`, lesson_id);
+        where lc.lesson_id = ? and lc.content_type = 2 and lc.resource = t.test_id and u.userid = t.teacher_id;`, lesson_id);
         return res;
     }
 
@@ -38,11 +38,22 @@ class TestLogService extends Service {
 
     async submitTestLog(exercise_log){
         var delta_score = 0; 
+        var correct = 0;
         for(var i = 0; i < exercise_log.length; i++){
+            correct += exercise_log[i].exercise_state ? 1 : 0;
             delta_score += exercise_log[i].exercise_state ? 5 : 2;
         }
-        const res = await this.app.mysql.update('test_log', {finish_time: new Date(), delta_score: delta_score}, {
-            where: {test_id: exercise_log[0].test_id}
+        var sta = ((correct/exercise_log.length)*100).toFixed(1);
+        const res = await this.app.mysql.update('test_log', {
+                finish_time: new Date(), 
+                delta_score: delta_score,
+                correct_exercise: correct,
+                test_state: sta,
+            }, {
+            where: {
+                test_id: exercise_log[0].test_id,
+                student_id:exercise_log[0].student_id,
+            }
         })
         const update_result = await this.app.mysql.query('update users set score = score + ? where userid = ?', [delta_score, exercise_log[0].student_id]);
         return {code: 0};
@@ -375,6 +386,7 @@ class TestLogService extends Service {
         var time_sum = 0;
         var testRes = {
                 test_data : test_data,
+                completion_num : 0,
                 completion_per : 0,
                 correct_rate : 0,
                 timeconsuming_per : 0,
@@ -394,6 +406,7 @@ class TestLogService extends Service {
                 time_consuming: results[i].time_consuming,
             });
         }
+        testRes.completion_num = completion_num ;
         testRes.completion_per = Math.round((completion_num/results.length)*100)? Math.round((completion_num/results.length)*100):0;
         testRes.correct_rate = Math.round(score_sum/completion_num)? Math.round(score_sum/completion_num):0;
         testRes.timeconsuming_per = Math.round(time_sum/completion_num);

@@ -12,6 +12,48 @@ class GroupService extends Service {
         return res;
     }
 
+    async getStudentGroup(teacher_id){
+
+        const results = await this.app.mysql.query(`select t.stu_group_id, s.group_name, 
+        g.student_id,u.realname from teacher_group t, group_student g, school_group s,
+        users u where t.teacher_id = ? and t.stu_group_id = g.stu_group_id and 
+        u.userid = g.student_id and s.stu_group_id = g.stu_group_id;`, teacher_id);
+
+        var student_data = [];
+        var student_index = [];
+        var list_index = 0;
+        for(var i = 0; i < results.length; i++){
+            var e = results[i];
+            const index = student_index[e.stu_group_id];
+            // console.log(i + " " + index);
+            if(index >= 0){
+                console.log(index);
+                student_data[index].children.push({
+                    label: e.realname, 
+                    value: e.student_id, 
+                    key: e.student_id,
+                });
+            }else{
+                var children = [];
+                children.push({
+                    label: e.realname, 
+                    value: e.student_id, 
+                    key: e.student_id, 
+                });
+                var group = {
+                    label: e.group_name, 
+                    value: e.stu_group_id, 
+                    key: e.stu_group_id, 
+                    children: children,
+                };
+                student_data[list_index] = group;
+                student_index[e.stu_group_id] = list_index;
+                list_index++;
+            }
+        }
+        return student_data;
+    }   
+
     async getGroupData(stu_group_id){
         const res = await this.app.mysql.query(`select g.student_id, u.realname from group_student g,
         users u where u.userid = g.student_id and g.stu_group_id = ?;`, stu_group_id);

@@ -23,7 +23,14 @@ class SlideController extends Controller {
             this.ctx.body = results;
         }
     }
-
+    
+    async getFeedbackStu(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.slide.getFeedbackStu(query.lesson_slide_id, query.indexh);
+        
+        this.ctx.body = results;
+    }
     
 }
 

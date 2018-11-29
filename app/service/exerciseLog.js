@@ -70,7 +70,7 @@ class ExerciseLogService extends Service {
         console.log("chapter_rating1",chapter_rating);
 
         student_rating = student_rating ? student_rating : 500;
-        chapter_rating = chapter_rating.chapter_rating ? chapter_rating.chapter_rating : 500;
+        chapter_rating = chapter_rating ? chapter_rating.chapter_rating : 500;
         
 
         console.log("chapter_rating2",chapter_rating);

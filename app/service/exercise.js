@@ -179,6 +179,7 @@ class ExerciseService extends Service {
 
   async produceExerciseId(course_id) {
     const res = await this.app.redis.hincrby('exercise_sequence',course_id,1);
+    console.log("produceExerciseId:",res);
     return res;
   }
 

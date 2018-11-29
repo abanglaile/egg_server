@@ -13,16 +13,25 @@ class TestService extends Service {
         return res;
     }
 
-    async addStudentTest(id,keys,testsize){
-        var sql = "";
-        var params = [];
-        console.log("student keys:" + keys);
+    async addSomeTestLog(test_id, keys, total_exercise){
+        let teat_log = [];
         for(var i = 0; i < keys.length; i++){
-            sql = sql + "insert into test_log set ?;"
-            params.push({student_id: keys[i], test_id: id,start_time:null,finish_time:null,test_state:null,correct_exercise:null,total_exercise:testsize});   
+            test_log.push({
+                student_id: keys[i],
+                test_id: test_id,
+                total_exercise: total_exercise,
+            })
         }
-        const res = await this.app.mysql.query(sql,params);
-        return res;
+        return await this.app.mysql.insert("test_log", test_log);
+        // var sql = "";
+        // var params = [];
+        // console.log("student keys:" + keys);
+        // for(var i = 0; i < keys.length; i++){
+        //     sql = sql + "insert into test_log set ?;"
+        //     params.push({student_id: keys[i], test_id: id,start_time:null,finish_time:null,test_state:null,correct_exercise:null,total_exercise:testsize});   
+        // }
+        // const res = await this.app.mysql.query(sql,params);
+        // return res;
     }
 
     async getTestTable(teacher_id) {
@@ -65,18 +74,11 @@ class TestService extends Service {
     }
 
     async distributeTest(test_id,keys){
-
         const upres = await this.app.mysql.query(`update teacher_test t set t.enable_time = 
         (SELECT now()) where test_id = ?;`, [test_id]);
-
-        const time = await this.app.mysql.get('teacher_test',{ test_id : test_id });
-
-        const len = await this.app.mysql.query(`select count(*) as size from 
-        exercise_test where test_id = ?;`, [test_id]);
-
-        const addres = await this.addStudentTest(test_id, keys, len[0].size);
-        
-        return time.enable_time;
+        const test = await this.app.mysql.get('teacher_test',{ test_id : test_id });
+        const addres = await this.addSomeTestLog(test_id, keys, test.total_exercise);        
+        return test.enable_time;
     }
 
     async getTestInfoById(test_id){

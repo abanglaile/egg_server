@@ -291,8 +291,18 @@ class ExerciseLogService extends Service {
     // }
 
     async getMyTestData(test_id, student_id){
-        const test_log = await this.service.testLog.getTestLog(student_id, test_id);
+        let test_log = await this.service.testLog.getTestLog(student_id, test_id);
 
+        if(!test_log){
+            const test = await this.app.mysql.get('teacher_test',{ test_id : test_id });
+            if(test.test_type == 3){
+                //公开测试
+                test_log = {test_id: test_id, student_id: student_id, start_time: new Date(), total_exercise: test.total_exercise};
+                const res = await this.app.mysql.insert('test_log', test_log);
+            }else{
+                return;
+            }
+        }
         if(!test_log.start_time){
             test_log.start_time = new Date();
             const result = await this.app.mysql.update('test_log', {

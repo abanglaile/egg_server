@@ -2,8 +2,8 @@ const Service = require('egg').Service;
 const promise = require('bluebird');
 const exec = require('node-cmd');
 var fs = require("fs");
-var cmdStr = `"D:\\Program Files (x86)\\LilyPond\\usr\\bin\\lilypond" -fpng -o D:\\www\\kpmanager\\img\\test D:\\Github\\egg_server\\test.ly`;
-// var cmdStr = `lilypond -fpng -o /usr/local/www/kpmanager/img/test /usr/local/server/egg_server/test.ly`;
+// var cmdStr = `"D:\\Program Files (x86)\\LilyPond\\usr\\bin\\lilypond" -fpng -o D:\\www\\kpmanager\\img\\test D:\\Github\\egg_server\\test.ly`;
+var cmdStr = `lilypond -fpng -o /usr/local/www/kpmanager/img/test /usr/local/server/egg_server/test.ly`;
 
 
 const execAsync = promise.promisify(exec.get, { multiArgs: true, context: exec });

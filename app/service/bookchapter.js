@@ -75,6 +75,10 @@ class bookchapterService extends Service {
     return res;
   }
 
+  async searchKp(input){
+      return await this.app.mysql.query(`select k.kpid, k.kpname from kptable k where k.kpname like ?`, '%'+input+'%');
+  }
+
   async getChapterName(chapter_id) {
 
     const res = await this.app.mysql.select('chapter', {

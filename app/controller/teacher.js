@@ -156,11 +156,39 @@ class TeacherController extends Controller {
         this.ctx.body = results;
     }
 
+    async searchKp(){
+        const {ctx, service} = this;
+        const {query} = ctx.request;
+        const results = await service.bookchapter.searchKp(query.input);
+        this.ctx.body = results;
+    }
+
     async getOneLesson(){
         const { ctx, service } = this;
         const {query} = ctx.request;
         const results = await service.lesson.getOneLesson(query.lesson_id);
         this.ctx.body = results;
+    }
+
+    async addLessonComment(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.addLessonComment(body.lesson_comment);
+        ctx.body = results;
+    }
+
+    async addTeacherComment(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.addTeacherComment(body.teacher_comment);
+        ctx.body = results;
+    }
+
+    async addLessonContent(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.addLessonContent(body.lesson_content);
+        ctx.body = results;
     }
 
     async addLessonContent(){
@@ -219,6 +247,26 @@ class TeacherController extends Controller {
         this.ctx.body = results;
     }
     
+    async addTweet(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.tweet.addTweet(body.tweet);
+        ctx.body = results;        
+    }
+
+    async deleteTweet(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.tweet.deleteTweet(body.tweet_id);
+        ctx.body = results;        
+    }
+
+    async getLessonTweet(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.tweet.get(query.lesson_id);
+        this.ctx.body = results;
+    }
 }
 
 module.exports = TeacherController;

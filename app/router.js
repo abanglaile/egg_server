@@ -101,9 +101,16 @@ module.exports = app => {
   router.get('/api/getLessonSlideFeedback', controller.slide.getLessonSlideFeedback);
   router.post('/api/updateQFeedback', controller.slide.updateQFeedback);
   router.get('/api/getOptionData', controller.teacher.getOptionData);
+  router.get('/api/searchKp', controller.teacher.searchKp);
   router.get('/api/getTeacherLesson', controller.teacher.getTeacherLesson);
   router.get('/api/getOneLesson', controller.teacher.getOneLesson);
   
+  router.get('/api/getLessonTweet', controller.teacher.getLessonTweet);
+
+  router.post('/api/addTweet', controller.teacher.addTweet);
+  router.post('/api/deleteTweet', controller.teacher.deleteTweet);
+
+  router.post('/api/addTeacherComment', controller.teacher.addTeacherComment);
   router.post('/api/addLessonContent', controller.teacher.addLessonContent);
   router.post('/api/updateLessonContent', controller.teacher.updateLessonContent);
   

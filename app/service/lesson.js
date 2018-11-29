@@ -32,15 +32,29 @@ class LessonService extends Service {
     }
 
     async getOneLesson(lesson_id){
-        const lesson = await this.app.mysql.query(`select l.*, r.room_name, g.group_name, l.course_label, ll.label_name
+        let lesson = await this.app.mysql.query(`select l.*, r.room_name, g.group_name, l.course_label, ll.label_name
             from lesson l, school_room r, school_group g, lesson_label ll 
             where l.lesson_id = ? and l.stu_group_id = g.stu_group_id and l.label_id = ll.label_id`, 
             [lesson_id]);
+        lesson = lesson[0];
         let lesson_content = this.getLessonContent(lesson_id);
         let lesson_teacher = this.getLessonTeacher(lesson_id);
-        lesson[0].lesson_teacher = await lesson_teacher;
-        lesson[0].lesson_content = await lesson_content;
-        return lesson[0];
+        let lesson_student = this.service.group.getGroupData(lesson.stu_group_id);
+        let teacher_comment = this.getTeacherComment(lesson_id);
+        lesson.lesson_teacher = await lesson_teacher;
+        lesson.lesson_content = await lesson_content;
+        lesson.lesson_student = await lesson_student;
+        lesson.teacher_comment = await teacher_comment;
+        return lesson;
+    }
+
+    async getTeacherComment(lesson_id){
+        return await this.app.mysql.select('teacher_comment', {lesson_id: lesson_id});
+    }
+
+    async addTeacherComment(teacher_comment){
+        const ret = await this.app.mysql.insert('teacher_comment', teacher_comment);
+        return await this.getTeacherComment(teacher_comment.lesson_id);
     }
 
     async getLessonContent(lesson_id){
@@ -78,6 +92,10 @@ class LessonService extends Service {
             kpids: lesson_content.kpids,
         }, {where: {lesson_id: lesson_content.lesson_id, index: lesson_content.index}});
         return await this.getLessonContent(lesson_content.lesson_id);
+    }
+
+    async addTeacherComment(){
+         
     }
 
     async updateLessonTeacher(lesson_id, lesson_teacher){

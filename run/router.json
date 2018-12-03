@@ -238,8 +238,7 @@
   {
     "name": null,
     "methods": [
-      "HEAD",
-      "GET"
+      "POST"
     ],
     "paramNames": [],
     "path": "/api/login",
@@ -269,6 +268,31 @@
     "paramNames": [],
     "path": "/api/check_invi_code",
     "regexp": "/^\\/api\\/check_invi_code(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/set_userinfo",
+    "regexp": "/^\\/api\\/set_userinfo(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getSclGroup",
+    "regexp": "/^\\/api\\/getSclGroup(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -695,6 +719,19 @@
   {
     "name": null,
     "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getStudentGroup",
+    "regexp": "/^\\/api\\/getStudentGroup(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
       "POST"
     ],
     "paramNames": [],
@@ -800,6 +837,19 @@
     "paramNames": [],
     "path": "/api/updateQFeedback",
     "regexp": "/^\\/api\\/updateQFeedback(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getFeedbackStu",
+    "regexp": "/^\\/api\\/getFeedbackStu(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

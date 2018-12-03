@@ -46,6 +46,7 @@ module.exports = app => {
   //邀请码绑定
   router.post('/api/check_invi_code',controller.auth.checkInviteCode);
   router.post('/api/set_userinfo',controller.auth.setUserInfo);
+  router.get('/api/getSclGroup',controller.auth.getSclGroup);
 
   router.get('/api/getHistoryTest', controller.student.getHistoryTest);
   router.get('/api/getNotFinishTest', controller.student.getNotFinishTest);

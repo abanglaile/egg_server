@@ -961,6 +961,18 @@
       "POST"
     ],
     "paramNames": [],
+    "path": "/api/deleteTeacherComment",
+    "regexp": "/^\\/api\\/deleteTeacherComment(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
     "path": "/api/addTeacherComment",
     "regexp": "/^\\/api\\/addTeacherComment(?:\\/(?=$))?$/",
     "stack": [
@@ -987,6 +999,54 @@
     "paramNames": [],
     "path": "/api/updateLessonContent",
     "regexp": "/^\\/api\\/updateLessonContent(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/deleteLessonContent",
+    "regexp": "/^\\/api\\/deleteLessonContent(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/addHomework",
+    "regexp": "/^\\/api\\/addHomework(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/updateHomework",
+    "regexp": "/^\\/api\\/updateHomework(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/deleteHomework",
+    "regexp": "/^\\/api\\/deleteHomework(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

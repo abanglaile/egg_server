@@ -116,9 +116,15 @@ module.exports = app => {
   router.post('/api/addTweet', controller.teacher.addTweet);
   router.post('/api/deleteTweet', controller.teacher.deleteTweet);
 
+  router.post('/api/deleteTeacherComment', controller.teacher.deleteTeacherComment);
   router.post('/api/addTeacherComment', controller.teacher.addTeacherComment);
   router.post('/api/addLessonContent', controller.teacher.addLessonContent);
   router.post('/api/updateLessonContent', controller.teacher.updateLessonContent);
+  router.post('/api/deleteLessonContent', controller.teacher.updateLessonContent);
+
+  router.post('/api/addHomework', controller.teacher.addHomework);
+  router.post('/api/updateHomework', controller.teacher.updateHomework);
+  router.post('/api/deleteHomework', controller.teacher.deleteHomework);
   
   router.post('/api/updateLessonGroup', controller.teacher.updateLessonGroup);
   router.post('/api/updateLessonTeacher',controller.teacher.updateLessonTeacher);

@@ -39,21 +39,51 @@ class LessonService extends Service {
         lesson = lesson[0];
         let lesson_content = this.getLessonContent(lesson_id);
         let lesson_teacher = this.getLessonTeacher(lesson_id);
+        let homework = this.getHomework(lesson_id);
         let lesson_student = this.service.group.getGroupData(lesson.stu_group_id);
         let teacher_comment = this.getTeacherComment(lesson_id);
         lesson.lesson_teacher = await lesson_teacher;
+        lesson.homework = await homework;
         lesson.lesson_content = await lesson_content;
         lesson.lesson_student = await lesson_student;
         lesson.teacher_comment = await teacher_comment;
         return lesson;
     }
 
+    async getHomework(lesson_id){
+        return await this.app.mysql.select('homework', {lesson_id: lesson_id});
+    }
+
+    async addHomework(homework){
+        homework.homework_id = uuid.v1();
+        const iret = await this.app.mysql.insert('homework', homework);
+        return await this.getHomework(homework.lesson_id);
+    }
+
+    async updateHomework(homework){
+        const iret = await this.app.mysql.update('homework', homework, {where: {homework_id: homework.homework_id}});
+        return await this.getHomework(getHomework.lesson_id);
+    }
+
+    async deleteHomework(homework){
+        const iret = await this.app.mysql.delete('homework', {homework_id: homework.homework_id});
+        return await this.getHomework(getHomework.lesson_id);
+    }
+
     async getTeacherComment(lesson_id){
         return await this.app.mysql.select('teacher_comment', {lesson_id: lesson_id});
     }
 
-    async addTeacherComment(teacher_comment){
-        const ret = await this.app.mysql.insert('teacher_comment', teacher_comment);
+    async addTeacherComment(label_id, label_type, teacher_comment){
+        teacher_comment.comment_id = uuid.v1();
+        let ret = await this.app.mysql.insert('teacher_comment', teacher_comment);
+        //TO-DO：插入Tweet
+        return await this.getTeacherComment(teacher_comment.lesson_id);
+    }
+
+    async deleteTeacherComment(comment_id, lesson_id){
+        let ret = await this.app.mysql.delete('teacher_comment', comment_id);
+        //TO-DO：删除Tweet
         return await this.getTeacherComment(teacher_comment.lesson_id);
     }
 
@@ -85,17 +115,13 @@ class LessonService extends Service {
     }
 
     async updateLessonContent(lesson_content){
-        const iret = await this.app.mysql.update('lesson_content', {
-            content: lesson_content.content,
-            resource: lesson_content.resource,
-            content_type: lesson_content.content_type,
-            kpids: lesson_content.kpids,
-        }, {where: {lesson_id: lesson_content.lesson_id, index: lesson_content.index}});
+        const iret = await this.app.mysql.update('lesson_content', lesson_content, {where: {lesson_content_id: lesson_content.lesson_content_id}});
         return await this.getLessonContent(lesson_content.lesson_id);
     }
 
-    async addTeacherComment(){
-         
+    async deleteLessonContent(lesson_content){
+        const iret = await this.app.mysql.delete('lesson_content', {lesson_content_id: lesson_content.lesson_content_id});
+        return await this.getLessonContent(lesson_content.lesson_id);
     }
 
     async updateLessonTeacher(lesson_id, lesson_teacher){

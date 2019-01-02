@@ -135,6 +135,13 @@ class TeacherController extends Controller {
         this.ctx.body = results;
     }
 
+    async getTeacherTest(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.test.getTeacherTest(query.test_id);
+        this.ctx.body = results;
+    }
+
     async getTestKpResult(){
         const { ctx, service } = this;
         const {query} = ctx.request;
@@ -187,7 +194,35 @@ class TeacherController extends Controller {
     async addTeacherComment(){
         const { ctx, service } = this;
         const {body} = ctx.request;
-        const results = await service.lesson.addTeacherComment(body.teacher_comment);
+        const results = await service.lesson.addTeacherComment(body.label_id, body.label_type, body.teacher_comment);
+        ctx.body = results;
+    }
+
+    async deleteTeacherComment(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.deleteTeacherComment(body.comment_id, body.lesson_id);
+        ctx.body = results;
+    }
+
+    async addHomework(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.addHomework(body.homework);
+        ctx.body = results;
+    }
+
+    async updateHomework(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.updateHomework(body.homework);
+        ctx.body = results;
+    }
+
+    async deleteHomework(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.deleteHomework(body.homework);
         ctx.body = results;
     }
 
@@ -195,6 +230,20 @@ class TeacherController extends Controller {
         const { ctx, service } = this;
         const {body} = ctx.request;
         const results = await service.lesson.addLessonContent(body.lesson_content);
+        ctx.body = results;
+    }
+
+    async updateLessonContent(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.updateLessonContent(body.lesson_content);
+        ctx.body = results;
+    }
+
+    async deleteLessonContent(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.deleteLessonContent(body.lesson_content);
         ctx.body = results;
     }
 

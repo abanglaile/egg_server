@@ -35,7 +35,6 @@ class TestService extends Service {
     }
 
     async getTestTable(teacher_id) {
-
         const results = await this.app.mysql.query(`select t.test_id,t.test_name,t.enable_time from
          teacher_test t where t.teacher_id = ? ORDER BY t.group_time desc;`, [teacher_id]);
         var test_data = [];
@@ -45,10 +44,18 @@ class TestService extends Service {
                 key:e.test_id,
                 testname:e.test_name,
                 teststate: e.enable_time ? 1 : 0,
-                time : e.enable_time,
+                time: e.enable_time,
             });
         }
         return test_data;
+    }
+
+    async getTeacherTest(teacher_id) {
+        return await this.app.mysql.select('teacher_test', {
+            where: {teacher_id: teacher_id},
+            orders: [['group_time', 'desc']],
+            limit: 10,
+        })
     }
 
     async addNewTest(req){

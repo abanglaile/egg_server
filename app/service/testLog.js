@@ -374,10 +374,12 @@ class TestLogService extends Service {
     }
 
     async getTestResultInfo(test_id){
-        console.log('getTestResultInfo  test_id: ',test_id);
-        const results = await this.app.mysql.query(`select s.student_id,s.finish_time,`
-        +`timestampdiff(MINUTE,s.start_time,s.finish_time) as time_consuming,s.test_state,`
-        +`u.realname from test_log s, users u where s.test_id = ? and s.student_id = u.userid;`, test_id);
+        // console.log('getTestResultInfo  test_id: ',test_id);
+        const results = await this.app.mysql.query(`select sg.group_name,s.student_id,
+        s.finish_time,timestampdiff(MINUTE,s.start_time,s.finish_time) as time_consuming,
+        s.test_state,u.realname from test_log s, users u,group_student g,
+        school_group sg where s.test_id = ? and s.student_id = u.userid and 
+        g.student_id = s.student_id and g.stu_group_id = sg.stu_group_id;`, test_id);
 
         console.log('results: ',results);
         var test_data = [];
@@ -399,6 +401,7 @@ class TestLogService extends Service {
             }
             test_data.push({
                 student_id:results[i].student_id,
+                groupname:results[i].group_name,
                 studentname:results[i].realname,
                 completion: results[i].finish_time? true : false,
                 score:results[i].test_state,

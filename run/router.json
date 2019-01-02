@@ -291,6 +291,19 @@
       "GET"
     ],
     "paramNames": [],
+    "path": "/api/getSclGroup",
+    "regexp": "/^\\/api\\/getSclGroup(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/api/getHistoryTest",
     "regexp": "/^\\/api\\/getHistoryTest(?:\\/(?=$))?$/",
     "stack": [

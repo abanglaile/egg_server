@@ -105,6 +105,21 @@ class GroupService extends Service {
         return res;
     } 
     
+    async getSclGroup(school_id){
+        const res = await this.app.mysql.query(`SELECT g.stu_group_id ,g.group_name FROM school_group g,
+        school s where g.school_id = s.school_id and s.school_id = ?;`, school_id);
+
+        var sclgroup = [];
+
+        for(var i = 0; i < res.length; i++){
+            sclgroup.push({
+                label : res[i].group_name,
+                value : res[i].stu_group_id,
+            });
+        }
+
+        return sclgroup;
+    }
 }
 
 module.exports = GroupService;

@@ -207,7 +207,7 @@ class userService extends Service {
     }
   }
 
-  async setUserInfo(realname,wx_info){
+  async setUserInfo(realname,wx_info,stu,groupValue){
     var userid = uuid.v1().replace(/-/g,'');
     console.log("userid: ",userid);
     const res1 = await this.app.mysql.insert('user_auths', {
@@ -221,9 +221,16 @@ class userService extends Service {
       userid : userid,
       nickname : wx_info.nickname,
       avatar : wx_info.imgurl,
-      role : 2,
+      role : stu? 2 : 1,
       realname : realname,
     });
+
+    if(stu && groupValue){
+      const res3 = await this.app.mysql.insert('group_student', {
+       stu_group_id : groupValue,
+       student_id : userid,
+      });
+    }
 
     return ({
         userid : userid,

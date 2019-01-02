@@ -391,6 +391,18 @@
       "POST"
     ],
     "paramNames": [],
+    "path": "/api/submitBreakdownLog",
+    "regexp": "/^\\/api\\/submitBreakdownLog(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
     "path": "/api/submitTestLog",
     "regexp": "/^\\/api\\/submitTestLog(?:\\/(?=$))?$/",
     "stack": [

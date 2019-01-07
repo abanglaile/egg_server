@@ -7,7 +7,7 @@ class CourseService extends Service {
   }
 
   async getSchoolCourse() {
-    const res = await this.app.mysql.select('course');
+    const res = await this.app.mysql.select('course_label');
     return res;
   }
 

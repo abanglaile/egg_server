@@ -130,6 +130,7 @@ module.exports = app => {
   
   router.post('/api/updateLessonGroup', controller.teacher.updateLessonGroup);
   router.post('/api/updateLessonTeacher',controller.teacher.updateLessonTeacher);
+  router.post('/api/updateLessonAssistant',controller.teacher.updateLessonAssistant);
   router.post('/api/updateLessonCourse',controller.teacher.updateLessonCourse);
   router.post('/api/updateLessonRange',controller.teacher.updateLessonRange);
   router.post('/api/updateLessonLabel',controller.teacher.updateLessonLabel);

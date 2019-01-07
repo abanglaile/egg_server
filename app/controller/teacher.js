@@ -194,7 +194,7 @@ class TeacherController extends Controller {
     async addTeacherComment(){
         const { ctx, service } = this;
         const {body} = ctx.request;
-        const results = await service.lesson.addTeacherComment(body.label_id, body.label_type, body.teacher_comment);
+        const results = await service.lesson.addTeacherComment(body.label_id, body.label_type, body.select_student, body.teacher_comment);
         ctx.body = results;
     }
 
@@ -264,7 +264,14 @@ class TeacherController extends Controller {
     async updateLessonTeacher(){
         const { ctx, service } = this;
         const {body} = ctx.request;
-        const results = await service.lesson.updateLessonTeacher(body.lesson_id, body.lesson_teacher);
+        const results = await service.lesson.updateLessonTeacher(body.lesson_id, body.teacher_id);
+        ctx.body = results;
+    }
+
+    async updateLessonAssistant(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.updateLessonAssistant(body.lesson_id, body.assistant_id);
         ctx.body = results;
     }
 

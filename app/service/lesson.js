@@ -4,14 +4,16 @@ const uuid = require('uuid');
 class LessonService extends Service {
 
     async getTeacherLesson(teacher_id, start_time, end_time, stu_group_id){
-        let query = `select l.*, u.nickname, r.room_name, g.group_name, c.course_label, ll.label_name
-        from lesson l, users u, lesson_teacher lt, school_room r, school_group g, lesson_label ll 
-        where l.lesson_id = lt.lesson_id and lt.teacher_id = u.userid 
-            and l.stu_group_id = g.stu_group_id and l.label_id = ll.label_id`;
+        let query = `select l.*, u.nickname, r.room_name, g.group_name, 
+            ll.label_name, lc.course_label_name from lesson l, users u, 
+            course_label lc,school_room r, school_group g, 
+            lesson_label ll where l.teacher_id = u.userid and 
+            lc.course_label = l.course_label and 
+            l.stu_group_id = g.stu_group_id and l.label_id = ll.label_id`;
         let params = [];
 
         if(teacher_id){
-            query += ' and lt.teacher_id = ?';
+            query += ' and l.teacher_id = ?';
             params.push(teacher_id);
         }
         if(start_time){
@@ -26,6 +28,8 @@ class LessonService extends Service {
             query += ' and l.stu_group_id = ?';
             params.push(stu_group_id);
         }
+
+        query += ' order by l.end_time desc;';
 
         const lesson_list = await this.app.mysql.query(query, params);
         return lesson_list;

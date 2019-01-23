@@ -21,7 +21,10 @@ module.exports = app => {
   router.post('/api/saveTestMedia', controller.manager.saveTestMedia);
   router.post('/api/queryMediaList', controller.manager.queryMediaList);
   router.post('/api/searchMedia', controller.manager.searchMedia);
-
+  //上传七牛图片
+  router.get('/api/getQiniuToken', controller.manager.getQiniuToken);
+  router.post('/api/delQiniuPic', controller.manager.delQiniuPic);
+  //上传七牛图片
   // router.get('/api/getMyLadderScore', controller.student.getMyLadderScore);
 
   // 1.user
@@ -134,6 +137,7 @@ module.exports = app => {
   router.post('/api/updateLessonCourse',controller.teacher.updateLessonCourse);
   router.post('/api/updateLessonRange',controller.teacher.updateLessonRange);
   router.post('/api/updateLessonLabel',controller.teacher.updateLessonLabel);
+  router.post('/api/addNewLesson',controller.teacher.addNewLesson);
   
   router.get('/api/getStuInfoById', controller.teacher.getStuInfoById);
 };

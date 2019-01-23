@@ -38,6 +38,11 @@ class qiniuService extends Service {
         
     }
 
+    async getQiniuToken(){
+        const uptoken = putPolicy.uploadToken(mac);
+        return uptoken;
+    }
+
 }
 
 module.exports = qiniuService;

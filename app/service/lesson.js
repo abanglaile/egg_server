@@ -8,7 +8,7 @@ class LessonService extends Service {
             ll.label_name, lc.course_label_name from lesson l, users u, 
             course_label lc,school_room r, school_group g, 
             lesson_label ll where l.teacher_id = u.userid and 
-            lc.course_label = l.course_label and 
+            lc.course_label = l.course_label and r.room_id = l.room_id and 
             l.stu_group_id = g.stu_group_id and l.label_id = ll.label_id`;
         let params = [];
 
@@ -106,11 +106,14 @@ class LessonService extends Service {
     }
 
     async addNewLesson(lesson){
-        const lesson_teacher = lesson;
-        delete lesson.lesson_teacher;
+        let lesson_id = uuid.v1();
+        lesson.lesson_id = lesson_id;
+        console.log("lesson", JSON.stringify(lesson));
+        // const lesson_teacher = lesson;
+        // delete lesson.lesson_teacher;
         const ret = await this.app.mysql.insert('lesson', lesson);
-        const iret = await this.app.mysql.insert('lesson_teacher', lesson_teacher);
-        return ret;
+        // const iret = await this.app.mysql.insert('lesson_teacher', lesson_teacher);
+        return lesson_id;
     }
 
     async addLessonContent(lesson_content){

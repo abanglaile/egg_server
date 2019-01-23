@@ -34,6 +34,22 @@ class ManagerController extends Controller {
             this.ctx.body = ret;
         }
     }
+
+    async getQiniuToken(){
+        const { ctx, service } = this;
+        const results = await service.qiniu.getQiniuToken();
+        console.log(results);
+        this.ctx.body = results;
+    }
+
+    async delQiniuPic(){
+        const {ctx, service} = this;
+        const {body} = ctx.request;
+        if(body.key){
+            const ret = await service.qiniu.delQiniuPic(body.key);
+            this.ctx.body = ret;
+        }
+    }
 }
 
 module.exports = ManagerController;

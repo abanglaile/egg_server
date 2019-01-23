@@ -303,6 +303,13 @@ class TeacherController extends Controller {
         ctx.body = results;
     }
 
+    async addNewLesson(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.addNewLesson(body.lesson);
+        ctx.body = results; 
+    }
+
     async getStuInfoById(){
         const { ctx, service } = this;
         const {query} = ctx.request;
@@ -330,6 +337,8 @@ class TeacherController extends Controller {
         const results = await service.tweet.get(query.lesson_id);
         this.ctx.body = results;
     }
+
+    
 }
 
 module.exports = TeacherController;

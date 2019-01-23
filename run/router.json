@@ -200,6 +200,31 @@
   {
     "name": null,
     "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getQiniuToken",
+    "regexp": "/^\\/api\\/getQiniuToken(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/delQiniuPic",
+    "regexp": "/^\\/api\\/delQiniuPic(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
       "POST"
     ],
     "paramNames": [],
@@ -1069,8 +1094,8 @@
       "POST"
     ],
     "paramNames": [],
-    "path": "/api/updateLessonAssistant",
-    "regexp": "/^\\/api\\/updateLessonAssistant(?:\\/(?=$))?$/",
+    "path": "/api/updateLessonTeacher",
+    "regexp": "/^\\/api\\/updateLessonTeacher(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -1081,8 +1106,8 @@
       "POST"
     ],
     "paramNames": [],
-    "path": "/api/updateLessonTeacher",
-    "regexp": "/^\\/api\\/updateLessonTeacher(?:\\/(?=$))?$/",
+    "path": "/api/updateLessonAssistant",
+    "regexp": "/^\\/api\\/updateLessonAssistant(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -1119,6 +1144,18 @@
     "paramNames": [],
     "path": "/api/updateLessonLabel",
     "regexp": "/^\\/api\\/updateLessonLabel(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/addNewLesson",
+    "regexp": "/^\\/api\\/addNewLesson(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

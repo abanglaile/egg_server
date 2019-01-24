@@ -3,7 +3,8 @@ const uuid = require('uuid');
 
 class LessonService extends Service {
 
-    async getTeacherLesson(teacher_id, start_time, end_time, stu_group_id){
+    async getTeacherLesson(filter_option){
+        let {teacher_id, start_time, end_time, group_id, course_label, label_id} = filter_option;
         let query = `select l.*, u.nickname, r.room_name, g.group_name, 
             ll.label_name, lc.course_label_name from lesson l, users u, 
             course_label lc,school_room r, school_group g, 
@@ -24,9 +25,13 @@ class LessonService extends Service {
             query += ' and l.end_time <= ?';
             params.push(end_time);
         }
-        if(stu_group_id){
-            query += ' and l.stu_group_id = ?';
-            params.push(stu_group_id);
+        if(group_id){
+            query += ' and l.group_id = ?';
+            params.push(group_id);
+        }
+        if(course_label){
+            query += ' and l.course_label = ?';
+            params.push(course_label);
         }
 
         query += ' order by l.end_time desc;';
@@ -48,13 +53,14 @@ class LessonService extends Service {
 
     async getOneLesson(lesson_id){
         let lesson = await this.getLessonBasic(lesson_id);
+        let stu_group_id = await lesson.stu_group_id;
+        let lesson_student = await this.service.group.getGroupData(stu_group_id);
         let lesson_content = this.getLessonContent(lesson_id);
         let homework = this.getHomework(lesson_id);
-        let lesson_student = this.service.group.getGroupData(lesson.stu_group_id);
         let teacher_comment = this.getTeacherComment(lesson_id);
         lesson.homework = await homework;
         lesson.lesson_content = await lesson_content;
-        lesson.lesson_student = await lesson_student;
+        lesson.lesson_student = lesson_student;
         lesson.teacher_comment = await teacher_comment;
         return lesson;
     }
@@ -94,9 +100,9 @@ class LessonService extends Service {
     }
 
     async deleteTeacherComment(comment_id, lesson_id){
-        let ret = await this.app.mysql.delete('teacher_comment', comment_id);
+        let ret = await this.app.mysql.delete('teacher_comment', {comment_id: comment_id});
         //TO-DO：删除Tweet
-        return await this.getTeacherComment(teacher_comment.lesson_id);
+        return await this.getTeacherComment(lesson_id);
     }
 
     async getLessonContent(lesson_id){

@@ -35,7 +35,9 @@ class qiniuService extends Service {
 
     async deleteFile(filename) {
         var bucketManager = new qiniu.rs.BucketManager(mac, config);
-        
+        const ret = await bucketManager.delete(bucket,filename);
+
+        return ret;
     }
 
     async getQiniuToken(){

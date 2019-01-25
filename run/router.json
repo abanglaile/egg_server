@@ -228,6 +228,18 @@
       "POST"
     ],
     "paramNames": [],
+    "path": "/api/saveUploadUrl",
+    "regexp": "/^\\/api\\/saveUploadUrl(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
     "path": "/api/signup",
     "regexp": "/^\\/api\\/signup(?:\\/(?=$))?$/",
     "stack": [

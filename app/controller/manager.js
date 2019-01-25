@@ -13,8 +13,10 @@ class ManagerController extends Controller {
     async queryMediaList(){
         const { ctx, service } = this;
         const {body} = ctx.request;
-        const results = await service.media.queryMediaByPage(0, 5);
-        this.ctx.body = results;
+        if(body.tag){
+            const results = await service.media.queryMediaByPage(0, 5, body.tag);
+            this.ctx.body = results;
+        }
     }
 
     async saveTestMedia(){
@@ -47,6 +49,15 @@ class ManagerController extends Controller {
         const {body} = ctx.request;
         if(body.key){
             const ret = await service.qiniu.delQiniuPic(body.key);
+            this.ctx.body = ret;
+        }
+    }
+
+    async saveUploadUrl(){
+        const {ctx, service} = this;
+        const {body} = ctx.request;
+        if(body.upload_url){
+            const ret = await service.media.saveUploadUrl(body.upload_url,body.courseid);
             this.ctx.body = ret;
         }
     }

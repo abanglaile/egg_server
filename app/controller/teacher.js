@@ -159,7 +159,7 @@ class TeacherController extends Controller {
     async getTeacherLesson(){
         const { ctx, service } = this;
         const {query} = ctx.request;
-        const results = await service.lesson.getTeacherLesson(query.teacher_id, query.start_time, query.end_time, query.stu_group_id);
+        const results = await service.lesson.getTeacherLesson(query.filter_option);
         this.ctx.body = results;
     }
 

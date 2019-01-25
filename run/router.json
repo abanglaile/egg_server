@@ -1106,8 +1106,8 @@
       "POST"
     ],
     "paramNames": [],
-    "path": "/api/updateLessonTeacher",
-    "regexp": "/^\\/api\\/updateLessonTeacher(?:\\/(?=$))?$/",
+    "path": "/api/updateLessonAssistant",
+    "regexp": "/^\\/api\\/updateLessonAssistant(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -1118,8 +1118,8 @@
       "POST"
     ],
     "paramNames": [],
-    "path": "/api/updateLessonAssistant",
-    "regexp": "/^\\/api\\/updateLessonAssistant(?:\\/(?=$))?$/",
+    "path": "/api/updateLessonTeacher",
+    "regexp": "/^\\/api\\/updateLessonTeacher(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

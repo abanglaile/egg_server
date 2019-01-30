@@ -33,11 +33,29 @@ class qiniuService extends Service {
         return ret;
     }
 
-    async deleteFile(filename) {
+    async deleteFile(keys) {
+        console.log('keys:',keys);
         var bucketManager = new qiniu.rs.BucketManager(mac, config);
-        const ret = await bucketManager.delete(bucket,filename);
-
-        return ret;
+        for(var i = 0; i < keys.length; i++){
+            // console.log('keys[i]:',keys[i]);
+            var index = keys[i].lastIndexOf("\/");
+            var name = keys[i].substring(index+1,keys[i].length);
+            console.log('name:',name);
+            let ret = await bucketManager.delete(bucket, name, function(err, respBody, respInfo) {
+                if (err) {
+                    console.log(err);
+                    //throw err;
+                } else {
+                    console.log(respInfo.statusCode);
+                    console.log(respBody);
+                }
+            })
+            let del = await this.app.mysql.delete('media_res', {
+                url: keys[i],
+            });
+            console.log(ret);
+        }
+        return null;
     }
 
     async getQiniuToken(){

@@ -44,11 +44,11 @@ class ManagerController extends Controller {
         this.ctx.body = results;
     }
 
-    async delQiniuPic(){
+    async deleteSelectedFile(){
         const {ctx, service} = this;
         const {body} = ctx.request;
-        if(body.key){
-            const ret = await service.qiniu.delQiniuPic(body.key);
+        if(body.keys){
+            const ret = await service.qiniu.deleteFile(body.keys);
             this.ctx.body = ret;
         }
     }

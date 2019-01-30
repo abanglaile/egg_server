@@ -21,10 +21,10 @@ module.exports = app => {
   router.post('/api/saveTestMedia', controller.manager.saveTestMedia);
   router.post('/api/queryMediaList', controller.manager.queryMediaList);
   router.post('/api/searchMedia', controller.manager.searchMedia);
-  //上传本地图片
+  //本地图片上传与删除管理
   router.get('/api/getQiniuToken', controller.manager.getQiniuToken);
-  router.post('/api/delQiniuPic', controller.manager.delQiniuPic);
   router.post('/api/saveUploadUrl', controller.manager.saveUploadUrl);
+  router.post('/api/deleteSelectedFile', controller.manager.deleteSelectedFile);
   
   //上传七牛图片
   // router.get('/api/getMyLadderScore', controller.student.getMyLadderScore);

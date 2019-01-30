@@ -39,7 +39,8 @@ class mediaService extends Service {
             url : url,
             tag : type,
         });
-        return res;
+        const result = await this.searchMeidaByUrl(url);
+        return result;
     }
 
 }

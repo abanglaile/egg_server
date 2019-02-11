@@ -21,7 +21,12 @@ module.exports = app => {
   router.post('/api/saveTestMedia', controller.manager.saveTestMedia);
   router.post('/api/queryMediaList', controller.manager.queryMediaList);
   router.post('/api/searchMedia', controller.manager.searchMedia);
-
+  //本地图片上传与删除管理
+  router.get('/api/getQiniuToken', controller.manager.getQiniuToken);
+  router.post('/api/saveUploadUrl', controller.manager.saveUploadUrl);
+  router.post('/api/deleteSelectedFile', controller.manager.deleteSelectedFile);
+  
+  //上传七牛图片
   // router.get('/api/getMyLadderScore', controller.student.getMyLadderScore);
 
   // 1.user
@@ -58,6 +63,7 @@ module.exports = app => {
   //router.get('/api/getMyBookChapter', controller.student.getMyBookChapter);
 
   router.post('/api/submitExerciseLog', controller.student.submitExerciseLog);
+  router.post('/api/submitBreakdownLog', controller.student.submitBreakdownLog);
   router.post('/api/submitTestLog', controller.student.submitTestLog);
   router.get('/api/getMyStudentRating', controller.student.getMyStudentRating);
   router.get('/api/getChapterKpStatus', controller.student.getChapterKpStatus);
@@ -118,15 +124,23 @@ module.exports = app => {
   router.post('/api/addTweet', controller.teacher.addTweet);
   router.post('/api/deleteTweet', controller.teacher.deleteTweet);
 
+  router.post('/api/deleteTeacherComment', controller.teacher.deleteTeacherComment);
   router.post('/api/addTeacherComment', controller.teacher.addTeacherComment);
   router.post('/api/addLessonContent', controller.teacher.addLessonContent);
   router.post('/api/updateLessonContent', controller.teacher.updateLessonContent);
+  router.post('/api/deleteLessonContent', controller.teacher.updateLessonContent);
+
+  router.post('/api/addHomework', controller.teacher.addHomework);
+  router.post('/api/updateHomework', controller.teacher.updateHomework);
+  router.post('/api/deleteHomework', controller.teacher.deleteHomework);
   
   router.post('/api/updateLessonGroup', controller.teacher.updateLessonGroup);
   router.post('/api/updateLessonTeacher',controller.teacher.updateLessonTeacher);
+  router.post('/api/updateLessonAssistant',controller.teacher.updateLessonAssistant);
   router.post('/api/updateLessonCourse',controller.teacher.updateLessonCourse);
   router.post('/api/updateLessonRange',controller.teacher.updateLessonRange);
   router.post('/api/updateLessonLabel',controller.teacher.updateLessonLabel);
+  router.post('/api/addNewLesson',controller.teacher.addNewLesson);
   
   router.get('/api/getStuInfoById', controller.teacher.getStuInfoById);
 

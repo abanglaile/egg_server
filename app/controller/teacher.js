@@ -135,6 +135,13 @@ class TeacherController extends Controller {
         this.ctx.body = results;
     }
 
+    async getTeacherTest(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.test.getTeacherTest(query.test_id);
+        this.ctx.body = results;
+    }
+
     async getTestKpResult(){
         const { ctx, service } = this;
         const {query} = ctx.request;
@@ -152,7 +159,7 @@ class TeacherController extends Controller {
     async getTeacherLesson(){
         const { ctx, service } = this;
         const {query} = ctx.request;
-        const results = await service.lesson.getTeacherLesson(query.teacher_id, query.start_time, query.end_time, query.stu_group_id);
+        const results = await service.lesson.getTeacherLesson(query.filter_option);
         this.ctx.body = results;
     }
 
@@ -187,7 +194,35 @@ class TeacherController extends Controller {
     async addTeacherComment(){
         const { ctx, service } = this;
         const {body} = ctx.request;
-        const results = await service.lesson.addTeacherComment(body.teacher_comment);
+        const results = await service.lesson.addTeacherComment(body.label_id, body.label_type, body.select_student, body.teacher_comment);
+        ctx.body = results;
+    }
+
+    async deleteTeacherComment(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.deleteTeacherComment(body.comment_id, body.lesson_id);
+        ctx.body = results;
+    }
+
+    async addHomework(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.addHomework(body.homework);
+        ctx.body = results;
+    }
+
+    async updateHomework(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.updateHomework(body.homework);
+        ctx.body = results;
+    }
+
+    async deleteHomework(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.deleteHomework(body.homework);
         ctx.body = results;
     }
 
@@ -195,6 +230,20 @@ class TeacherController extends Controller {
         const { ctx, service } = this;
         const {body} = ctx.request;
         const results = await service.lesson.addLessonContent(body.lesson_content);
+        ctx.body = results;
+    }
+
+    async updateLessonContent(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.updateLessonContent(body.lesson_content);
+        ctx.body = results;
+    }
+
+    async deleteLessonContent(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.deleteLessonContent(body.lesson_content);
         ctx.body = results;
     }
 
@@ -215,7 +264,14 @@ class TeacherController extends Controller {
     async updateLessonTeacher(){
         const { ctx, service } = this;
         const {body} = ctx.request;
-        const results = await service.lesson.updateLessonTeacher(body.lesson_id, body.lesson_teacher);
+        const results = await service.lesson.updateLessonTeacher(body.lesson_id, body.teacher_id);
+        ctx.body = results;
+    }
+
+    async updateLessonAssistant(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.updateLessonAssistant(body.lesson_id, body.assistant_id);
         ctx.body = results;
     }
 
@@ -247,6 +303,13 @@ class TeacherController extends Controller {
         ctx.body = results;
     }
 
+    async addNewLesson(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.addNewLesson(body.lesson);
+        ctx.body = results; 
+    }
+
     async getStuInfoById(){
         const { ctx, service } = this;
         const {query} = ctx.request;
@@ -274,6 +337,8 @@ class TeacherController extends Controller {
         const results = await service.tweet.get(query.lesson_id);
         this.ctx.body = results;
     }
+
+    
 }
 
 module.exports = TeacherController;

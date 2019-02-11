@@ -4,7 +4,7 @@ class slideService extends Service {
 
   async getLessonSlide(lesson_content_id) {
     const res = await this.app.mysql.query(`select s.*, lc.lesson_id from slide s, lesson_content lc 
-    where lc.lesson_content_id = ? and s.slide_id = lc.resource and lc.content_type = 1;`, [lesson_content_id]);
+    where lc.lesson_content_id = ? and s.slide_id = lc.resource;`, [lesson_content_id]);
     if(!res[0]){
       return {}
     }

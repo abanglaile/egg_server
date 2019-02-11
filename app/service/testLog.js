@@ -23,7 +23,7 @@ class TestLogService extends Service {
     async getLessonContentTest(lesson_id){
         const res = await this.app.mysql.query(`select t.*, u.nickname, date_format(t.enable_time, '%m/%d') as formatdate
         from teacher_test t, lesson_content lc, users u 
-        where lc.lesson_id = ? and lc.content_type = 2 and lc.resource = t.test_id and u.userid = t.teacher_id;`, lesson_id);
+        where lc.lesson_id = ? and lc.content_type = 3 and lc.resource = t.test_id and u.userid = t.teacher_id;`, lesson_id);
         return res;
     }
 
@@ -375,11 +375,15 @@ class TestLogService extends Service {
 
     async getTestResultInfo(test_id){
         // console.log('getTestResultInfo  test_id: ',test_id);
-        const results = await this.app.mysql.query(`select sg.group_name,s.student_id,
-        s.finish_time,timestampdiff(MINUTE,s.start_time,s.finish_time) as time_consuming,
-        s.test_state,u.realname from test_log s, users u,group_student g,
-        school_group sg where s.test_id = ? and s.student_id = u.userid and 
-        g.student_id = s.student_id and g.stu_group_id = sg.stu_group_id;`, test_id);
+        // const results = await this.app.mysql.query(`select sg.group_name,s.student_id,
+        // s.finish_time,timestampdiff(MINUTE,s.start_time,s.finish_time) as time_consuming,
+        // s.test_state,u.realname from test_log s, users u,group_student g,
+        // school_group sg where s.test_id = ? and s.student_id = u.userid and 
+        // g.student_id = s.student_id and g.stu_group_id = sg.stu_group_id;`, test_id);
+
+        const results = await this.app.mysql.query(`select s.student_id,s.finish_time,
+        timestampdiff(SECOND,s.start_time,s.finish_time) as time_consuming,s.test_state,u.realname from 
+        test_log s, users u where s.test_id = ? and s.student_id = u.userid;`, test_id);
 
         console.log('results: ',results);
         var test_data = [];
@@ -397,7 +401,7 @@ class TestLogService extends Service {
             if(results[i].finish_time){
                 completion_num++;
                 score_sum = score_sum+results[i].test_state;
-                time_sum = time_sum+results[i].time_consuming;
+                time_sum = time_sum+parseFloat((results[i].time_consuming/60).toFixed(1));
             }
             test_data.push({
                 student_id:results[i].student_id,
@@ -406,13 +410,13 @@ class TestLogService extends Service {
                 completion: results[i].finish_time? true : false,
                 score:results[i].test_state,
                 end_time:results[i].finish_time,
-                time_consuming: results[i].time_consuming,
+                time_consuming: parseFloat((results[i].time_consuming/60).toFixed(1)),
             });
         }
         testRes.completion_num = completion_num ;
         testRes.completion_per = Math.round((completion_num/results.length)*100)? Math.round((completion_num/results.length)*100):0;
         testRes.correct_rate = Math.round(score_sum/completion_num)? Math.round(score_sum/completion_num):0;
-        testRes.timeconsuming_per = Math.round(time_sum/completion_num);
+        testRes.timeconsuming_per = (time_sum/completion_num).toFixed(1);
         
         console.log('testRes: ',testRes);
         return testRes;

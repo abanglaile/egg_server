@@ -13,10 +13,14 @@ class TeacherService extends Service {
         const teacher_option = this.getSchoolTeacher(school_id);
         const course_option = this.service.course.getSchoolCourse();
         const label_option = this.service.lessonLabel.getSchoolLabel();
+        const test_option = this.service.test.getTeacherTest(teacher_id);
+        const room_option = this.service.school.getSchoolRoom(school_id);
         return {
             teacher_option: await teacher_option,
             course_option: await course_option,
             label_option: await label_option,
+            test_option: await test_option,
+            room_option: await room_option, 
         }
     }
 

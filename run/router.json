@@ -200,6 +200,43 @@
   {
     "name": null,
     "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getQiniuToken",
+    "regexp": "/^\\/api\\/getQiniuToken(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/saveUploadUrl",
+    "regexp": "/^\\/api\\/saveUploadUrl(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/deleteSelectedFile",
+    "regexp": "/^\\/api\\/deleteSelectedFile(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
       "POST"
     ],
     "paramNames": [],
@@ -394,6 +431,18 @@
     "paramNames": [],
     "path": "/api/submitExerciseLog",
     "regexp": "/^\\/api\\/submitExerciseLog(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/submitBreakdownLog",
+    "regexp": "/^\\/api\\/submitBreakdownLog(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -962,6 +1011,18 @@
       "POST"
     ],
     "paramNames": [],
+    "path": "/api/deleteTeacherComment",
+    "regexp": "/^\\/api\\/deleteTeacherComment(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
     "path": "/api/addTeacherComment",
     "regexp": "/^\\/api\\/addTeacherComment(?:\\/(?=$))?$/",
     "stack": [
@@ -998,6 +1059,54 @@
       "POST"
     ],
     "paramNames": [],
+    "path": "/api/deleteLessonContent",
+    "regexp": "/^\\/api\\/deleteLessonContent(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/addHomework",
+    "regexp": "/^\\/api\\/addHomework(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/updateHomework",
+    "regexp": "/^\\/api\\/updateHomework(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/deleteHomework",
+    "regexp": "/^\\/api\\/deleteHomework(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
     "path": "/api/updateLessonGroup",
     "regexp": "/^\\/api\\/updateLessonGroup(?:\\/(?=$))?$/",
     "stack": [
@@ -1012,6 +1121,18 @@
     "paramNames": [],
     "path": "/api/updateLessonTeacher",
     "regexp": "/^\\/api\\/updateLessonTeacher(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/updateLessonAssistant",
+    "regexp": "/^\\/api\\/updateLessonAssistant(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -1048,6 +1169,18 @@
     "paramNames": [],
     "path": "/api/updateLessonLabel",
     "regexp": "/^\\/api\\/updateLessonLabel(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/addNewLesson",
+    "regexp": "/^\\/api\\/addNewLesson(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

@@ -53,6 +53,7 @@ module.exports = app => {
   router.get('/api/getMyTestData', controller.student.getMyTestData);
   router.get('/api/getStuPoorKp', controller.student.getStuPoorKp);
   router.post('/api/getMyTestStatus',controller.student.getMyTestStatus);
+  router.get('/api/getMyTestStepAnalysis',controller.student.getMyTestStepAnalysis);
   router.post('/api/generateTestByKp', controller.student.generateTestByKp)
   //router.get('/api/getMyBookChapter', controller.student.getMyBookChapter);
 
@@ -128,4 +129,7 @@ module.exports = app => {
   router.post('/api/updateLessonLabel',controller.teacher.updateLessonLabel);
   
   router.get('/api/getStuInfoById', controller.teacher.getStuInfoById);
+
+  //个人考试评价
+  router.get('/apt/getStuEvalBytest',controller.student.getStuEvalBytest);
 };

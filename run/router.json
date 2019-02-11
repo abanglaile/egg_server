@@ -364,6 +364,19 @@
   {
     "name": null,
     "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getMyTestStepAnalysis",
+    "regexp": "/^\\/api\\/getMyTestStepAnalysis(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
       "POST"
     ],
     "paramNames": [],
@@ -1048,6 +1061,19 @@
     "paramNames": [],
     "path": "/api/getStuInfoById",
     "regexp": "/^\\/api\\/getStuInfoById(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/apt/getStuEvalBytest",
+    "regexp": "/^\\/apt\\/getStuEvalBytest(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

@@ -191,6 +191,18 @@ class StudentController extends Controller {
             this.ctx.body = results;
         }
     }
+    //查询做题步骤分析
+    async getMyTestStepAnalysis(){
+        const {ctx, service } = this;
+        const {query} = ctx.request;
+        // console.log(query);
+        
+        if(query.student_id){
+            const results = await service.exerciseLog.getMyTestStepAnalysis(query.student_id,query.test_id);
+            // console.log(results);
+            this.ctx.body=results;
+        }
+    }
     //获取学生个人情况信息（姓名 班级等）
     async getStudentInfo(){
         const { ctx, service } = this;
@@ -295,7 +307,16 @@ class StudentController extends Controller {
         }
     }
 
-    
+    //根据测试数据，生成学生的单份测试反馈情况
+    async getStuEvalBytest(){
+        const { ctx,service } = this;
+        const { query } = ctx.request;
+        if(query.student_id){
+            
+            const result = await service.rating
+            this.ctx.body = result;
+        }
+    }
 }
 
 module.exports = StudentController;

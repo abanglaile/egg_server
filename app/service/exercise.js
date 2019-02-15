@@ -370,12 +370,12 @@ class ExerciseService extends Service {
 }
 
   async generateTestByKp(kpid, kpname, student_id){
-    const kp_rating = await this.app.mysql.get('student_kp', {
+    const student_kp = await this.app.mysql.get('student_kp', {
             student_id: student_id,
             kpid: kpid,
         });
-    const exercise_list = await this.getExerciseByKpRating(kpid, kp_rating.kp_rating);
-
+    const kp_rating = student_kp ? student_kp.kp_rating : 500;
+    const exercise_list = await this.getExerciseByKpRating(kpid, kp_rating+100);
     const start_time = new Date();
     const test_result = await this.app.mysql.insert('teacher_test', {
         test_name: "攻克" + kpname,

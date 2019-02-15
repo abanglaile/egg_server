@@ -17,9 +17,8 @@ class userService extends Service {
   }
 
   async getStudentInfo(student_id){
-    var sql = `select t.group_name,u.nickname,u.avatar,u.score from group_student g, 
-                teacher_group t,users u where t.stu_group_id = g.stu_group_id 
-                and u.userid =g.student_id and g.student_id = ?;`;
+    var sql = `select u.nickname,u.avatar,u.score,sg.group_name from school_group sg, group_student g,users u 
+    where  g.stu_group_id=sg.stu_group_id and u.userid = g.student_id and g.student_id = ?;`;
 
     const res = await this.app.mysql.query(sql,student_id);
     return res;

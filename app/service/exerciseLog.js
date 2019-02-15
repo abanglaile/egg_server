@@ -1,4 +1,5 @@
 const Service = require('egg').Service;
+const { promisify } = require('util');
 
 class ExerciseLogService extends Service {
     //利用elo_rating方法更新rating
@@ -53,6 +54,82 @@ class ExerciseLogService extends Service {
         //     on et.exercise_id = el.exercise_id and el.student_id = ? where et.test_id = ? order by et.exercise_index`, 
         //     [student_id, test_id]); 
         return test_kp;
+    }
+    //查询做题步骤分析
+    async getMyTestStepAnalysis(student_id, test_id){
+        const query_result = await this.app.mysql.query(
+            `select ks.kp_standard, bk.kpname, bk.sn_state, sk.kp_rating,bk.kp_delta_rating, kt.chapterid, c.chaptername, sc.chapter_rating
+            from breakdown_log bk 
+            LEFT JOIN student_kp sk on bk.student_id =sk.student_id
+            LEFT JOIN kp_standard ks on ks.kpid = bk.kpid
+            LEFT JOIN kptable kt on ks.kpid = kt.kpid 
+            LEFT JOIN chapter c on kt.chapterid = c.chapterid 
+			LEFT JOIN student_chapter sc on sc.student_id = bk.student_id and sc.chapterid = kt.chapterid
+            where bk.student_id = ? and bk.test_id = ? ORDER BY bk.kpname`,[student_id,test_id]
+        ) 
+        //归类KP，汇总数据
+        let result = [];
+        let now_chapter_id;
+        let now_kp_name;
+        let chapter_length=0;
+        let kp_length=0;
+        query_result.forEach(element => {
+            if (now_chapter_id != element.chapterid){
+                //不同chapter，新建一个新的chapter数组且更新chapterid
+                result.push({
+                    'chapter_id':element.chapterid,
+                    'chapter_name':element.chaptername,
+                    'chapter_ratting': (element.chapter_rating/element.kp_standard)*100,
+                    'chapter_correct_percent': 0,
+                    'chapter_correct_times': 0,
+                    'chapter_exercise_times': 0,
+                    'kp_status':[
+                        {
+                            'kp_name': element.kpname,
+                            'kp_delta_rating':0,
+                            'kp_correct_percent': 0,
+                            'kp_correct_times': 0,
+                            'kp_exercise_times': 0,
+                            'kp_correct_rating':(element.kp_rating/element.kp_standard)*100
+                        }
+                    ]
+                });
+                now_chapter_id = element.chapterid
+            } else if (now_kp_name != element.kpname){
+                //不同KP，新建一个KP数组且更新KPname
+                result[chapter_length-1].kp_status.push(
+                    {
+                        'kp_name': element.kpname,
+                        'kp_delta_rating':0,
+                        'kp_correct_percent': 0,
+                        'kp_correct_times': 0,
+                        'kp_exercise_times': 0,
+                        'kp_correct_rating':(element.kp_rating/element.kp_standard)*100
+                    }
+                )
+            }
+            now_kp_name = element.kpname;
+            chapter_length = result.length;
+            kp_length = result[chapter_length-1].kp_status.length;
+            //更新正确题目数
+            if (element.sn_state != -1){
+                result[chapter_length-1].kp_status[kp_length-1].kp_correct_times += element.sn_state;
+                result[chapter_length-1].chapter_correct_times += element.sn_state;
+            }
+            //更新题目数量
+            result[chapter_length-1].chapter_exercise_times++;
+            result[chapter_length-1].kp_status[kp_length-1].kp_exercise_times++;
+            //更新delta_rating
+            result[chapter_length-1].kp_status[kp_length-1].kp_delta_rating += element.kp_delta_rating;
+        });
+        //循环计算KP正确率
+        for (var i=0;i<result.length;i++){
+            result[i].chapter_correct_percent = (result[i].chapter_correct_times/result[i].chapter_exercise_times)*100;
+            result[i].kp_status.forEach(element => {
+                element.kp_correct_percent=(element.kp_correct_times/element.kp_exercise_times)*100;
+            });
+        }
+        return result;
     }
 
     async submitExerciseLog(exercise_log) {

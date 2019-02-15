@@ -4,6 +4,16 @@ const Controller = require('egg').Controller;
 
 class TeacherController extends Controller {
 
+    async getUserInfo(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        if(query.userid){
+            const results = await service.user.getUserInfo(query.userid);
+            
+            this.ctx.body = results;
+        }
+    }
+
     async getTestStatus(){
         const { ctx, service } = this;
         const {body} = ctx.request;

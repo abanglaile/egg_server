@@ -14,7 +14,7 @@ class TestService extends Service {
     }
 
     async addSomeTestLog(test_id, keys, total_exercise){
-        let teat_log = [];
+        let test_log = [];
         for(var i = 0; i < keys.length; i++){
             test_log.push({
                 student_id: keys[i],
@@ -22,7 +22,8 @@ class TestService extends Service {
                 total_exercise: total_exercise,
             })
         }
-        return await this.app.mysql.insert("test_log", test_log);
+        const res = await this.app.mysql.insert("test_log", test_log);
+        return res;
         // var sql = "";
         // var params = [];
         // console.log("student keys:" + keys);
@@ -84,6 +85,7 @@ class TestService extends Service {
         const upres = await this.app.mysql.query(`update teacher_test t set t.enable_time = 
         (SELECT now()) where test_id = ?;`, [test_id]);
         const test = await this.app.mysql.get('teacher_test',{ test_id : test_id });
+        console.log("keys:",keys);
         const addres = await this.addSomeTestLog(test_id, keys, test.total_exercise);        
         return test.enable_time;
     }

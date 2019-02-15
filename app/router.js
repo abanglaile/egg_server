@@ -75,6 +75,7 @@ module.exports = app => {
 
   //个人中心
   router.post('/api/getStudentInfo',controller.student.getStudentInfo);
+  router.get('/api/getUserInfo',controller.teacher.getUserInfo);
   
   //个人信息统计
   router.get('/api/getStuAbility',controller.student.getStuAbility);

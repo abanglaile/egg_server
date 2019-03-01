@@ -192,7 +192,7 @@ class TeacherController extends Controller {
     async getTaskResultInfo(){
         const { ctx, service } = this;
         const {query} = ctx.request;
-        const results = await service.taskLog.getTaskResultInfo(query.task_id);
+        const results = await service.task.getTaskResultInfo(query.task_id);
         this.ctx.body = results;
     }
 

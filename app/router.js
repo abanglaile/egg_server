@@ -142,6 +142,11 @@ module.exports = app => {
   router.post('/api/updateLessonRange',controller.teacher.updateLessonRange);
   router.post('/api/updateLessonLabel',controller.teacher.updateLessonLabel);
   router.post('/api/addNewLesson',controller.teacher.addNewLesson);
+
+  router.get('/api/getTaskTable', controller.teacher.getTaskTable);
+  router.post('/api/deleteOneTask', controller.teacher.deleteOneTask);
+  router.get('/api/getTaskInfoById', controller.teacher.getTaskInfoById);
+  router.get('/api/getTaskResultInfo', controller.teacher.getTaskResultInfo);
   
   router.get('/api/getStuInfoById', controller.teacher.getStuInfoById);
 

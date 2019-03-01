@@ -31,6 +31,13 @@ class TeacherController extends Controller {
         const results = await service.test.getTestTable(query.teacher_id);
         this.ctx.body = results;
     }
+
+    async getTaskTable(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.task.getTaskTable(query.teacher_id);
+        this.ctx.body = results;
+    }
     
     async addNewTest(){
         const { ctx, service } = this;
@@ -47,6 +54,15 @@ class TeacherController extends Controller {
         const {body} = ctx.request;
         if(body.test_id){
             const results = await service.test.deleteOneTest(body.test_id);
+            this.ctx.body = results;
+        }
+    }
+
+    async deleteOneTask(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        if(body.taskid){
+            const results = await service.task.deleteOneTask(body.taskid);
             this.ctx.body = results;
         }
     }
@@ -142,6 +158,13 @@ class TeacherController extends Controller {
         const { ctx, service } = this;
         const {query} = ctx.request;
         const results = await service.test.getTestInfoById(query.test_id);
+        this.ctx.body = results[0];
+    }
+
+    async getTaskInfoById(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.task.getTaskInfoById(query.task_id);
         this.ctx.body = results;
     }
 
@@ -163,6 +186,13 @@ class TeacherController extends Controller {
         const { ctx, service } = this;
         const {query} = ctx.request;
         const results = await service.testLog.getTestResultInfo(query.test_id);
+        this.ctx.body = results;
+    }
+
+    async getTaskResultInfo(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.taskLog.getTaskResultInfo(query.task_id);
         this.ctx.body = results;
     }
 

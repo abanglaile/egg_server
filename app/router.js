@@ -116,12 +116,13 @@ module.exports = app => {
   router.get('/api/getFeedbackStu', controller.slide.getFeedbackStu);
 
   router.get('/api/getOptionData', controller.teacher.getOptionData);
-  router.get('/api/searchKp', controller.teacher.searchKp);
-  router.get('/api/getTeacherLesson', controller.teacher.getTeacherLesson);
-  router.get('/api/getOneLesson', controller.teacher.getOneLesson);
+  router.get('/api/searchCommentLabel', controller.teacher.searchCommentLabel);
+  router.get('/api/searchKpLabel', controller.teacher.searchKpLabel);
   
+  router.get('/api/getOneLesson', controller.teacher.getOneLesson);
   router.get('/api/getLessonTweet', controller.teacher.getLessonTweet);
 
+  router.post('/api/getTeacherLesson', controller.teacher.getTeacherLesson);
   router.post('/api/addTweet', controller.teacher.addTweet);
   router.post('/api/deleteTweet', controller.teacher.deleteTweet);
 
@@ -142,6 +143,8 @@ module.exports = app => {
   router.post('/api/updateLessonRange',controller.teacher.updateLessonRange);
   router.post('/api/updateLessonLabel',controller.teacher.updateLessonLabel);
   router.post('/api/addNewLesson',controller.teacher.addNewLesson);
+
+  router.get('/api/searchTaskSource', controller.teacher.searchTaskSource);
   
   router.get('/api/getStuInfoById', controller.teacher.getStuInfoById);
 

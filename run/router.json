@@ -949,8 +949,8 @@
       "GET"
     ],
     "paramNames": [],
-    "path": "/api/searchKp",
-    "regexp": "/^\\/api\\/searchKp(?:\\/(?=$))?$/",
+    "path": "/api/searchCommentLabel",
+    "regexp": "/^\\/api\\/searchCommentLabel(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -962,8 +962,8 @@
       "GET"
     ],
     "paramNames": [],
-    "path": "/api/getTeacherLesson",
-    "regexp": "/^\\/api\\/getTeacherLesson(?:\\/(?=$))?$/",
+    "path": "/api/searchKpLabel",
+    "regexp": "/^\\/api\\/searchKpLabel(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -990,6 +990,18 @@
     "paramNames": [],
     "path": "/api/getLessonTweet",
     "regexp": "/^\\/api\\/getLessonTweet(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/getTeacherLesson",
+    "regexp": "/^\\/api\\/getTeacherLesson(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -1194,6 +1206,19 @@
     "paramNames": [],
     "path": "/api/addNewLesson",
     "regexp": "/^\\/api\\/addNewLesson(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/searchTaskSource",
+    "regexp": "/^\\/api\\/searchTaskSource(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

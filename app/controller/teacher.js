@@ -168,8 +168,8 @@ class TeacherController extends Controller {
 
     async getTeacherLesson(){
         const { ctx, service } = this;
-        const {query} = ctx.request;
-        const results = await service.lesson.getTeacherLesson(query.filter_option);
+        const {body} = ctx.request;
+        const results = await service.lesson.getTeacherLesson(body.filter_option);
         this.ctx.body = results;
     }
 
@@ -180,11 +180,25 @@ class TeacherController extends Controller {
         this.ctx.body = results;
     }
 
-    async searchKp(){
+    async searchCommentLabel(){
         const {ctx, service} = this;
         const {query} = ctx.request;
-        const results = await service.bookchapter.searchKp(query.input);
-        this.ctx.body = results;
+        const search_res = await service.tweet.searchTweetLabel(query.input);
+        this.ctx.body = search_res;
+    }
+
+    async searchKpLabel(){
+        const {ctx, service} = this;
+        const {query} = ctx.request;
+        const search_res = await service.bookchapter.searchKp(query.input);
+        this.ctx.body = search_res;
+    }
+
+    async searchTaskSource(){
+        const {ctx, service} = this;
+        const {query} = ctx.request;
+        const task_source = await service.task.searchTaskSource(query.input);
+        this.ctx.body = task_source;
     }
 
     async getOneLesson(){
@@ -218,7 +232,7 @@ class TeacherController extends Controller {
     async addHomework(){
         const { ctx, service } = this;
         const {body} = ctx.request;
-        const results = await service.lesson.addHomework(body.homework);
+        const results = await service.lesson.addHomework(body.lesson_id, body.task, body.users);
         ctx.body = results;
     }
 
@@ -232,7 +246,7 @@ class TeacherController extends Controller {
     async deleteHomework(){
         const { ctx, service } = this;
         const {body} = ctx.request;
-        const results = await service.lesson.deleteHomework(body.homework);
+        const results = await service.lesson.deleteHomework(body.lesson_id, body.task_id, body.users);
         ctx.body = results;
     }
 

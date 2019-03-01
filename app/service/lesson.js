@@ -26,7 +26,7 @@ class LessonService extends Service {
             params.push(end_time);
         }
         if(group_id){
-            query += ' and l.group_id = ?';
+            query += ' and l.stu_group_id = ?';
             params.push(group_id);
         }
         if(course_label){
@@ -66,23 +66,24 @@ class LessonService extends Service {
     }
 
     async getHomework(lesson_id){
-        return await this.app.mysql.select('homework', {lesson_id: lesson_id});
+        return await this.app.mysql.query(`select t.*, ts.source_name from homework h, task t, task_source ts
+            where h.task_id = t.task_id and t.source_id = ts.source_id`, {lesson_id: lesson_id});
     }
 
-    async addHomework(homework){
-        homework.homework_id = uuid.v1();
-        const iret = await this.app.mysql.insert('homework', homework);
-        return await this.getHomework(homework.lesson_id);
+    async relateHomework(lesson_id, task_id){
+       return await this.app.mysql.insert('homework', {lesson_id: lesson_id, task_id});
     }
 
-    async updateHomework(homework){
-        const iret = await this.app.mysql.update('homework', homework, {where: {homework_id: homework.homework_id}});
-        return await this.getHomework(getHomework.lesson_id);
+    async addHomework(lesson_id, task, users){
+        const new_task = await this.service.task.assignTask(task, users);
+        await this.relateHomework(lesson_id, new_task.task_id);
+        return await this.getHomework(lesson_id);
     }
 
-    async deleteHomework(homework){
-        const iret = await this.app.mysql.delete('homework', {homework_id: homework.homework_id});
-        return await this.getHomework(getHomework.lesson_id);
+    async deleteHomework(lesson_id, task_id, users){
+        await this.app.mysql.delete('homework', {lesson_id: lesson_id, task_id: task_id});
+        await this.service.task.deleteTaskLog(task_id, users);
+        return await this.getHomework(lesson_id);
     }
 
     async getTeacherComment(lesson_id){

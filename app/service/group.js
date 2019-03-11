@@ -29,19 +29,19 @@ class GroupService extends Service {
             if(index >= 0){
                 console.log(index);
                 student_data[index].children.push({
-                    label: e.realname, 
+                    title: e.realname, 
                     value: e.student_id, 
                     key: e.student_id,
                 });
             }else{
                 var children = [];
                 children.push({
-                    label: e.realname, 
+                    title: e.realname, 
                     value: e.student_id, 
                     key: e.student_id, 
                 });
                 var group = {
-                    label: e.group_name, 
+                    title: e.group_name, 
                     value: e.stu_group_id, 
                     key: e.stu_group_id, 
                     children: children,

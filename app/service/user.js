@@ -246,6 +246,46 @@ class userService extends Service {
 
   }
 
+  async setTeacherInfo(realname,wx_info,school_id){
+    const {openid} = wx_info;
+    const res1 = await this.isOpenidIn(openid);
+    var userid = null;
+    if(!res1){
+      userid = uuid.v1().replace(/-/g,'');
+      console.log("userid: ",userid);
+      const res2 = await this.app.mysql.insert('user_auths', {
+        userid : userid,
+        identity_type : 'weixin',
+        identifier : wx_info.openid,
+        credential : wx_info.access_token,
+      });
+
+      const res3 = await this.app.mysql.insert('users', {
+        userid : userid,
+        nickname : wx_info.nickname,
+        avatar : wx_info.imgurl,
+        role : 1,
+        realname : realname,
+      });
+
+      const res4 = await this.app.mysql.insert('school_teacher',{
+        teacher_id : userid,
+        school_id : school_id,
+        addtime : new Date(),
+      });
+    }else{
+      userid = res1[0].userid;
+    }
+
+    return ({
+        userid : userid,
+        nickname : wx_info.nickname,
+        imgurl : wx_info.imgurl,
+        realname : realname,          
+    });
+
+  }
+
 }
 
 module.exports = userService;

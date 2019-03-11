@@ -392,6 +392,20 @@ class TeacherController extends Controller {
         this.ctx.body = results;
     }
 
+    async setVerifyRes(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.task.setVerifyRes(body.verifyState,
+                         body.comment,body.taskid,body.teacher_id,body.student_id);
+        this.ctx.body = results;   
+    }
+
+    async distributeNewHomeWork(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.task.assignTask(body.task, body.students);
+        this.ctx.body = results;
+    }
     
 }
 

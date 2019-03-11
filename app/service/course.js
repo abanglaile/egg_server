@@ -2,7 +2,7 @@ const Service = require('egg').Service;
 
 class CourseService extends Service {
   async getCourse() {
-    const res = await this.app.mysql.select('course',{where : {course_id : 3}});
+    const res = await this.app.mysql.get('course',{});
     return res;
   }
 

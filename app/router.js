@@ -48,9 +48,10 @@ module.exports = app => {
   //weixin
   // router.get('/api/get_wx_auth',controller.auth.getWxAuth);
   router.get('/api/get_wx_auth',controller.auth.getWxAuth);
-  //邀请码绑定
+  //邀请码绑定,用户信息注册
   router.post('/api/check_invi_code',controller.auth.checkInviteCode);
   router.post('/api/set_userinfo',controller.auth.setUserInfo);
+  router.post('/api/set_teacherinfo',controller.auth.setTeacherInfo);
   router.get('/api/getSclGroup',controller.auth.getSclGroup);
 
   router.get('/api/getHistoryTest', controller.student.getHistoryTest);
@@ -149,6 +150,9 @@ module.exports = app => {
   router.get('/api/getTaskInfoById', controller.teacher.getTaskInfoById);
   router.get('/api/getTaskResultInfo', controller.teacher.getTaskResultInfo);
   router.get('/api/searchTaskSource', controller.teacher.searchTaskSource);
+  router.post('/api/setVerifyRes',controller.teacher.setVerifyRes);
+  router.post('/api/distributeNewHomeWork',controller.teacher.distributeNewHomeWork);
+  
   
   router.get('/api/getStuInfoById', controller.teacher.getStuInfoById);
 

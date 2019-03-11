@@ -324,6 +324,18 @@
   {
     "name": null,
     "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/set_teacherinfo",
+    "regexp": "/^\\/api\\/set_teacherinfo(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
       "HEAD",
       "GET"
     ],
@@ -1257,8 +1269,43 @@
     "paramNames": [],
     "path": "/api/getTaskResultInfo",
     "regexp": "/^\\/api\\/getTaskResultInfo(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/api/searchTaskSource",
     "regexp": "/^\\/api\\/searchTaskSource(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/setVerifyRes",
+    "regexp": "/^\\/api\\/setVerifyRes(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/distributeNewHomeWork",
+    "regexp": "/^\\/api\\/distributeNewHomeWork(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

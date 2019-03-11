@@ -84,6 +84,16 @@ class AuthController extends Controller {
     }
   }
 
+  async setTeacherInfo(){
+    const { ctx, service } = this;
+    const {body} = ctx.request;
+
+    if(body.realname){
+      const results = await service.user.setTeacherInfo(body.realname,body.wx_info,body.school_id);
+      this.ctx.body = results;
+    }
+  }
+
   async getSclGroup(){
     const { ctx, service } = this;
     const results = await service.group.getSclGroup(ctx.request.query.school_id);

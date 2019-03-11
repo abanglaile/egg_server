@@ -57,6 +57,7 @@ class LessonService extends Service {
         let lesson_student = await this.service.group.getGroupData(stu_group_id);
         let lesson_content = this.getLessonContent(lesson_id);
         let homework = this.getHomework(lesson_id);
+        console.log("homework:",JSON.stringify(homework));
         let teacher_comment = this.getTeacherComment(lesson_id);
         lesson.homework = await homework;
         lesson.lesson_content = await lesson_content;

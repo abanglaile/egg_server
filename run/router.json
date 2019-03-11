@@ -1217,6 +1217,46 @@
       "GET"
     ],
     "paramNames": [],
+    "path": "/api/getTaskTable",
+    "regexp": "/^\\/api\\/getTaskTable(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/deleteOneTask",
+    "regexp": "/^\\/api\\/deleteOneTask(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getTaskInfoById",
+    "regexp": "/^\\/api\\/getTaskInfoById(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getTaskResultInfo",
+    "regexp": "/^\\/api\\/getTaskResultInfo(?:\\/(?=$))?$/",
     "path": "/api/searchTaskSource",
     "regexp": "/^\\/api\\/searchTaskSource(?:\\/(?=$))?$/",
     "stack": [

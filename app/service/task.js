@@ -46,6 +46,39 @@ class TaskService extends Service {
     async searchTeacherTask(teacher_id, input){
         return await this.app.mysql.query(`select t.*, ts.source_name 
         from task t, task_source ts where t.source_id = ts.source_id and t.create_user = ? and (ts.source_name like ? or t.remark like ?)`, [teacher_id, '%'+input+'%', '%'+input+'%']);
+
+    async getTaskTable(teacher_id) {
+        const results = await this.app.mysql.query(`select t.*,s.source_name from task t ,task_source s 
+        where t.create_user = ? and t.source_id = s.source_id order by t.create_time desc;`, [teacher_id]);
+    
+        return results;
+    }
+
+    async deleteOneTask(taskid){
+
+        const del1 = await this.app.mysql.delete('task', {
+            task_id: taskid,
+        });
+        const del2 = await this.app.mysql.delete('task_log', {
+            task_id: taskid,
+        });
+        return del2;
+    }
+
+    async getTaskInfoById(task_id){
+
+        const results = await this.app.mysql.query(`select t.*,s.source_name from task t,
+        task_source s where t.source_id = s.source_id and t.task_id = ?; `, [task_id]);
+
+        return results[0];
+    }
+
+    async getTaskResultInfo(task_id){
+        const results = await this.app.mysql.query(`select l.*,u.realname from task_log l ,
+        users u where l.student_id = u.userid and l.task_id = ?;`, task_id);
+        console.log("results");
+        return results;
+>>>>>>> origin/master
     }
 
 }

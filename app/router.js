@@ -132,6 +132,7 @@ module.exports = app => {
   router.post('/api/addLessonContent', controller.teacher.addLessonContent);
   router.post('/api/updateLessonContent', controller.teacher.updateLessonContent);
   router.post('/api/deleteLessonContent', controller.teacher.updateLessonContent);
+  router.get('/api/searchTeacherTask', controller.teacher.searchTeacherTask);
 
   router.post('/api/addHomework', controller.teacher.addHomework);
   router.post('/api/updateHomework', controller.teacher.updateHomework);
@@ -152,7 +153,6 @@ module.exports = app => {
   router.get('/api/searchTaskSource', controller.teacher.searchTaskSource);
   router.post('/api/setVerifyRes',controller.teacher.setVerifyRes);
   router.post('/api/distributeNewHomeWork',controller.teacher.distributeNewHomeWork);
-  
   
   router.get('/api/getStuInfoById', controller.teacher.getStuInfoById);
 

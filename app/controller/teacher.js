@@ -231,6 +231,13 @@ class TeacherController extends Controller {
         this.ctx.body = task_source;
     }
 
+    async searchTeacherTask(){
+        const {ctx, service} = this;
+        const {query} = ctx.request;
+        const task_source = await service.task.searchTeacherTask(query.teacher_id, query.input);
+        this.ctx.body = task_source;
+    }
+
     async getOneLesson(){
         const { ctx, service } = this;
         const {query} = ctx.request;

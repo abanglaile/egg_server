@@ -40,6 +40,10 @@ class LessonService extends Service {
         return lesson_list;
     }
 
+    async signLesson(lesson){
+        return await this.app.mysql.update('lesson', {is_sign: lesson.is_sign}, {lesson_id: lesson.lesson_id});
+    }
+
     async getLessonBasic(lesson_id){
         let lesson = await this.app.mysql.query(`select l.*, cl.course_label_name, r.room_name, g.group_name, u1.realname as teacher_name, 
             u2.realname as assistant_name, ll.label_name

@@ -47,6 +47,10 @@ class TaskService extends Service {
             from task_source t where t.source_name like ?`, '%'+input+'%');
     }
 
+    async searchTeacherTask(teacher_id, input){
+        return await this.app.mysql.query(`select t.*, ts.source_name 
+        from task t, task_source ts where t.source_id = ts.source_id and t.create_user = ? and (ts.source_name like ? or t.remark like ?)`, [teacher_id, '%'+input+'%', '%'+input+'%']);
+
     async getTaskTable(teacher_id) {
         const results = await this.app.mysql.query(`select t.*,s.source_name from task t ,task_source s 
         where t.create_user = ? and t.source_id = s.source_id order by t.create_time desc;`, [teacher_id]);
@@ -78,6 +82,7 @@ class TaskService extends Service {
         users u where l.student_id = u.userid and l.task_id = ?;`, task_id);
         console.log("results");
         return results;
+>>>>>>> origin/master
     }
 
     async setVerifyRes(verifyState,comment,taskid,teacher_id,student_id){

@@ -43,6 +43,11 @@ class TaskService extends Service {
             from task_source t where t.source_name like ?`, '%'+input+'%');
     }
 
+    async searchTeacherTask(teacher_id, input){
+        return await this.app.mysql.query(`select t.*, ts.source_name 
+        from task t, task_source ts where t.source_id = ts.source_id and t.create_user = ? and (ts.source_name like ? or t.remark like ?)`, [teacher_id, '%'+input+'%', '%'+input+'%']);
+    }
+
 }
 
 module.exports = TaskService;

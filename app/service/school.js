@@ -1,10 +1,10 @@
 const Service = require('egg').Service;
 
 class schoolService extends Service {
-    async getSchoolRoom(school_id) {
-        return await this.app.mysql.select('school_room', {
-            where: {school_id: school_id},
-        })
+    async getSchoolRoom(group_id) {
+        const results = await this.app.mysql.query(`select sr.* from school_room sr ,
+        school_group sg where sr.school_id=sg.school_id and sg.stu_group_id = ?;`, [group_id]);
+        return results;
     }
 
 }

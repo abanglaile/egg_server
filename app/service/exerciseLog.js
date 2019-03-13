@@ -65,7 +65,7 @@ class ExerciseLogService extends Service {
             LEFT JOIN kptable kt on ks.kpid = kt.kpid 
             LEFT JOIN chapter c on kt.chapterid = c.chapterid 
 			LEFT JOIN student_chapter sc on sc.student_id = bk.student_id and sc.chapterid = kt.chapterid
-            where bk.student_id = ? and bk.test_id = ? ORDER BY bk.kpname`,[student_id,test_id]
+            where bk.student_id = ? and bk.test_id = ? ORDER BY bk.kpname,kt.chapterid`,[student_id,test_id]
         ) 
         //归类KP，汇总数据
         let result = [];

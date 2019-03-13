@@ -7,7 +7,7 @@ class GroupService extends Service {
         // const group = await this.app.mysql.query(`select sg.* from teacher_group tg, school_group sg 
         //     where tg.teacher_id = ? and tg.stu_group_id = sg.stu_group_id`,[teacher_id]);
         // return group;
-        const res = await this.app.mysql.query(`select t.stu_group_id, s.group_name from 
+        const res = await this.app.mysql.query(`select t.stu_group_id, s.group_name, s.course_label from 
         teacher_group t,school_group s where t.teacher_id = ? and s.stu_group_id = t.stu_group_id;`, teacher_id);
         return res;
     }
@@ -29,19 +29,19 @@ class GroupService extends Service {
             if(index >= 0){
                 console.log(index);
                 student_data[index].children.push({
-                    label: e.realname, 
+                    title: e.realname, 
                     value: e.student_id, 
                     key: e.student_id,
                 });
             }else{
                 var children = [];
                 children.push({
-                    label: e.realname, 
+                    title: e.realname, 
                     value: e.student_id, 
                     key: e.student_id, 
                 });
                 var group = {
-                    label: e.group_name, 
+                    title: e.group_name, 
                     value: e.stu_group_id, 
                     key: e.stu_group_id, 
                     children: children,

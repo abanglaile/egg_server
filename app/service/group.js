@@ -7,7 +7,7 @@ class GroupService extends Service {
         // const group = await this.app.mysql.query(`select sg.* from teacher_group tg, school_group sg 
         //     where tg.teacher_id = ? and tg.stu_group_id = sg.stu_group_id`,[teacher_id]);
         // return group;
-        const res = await this.app.mysql.query(`select t.stu_group_id, s.group_name from 
+        const res = await this.app.mysql.query(`select t.stu_group_id, s.group_name, s.course_label from 
         teacher_group t,school_group s where t.teacher_id = ? and s.stu_group_id = t.stu_group_id;`, teacher_id);
         return res;
     }

@@ -70,6 +70,13 @@ class LessonService extends Service {
         return lesson;
     }
 
+    async deleteOneLesson(lesson_id){
+        const res = await this.app.mysql.delete('lesson', {
+            lesson_id: lesson_id,
+        });
+        return res;
+    }
+
     async getHomework(lesson_id){
         return await this.app.mysql.query(`select t.*, ts.source_name from homework h, task t, task_source ts
             where h.task_id = t.task_id and t.source_id = ts.source_id`, {lesson_id: lesson_id});

@@ -206,7 +206,7 @@ class TeacherController extends Controller {
     async getOptionData(){
         const { ctx, service } = this;
         const {query} = ctx.request;
-        const results = await service.teacher.getOptionData(query.teacher_id, query.school_id);
+        const results = await service.teacher.getOptionData(query.group_id);
         this.ctx.body = results;
     }
 
@@ -242,6 +242,13 @@ class TeacherController extends Controller {
         const { ctx, service } = this;
         const {query} = ctx.request;
         const results = await service.lesson.getOneLesson(query.lesson_id);
+        this.ctx.body = results;
+    }
+
+    async deleteOneLesson(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.deleteOneLesson(body.lesson_id);
         this.ctx.body = results;
     }
 

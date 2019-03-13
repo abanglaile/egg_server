@@ -3,19 +3,20 @@ const uuid = require('uuid');
 
 class LessonService extends Service {
 
-    async getTeacherLesson(filter_option){
-        let {teacher_id, start_time, end_time, group_id, course_label, label_id} = filter_option;
+    async getTeacherLesson(teacher_id, filter_option){
+        let {select_teacher, start_time, end_time, group_id, course_label, label_id} = filter_option;
         let query = `select l.*, u.nickname, r.room_name, g.group_name, 
             ll.label_name, lc.course_label_name from lesson l, users u, 
             course_label lc,school_room r, school_group g, 
             lesson_label ll where l.teacher_id = u.userid and 
             lc.course_label = l.course_label and r.room_id = l.room_id and 
+            l.stu_group_id in (select stu_group_id from teacher_group where teacher_id = ?) and 
             l.stu_group_id = g.stu_group_id and l.label_id = ll.label_id`;
-        let params = [];
+        let params = [teacher_id];
 
-        if(teacher_id){
+        if(select_teacher){
             query += ' and l.teacher_id = ?';
-            params.push(teacher_id);
+            params.push(select_teacher);
         }
         if(start_time){
             query += ' and l.start_time >= ?';

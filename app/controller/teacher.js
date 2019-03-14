@@ -132,6 +132,15 @@ class TeacherController extends Controller {
             this.ctx.body = results;
         }
     }
+
+    async signLesson() {
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        if(body.lesson_id){
+            const results = await service.lesson.signLesson(body.lesson_id);
+            this.ctx.body = results;
+        }
+    }
     
     async getBookChapter(){
         const { ctx, service } = this;

@@ -9,7 +9,7 @@ class LessonService extends Service {
             ll.label_name, lc.course_label_name from lesson l, users u, 
             course_label lc,school_room r, school_group g, 
             lesson_label ll where l.teacher_id = u.userid and 
-            lc.course_label = l.course_label and r.room_id = l.room_id and 
+            lc.course_label = g.course_label and r.room_id = l.room_id and 
             l.stu_group_id in (select stu_group_id from teacher_group where teacher_id = ?) and 
             l.stu_group_id = g.stu_group_id and l.label_id = ll.label_id`;
         let params = [teacher_id];

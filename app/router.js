@@ -147,6 +147,8 @@ module.exports = app => {
   router.post('/api/addNewLesson',controller.teacher.addNewLesson);
   router.post('/api/deleteOneLesson',controller.teacher.deleteOneLesson);
 
+  router.post('/api/signLesson', controller.teacher.signLesson);
+
   router.get('/api/getTaskTable', controller.teacher.getTaskTable);
   router.post('/api/deleteOneTask', controller.teacher.deleteOneTask);
   router.get('/api/getTaskInfoById', controller.teacher.getTaskInfoById);

@@ -336,6 +336,18 @@
   {
     "name": null,
     "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/set_teacherinfo",
+    "regexp": "/^\\/api\\/set_teacherinfo(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
       "HEAD",
       "GET"
     ],
@@ -1093,6 +1105,19 @@
   {
     "name": null,
     "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/searchTeacherTask",
+    "regexp": "/^\\/api\\/searchTeacherTask(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
       "POST"
     ],
     "paramNames": [],
@@ -1105,12 +1130,23 @@
   {
     "name": null,
     "methods": [
-      "HEAD",
-      "GET"
+      "POST"
     ],
     "paramNames": [],
-    "path": "/api/searchTeacherTask",
-    "regexp": "/^\\/api\\/searchTeacherTask(?:\\/(?=$))?$/",
+    "path": "/api/setVerifyRes",
+    "regexp": "/^\\/api\\/setVerifyRes(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/distributeNewHomeWork",
+    "regexp": "/^\\/api\\/distributeNewHomeWork(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -1207,6 +1243,30 @@
     "paramNames": [],
     "path": "/api/updateLessonRange",
     "regexp": "/^\\/api\\/updateLessonRange(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/deleteOneLesson",
+    "regexp": "/^\\/api\\/deleteOneLesson(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/signLesson",
+    "regexp": "/^\\/api\\/signLesson(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

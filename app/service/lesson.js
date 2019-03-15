@@ -41,8 +41,8 @@ class LessonService extends Service {
         return lesson_list;
     }
 
-    async signLesson(lesson){
-        return await this.app.mysql.update('lesson', {is_sign: lesson.is_sign}, {lesson_id: lesson.lesson_id});
+    async signLesson(lesson_id){
+        return await this.app.mysql.update('lesson', {is_sign: true}, {lesson_id: lesson_id});
     }
 
     async getLessonBasic(lesson_id){

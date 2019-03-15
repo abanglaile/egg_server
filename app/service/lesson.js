@@ -5,7 +5,7 @@ class LessonService extends Service {
 
     async getTeacherLesson(teacher_id, filter_option){
         let {select_teacher, start_time, end_time, group_id, course_label, label_id} = filter_option;
-        let query = `select l.*, u.nickname, r.room_name, g.group_name, 
+        let query = `select l.*, u.nickname, r.room_name, g.group_name, g.course_label,
             ll.label_name, lc.course_label_name from lesson l, users u, 
             course_label lc,school_room r, school_group g, 
             lesson_label ll where l.teacher_id = u.userid and 

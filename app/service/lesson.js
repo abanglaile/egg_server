@@ -45,16 +45,16 @@ class LessonService extends Service {
     }
 
     async signLesson(lesson_id){
-        return await this.app.mysql.update('lesson', {is_sign: true}, {lesson_id: lesson_id});
+        return await this.app.mysql.update('lesson', {is_sign: true}, {where: {lesson_id: lesson_id}});
     }
 
     async getLessonBasic(lesson_id){
-        let lesson = await this.app.mysql.query(`select l.*, cl.course_label_name, r.room_name, g.group_name, u1.realname as teacher_name, 
+        let lesson = await this.app.mysql.query(`select l.*, cl.course_label, cl.course_label_name, r.room_name, g.group_name, u1.realname as teacher_name, 
             u2.realname as assistant_name, ll.label_name
             from lesson l left join users u1 on l.teacher_id = u1.userid 
             left join users u2 on l.assistant_id = u2.userid, 
             school_room r, school_group g, lesson_label ll, course_label cl  
-            where l.lesson_id = ? and cl.course_label = l.course_label and l.stu_group_id = g.stu_group_id and l.label_id = ll.label_id`, 
+            where l.lesson_id = ? and cl.course_label = g.course_label and l.stu_group_id = g.stu_group_id and l.label_id = ll.label_id`, 
             [lesson_id]);
         return await lesson[0];
     }

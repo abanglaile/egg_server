@@ -132,7 +132,7 @@ module.exports = app => {
   router.post('/api/addTeacherComment', controller.teacher.addTeacherComment);
   router.post('/api/addLessonContent', controller.teacher.addLessonContent);
   router.post('/api/updateLessonContent', controller.teacher.updateLessonContent);
-  router.post('/api/deleteLessonContent', controller.teacher.updateLessonContent);
+  router.post('/api/deleteLessonContent', controller.teacher.deleteLessonContent);
   router.get('/api/searchTeacherTask', controller.teacher.searchTeacherTask);
 
   router.post('/api/addHomework', controller.teacher.addHomework);

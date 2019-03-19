@@ -117,6 +117,7 @@ module.exports = app => {
   router.get('/api/getFeedbackStu', controller.slide.getFeedbackStu);
 
   router.get('/api/getOptionData', controller.teacher.getOptionData);
+  router.get('/api/getLinkageOptionData', controller.teacher.getLinkageOptionData);
   router.get('/api/searchCommentLabel', controller.teacher.searchCommentLabel);
   router.get('/api/searchKpLabel', controller.teacher.searchKpLabel);
   

@@ -215,7 +215,14 @@ class TeacherController extends Controller {
     async getOptionData(){
         const { ctx, service } = this;
         const {query} = ctx.request;
-        const results = await service.teacher.getOptionData(query.group_id);
+        const results = await service.teacher.getOptionData(query.teacher_id);
+        this.ctx.body = results;
+    }
+    
+    async getLinkageOptionData(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.teacher.getLinkageOptionData(query.group_id);
         this.ctx.body = results;
     }
 

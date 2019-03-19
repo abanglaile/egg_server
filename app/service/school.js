@@ -7,6 +7,12 @@ class schoolService extends Service {
         return results;
     }
 
+    async getSchoolRoom2(teacher_id) {
+        const results = await this.app.mysql.query(`select * from school_room where school_id 
+        in (select school_id from school_teacher st where st.teacher_id = ?);`, [teacher_id]);
+        return results;
+    }
+
 }
 
 module.exports = schoolService;

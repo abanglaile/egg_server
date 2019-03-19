@@ -4,6 +4,7 @@ const uuid = require('uuid');
 class LessonService extends Service {
 
     async getTeacherLesson(teacher_id, filter_option){
+        console.log("filter_option:",JSON.stringify(filter_option));
         let {select_teacher, start_time, end_time, group_id, course_label, label_id} = filter_option;
         let query = `select l.*, u.nickname, r.room_name, g.group_name, g.course_label,
             ll.label_name, lc.course_label_name from lesson l, users u, 
@@ -36,8 +37,10 @@ class LessonService extends Service {
         }
 
         query += ' order by l.end_time desc;';
-
+        console.log("query:",query);
         const lesson_list = await this.app.mysql.query(query, params);
+        console.log("lesson_list:",JSON.stringify(lesson_list));
+        console.log("params:",JSON.stringify(params));
         return lesson_list;
     }
 

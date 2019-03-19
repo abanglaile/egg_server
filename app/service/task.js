@@ -23,7 +23,7 @@ class TaskService extends Service {
             }
             await this.addTaskLog(task_log);
         }
-        return res;
+        return task;
     }
 
     async addTaskLog(task_log){

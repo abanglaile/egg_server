@@ -93,6 +93,16 @@ class AuthController extends Controller {
       this.ctx.body = results;
     }
   }
+  
+  async setStuInfo(){
+    const { ctx, service } = this;
+    const {body} = ctx.request;
+
+    if(body.realname){
+      const results = await service.user.setStuInfo(body.realname,body.wx_info);
+      this.ctx.body = results;
+    }
+  }
 
   async getSclGroup(){
     const { ctx, service } = this;

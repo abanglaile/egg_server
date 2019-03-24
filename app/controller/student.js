@@ -208,13 +208,23 @@ class StudentController extends Controller {
         const { ctx, service } = this;
         const {body} = ctx.request;
         if(body.student_id){
-            console.log('body.student_id',body.student_id);
             const results = await service.user.getStudentInfo(body.student_id);
             console.log('getStudentInfo',results);
             
-            this.ctx.body = results[0];
+            this.ctx.body = results;
         }
     }
+    
+    //更新学生真是姓名
+    async updateStuName(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        if(body.userid){
+            const results = await service.user.updateStuName(body.userid, body.realname);
+            this.ctx.body = results;
+        }
+    }
+
     //根据学生id 获取学生综合能力（总正确率、近20/50题情况）  
     //在 kl_api
     async getStuAbility(){

@@ -52,6 +52,7 @@ module.exports = app => {
   router.post('/api/check_invi_code',controller.auth.checkInviteCode);
   router.post('/api/set_userinfo',controller.auth.setUserInfo);
   router.post('/api/set_teacherinfo',controller.auth.setTeacherInfo);
+  router.post('/api/set_stuinfo',controller.auth.setStuInfo);
   router.get('/api/getSclGroup',controller.auth.getSclGroup);
 
   router.get('/api/getHistoryTest', controller.student.getHistoryTest);
@@ -78,7 +79,9 @@ module.exports = app => {
   //个人中心
   router.post('/api/getStudentInfo',controller.student.getStudentInfo);
   router.get('/api/getUserInfo',controller.teacher.getUserInfo);
+  router.post('/api/updateStuName',controller.student.updateStuName);
   
+
   //个人信息统计
   router.get('/api/getStuAbility',controller.student.getStuAbility);
   router.get('/api/getStuRatingHistory', controller.student.getStuRatingHistory);

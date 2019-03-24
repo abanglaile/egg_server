@@ -336,6 +336,18 @@
   {
     "name": null,
     "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/set_stuinfo",
+    "regexp": "/^\\/api\\/set_stuinfo(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
       "HEAD",
       "GET"
     ],
@@ -570,6 +582,18 @@
     "paramNames": [],
     "path": "/api/getUserInfo",
     "regexp": "/^\\/api\\/getUserInfo(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/updateStuName",
+    "regexp": "/^\\/api\\/updateStuName(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

@@ -17,10 +17,36 @@ class userService extends Service {
   }
 
   async getStudentInfo(student_id){
-    var sql = `select u.nickname,u.avatar,u.score,sg.group_name from school_group sg, group_student g,users u 
-    where  g.stu_group_id=sg.stu_group_id and u.userid = g.student_id and g.student_id = ?;`;
-
+    var sql = `select u.userid,u.realname,u.avatar,u.score,t.stu_group_id,t.group_name from users u left join 
+    (select g.student_id,g.stu_group_id,sg.group_name from group_student g,
+    school_group sg where g.stu_group_id = sg.stu_group_id) as t on t.student_id = u.userid 
+     where u.userid = ?;`;
+//需要处理下  TODO
+    var group = [];
     const res = await this.app.mysql.query(sql,student_id);
+    var realname = res[0].realname;
+    var avatar = res[0].avatar;
+    var score = res[0].score;
+    for(var i=0;i<res.length;i++){
+      group.push({
+        group_id : res[i].stu_group_id,
+        group_name : res[i].group_name,
+      });
+    }
+    var stu_info = {
+      realname : realname,
+      avatar : avatar,
+      score : score,
+      group : group,
+    };
+    return stu_info;
+  }
+
+  async updateStuName(userid, realname){
+    const row = {
+      realname: realname,
+    };
+    const res = await this.app.mysql.update('users',row, {where:{userid:userid}});
     return res;
   }
 
@@ -285,7 +311,41 @@ class userService extends Service {
     });
 
   }
+  
+  async setStuInfo(realname,wx_info){
+    const {openid} = wx_info;
+    const res1 = await this.isOpenidIn(openid);
+    var userid = null;
+    if(!res1){
+      userid = uuid.v1().replace(/-/g,'');
+      console.log("userid: ",userid);
+      const res2 = await this.app.mysql.insert('user_auths', {
+        userid : userid,
+        identity_type : 'weixin',
+        identifier : wx_info.openid,
+        credential : wx_info.access_token,
+      });
 
+      const res3 = await this.app.mysql.insert('users', {
+        userid : userid,
+        nickname : wx_info.nickname,
+        avatar : wx_info.imgurl,
+        role : 2,
+        realname : realname,
+      });
+
+    }else{
+      userid = res1[0].userid;
+    }
+
+    return ({
+        userid : userid,
+        nickname : wx_info.nickname,
+        imgurl : wx_info.imgurl,
+        realname : realname,          
+    });
+
+  }
 }
 
 module.exports = userService;

@@ -226,10 +226,10 @@ class TeacherController extends Controller {
         this.ctx.body = results;
     }
 
-    async searchCommentLabel(){
+    async searchPfLabel(){
         const {ctx, service} = this;
         const {query} = ctx.request;
-        const search_res = await service.tweet.searchTweetLabel(query.input);
+        const search_res = await service.comment.searchPfLabel(query.input);
         this.ctx.body = search_res;
     }
 
@@ -268,24 +268,31 @@ class TeacherController extends Controller {
         this.ctx.body = results;
     }
 
-    async addLessonComment(){
+    async addLessonPfComment(){
         const { ctx, service } = this;
         const {body} = ctx.request;
-        const results = await service.lesson.addLessonComment(body.lesson_comment);
+        const results = await service.lesson.addLessonPfComment(body.lesson_id, body.select_student, body.pf_comment);
         ctx.body = results;
     }
 
-    async addTeacherComment(){
+    async deleteLessonPfComment(){
         const { ctx, service } = this;
         const {body} = ctx.request;
-        const results = await service.lesson.addTeacherComment(body.label_id, body.label_type, body.select_student, body.teacher_comment);
+        const results = await service.lesson.deleteLessonPfComment(body.lesson_id, body.comment_id);
         ctx.body = results;
     }
 
-    async deleteTeacherComment(){
+    async addLessonKpComment(){
         const { ctx, service } = this;
         const {body} = ctx.request;
-        const results = await service.lesson.deleteTeacherComment(body.comment_id, body.lesson_id);
+        const results = await service.lesson.addLessonKpComment(body.lesson_id, body.select_student, body.kp_comment);
+        ctx.body = results;
+    }
+
+    async deleteLessonKpComment(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.deleteLessonKpComment(body.lesson_id, body.comment_id);
         ctx.body = results;
     }
 
@@ -398,27 +405,6 @@ class TeacherController extends Controller {
         const { ctx, service } = this;
         const {query} = ctx.request;
         const results = await service.group.getStuInfoById(query.student_id);
-        this.ctx.body = results;
-    }
-    
-    async addTweet(){
-        const { ctx, service } = this;
-        const {body} = ctx.request;
-        const results = await service.tweet.addTweet(body.tweet);
-        ctx.body = results;        
-    }
-
-    async deleteTweet(){
-        const { ctx, service } = this;
-        const {body} = ctx.request;
-        const results = await service.tweet.deleteTweet(body.tweet_id);
-        ctx.body = results;        
-    }
-
-    async getLessonTweet(){
-        const { ctx, service } = this;
-        const {query} = ctx.request;
-        const results = await service.tweet.get(query.lesson_id);
         this.ctx.body = results;
     }
 

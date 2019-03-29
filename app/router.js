@@ -121,18 +121,20 @@ module.exports = app => {
 
   router.get('/api/getOptionData', controller.teacher.getOptionData);
   router.get('/api/getLinkageOptionData', controller.teacher.getLinkageOptionData);
-  router.get('/api/searchCommentLabel', controller.teacher.searchCommentLabel);
+  router.get('/api/searchPfLabel', controller.teacher.searchPfLabel);
   router.get('/api/searchKpLabel', controller.teacher.searchKpLabel);
   
   router.get('/api/getOneLesson', controller.teacher.getOneLesson);
-  router.get('/api/getLessonTweet', controller.teacher.getLessonTweet);
+  
 
   router.post('/api/getTeacherLesson', controller.teacher.getTeacherLesson);
-  router.post('/api/addTweet', controller.teacher.addTweet);
-  router.post('/api/deleteTweet', controller.teacher.deleteTweet);
 
-  router.post('/api/deleteTeacherComment', controller.teacher.deleteTeacherComment);
-  router.post('/api/addTeacherComment', controller.teacher.addTeacherComment);
+  router.post('/api/deleteLessonKpComment', controller.teacher.deleteLessonKpComment);
+  router.post('/api/addLessonKpComment', controller.teacher.addLessonKpComment);
+
+  router.post('/api/deleteLessonPfComment', controller.teacher.deleteLessonPfComment);
+  router.post('/api/addLessonPfComment', controller.teacher.addLessonPfComment);
+
   router.post('/api/addLessonContent', controller.teacher.addLessonContent);
   router.post('/api/updateLessonContent', controller.teacher.updateLessonContent);
   router.post('/api/deleteLessonContent', controller.teacher.deleteLessonContent);

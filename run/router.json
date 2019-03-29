@@ -1010,8 +1010,8 @@
       "GET"
     ],
     "paramNames": [],
-    "path": "/api/searchCommentLabel",
-    "regexp": "/^\\/api\\/searchCommentLabel(?:\\/(?=$))?$/",
+    "path": "/api/searchPfLabel",
+    "regexp": "/^\\/api\\/searchPfLabel(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -1045,19 +1045,6 @@
   {
     "name": null,
     "methods": [
-      "HEAD",
-      "GET"
-    ],
-    "paramNames": [],
-    "path": "/api/getLessonTweet",
-    "regexp": "/^\\/api\\/getLessonTweet(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
       "POST"
     ],
     "paramNames": [],
@@ -1073,8 +1060,8 @@
       "POST"
     ],
     "paramNames": [],
-    "path": "/api/addTweet",
-    "regexp": "/^\\/api\\/addTweet(?:\\/(?=$))?$/",
+    "path": "/api/deleteLessonKpComment",
+    "regexp": "/^\\/api\\/deleteLessonKpComment(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -1085,8 +1072,8 @@
       "POST"
     ],
     "paramNames": [],
-    "path": "/api/deleteTweet",
-    "regexp": "/^\\/api\\/deleteTweet(?:\\/(?=$))?$/",
+    "path": "/api/addLessonKpComment",
+    "regexp": "/^\\/api\\/addLessonKpComment(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -1097,8 +1084,8 @@
       "POST"
     ],
     "paramNames": [],
-    "path": "/api/deleteTeacherComment",
-    "regexp": "/^\\/api\\/deleteTeacherComment(?:\\/(?=$))?$/",
+    "path": "/api/deleteLessonPfComment",
+    "regexp": "/^\\/api\\/deleteLessonPfComment(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -1109,8 +1096,8 @@
       "POST"
     ],
     "paramNames": [],
-    "path": "/api/addTeacherComment",
-    "regexp": "/^\\/api\\/addTeacherComment(?:\\/(?=$))?$/",
+    "path": "/api/addLessonPfComment",
+    "regexp": "/^\\/api\\/addLessonPfComment(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

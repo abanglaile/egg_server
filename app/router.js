@@ -80,6 +80,7 @@ module.exports = app => {
   router.post('/api/getStudentInfo',controller.student.getStudentInfo);
   router.get('/api/getUserInfo',controller.teacher.getUserInfo);
   router.post('/api/updateStuName',controller.student.updateStuName);
+  router.post('/api/addStuGroupId',controller.student.addStuGroupId);
   
 
   //个人信息统计

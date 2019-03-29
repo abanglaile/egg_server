@@ -215,7 +215,7 @@ class StudentController extends Controller {
         }
     }
     
-    //更新学生真是姓名
+    //更新学生真实姓名
     async updateStuName(){
         const { ctx, service } = this;
         const {body} = ctx.request;
@@ -224,7 +224,16 @@ class StudentController extends Controller {
             this.ctx.body = results;
         }
     }
-
+    
+    //添加学生与班级的绑定
+    async addStuGroupId(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        if(body.userid){
+            const results = await service.group.addStuGroupId(body.userid, body.group_id);
+            this.ctx.body = results;
+        }
+    }
     //根据学生id 获取学生综合能力（总正确率、近20/50题情况）  
     //在 kl_api
     async getStuAbility(){

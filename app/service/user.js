@@ -46,7 +46,11 @@ class userService extends Service {
     const row = {
       realname: realname,
     };
-    const res = await this.app.mysql.update('users',row, {where:{userid:userid}});
+    const res = await this.app.mysql.update('users', row, {
+      where: {
+        userid: userid,
+      }
+    } );
     return res;
   }
 
@@ -76,11 +80,14 @@ class userService extends Service {
 
   async updateUsers(userid, nickname, imgurl){
     const row = {
-      userid: userid,
       nickname: nickname,
       avatar : imgurl,
     };
-    const result = await this.app.mysql.update('users', row); 
+    const result = await this.app.mysql.update('users', row, {
+      where: {
+        userid: userid,
+      }
+    }); 
     return result;
   }
 

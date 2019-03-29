@@ -120,6 +120,23 @@ class GroupService extends Service {
 
         return sclgroup;
     }
+
+    async isGroupIdIn (group_id){
+        const res = await this.app.mysql.get('school_group',{ stu_group_id : group_id });
+        return res;
+    }
+
+    async addStuGroupId(userid, group_id){
+        var flag = 'failed';
+        const res1 = await this.isGroupIdIn(group_id);
+        if(res1){
+            flag = 'sucess';
+            const res2 = await this.app.mysql.query(`replace into group_student(stu_group_id,student_id) 
+            values (?,?);`, [group_id,userid]);
+        }
+        
+        return flag;
+    }
 }
 
 module.exports = GroupService;

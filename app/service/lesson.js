@@ -121,7 +121,7 @@ class LessonService extends Service {
     async addLessonKpComment(lesson_id, select_student, kp_comment){
         kp_comment.comment_source = lesson_id;
         let {select_id, select_name} = select_student;
-        kp_comment = await this.service.addKpComment(select_id, kp_comment);
+        kp_comment = await this.service.comment.addKpComment(select_id, kp_comment);
         await this.app.mysql.insert('lesson_kp_comment', {
             lesson_id: lesson_id, 
             comment_id: kp_comment.comment_id,
@@ -143,17 +143,17 @@ class LessonService extends Service {
     }
 
     async deleteLessonKpComment(lesson_id, comment_id){
-        let ret1 = await this.app.mysql.delete('lesson_kp_comment', {comment_id: comment_id});
-        ret = await this.app.mysql.delete('kp_comment', {comment_id: comment_id});
-        ret = await this.app.mysql.delete('student_kp_comment', {comment_id: comment_id});
+        await this.app.mysql.delete('lesson_kp_comment', {comment_id: comment_id});
+        await this.app.mysql.delete('kp_comment', {comment_id: comment_id});
+        await this.app.mysql.delete('student_kp_comment', {comment_id: comment_id});
         return this.getLessonKpComment(lesson_id);
     }
 
     async deleteLessonPfComment(lesson_id, comment_id){
-        let ret1 = await this.app.mysql.delete('lesson_pf_comment', {comment_id: comment_id});
-        ret = await this.app.mysql.delete('pf_comment', {comment_id: comment_id});
-        ret = await this.app.mysql.delete('student_pf_comment', {comment_id: comment_id});
-        return this.getLessonPfComment(lesson_id);
+        await this.app.mysql.delete('lesson_pf_comment', {comment_id: comment_id});
+        await this.app.mysql.delete('pf_comment', {comment_id: comment_id});
+        await this.app.mysql.delete('student_pf_comment', {comment_id: comment_id});
+        return await this.getLessonPfComment(lesson_id);
     }    
 
     async getLessonContent(lesson_id){

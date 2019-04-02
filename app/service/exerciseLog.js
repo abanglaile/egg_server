@@ -57,15 +57,25 @@ class ExerciseLogService extends Service {
     }
     //查询做题步骤分析
     async getMyTestStepAnalysis(student_id, test_id){
+        // const query_result = await this.app.mysql.query(
+        //     `select ks.kp_standard, bk.kpname, bk.sn_state, sk.kp_rating,bk.kp_delta_rating, kt.chapterid, c.chaptername, sc.chapter_rating
+        //     from breakdown_log bk 
+        //     LEFT JOIN student_kp sk on bk.student_id =sk.student_id
+        //     LEFT JOIN kp_standard ks on ks.kpid = bk.kpid
+        //     LEFT JOIN kptable kt on ks.kpid = kt.kpid 
+        //     LEFT JOIN chapter c on kt.chapterid = c.chapterid 
+		// 	LEFT JOIN student_chapter sc on sc.student_id = bk.student_id and sc.chapterid = kt.chapterid
+        //     where bk.student_id = ? and bk.test_id = ? ORDER BY bk.kpname,kt.chapterid`,[student_id,test_id]
+        // ) 
         const query_result = await this.app.mysql.query(
             `select ks.kp_standard, bk.kpname, bk.sn_state, sk.kp_rating,bk.kp_delta_rating, kt.chapterid, c.chaptername, sc.chapter_rating
             from breakdown_log bk 
-            LEFT JOIN student_kp sk on bk.student_id =sk.student_id
-            LEFT JOIN kp_standard ks on ks.kpid = bk.kpid
-            LEFT JOIN kptable kt on ks.kpid = kt.kpid 
-            LEFT JOIN chapter c on kt.chapterid = c.chapterid 
-			LEFT JOIN student_chapter sc on sc.student_id = bk.student_id and sc.chapterid = kt.chapterid
-            where bk.student_id = ? and bk.test_id = ? ORDER BY bk.kpname,kt.chapterid`,[student_id,test_id]
+            INNER JOIN student_kp sk on bk.student_id =sk.student_id
+            INNER JOIN kp_standard ks on ks.kpid = bk.kpid and bk.kpid = sk.kpid
+            INNER JOIN kptable kt on ks.kpid = kt.kpid 
+            INNER JOIN chapter c on kt.chapterid = c.chapterid 
+			INNER JOIN student_chapter sc on sc.student_id = bk.student_id and sc.chapterid = kt.chapterid
+            where bk.student_id = ? and bk.test_id = ? ORDER BY kt.chapterid,bk.kpname`,[student_id,test_id]
         ) 
         //归类KP，汇总数据
         let result = [];

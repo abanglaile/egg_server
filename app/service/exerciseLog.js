@@ -60,8 +60,8 @@ class ExerciseLogService extends Service {
         const query_result = await this.app.mysql.query(
             `select ks.kp_standard, bk.kpname, bk.sn_state, sk.kp_rating,bk.kp_delta_rating, kt.chapterid, c.chaptername, sc.chapter_rating
             from breakdown_log bk 
-            INNER JOIN student_kp sk on bk.student_id =sk.student_id
-            INNER JOIN kp_standard ks on ks.kpid = bk.kpid and bk.kpid = sk.kpid
+            INNER JOIN student_kp sk on bk.student_id =sk.student_id and bk.kpid = sk.kpid
+            INNER JOIN kp_standard ks on ks.kpid = bk.kpid 
             INNER JOIN kptable kt on ks.kpid = kt.kpid 
             INNER JOIN chapter c on kt.chapterid = c.chapterid 
 			INNER JOIN student_chapter sc on sc.student_id = bk.student_id and sc.chapterid = kt.chapterid

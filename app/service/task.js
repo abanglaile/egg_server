@@ -27,7 +27,8 @@ class TaskService extends Service {
     }
 
     async addTaskLog(task_log){
-        return await this.app.mysql.insert('task_log', task_log);
+        return await this.app.mysql.query('insert ignore into task_log(task_id, student_id, start_time) values(?, ?, ?)', 
+            [task_log.task_id, task_log.student_id, task_log.start_time]);
     }
 
     async deleteTaskLog(task_id, users){

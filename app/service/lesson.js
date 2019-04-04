@@ -89,7 +89,7 @@ class LessonService extends Service {
     async relateHomework(lesson_id, task_id, users){
        await this.app.mysql.insert('homework', {lesson_id: lesson_id, task_id});
        for(let i = 0; i < users.length; i++){
-           await this.service.task.addTaskLog({task_id: task_id, student_id: users[i], start_time: new Date()});
+           await this.service.task.addTaskLog({task_id: task_id, student_id: users[i].student_id, start_time: new Date()});
        }
        return await this.getHomework(lesson_id);
     }

@@ -303,10 +303,10 @@ class TeacherController extends Controller {
         ctx.body = results;
     }
 
-    async updateHomework(){
+    async relateHomework(){
         const { ctx, service } = this;
         const {body} = ctx.request;
-        const results = await service.lesson.updateHomework(body.homework);
+        const results = await service.lesson.relateHomework(body.lesson_id, body.task_id, body.users);
         ctx.body = results;
     }
 

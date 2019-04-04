@@ -369,7 +369,7 @@ class ExerciseService extends Service {
     return exercise_list;
 }
 
-  async generateTestByKp(kpid, kpname, student_id){
+  async generateTestByKp(kpid, kpname, student_id, course_id){
     const student_kp = await this.app.mysql.get('student_kp', {
             student_id: student_id,
             kpid: kpid,
@@ -385,6 +385,7 @@ class ExerciseService extends Service {
         total_exercise: exercise_list.length,
         test_type: 2,
         test_config: JSON.stringify({kp: [{kpid: kpid, kpname: kpname}]}),
+        course_id: course_id,
     });
 
     const test_id = test_result.insertId;

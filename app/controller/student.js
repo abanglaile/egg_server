@@ -98,7 +98,7 @@ class StudentController extends Controller {
         const { ctx, service } = this;
         const {body} = ctx.request;
         if(body.kpid && body.kpname && body.student_id){
-            const results = await service.exercise.generateTestByKp(body.kpid, body.kpname, body.student_id);
+            const results = await service.exercise.generateTestByKp(body.kpid, body.kpname, body.student_id, body.course_id);
             console.log(results);
             
             this.ctx.body = results;
@@ -191,18 +191,7 @@ class StudentController extends Controller {
             this.ctx.body = results;
         }
     }
-    //查询做题步骤分析
-    async getMyTestStepAnalysis(){
-        const {ctx, service } = this;
-        const {query} = ctx.request;
-        // console.log(query);
-        
-        if(query.student_id){
-            const results = await service.exerciseLog.getMyTestStepAnalysis(query.student_id,query.test_id);
-            // console.log(results);
-            this.ctx.body=results;
-        }
-    }
+    
     //获取学生个人情况信息（姓名 班级等）
     async getStudentInfo(){
         const { ctx, service } = this;

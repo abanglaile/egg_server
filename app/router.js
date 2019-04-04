@@ -60,7 +60,7 @@ module.exports = app => {
   router.get('/api/getMyTestData', controller.student.getMyTestData);
   router.get('/api/getStuPoorKp', controller.student.getStuPoorKp);
   router.post('/api/getMyTestStatus',controller.student.getMyTestStatus);
-  router.get('/api/getMyTestStepAnalysis',controller.student.getMyTestStepAnalysis);
+  
   router.post('/api/generateTestByKp', controller.student.generateTestByKp)
   //router.get('/api/getMyBookChapter', controller.student.getMyBookChapter);
 
@@ -119,6 +119,9 @@ module.exports = app => {
   router.get('/api/getLessonSlideFeedback', controller.slide.getLessonSlideFeedback);
   router.post('/api/updateQFeedback', controller.slide.updateQFeedback);
   router.get('/api/getFeedbackStu', controller.slide.getFeedbackStu);
+  
+  router.get('/api/getStuTestStepAnalysis',controller.teacher.getStuTestStepAnalysis);//评测
+  router.get('/api/getStuTestSurvey', controller.teacher.getStuTestSurvey);//学生测试的评测概要
 
   router.get('/api/getOptionData', controller.teacher.getOptionData);
   router.get('/api/getLinkageOptionData', controller.teacher.getLinkageOptionData);

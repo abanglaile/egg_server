@@ -422,6 +422,28 @@ class TeacherController extends Controller {
         const results = await service.task.assignTask(body.task, body.students);
         this.ctx.body = results;
     }
+
+    //查询做题步骤分析
+    async getStuTestStepAnalysis(){
+        const {ctx, service } = this;
+        const {query} = ctx.request;
+        // console.log(query);
+        
+        if(query.student_id){
+            const results = await service.exerciseLog.getStuTestStepAnalysis(query.student_id,query.test_id);
+            // console.log(results);
+            this.ctx.body=results;
+        }
+    }
+
+    async getStuTestSurvey(){
+        const {ctx, service } = this;
+        const {query} = ctx.request;
+        if(query.student_id){
+            const results = await service.testLog.getStuTestSurvey(query.student_id,query.test_id);
+            this.ctx.body=results;
+        }
+    }
     
 }
 

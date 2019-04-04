@@ -56,7 +56,7 @@ class ExerciseLogService extends Service {
         return test_kp;
     }
     //查询做题步骤分析
-    async getMyTestStepAnalysis(student_id, test_id){
+    async getStuTestStepAnalysis(student_id, test_id){
         const query_result = await this.app.mysql.query(
             `select ks.kp_standard, bk.kpname, bk.sn_state, sk.kp_rating,bk.kp_delta_rating, kt.chapterid, c.chaptername, sc.chapter_rating
             from breakdown_log bk 

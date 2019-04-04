@@ -422,5 +422,29 @@ class TestLogService extends Service {
         return testRes;
     }
 
+    async getStuTestSurvey(student_id, test_id){
+        const test_log = await this.getTestLog(student_id, test_id);
+        const rating = await this.app.mysql.select('exercise_log', { 
+            where: { 
+                test_id: test_id, 
+                student_id:student_id,
+            }, // WHERE 条件
+            orders: [['logid','desc']], 
+        });
+        var student_rating = 500;
+        var delta_rating = 0;
+        if(rating[0]){
+            student_rating = rating[0].delta_student_rating + rating[0].old_student_rating;
+        }
+        for(var i=0;i<rating.length;i++){
+            delta_rating += rating[i].delta_student_rating;
+        }
+        return({
+            test_log: test_log,
+            student_rating : student_rating,
+            delta_rating : delta_rating,
+        });
+    }
+
 }
 module.exports = TestLogService;

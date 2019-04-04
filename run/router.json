@@ -425,19 +425,6 @@
   {
     "name": null,
     "methods": [
-      "HEAD",
-      "GET"
-    ],
-    "paramNames": [],
-    "path": "/api/getMyTestStepAnalysis",
-    "regexp": "/^\\/api\\/getMyTestStepAnalysis(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
       "POST"
     ],
     "paramNames": [],
@@ -973,6 +960,32 @@
     "paramNames": [],
     "path": "/api/getFeedbackStu",
     "regexp": "/^\\/api\\/getFeedbackStu(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getStuTestStepAnalysis",
+    "regexp": "/^\\/api\\/getStuTestStepAnalysis(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getStuTestSurvey",
+    "regexp": "/^\\/api\\/getStuTestSurvey(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

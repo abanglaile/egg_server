@@ -60,13 +60,14 @@ class TestService extends Service {
     }
 
     async addNewTest(req){
-        console.log("req",JSON.stringify(req));
-        const addres = await this.app.mysql.query(`insert into teacher_test set test_name=?,
-         teacher_id=?,group_time=(SELECT now()),test_type=1,total_exercise=?;`, [req.test_name,req.teacher_id,req.test_exercise.length]);
-        
+        const addres = await this.app.mysql.insert('teacher_test', { 
+            test_name: req.test_name,
+            teacher_id: req.teacher_id,
+            test_type: 1,
+            total_exercise: req.test_exercise.length,
+            course_id: req.course_id,
+        });
         const res = await this.addExerciseTest(addres.insertId,req.test_exercise);
-
-        console.log("addres.insertId",addres.insertId);
         return addres.insertId;
     }
 

@@ -77,24 +77,26 @@ class LessonService extends Service {
     }
 
     async deleteOneLesson(lesson_id){
-        const res = await this.app.mysql.delete('lesson', {
-            lesson_id: lesson_id,
-        });
-        return res;
+        await this.app.mysql.delete('lesson', {lesson_id: lesson_id});
+        return await this.app.mysql.delete('lesson_content', {lesson_id: lesson_id});
     }
 
     async getHomework(lesson_id){
         return await this.app.mysql.query(`select t.*, ts.source_name from homework h, task t, task_source ts
-            where h.task_id = t.task_id and t.source_id = ts.source_id`, [lesson_id]);
+            where h.lesson_id = ? and h.task_id = t.task_id and t.source_id = ts.source_id`, [lesson_id]);
     }
 
-    async relateHomework(lesson_id, task_id){
-       return await this.app.mysql.insert('homework', {lesson_id: lesson_id, task_id});
+    async relateHomework(lesson_id, task_id, users){
+       await this.app.mysql.insert('homework', {lesson_id: lesson_id, task_id});
+       for(let i = 0; i < users.length; i++){
+           await this.service.task.addTaskLog({task_id: task_id, student_id: users[i], start_time: new Date()});
+       }
+       return await this.getHomework(lesson_id);
     }
 
     async addHomework(lesson_id, task, users){
         const new_task = await this.service.task.assignTask(task, users);
-        await this.relateHomework(lesson_id, new_task.task_id);
+        await this.app.mysql.insert('homework', {lesson_id: lesson_id, task_id});
         return await this.getHomework(lesson_id);
     }
 

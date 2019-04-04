@@ -107,6 +107,12 @@ class RatingService extends Service {
         return res;
     }
 
+    async getExerciseLogTrigger(logid){
+        var sql = "select sum(el.delta_exercise_rating) as delta_exercise_rating, el.exercise_id "
+            + "from exercise_log el, exercise_log_trigger t where el.logid = t.logid and el.logid <= ? group by el.exercise_id;";
+        query(pool, sql, [maxid], callback);
+    }
+
 }
 
 module.exports = RatingService;

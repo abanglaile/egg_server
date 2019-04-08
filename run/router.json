@@ -1182,8 +1182,8 @@
       "POST"
     ],
     "paramNames": [],
-    "path": "/api/updateHomework",
-    "regexp": "/^\\/api\\/updateHomework(?:\\/(?=$))?$/",
+    "path": "/api/relateHomework",
+    "regexp": "/^\\/api\\/relateHomework(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

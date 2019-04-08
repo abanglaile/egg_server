@@ -96,7 +96,7 @@ class LessonService extends Service {
 
     async addHomework(lesson_id, task, users){
         const new_task = await this.service.task.assignTask(task, users);
-        await this.app.mysql.insert('homework', {lesson_id: lesson_id, task_id});
+        await this.app.mysql.insert('homework', {lesson_id: lesson_id, task_id: new_task.task_id});
         return await this.getHomework(lesson_id);
     }
 
@@ -111,7 +111,7 @@ class LessonService extends Service {
         // where lkc.lesson_id = ? and lkc.comment_id = kc.comment_id`, [lesson_id]);
         return await this.app.mysql.query(`select kc.*, group_concat(u.realname) as student_list
         from kp_comment kc inner join student_kp_comment skc
-        on kc.comment_id = skc.comment_id and kc.comment_source = 'c8eb3370-4e23-11e9-84d8-e19a7934'
+        on kc.comment_id = skc.comment_id and kc.comment_source = ?
         INNER JOIN users u on skc.student_id = u.userid group by comment_id`, [lesson_id]);
     }
 

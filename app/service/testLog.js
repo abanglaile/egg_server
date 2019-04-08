@@ -424,6 +424,7 @@ class TestLogService extends Service {
 
     async getStuTestSurvey(student_id, test_id){
         const test_log = await this.getTestLog(student_id, test_id);
+        const res = await this.app.mysql.get('users',{userid:student_id});
         const rating = await this.app.mysql.select('exercise_log', { 
             where: { 
                 test_id: test_id, 
@@ -443,6 +444,7 @@ class TestLogService extends Service {
             test_log: test_log,
             student_rating : student_rating,
             delta_rating : delta_rating,
+            student_name : res.realname,
         });
     }
 

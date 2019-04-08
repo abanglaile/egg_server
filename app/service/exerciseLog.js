@@ -87,10 +87,11 @@ class ExerciseLogService extends Service {
                         {
                             'kp_name': element.kpname,
                             'kp_delta_rating':0,
-                            'kp_correct_percent': 0,
+                            // 'kp_correct_percent': 0,
                             'kp_correct_times': 0,
                             'kp_exercise_times': 0,
-                            'kp_correct_rating':(element.kp_rating/element.kp_standard)*100
+                            'kp_rating':element.kp_rating,
+                            'kp_standard':element.kp_standard,
                         }
                     ]
                 });
@@ -101,10 +102,11 @@ class ExerciseLogService extends Service {
                     {
                         'kp_name': element.kpname,
                         'kp_delta_rating':0,
-                        'kp_correct_percent': 0,
+                        // 'kp_correct_percent': 0,
                         'kp_correct_times': 0,
                         'kp_exercise_times': 0,
-                        'kp_correct_rating':(element.kp_rating/element.kp_standard)*100
+                        'kp_rating':element.kp_rating,
+                        'kp_standard':element.kp_standard,
                     }
                 )
             }
@@ -123,12 +125,12 @@ class ExerciseLogService extends Service {
             result[chapter_length-1].kp_status[kp_length-1].kp_delta_rating += element.kp_delta_rating;
         });
         //循环计算KP正确率
-        for (var i=0;i<result.length;i++){
-            result[i].chapter_correct_percent = (result[i].chapter_correct_times/result[i].chapter_exercise_times)*100;
-            result[i].kp_status.forEach(element => {
-                element.kp_correct_percent=(element.kp_correct_times/element.kp_exercise_times)*100;
-            });
-        }
+        // for (var i=0;i<result.length;i++){
+        //     result[i].chapter_correct_percent = (result[i].chapter_correct_times/result[i].chapter_exercise_times)*100;
+        //     result[i].kp_status.forEach(element => {
+        //         element.kp_correct_percent=(element.kp_correct_times/element.kp_exercise_times)*100;
+        //     });
+        // }
         return result;
     }
 

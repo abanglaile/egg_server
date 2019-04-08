@@ -107,12 +107,19 @@ class RatingService extends Service {
         return res;
     }
 
-    async getExerciseLogTrigger(logid){
-        var sql = "select sum(el.delta_exercise_rating) as delta_exercise_rating, el.exercise_id "
-            + "from exercise_log el, exercise_log_trigger t where el.logid = t.logid and el.logid <= ? group by el.exercise_id;";
-        query(pool, sql, [maxid], callback);
+    async getNewExerciseRating(logid){
+        return await this.app.mysql.query(`select (sum(el.delta_exercise_rating) + e.exercise_rating) as new_exercise_rating, el.exercise_id
+            from exercise_log el inner join exercise_log_trigger t on t.logid <= ? and el.logid = t.logid 
+            inner join exercise e on el.exercise_id = e.exercise_id 
+            group by el.exercise_id`, [logid]);
     }
 
+    async getNewSnRating(logid){
+        return await this.app.mysql.query(`select (sum(bl.sn_delta_rating) + b.sn_rating) as new_sn_rating, bl.exercise_id, bl.sn 
+            from breakdown_log bl inner join exercise_log_trigger t on t.logid <= ? and bl.logid = t.logid
+            inner join breakdown b on bl.exercise_id = b.exercise_id and bl.sn = b.sn 
+            group by bl.exercise_id, bl.sn`, [logid]);
+    }
 }
 
 module.exports = RatingService;

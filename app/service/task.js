@@ -45,7 +45,7 @@ class TaskService extends Service {
 
     async searchTaskSource(input){
         return await this.app.mysql.query(`select t.source_id, t.source_name, t.source_type 
-            from task_source t where t.source_name like ?`, '%'+input+'%');
+            from task_source t where t.source_name like ? and t.source_type <> 3`, '%'+input+'%');
     }
 
     async searchTeacherTask(teacher_id, input){

@@ -182,20 +182,10 @@ class ExerciseLogService extends Service {
             student_rating: student_rating + exercise_log.delta_student_rating,
             course_id: kp_exercise.course_id,
         })
-        console.log("student_rating ",student_rating);
-        console.log("st_delta", st_delta);
         const rating_result = await this.app.mysql.query(`replace into student_rating
-        (student_id,student_rating ,course_id) VALUES(?,?,?);`
-        ,[student_id,(student_rating + exercise_log.delta_student_rating),kp_exercise.course_id]);
-        // console.log("ch_delta", ch_delta);
-        // const chapter_result = await this.app.mysql.replace('student_chapter', {
-        //     chapter_rating: chapter_rating + ch_delta,
-        // }, {
-        //     where: {
-        //         student_id: student_id,
-        //         chapterid: kp_exercise.chapterid,
-        //     }
-        // });
+            (student_id,student_rating ,course_id) VALUES(?,?,?)`
+         ,[student_id,(student_rating + exercise_log.delta_student_rating),kp_exercise.course_id]);
+
         console.log("chapter_rating ",chapter_rating);
         console.log("delta_chapter_rating", delta_chapter_rating);
         const chapter_result = await this.app.mysql.query(`replace into student_chapter 
@@ -203,6 +193,9 @@ class ExerciseLogService extends Service {
         ,[student_id,(chapter_rating + delta_chapter_rating),kp_exercise.chapterid]);
 
         exercise_log.logid = insert_result.insertId;
+        //async
+        this.app.mysql.insert('exercise_log_trigger', {logid: exercise_log.logid});
+
         for(var i = 0; i < breakdown_sn.length; i++){
             breakdown_sn[i].logid = exercise_log.logid;
             if(result){

@@ -14,20 +14,25 @@ class FixExerciseRating extends Subscription {
   static get schedule() {
     return {
       type: 'worker',
-      cron: '0 0 3 * * *',
-      // interval: '1h',
-      // immediate: true,
+      //cron: '5 * * * * *',
+      interval: '1h',
+      immediate: true,   
     };
   }
 
   async subscribe() {
-    // const logid = await this.app.mysql.queryOne("select max(logid) as logid from exercise_log_trigger t");
-    // const logs = await this.ctx.service.rating.getExerciseLogTrigger(logid);
-    // for(let i = 0; i < logs.length; i++){
-    //   await this.app.mysql.query(`insert into exercise_rating_history(exercise_id, exercise_rating) 
-    //     select exercise_id, ? + exercise_rating from exercise where exercise_id = ?`, [logs[i].delta_exercise_rating, logs[i].exercise_id]);
-    // }
-    // await this.app.mysql.query(`delete t.* from exercise_log_trigger t where el.logid <= ?`);
+    const res = await this.app.mysql.queryOne("select max(logid) as logid from exercise_log_trigger t");
+    const exercise_logs = await this.ctx.service.rating.getNewExerciseRating(res.logid);
+    const breakdown_logs = await this.ctx.service.rating.getNewSnRating(res.logid);
+    for(let i = 0; i < exercise_logs.length; i++){
+      await this.app.mysql.query(`insert into exercise_rating_history(exercise_id, exercise_rating) values(?, ?)`, 
+      [exercise_logs[i].exercise_id, exercise_logs[i].new_exercise_rating]);
+    }
+    for(let i = 0; i < breakdown_logs.length; i++){
+      await this.app.mysql.query(`insert into sn_rating_history(exercise_id, sn, sn_rating) values(?, ?, ?)`, 
+        [breakdown_logs[i].exercise_id, breakdown_logs[i].sn,  breakdown_logs[i].new_sn_rating]);
+    }
+    await this.app.mysql.query(`delete t.* from exercise_log_trigger t where t.logid <= ?`, [res.logid]);
   }
 }
 

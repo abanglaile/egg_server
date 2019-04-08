@@ -96,7 +96,7 @@ class LessonService extends Service {
 
     async addHomework(lesson_id, task, users){
         const new_task = await this.service.task.assignTask(task, users);
-        await this.app.mysql.insert('homework', {lesson_id: lesson_id, task_id});
+        await this.app.mysql.insert('homework', {lesson_id: lesson_id, task_id: new_task.task_id});
         return await this.getHomework(lesson_id);
     }
 

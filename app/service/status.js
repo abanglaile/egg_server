@@ -27,66 +27,104 @@ class statusService extends Service {
   }
 
   //根据student_id 获取综合概况能力数据(全部题目情况)
-  async getAlltestProfile(student_id){
-    var sql1 = "select count(*) as c from exercise_log l where l.student_id = ?";
-    var sql2 = "select count(*) as c from exercise_log l where l.student_id = ? and l.exercise_state = 1";
-    var sql = sql1+';'+sql2+';';
+  async getAlltestProfile(student_id ,course_id){
+    // var sql1 = "select count(*) as c from exercise_log l where l.student_id = ?";
+    // var sql2 = "select count(*) as c from exercise_log l where l.student_id = ? and l.exercise_state = 1";
+    // var sql = sql1+';'+sql2+';';
 
-    const res = await this.app.mysql.query(sql, [student_id,student_id,student_id]);
-    return res;
+    const res1 = await this.app.mysql.query(`select count(*) as num1 from teacher_test tt ,
+    exercise_log el where el.test_id = tt.test_id and tt.course_id = ? 
+    and el.student_id = ?`,[course_id,student_id]);
+
+    const res2 = await this.app.mysql.query(`select count(*) as num2 from teacher_test tt ,
+    exercise_log el where el.test_id = tt.test_id and el.exercise_state = 1 and tt.course_id = ? 
+    and el.student_id = ?`,[course_id,student_id]);
+
+    const rating = await this.service.rating.getStudentRating(student_id, course_id);
+
+    var group1 = {
+      key : '1',
+      exercount : res1[0].num1,   //做过的题目总数
+      rate : res1[0].num1 ? ((res2[0].num2/res1[0].num1)*100).toFixed(1) : 0,  //总正确率
+      ladderscore : rating,  //最新的天梯分
+    };
+    return group1;
   }
   //根据student_id 获取综合概况能力数据(近20题情况)
-  async get20testProfile(student_id){
-    var sql1 = "SELECT count(*) as c FROM (SELECT l.exercise_state from exercise_log l where l.student_id = ? ORDER BY submit_time DESC  LIMIT 20) s WHERE s.exercise_state = 1";
-    var sql2 = "SELECT count(*) as c FROM (SELECT l.exercise_state from exercise_log l where l.student_id = ? ORDER BY submit_time DESC  LIMIT 20) s ";
-    var sql3 = "SELECT SUM(s.delta_student_rating) as sum from (SELECT l.delta_student_rating from exercise_log l WHERE l.student_id = ? ORDER BY submit_time DESC LIMIT 20) s";
-    var sql = sql1+';'+sql2+';'+sql3+';';
+  async get20testProfile(student_id, course_id){
+    // var sql1 = "SELECT count(*) as c FROM (SELECT l.exercise_state from exercise_log l where l.student_id = ? ORDER BY submit_time DESC  LIMIT 20) s WHERE s.exercise_state = 1";
+    // var sql2 = "SELECT count(*) as c FROM (SELECT l.exercise_state from exercise_log l where l.student_id = ? ORDER BY submit_time DESC  LIMIT 20) s ";
+    // var sql3 = "SELECT SUM(s.delta_student_rating) as sum from (SELECT l.delta_student_rating from exercise_log l WHERE l.student_id = ? ORDER BY submit_time DESC LIMIT 20) s";
+    // var sql = sql1+';'+sql2+';'+sql3+';';
 
-    const res = await this.app.mysql.query(sql, [student_id,student_id,student_id]);
-    return res;
+    // const res = await this.app.mysql.query(sql, [student_id,student_id,student_id]);
+
+    const res1 = await this.app.mysql.query(`select count(*) as num1 from exercise_log l,
+      teacher_test t where t.course_id = ? and t.test_id=l.test_id and 
+      l.student_id = ? ORDER BY l.submit_time desc LIMIT 20;`,[course_id,student_id]);
+
+    const res2 = await this.app.mysql.query(`select count(*) as num2 from 
+      (select l.exercise_state from exercise_log l,teacher_test t where t.course_id = ? and 
+      t.test_id=l.test_id and l.student_id = ? ORDER BY l.submit_time desc LIMIT 20) s 
+      where s.exercise_state=1;`,[course_id,student_id]);
+
+    const res3 =  await this.app.mysql.query(`SELECT SUM(s.delta_student_rating) as sum 
+      from (SELECT l.delta_student_rating from exercise_log l,teacher_test t 
+      WHERE t.test_id = l.test_id and t.course_id = ? and l.student_id = ? 
+      ORDER BY l.submit_time DESC LIMIT 20) s;`,[course_id,student_id]);
+
+    var group2 = {
+      key : '2',  
+      exercount : res1[0].num1,   
+      rate : res1[0].num1 ? ((res2[0].num2/res1[0].num1)*100).toFixed(1) : 0,  //最近20题正确率
+      ladderscore : res3[0].sum,  //最近20题变化的天梯分
+  };
+    return group2;
   }
   //根据student_id 获取综合概况能力数据(近50题情况)
-  async get50testProfile(student_id){
-    var sql1 = "SELECT count(*) as c FROM (SELECT l.exercise_state from exercise_log l where l.student_id = ? ORDER BY submit_time DESC  LIMIT 50) s WHERE s.exercise_state = 1";
-    var sql2 = "SELECT count(*) as c FROM (SELECT l.exercise_state from exercise_log l where l.student_id = ? ORDER BY submit_time DESC  LIMIT 50) s ";
-    var sql3 = "SELECT SUM(s.delta_student_rating) as sum from (SELECT l.delta_student_rating from exercise_log l WHERE l.student_id = ? ORDER BY submit_time DESC LIMIT 50) s";
-    var sql = sql1+';'+sql2+';'+sql3+';';
+  async get50testProfile(student_id, course_id){
+    // var sql1 = "SELECT count(*) as c FROM (SELECT l.exercise_state from exercise_log l where l.student_id = ? ORDER BY submit_time DESC  LIMIT 50) s WHERE s.exercise_state = 1";
+    // var sql2 = "SELECT count(*) as c FROM (SELECT l.exercise_state from exercise_log l where l.student_id = ? ORDER BY submit_time DESC  LIMIT 50) s ";
+    // var sql3 = "SELECT SUM(s.delta_student_rating) as sum from (SELECT l.delta_student_rating from exercise_log l WHERE l.student_id = ? ORDER BY submit_time DESC LIMIT 50) s";
+    // var sql = sql1+';'+sql2+';'+sql3+';';
+    // const res = await this.app.mysql.query(sql, [student_id,student_id,student_id]);
+    // return res;
+    const res1 = await this.app.mysql.query(`select count(*) as num1 from exercise_log l,
+      teacher_test t where t.course_id = ? and t.test_id=l.test_id and 
+      l.student_id = ? ORDER BY l.submit_time desc LIMIT 50;`,[course_id,student_id]);
 
-    const res = await this.app.mysql.query(sql, [student_id,student_id,student_id]);
-    return res;
+    const res2 = await this.app.mysql.query(`select count(*) as num2 from 
+      (select l.exercise_state from exercise_log l,teacher_test t where t.course_id = ? and 
+      t.test_id=l.test_id and l.student_id = ? ORDER BY l.submit_time desc LIMIT 50) s 
+      where s.exercise_state=1;`,[course_id,student_id]);
+
+    const res3 =  await this.app.mysql.query(`SELECT SUM(s.delta_student_rating) as sum 
+      from (SELECT l.delta_student_rating from exercise_log l,teacher_test t 
+      WHERE t.test_id = l.test_id and t.course_id = ? and l.student_id = ? 
+      ORDER BY l.submit_time DESC LIMIT 50) s;`,[course_id,student_id]);
+
+    var group3 = {
+        key : '3',  
+        exercount : res1[0].num1,   
+        rate : res1[0].num1 ? ((res2[0].num2/res1[0].num1)*100).toFixed(1) : 0,  //最近50题正确率
+        ladderscore : res3[0].sum,  //最近50题变化的天梯分
+    };
+    return group3;
   }
 
   async getStuAbility(student_id, course_id){
 
     var capatity = [];
 
-    const res_all = await this.getAlltestProfile(student_id);
-    const rating = await this.service.rating.getStudentRating(student_id, course_id);
-    var group1 = {
-        key : '1',
-        exercount : res_all[0][0].c,   //做过的题目总数
-        rate : ((res_all[1][0].c/res_all[0][0].c)*100).toFixed(1),  //总正确率
-        ladderscore : rating,  //最新的天梯分
-    };
+    const group1 = await this.getAlltestProfile(student_id, course_id);
     capatity.push(group1);
 
-    const res_20 = await this.get20testProfile(student_id);
-    var group2 = {
-        key : '2',  
-        exercount : res_20[1][0].c,   
-        rate : ((res_20[0][0].c/res_20[1][0].c)*100).toFixed(1),  //最近20题正确率
-        ladderscore : res_20[2][0].sum,  //最近20题变化的天梯分
-    };
+    const group2 = await this.get20testProfile(student_id, course_id);
     capatity.push(group2);
 
-    const res_50 = await this.get50testProfile(student_id);
-    var group3 = {
-        key : '3',
-        exercount : res_50[1][0].c,   
-        rate : ((res_50[0][0].c/res_50[1][0].c)*100).toFixed(1),  //最近50题正确率
-        ladderscore : res_50[2][0].sum,  //最近50题变化的天梯分
-    };
+    const group3 = await this.get50testProfile(student_id, course_id);
     capatity.push(group3);
+
     console.log('capatity:'+JSON.stringify(capatity));
 
     return capatity;

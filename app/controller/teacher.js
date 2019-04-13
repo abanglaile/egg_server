@@ -76,6 +76,15 @@ class TeacherController extends Controller {
         }
     }
 
+    async copyTest(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        if(body.test_id){
+            const results = await service.test.copyTest(body.teacher_id, body.test_id, body.copy_name);
+            this.ctx.body = results;
+        }
+    }
+
     async getClassGroup(){
         const { ctx, service } = this;
         const {query} = ctx.request;
@@ -441,6 +450,15 @@ class TeacherController extends Controller {
         const {query} = ctx.request;
         if(query.student_id){
             const results = await service.testLog.getStuTestSurvey(query.student_id,query.test_id);
+            this.ctx.body=results;
+        }
+    }
+
+    async getSchool(teacher_id){
+        const {ctx, service } = this;
+        const {query} = ctx.request;
+        if(query.teacher_id){
+            const results = await service.school.getSchool(query.teacher_id);
             this.ctx.body=results;
         }
     }

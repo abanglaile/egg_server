@@ -13,6 +13,17 @@ class TestService extends Service {
         return res;
     }
 
+    async copyExerciseTest(test_id,exercises){
+        for(var i = 0; i < exercises.length; i++){
+            const res = await this.app.mysql.insert('exercise_test', { 
+                test_id : test_id,
+                exercise_id : exercises[i].exercise_id,
+                exercise_index : exercises[i].exercise_index,
+            });
+        }
+        return test_id;
+    }
+
     async addSomeTestLog(test_id, keys, total_exercise){
         let test_log = [];
         for(var i = 0; i < keys.length; i++){
@@ -89,6 +100,22 @@ class TestService extends Service {
         console.log("keys:",keys);
         const addres = await this.addSomeTestLog(test_id, keys, test.total_exercise);        
         return test.enable_time;
+    }
+
+    async copyTest(teacher_id, test_id, copy_name){
+        const test = await this.app.mysql.get('teacher_test',{test_id : test_id});
+        const newtest = await this.app.mysql.insert('teacher_test', { 
+            test_name: copy_name,
+            teacher_id: teacher_id,
+            test_type: 1,
+            total_exercise: test.total_exercise,
+            course_id: test.course_id,
+        });
+        const test_exercise = await this.app.mysql.select('exercise_test',{
+            where: {test_id : test_id},
+        });
+        const res = await this.copyExerciseTest(newtest.insertId,test_exercise);
+        return newtest.insertId;
     }
 
     async getTestInfoById(test_id){

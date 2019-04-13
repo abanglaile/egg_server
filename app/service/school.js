@@ -13,6 +13,12 @@ class schoolService extends Service {
         return results;
     }
 
+    async getSchool(teacher_id){
+        const results = await this.app.mysql.query(`select s.* from school_teacher st,
+            school s where st.teacher_id = ? and st.school_id = s.school_id;`, [teacher_id]);
+        return results;
+    }
+
 }
 
 module.exports = schoolService;

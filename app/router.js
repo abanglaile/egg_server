@@ -99,12 +99,14 @@ module.exports = app => {
   router.post('/api/addNewTest', controller.teacher.addNewTest);
   router.post('/api/deleteOneTest', controller.teacher.deleteOneTest);
   router.post('/api/distributeTest', controller.teacher.distributeTest);
+  router.post('/api/copyTest', controller.teacher.copyTest);
   router.get('/api/getTestDetail', controller.teacher.getTestDetail);
   router.get('/api/getTestInfoById', controller.teacher.getTestInfoById);
   router.get('/api/getTestKpResult', controller.teacher.getTestKpResult);
   router.get('/api/getTestResultInfo', controller.teacher.getTestResultInfo);
 
   router.get('/api/getClassGroup', controller.teacher.getClassGroup);
+  router.get('/api/getSchool', controller.teacher.getSchool);
   router.get('/api/getGroupData', controller.teacher.getGroupData);
   router.get('/api/getStudentGroup', controller.teacher.getStudentGroup);
   router.post('/api/addNewGroup', controller.teacher.addNewGroup);

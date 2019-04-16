@@ -58,12 +58,13 @@ class ExerciseLogService extends Service {
     //查询做题步骤分析
     async getStuTestStepAnalysis(student_id, test_id){
         const query_result = await this.app.mysql.query(
-            `select ks.kp_standard, bk.kpname, bk.sn_state, sk.kp_rating,bk.kp_delta_rating, kt.chapterid, c.chaptername, sc.chapter_rating
-            from breakdown_log bk 
+            `select ks.kp_standard, bk.kpname, bk.sn_state, sk.kp_rating,bk.kp_delta_rating, 
+            kt.chapterid, c.chaptername,cs.chapter_standard,sc.chapter_rating from breakdown_log bk 
             INNER JOIN student_kp sk on bk.student_id =sk.student_id and bk.kpid = sk.kpid
             INNER JOIN kp_standard ks on ks.kpid = bk.kpid 
             INNER JOIN kptable kt on ks.kpid = kt.kpid 
             INNER JOIN chapter c on kt.chapterid = c.chapterid 
+            INNER JOIN chapter_standard cs on cs.chapterid = c.chapterid 
 			INNER JOIN student_chapter sc on sc.student_id = bk.student_id and sc.chapterid = kt.chapterid
             where bk.student_id = ? and bk.test_id = ? ORDER BY kt.chapterid,bk.kpname`,[student_id,test_id]
         ) 
@@ -79,7 +80,7 @@ class ExerciseLogService extends Service {
                 result.push({
                     'chapter_id':element.chapterid,
                     'chapter_name':element.chaptername,
-                    'chapter_ratting': (element.chapter_rating/element.kp_standard)*100,
+                    'chapter_ratting': (element.chapter_rating/element.chapter_standard)*100,
                     'chapter_correct_percent': 0,
                     'chapter_correct_times': 0,
                     'chapter_exercise_times': 0,
@@ -90,7 +91,9 @@ class ExerciseLogService extends Service {
                             'kp_correct_percent': 0,
                             'kp_correct_times': 0,
                             'kp_exercise_times': 0,
-                            'kp_correct_rating':(element.kp_rating/element.kp_standard)*100
+                            'kp_rating':element.kp_rating,
+                            'kp_standard':element.kp_standard,
+                            'kp_correct_rating': ((element.kp_rating/element.kp_standard)*100),
                         }
                     ]
                 });
@@ -104,7 +107,9 @@ class ExerciseLogService extends Service {
                         'kp_correct_percent': 0,
                         'kp_correct_times': 0,
                         'kp_exercise_times': 0,
-                        'kp_correct_rating':(element.kp_rating/element.kp_standard)*100
+                        'kp_rating':element.kp_rating,
+                        'kp_standard':element.kp_standard,
+                        'kp_correct_rating': ((element.kp_rating/element.kp_standard)*100).toFixed(1),
                     }
                 )
             }
@@ -122,7 +127,7 @@ class ExerciseLogService extends Service {
             //更新delta_rating
             result[chapter_length-1].kp_status[kp_length-1].kp_delta_rating += element.kp_delta_rating;
         });
-        //循环计算KP正确率
+        // 循环计算KP正确率
         for (var i=0;i<result.length;i++){
             result[i].chapter_correct_percent = (result[i].chapter_correct_times/result[i].chapter_exercise_times)*100;
             result[i].kp_status.forEach(element => {

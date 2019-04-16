@@ -36,6 +36,10 @@ class LessonService extends Service {
             query += ' and l.course_label = ?';
             params.push(course_label);
         }
+        if(label_id){
+            query += ' and l.label_id = ?';
+            params.push(label_id);
+        }
 
         query += ' order by l.end_time desc;';
         console.log("query:",query);

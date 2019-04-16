@@ -87,7 +87,7 @@ class TaskService extends Service {
         return results;
     }
 
-    async setVerifyRes(verifyState,comment,taskid,teacher_id,student_id){
+    async setVerifyRes(verifyState, comment, taskid, teacher_id, student_id){
         const res = await this.app.mysql.update('task_log', {
             verify_time: new Date(), 
             verify_state: verifyState,
@@ -96,7 +96,7 @@ class TaskService extends Service {
             }, {
             where: {
                 task_id: taskid,
-                student_id:student_id,
+                student_id: student_id,
             }
         }) 
     }

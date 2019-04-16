@@ -1097,6 +1097,30 @@
       "POST"
     ],
     "paramNames": [],
+    "path": "/api/updateKpComment",
+    "regexp": "/^\\/api\\/updateKpComment(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/getLessonKpComment",
+    "regexp": "/^\\/api\\/getLessonKpComment(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
     "path": "/api/deleteLessonPfComment",
     "regexp": "/^\\/api\\/deleteLessonPfComment(?:\\/(?=$))?$/",
     "stack": [
@@ -1121,8 +1145,8 @@
       "POST"
     ],
     "paramNames": [],
-    "path": "/api/addLessonContent",
-    "regexp": "/^\\/api\\/addLessonContent(?:\\/(?=$))?$/",
+    "path": "/api/updatePfComment",
+    "regexp": "/^\\/api\\/updatePfComment(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -1133,8 +1157,20 @@
       "POST"
     ],
     "paramNames": [],
-    "path": "/api/updateLessonContent",
-    "regexp": "/^\\/api\\/updateLessonContent(?:\\/(?=$))?$/",
+    "path": "/api/getLessonPfComment",
+    "regexp": "/^\\/api\\/getLessonPfComment(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/addLessonContent",
+    "regexp": "/^\\/api\\/addLessonContent(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -1182,8 +1218,8 @@
       "POST"
     ],
     "paramNames": [],
-    "path": "/api/updateHomework",
-    "regexp": "/^\\/api\\/updateHomework(?:\\/(?=$))?$/",
+    "path": "/api/relateHomework",
+    "regexp": "/^\\/api\\/relateHomework(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -1196,18 +1232,6 @@
     "paramNames": [],
     "path": "/api/deleteHomework",
     "regexp": "/^\\/api\\/deleteHomework(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
-      "POST"
-    ],
-    "paramNames": [],
-    "path": "/api/updateLessonGroup",
-    "regexp": "/^\\/api\\/updateLessonGroup(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -1242,32 +1266,8 @@
       "POST"
     ],
     "paramNames": [],
-    "path": "/api/updateLessonCourse",
-    "regexp": "/^\\/api\\/updateLessonCourse(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
-      "POST"
-    ],
-    "paramNames": [],
     "path": "/api/updateLessonRange",
     "regexp": "/^\\/api\\/updateLessonRange(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
-      "POST"
-    ],
-    "paramNames": [],
-    "path": "/api/updateLessonLabel",
-    "regexp": "/^\\/api\\/updateLessonLabel(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

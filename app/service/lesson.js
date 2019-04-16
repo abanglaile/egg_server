@@ -111,7 +111,7 @@ class LessonService extends Service {
         // where lkc.lesson_id = ? and lkc.comment_id = kc.comment_id`, [lesson_id]);
         return await this.app.mysql.query(`select kc.*, group_concat(u.realname) as student_list
         from kp_comment kc inner join student_kp_comment skc
-        on kc.comment_id = skc.comment_id and kc.comment_source = 'c8eb3370-4e23-11e9-84d8-e19a7934'
+        on kc.comment_id = skc.comment_id and kc.comment_source = ?
         INNER JOIN users u on skc.student_id = u.userid group by comment_id`, [lesson_id]);
     }
 
@@ -147,15 +147,15 @@ class LessonService extends Service {
     async deleteLessonKpComment(lesson_id, comment_id){
         await this.app.mysql.delete('lesson_kp_comment', {comment_id: comment_id});
         await this.app.mysql.delete('kp_comment', {comment_id: comment_id});
-        await this.app.mysql.delete('student_kp_comment', {comment_id: comment_id});
-        return await this.getLessonKpComment(lesson_id);
+        return await this.app.mysql.delete('student_kp_comment', {comment_id: comment_id});
+        //return await this.getLessonKpComment(lesson_id);
     }
 
     async deleteLessonPfComment(lesson_id, comment_id){
         await this.app.mysql.delete('lesson_pf_comment', {comment_id: comment_id});
         await this.app.mysql.delete('pf_comment', {comment_id: comment_id});
-        await this.app.mysql.delete('student_pf_comment', {comment_id: comment_id});
-        return await this.getLessonPfComment(lesson_id);
+        return await this.app.mysql.delete('student_pf_comment', {comment_id: comment_id});
+        // return await this.getLessonPfComment(lesson_id);
     }    
 
     async getLessonContent(lesson_id){
@@ -181,11 +181,6 @@ class LessonService extends Service {
         return await this.getLessonContent(lesson_content.lesson_id);
     }
 
-    async updateLessonContent(lesson_content){
-        const iret = await this.app.mysql.update('lesson_content', lesson_content, {where: {lesson_content_id: lesson_content.lesson_content_id}});
-        return await this.getLessonContent(lesson_content.lesson_id);
-    }
-
     async deleteLessonContent(lesson_content){
         const iret = await this.app.mysql.delete('lesson_content', {lesson_content_id: lesson_content.lesson_content_id});
         return await this.getLessonContent(lesson_content.lesson_id);
@@ -201,13 +196,13 @@ class LessonService extends Service {
         return await this.getLessonBasic(lesson_id);
     }
 
-    async updateLessonGroup(lesson_id, stu_group_id){
-        const group = await this.app.mysql.get('school_group', {stu_group_id: stu_group_id});
-        const uret = await this.app.mysql.update('lesson', {stu_group_id: stu_group_id, course_id: group.course_id}, {
-                where: {lesson_id: lesson_id}
-            });
-        return await this.getLessonBasic(lesson_id);
-    }
+    // async updateLessonGroup(lesson_id, stu_group_id){
+    //     const group = await this.app.mysql.get('school_group', {stu_group_id: stu_group_id});
+    //     const uret = await this.app.mysql.update('lesson', {stu_group_id: stu_group_id, course_id: group.course_id}, {
+    //             where: {lesson_id: lesson_id}
+    //         });
+    //     return await this.getLessonBasic(lesson_id);
+    // }
 
     async updateLessonRange(lesson_id, start_time, end_time){
         const uret = await this.app.mysql.update('lesson', {
@@ -217,17 +212,17 @@ class LessonService extends Service {
         return await this.getLessonBasic(lesson_id);
     }
 
-    async updateLessonCourse(lesson_id, course_label){
-        const uret = await this.app.mysql.update('lesson', {course_label: course_label},
-            {where: {lesson_id: lesson_id}})
-        return await this.getLessonBasic(lesson_id);;
-    }
+    // async updateLessonCourse(lesson_id, course_label){
+    //     const uret = await this.app.mysql.update('lesson', {course_label: course_label},
+    //         {where: {lesson_id: lesson_id}})
+    //     return await this.getLessonBasic(lesson_id);;
+    // }
 
-    async updateLessonLabel(lesson_id, label_id){
-        const uret = await this.app.mysql.update('lesson', {label_id: label_id},
-            {where: {lesson_id: lesson_id}});
-        return await this.getLessonBasic(lesson_id);; 
-    }
+    // async updateLessonLabel(lesson_id, label_id){
+    //     const uret = await this.app.mysql.update('lesson', {label_id: label_id},
+    //         {where: {lesson_id: lesson_id}});
+    //     return await this.getLessonBasic(lesson_id);; 
+    // }
     
 }
 

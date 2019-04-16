@@ -268,6 +268,13 @@ class TeacherController extends Controller {
         this.ctx.body = results;
     }
 
+    async getLessonPfComment(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.getLessonPfComment(body.lesson_id);
+        ctx.body = results;
+    }
+
     async addLessonPfComment(){
         const { ctx, service } = this;
         const {body} = ctx.request;
@@ -282,6 +289,13 @@ class TeacherController extends Controller {
         ctx.body = results;
     }
 
+    async getLessonKpComment(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.getLessonKpComment(body.lesson_id);
+        ctx.body = results;
+    }
+
     async addLessonKpComment(){
         const { ctx, service } = this;
         const {body} = ctx.request;
@@ -293,6 +307,20 @@ class TeacherController extends Controller {
         const { ctx, service } = this;
         const {body} = ctx.request;
         const results = await service.lesson.deleteLessonKpComment(body.lesson_id, body.comment_id);
+        ctx.body = results;
+    }
+
+    async updatePfComment(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.comment.updatePfComment(body.pf_comment, body.comment_id);
+        ctx.body = results;
+    }
+
+    async updateKpComment(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.comment.updateKpComment(body.kp_comment, body.comment_id);
         ctx.body = results;
     }
 
@@ -324,13 +352,6 @@ class TeacherController extends Controller {
         ctx.body = results;
     }
 
-    async updateLessonContent(){
-        const { ctx, service } = this;
-        const {body} = ctx.request;
-        const results = await service.lesson.updateLessonContent(body.lesson_content);
-        ctx.body = results;
-    }
-
     async deleteLessonContent(){
         const { ctx, service } = this;
         const {body} = ctx.request;
@@ -338,19 +359,19 @@ class TeacherController extends Controller {
         ctx.body = results;
     }
 
-    async addLessonContent(){
-        const { ctx, service } = this;
-        const {body} = ctx.request;
-        const results = await service.lesson.addLessonContent(body.lesson_content);
-        ctx.body = results;
-    }
+    // async addLessonContent(){
+    //     const { ctx, service } = this;
+    //     const {body} = ctx.request;
+    //     const results = await service.lesson.addLessonContent(body.lesson_content);
+    //     ctx.body = results;
+    // }
 
-    async updateLessonContent(){
-        const { ctx, service } = this;
-        const {body} = ctx.request;
-        const results = await service.lesson.updateLessonContent(body.lesson_content);
-        ctx.body = results;
-    }
+    // async updateLessonContent(){
+    //     const { ctx, service } = this;
+    //     const {body} = ctx.request;
+    //     const results = await service.lesson.updateLessonContent(body.lesson_content);
+    //     ctx.body = results;
+    // }
 
     async updateLessonTeacher(){
         const { ctx, service } = this;
@@ -366,19 +387,19 @@ class TeacherController extends Controller {
         ctx.body = results;
     }
 
-    async updateLessonGroup(){
-        const { ctx, service } = this;
-        const {body} = ctx.request;
-        const results = await service.lesson.updateLessonGroup(body.lesson_id, body.group_id);
-        ctx.body = results;
-    }
+    // async updateLessonGroup(){
+    //     const { ctx, service } = this;
+    //     const {body} = ctx.request;
+    //     const results = await service.lesson.updateLessonGroup(body.lesson_id, body.group_id);
+    //     ctx.body = results;
+    // }
 
-    async updateLessonCourse(){
-        const { ctx, service } = this;
-        const {body} = ctx.request;
-        const results = await service.lesson.updateLessonCourse(body.lesson_id, body.course_label);
-        ctx.body = results;
-    }
+    // async updateLessonCourse(){
+    //     const { ctx, service } = this;
+    //     const {body} = ctx.request;
+    //     const results = await service.lesson.updateLessonCourse(body.lesson_id, body.course_label);
+    //     ctx.body = results;
+    // }
 
     async updateLessonRange(){
         const { ctx, service } = this;
@@ -387,12 +408,12 @@ class TeacherController extends Controller {
         ctx.body = results;
     }
 
-    async updateLessonLabel(){
-        const { ctx, service } = this;
-        const {body} = ctx.request;
-        const results = await service.lesson.updateLessonLabel(body.lesson_id, body.label_id);
-        ctx.body = results;
-    }
+    // async updateLessonLabel(){
+    //     const { ctx, service } = this;
+    //     const {body} = ctx.request;
+    //     const results = await service.lesson.updateLessonLabel(body.lesson_id, body.label_id);
+    //     ctx.body = results;
+    // }
 
     async addNewLesson(){
         const { ctx, service } = this;

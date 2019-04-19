@@ -13,7 +13,7 @@ class TeacherService extends Service {
     async getSchoolTeacher2(teacher_id){
         const teachers = await this.app.mysql.query(`select tr.teacher_id, u.realname from 
         teacher_group tr, users u where tr.stu_group_id in(select stu_group_id from 
-        teacher_group where teacher_id = "3044f0f040ba11e9ad2ca1607a4b5d90") and 
+        teacher_group where teacher_id = ?) and 
         tr.teacher_id = u.userid group by tr.teacher_id;`, 
         [teacher_id]);
         return teachers;

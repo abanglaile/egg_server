@@ -137,12 +137,15 @@ module.exports = app => {
 
   router.post('/api/deleteLessonKpComment', controller.teacher.deleteLessonKpComment);
   router.post('/api/addLessonKpComment', controller.teacher.addLessonKpComment);
+  router.post('/api/updateKpComment', controller.teacher.updateKpComment);
+  router.post('/api/getLessonKpComment', controller.teacher.getLessonKpComment);
 
   router.post('/api/deleteLessonPfComment', controller.teacher.deleteLessonPfComment);
   router.post('/api/addLessonPfComment', controller.teacher.addLessonPfComment);
+  router.post('/api/updatePfComment', controller.teacher.updatePfComment);
+  router.post('/api/getLessonPfComment', controller.teacher.getLessonPfComment);
 
   router.post('/api/addLessonContent', controller.teacher.addLessonContent);
-  router.post('/api/updateLessonContent', controller.teacher.updateLessonContent);
   router.post('/api/deleteLessonContent', controller.teacher.deleteLessonContent);
   router.get('/api/searchTeacherTask', controller.teacher.searchTeacherTask);
 
@@ -150,12 +153,12 @@ module.exports = app => {
   router.post('/api/relateHomework', controller.teacher.relateHomework);
   router.post('/api/deleteHomework', controller.teacher.deleteHomework);
   
-  router.post('/api/updateLessonGroup', controller.teacher.updateLessonGroup);
+  //router.post('/api/updateLessonGroup', controller.teacher.updateLessonGroup);
   router.post('/api/updateLessonTeacher',controller.teacher.updateLessonTeacher);
   router.post('/api/updateLessonAssistant',controller.teacher.updateLessonAssistant);
-  router.post('/api/updateLessonCourse',controller.teacher.updateLessonCourse);
+  //router.post('/api/updateLessonCourse',controller.teacher.updateLessonCourse);
   router.post('/api/updateLessonRange',controller.teacher.updateLessonRange);
-  router.post('/api/updateLessonLabel',controller.teacher.updateLessonLabel);
+  // router.post('/api/updateLessonLabel',controller.teacher.updateLessonLabel);
   router.post('/api/addNewLesson',controller.teacher.addNewLesson);
   router.post('/api/deleteOneLesson',controller.teacher.deleteOneLesson);
 

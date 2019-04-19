@@ -21,6 +21,14 @@ class CommentService extends Service {
         return pf_comment;        
     }
 
+    async updatePfComment(pf_comment, comment_id){
+        return await this.app.mysql.update("pf_comment", pf_comment, {where: {comment_id: comment_id}});
+    }
+
+    async updateKpComment(kp_comment, comment_id){
+        return await this.app.mysql.update("kp_comment", kp_comment, {where: {comment_id: comment_id}});
+    }
+
     async searchPfLabel(input){
         return await this.app.mysql.query(`select p.pf_label_id, p.label_name 
             from pf_label p where p.label_name like ?`, '%'+input+'%');

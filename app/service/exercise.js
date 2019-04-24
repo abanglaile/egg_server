@@ -74,7 +74,7 @@ class ExerciseService extends Service {
         var kpids = [];
         for(var i = 0; i < kp_exercise.length; i++){
             kpids['#' + kp_exercise[i].kpid] = true;
-        }
+        }   
         console.log(kpids);
         var breakdown = [];
         for(var i = 0; i < results.length; i++){
@@ -89,6 +89,7 @@ class ExerciseService extends Service {
             });
         }
         var exercise = {
+            course_id: kp_exercise[0].course_id,
             exercise_id: results[0].exercise_id, 
             exercise_type: results[0].exercise_type, 
             title: results[0].title, 
@@ -111,7 +112,10 @@ class ExerciseService extends Service {
   }
 
   async getKpExercise(exercise_id){
-    const res = await this.app.mysql.query('select kpid from kp_exercise k where exercise_id = ?', exercise_id);
+    const res = await this.app.mysql.select('kp_exercise', { 
+        where: { exercise_id: exercise_id}, 
+      });
+      
     return res;    
   }
 

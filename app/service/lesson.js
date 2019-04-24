@@ -41,7 +41,7 @@ class LessonService extends Service {
             params.push(label_id);
         }
 
-        query += ' order by l.end_time desc;';
+        query += ' order by l.start_time desc;';
         console.log("query:",query);
         const lesson_list = await this.app.mysql.query(query, params);
         console.log("lesson_list:",JSON.stringify(lesson_list));

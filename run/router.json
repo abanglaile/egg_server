@@ -763,6 +763,18 @@
   {
     "name": null,
     "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/copyTest",
+    "regexp": "/^\\/api\\/copyTest(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
       "HEAD",
       "GET"
     ],
@@ -808,6 +820,19 @@
     "paramNames": [],
     "path": "/api/getTestResultInfo",
     "regexp": "/^\\/api\\/getTestResultInfo(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getSchool",
+    "regexp": "/^\\/api\\/getSchool(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

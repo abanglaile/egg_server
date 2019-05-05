@@ -120,7 +120,8 @@ class ExerciseService extends Service {
   }
 
   async addOneExercise(course_id,exercise){
-    const reply = await this.produceExerciseId(course_id);
+    // const reply = await this.produceExerciseId(course_id);
+    const reply = await this.getExerciseId(course_id);
     const exercise_id = reply;
     console.log('exercise_id :'+exercise_id);
     if(exercise_id > 0){
@@ -185,6 +186,14 @@ class ExerciseService extends Service {
     const res = await this.app.redis.hincrby('exercise_sequence',course_id,1);
     console.log("produceExerciseId:",res);
     return res;
+  }
+
+  async getExerciseId(course_id){
+    const res1 = await this.app.mysql.get('exercise_sequence', { course_id: course_id });
+    const sql = `update exercise_sequence set now_exercise_id = now_exercise_id + 1 where course_id = ?; `;
+    const res2 = await this.app.mysql.query(sql, [course_id]);
+
+    return res1.now_exercise_id;
   }
 
   async addExercise(exercise, exercise_id) {

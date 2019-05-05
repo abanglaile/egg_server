@@ -175,5 +175,8 @@ module.exports = app => {
   router.get('/api/getStuInfoById', controller.teacher.getStuInfoById);
 
   //个人考试评价
-  router.get('/apt/getStuEvalBytest',controller.student.getStuEvalBytest);
+  router.get('/api/getStuEvalBytest',controller.student.getStuEvalBytest);
+  //教师班级配置管理
+  router.get('/api/getTeacherList',controller.school.getTeacherList);
+
 };

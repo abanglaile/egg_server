@@ -131,7 +131,8 @@ module.exports = app => {
   router.get('/api/searchKpLabel', controller.teacher.searchKpLabel);
   
   router.get('/api/getOneLesson', controller.teacher.getOneLesson);
-  
+  router.get('/api/getStudentOneLesson', controller.teacher.getStudentOneLesson);
+  router.get('/api/getLessonStudent', controller.teacher.getLessonStudent);
 
   router.post('/api/getTeacherLesson', controller.teacher.getTeacherLesson);
 

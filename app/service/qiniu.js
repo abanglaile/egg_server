@@ -7,10 +7,10 @@ const secretKey = "Fkau1rsZ1I7CuoMJ6Ns1UfwPljrXeAWr-ecqGwSS";
 const mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
 console.log(mac);
 const bucket = 'exercise-pic';
-var options = {
-    scope: bucket,
-  };
-var putPolicy = new qiniu.rs.PutPolicy(options);
+// var options = {
+//     scope: bucket,
+//   };
+// var putPolicy = new qiniu.rs.PutPolicy(options);
 // const uploadToken = putPolicy.uploadToken(mac);
 var config = new qiniu.conf.Config();
 // 空间对应的机房
@@ -23,11 +23,15 @@ var putFile = promise.promisify(formUploader.putFile, { multiArgs: true, context
 class qiniuService extends Service {
 
     async uploadTestFile(filename) {
+        var options = {
+            scope: bucket + ":" + filename,
+        };
+        var putPolicy = new qiniu.rs.PutPolicy(options);
         const uploadToken = putPolicy.uploadToken(mac);
         let putExtra = new qiniu.form_up.PutExtra();
         //要上传文件的本地路径
          let filePath = '/usr/local/www/kpmanager/img/test.png';
-        //let filePath = 'D:\\www\\kpmanager\\img\\test.png';
+        // let filePath = 'D:\\www\\kpmanager\\img\\test.png';
         var ret = await putFile(uploadToken, filename, filePath, putExtra);
         console.log(ret);
         return ret;

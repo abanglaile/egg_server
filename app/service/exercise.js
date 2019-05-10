@@ -122,9 +122,10 @@ class ExerciseService extends Service {
   async addOneExercise(course_id,exercise){
     // const reply = await this.produceExerciseId(course_id);
     const reply = await this.getExerciseId(course_id);
-    const exercise_id = reply;
+    const exercise_id = reply.exercise_id;
+    const updateState = reply.updateState;
     console.log('exercise_id :'+exercise_id);
-    if(exercise_id > 0){
+    if(exercise_id > 0 && updateState == 1){
         const addexer = await this.addExercise(exercise,exercise_id);
         const addbreak = await this.addBreakdown(exercise_id,exercise.breakdown);
         //无主测点时不更新
@@ -141,6 +142,8 @@ class ExerciseService extends Service {
         }else{
           return {"exercise_id":exercise_id};
         }
+    }else if(updateState == 0){
+        return updateState;
     }else{
         console.log("exercise_id生成失败");
     }
@@ -190,10 +193,20 @@ class ExerciseService extends Service {
 
   async getExerciseId(course_id){
     const res1 = await this.app.mysql.get('exercise_sequence', { course_id: course_id });
-    const sql = `update exercise_sequence set now_exercise_id = now_exercise_id + 1 where course_id = ?; `;
-    const res2 = await this.app.mysql.query(sql, [course_id]);
+    const sql = `update exercise_sequence set now_exercise_id = now_exercise_id + 1 where course_id = ? 
+        and now_exercise_id = ?; `;
+    const res2 = await this.app.mysql.query(sql, [course_id, res1.now_exercise_id]);
+    var updateState = 0;
+    console.log("res2:",JSON.stringify(res2));
+    if(res2.affectedRows == 1){
+        updateState = 1;
+    }
+    var res = {
+        exercise_id : res1.now_exercise_id,
+        updateState : updateState,
+    };
 
-    return res1.now_exercise_id;
+    return res;
   }
 
   async addExercise(exercise, exercise_id) {

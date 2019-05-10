@@ -106,6 +106,13 @@ class TeacherController extends Controller {
         this.ctx.body = results;
     }
 
+    async getLessonStudent(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.lesson.getLessonStudent(query.lesson_id);
+        this.ctx.body = results;
+    }
+
     async addNewGroup(){
         const { ctx, service } = this;
         const {body} = ctx.request;
@@ -261,6 +268,13 @@ class TeacherController extends Controller {
         const {query} = ctx.request;
         const task_source = await service.task.searchTeacherTask(query.teacher_id, query.input);
         this.ctx.body = task_source;
+    }
+
+    async getStudentOneLesson(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.lesson.getStudentOneLesson(query.lesson_id, query.student_id);
+        this.ctx.body = results;
     }
 
     async getOneLesson(){

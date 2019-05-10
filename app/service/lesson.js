@@ -80,6 +80,24 @@ class LessonService extends Service {
         return lesson;
     }
 
+    async getLessonStudent(lesson_id){
+        return await this.app.mysql.query(`select g.student_id, u.realname from lesson l, group_student g,
+        users u where l.lesson_id = ? and l.stu_group_id = g.stu_group_id and u.userid = g.student_id`, [lesson_id]);
+    }
+
+    async getStudentOneLesson(lesson_id, student_id){
+        let lesson = await this.getLessonBasic(lesson_id);
+        let lesson_content = this.getLessonContent(lesson_id);
+        let homework = this.getHomework(lesson_id);
+        let kp_comment = this.getLessonStudentKpComment(lesson_id, student_id);
+        let pf_comment = this.getLessonStudentPfComment(lesson_id, student_id);
+        lesson.homework = await homework;
+        lesson.lesson_content = await lesson_content;
+        lesson.kp_comment = await kp_comment;
+        lesson.pf_comment = await pf_comment;
+        return lesson;
+    }
+
     async deleteOneLesson(lesson_id){
         await this.app.mysql.delete('lesson', {lesson_id: lesson_id});
         return await this.app.mysql.delete('lesson_content', {lesson_id: lesson_id});
@@ -119,20 +137,42 @@ class LessonService extends Service {
         INNER JOIN users u on skc.student_id = u.userid group by comment_id`, [lesson_id]);
     }
 
+    async getLessonStudentKpComment(lesson_id, student_id){
+        // return await this.app.mysql.query(`select kc.*, lkc.student_list from lesson_kp_comment lkc, kp_comment kc 
+        // where lkc.lesson_id = ? and lkc.comment_id = kc.comment_id`, [lesson_id]);
+        return await this.app.mysql.query(`select kc.*
+        from kp_comment kc inner join student_kp_comment skc
+        on kc.comment_id = skc.comment_id and kc.comment_source = ? and skc.student_id = ?`,
+         [lesson_id, student_id]);
+    }
+
+    async getLessonStudentPfComment(lesson_id, student_id){
+        // return await this.app.mysql.query(`select kc.*, lkc.student_list from lesson_kp_comment lkc, kp_comment kc 
+        // where lkc.lesson_id = ? and lkc.comment_id = kc.comment_id`, [lesson_id]);
+        return await this.app.mysql.query(`select pc.*
+        from pf_comment pc inner join student_pf_comment spc
+        on pc.comment_id = spc.comment_id and pc.comment_source = ? and spc.student_id = ?`, 
+        [lesson_id, student_id]);
+    }
+
     async getLessonPfComment(lesson_id){
-        return await this.app.mysql.query(`select pc.*, lpc.student_list from lesson_pf_comment lpc, pf_comment pc 
-        where lpc.lesson_id = ? and lpc.comment_id = pc.comment_id`, [lesson_id]);
+        // return await this.app.mysql.query(`select pc.*, lpc.student_list from lesson_pf_comment lpc, pf_comment pc 
+        // where lpc.lesson_id = ? and lpc.comment_id = pc.comment_id`, [lesson_id]);
+        return await this.app.mysql.query(`select pc.*, group_concat(u.realname) as student_list
+        from pf_comment pc inner join student_pf_comment spc
+        on pc.comment_id = spc.comment_id and pc.comment_source = ?
+        INNER JOIN users u on spc.student_id = u.userid group by comment_id`, [lesson_id]);
     }
 
     async addLessonKpComment(lesson_id, select_student, kp_comment){
         kp_comment.comment_source = lesson_id;
         let {select_id, select_name} = select_student;
         kp_comment = await this.service.comment.addKpComment(select_id, kp_comment);
-        await this.app.mysql.insert('lesson_kp_comment', {
-            lesson_id: lesson_id, 
-            comment_id: kp_comment.comment_id,
-            student_list: select_name.join(",")
-        });
+        // await this.app.mysql.insert('lesson_kp_comment', {
+        //     lesson_id: lesson_id, 
+        //     comment_id: kp_comment.comment_id,
+        //     student_list: select_name.join(",")
+        // });
         return await this.getLessonKpComment(lesson_id);   
     }
 
@@ -140,11 +180,11 @@ class LessonService extends Service {
         pf_comment.comment_source = lesson_id;
         let {select_id, select_name} = select_student;
         pf_comment = await this.service.comment.addPfComment(select_id, pf_comment);
-        await this.app.mysql.insert('lesson_pf_comment', {
-            lesson_id: lesson_id, 
-            comment_id: pf_comment.comment_id,
-            student_list: select_name.join(",")
-        });
+        // await this.app.mysql.insert('lesson_pf_comment', {
+        //     lesson_id: lesson_id, 
+        //     comment_id: pf_comment.comment_id,
+        //     student_list: select_name.join(",")
+        // });
         return await this.getLessonPfComment(lesson_id);   
     }
 

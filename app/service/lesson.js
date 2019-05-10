@@ -189,14 +189,14 @@ class LessonService extends Service {
     }
 
     async deleteLessonKpComment(lesson_id, comment_id){
-        await this.app.mysql.delete('lesson_kp_comment', {comment_id: comment_id});
+        //await this.app.mysql.delete('lesson_kp_comment', {comment_id: comment_id});
         await this.app.mysql.delete('kp_comment', {comment_id: comment_id});
         return await this.app.mysql.delete('student_kp_comment', {comment_id: comment_id});
         //return await this.getLessonKpComment(lesson_id);
     }
 
     async deleteLessonPfComment(lesson_id, comment_id){
-        await this.app.mysql.delete('lesson_pf_comment', {comment_id: comment_id});
+        //await this.app.mysql.delete('lesson_pf_comment', {comment_id: comment_id});
         await this.app.mysql.delete('pf_comment', {comment_id: comment_id});
         return await this.app.mysql.delete('student_pf_comment', {comment_id: comment_id});
         // return await this.getLessonPfComment(lesson_id);
@@ -206,6 +206,10 @@ class LessonService extends Service {
         const lesson_content = await this.app.mysql.select('lesson_content',
             {where: {lesson_id: lesson_id}});
         return lesson_content;
+    }
+
+    async getLessonAward(lesson_id){
+        return await this.app.mysql.select('award_log', {where: {award_source: lesson_id}});
     }
 
     async addNewLesson(lesson){

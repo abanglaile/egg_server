@@ -751,6 +751,18 @@
   {
     "name": null,
     "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/copyTest",
+    "regexp": "/^\\/api\\/copyTest(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
       "HEAD",
       "GET"
     ],
@@ -809,6 +821,19 @@
     "paramNames": [],
     "path": "/api/getClassGroup",
     "regexp": "/^\\/api\\/getClassGroup(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getSchool",
+    "regexp": "/^\\/api\\/getSchool(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -1058,30 +1083,6 @@
   {
     "name": null,
     "methods": [
-      "POST"
-    ],
-    "paramNames": [],
-    "path": "/api/getTeacherLesson",
-    "regexp": "/^\\/api\\/getTeacherLesson(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
-      "POST"
-    ],
-    "paramNames": [],
-    "path": "/api/deleteLessonKpComment",
-    "regexp": "/^\\/api\\/deleteLessonKpComment(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
       "HEAD",
       "GET"
     ],
@@ -1101,6 +1102,30 @@
     "paramNames": [],
     "path": "/api/getLessonStudent",
     "regexp": "/^\\/api\\/getLessonStudent(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/getTeacherLesson",
+    "regexp": "/^\\/api\\/getTeacherLesson(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/deleteLessonKpComment",
+    "regexp": "/^\\/api\\/deleteLessonKpComment(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

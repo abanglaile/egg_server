@@ -72,6 +72,8 @@ class LessonService extends Service {
         let homework = this.getHomework(lesson_id);
         let kp_comment = this.getLessonKpComment(lesson_id);
         let pf_comment = this.getLessonPfComment(lesson_id);
+        let lesson_adward = this.getLessonAward(lesson_id);
+        lesson.lesson_adward = await lesson_adward;
         lesson.homework = await homework;
         lesson.lesson_content = await lesson_content;
         lesson.lesson_student = lesson_student;
@@ -135,6 +137,15 @@ class LessonService extends Service {
         from kp_comment kc inner join student_kp_comment skc
         on kc.comment_id = skc.comment_id and kc.comment_source = ?
         INNER JOIN users u on skc.student_id = u.userid group by comment_id`, [lesson_id]);
+    }
+
+    async addLessonAdward(student_adward){
+        const ret = await this.app.mysql.insert("lesson_adward", student_adward);
+        return ret;
+    }
+
+    async getStudentLessonAdward(student_id, lesson_id){
+        return await this.app.mysql.select("lesson_adward", {where: {student_id, lesson_id}});
     }
 
     async getLessonStudentKpComment(lesson_id, student_id){

@@ -133,7 +133,9 @@ module.exports = app => {
   router.get('/api/getOneLesson', controller.teacher.getOneLesson);
   router.get('/api/getStudentOneLesson', controller.teacher.getStudentOneLesson);
   router.get('/api/getLessonStudent', controller.teacher.getLessonStudent);
-
+  router.get('/api/accLessonAward', controller.teacher.accLessonAward);
+  
+  router.post('/api/addLessonAward', controller.teacher.addLessonAward);
   router.post('/api/getTeacherLesson', controller.teacher.getTeacherLesson);
 
   router.post('/api/deleteLessonKpComment', controller.teacher.deleteLessonKpComment);

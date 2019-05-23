@@ -72,12 +72,27 @@ class LessonService extends Service {
         let homework = this.getHomework(lesson_id);
         let kp_comment = this.getLessonKpComment(lesson_id);
         let pf_comment = this.getLessonPfComment(lesson_id);
+        let lesson_award = this.getLessonAward(lesson_id);
+        lesson.lesson_award = await lesson_award;
         lesson.homework = await homework;
         lesson.lesson_content = await lesson_content;
         lesson.lesson_student = lesson_student;
         lesson.kp_comment = await kp_comment;
         lesson.pf_comment = await pf_comment;
         return lesson;
+    }
+
+    async getLessonAward(lesson_id){
+        return await this.app.mysql.query(`select a.*, u.realname from lesson_award a 
+            inner join users u on a.lesson_id = ? and a.student_id = u.userid`, [lesson_id]);
+    }
+
+    async accLessonAward(lesson_id){
+        let kp_award = await this.app.mysql.query(`select skc.student_id, u.realname, count(skc.comment_id) as award_count 
+        from kp_comment kc inner join student_kp_comment skc
+        on kc.comment_id = skc.comment_id and kc.comment_source = ?
+        INNER JOIN users u on skc.student_id = u.userid group by student_id`, [lesson_id]);
+        return kp_award;
     }
 
     async getLessonStudent(lesson_id){
@@ -91,6 +106,7 @@ class LessonService extends Service {
         let homework = this.getHomework(lesson_id);
         let kp_comment = this.getLessonStudentKpComment(lesson_id, student_id);
         let pf_comment = this.getLessonStudentPfComment(lesson_id, student_id);
+        lesson.award_count = await this.app.mysql.get("lesson_award", {lesson_id, student_id});
         lesson.homework = await homework;
         lesson.lesson_content = await lesson_content;
         lesson.kp_comment = await kp_comment;
@@ -135,6 +151,22 @@ class LessonService extends Service {
         from kp_comment kc inner join student_kp_comment skc
         on kc.comment_id = skc.comment_id and kc.comment_source = ?
         INNER JOIN users u on skc.student_id = u.userid group by comment_id`, [lesson_id]);
+    }
+
+    async addLessonAward(lesson_id){
+        let lesson_award = this.accLessonAward(lesson_id);
+        let lesson_student = this.getLessonStudent(lesson_id);
+        // let base_award = 5;
+        // let award = lesson_student.map(item => {
+        //     let student_award = lesson_award.find(t => (t.student_id == item.student_id));
+        //     return {
+        //         award_count: student_award ? (base_award + student_award.award_count) : base_award,
+        //         student_id: item.student_id,
+        //         lesson_id: lesson_id,
+        //     }
+        // })
+        const ret = await this.app.mysql.insert("lesson_award", lesson_award);
+        return ret;
     }
 
     async getLessonStudentKpComment(lesson_id, student_id){

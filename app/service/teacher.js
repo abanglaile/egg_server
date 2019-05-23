@@ -3,7 +3,7 @@ const Service = require('egg').Service;
 class TeacherService extends Service {
 
     async getSchoolTeacher(group_id){
-        const teachers = await this.app.mysql.query(`select tr.*, u.realname 
+        const teachers = await this.app.mysql.query(`select tr.teacher_id, u.realname 
          from teacher_group tr, users u where tr.stu_group_id = ? and tr.teacher_id = u.userid`, 
          [group_id]);
         return teachers;
@@ -46,6 +46,18 @@ class TeacherService extends Service {
             // test_option: await test_option,
             room_link_option: await room_link_option, 
         }
+    }
+
+    async getGroupOptionData(school_id){
+        const teacher_option = await this.app.mysql.query(`select st.teacher_id,u.realname 
+            from school_teacher st, users u where u.userid = st.teacher_id and st.school_id = ?;`, 
+            [school_id]);
+        const course_option = await this.service.course.getCourseLabel();
+
+        return {
+            teacher_option : teacher_option,
+            course_option : course_option,
+        };
     }
 
     

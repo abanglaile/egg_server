@@ -177,7 +177,11 @@ module.exports = app => {
 
   //个人考试评价
   router.get('/api/getStuEvalBytest',controller.student.getStuEvalBytest);
-  //教师班级配置管理
+  //教师、班级配置管理
   router.get('/api/getTeacherList',controller.school.getTeacherList);
-
+  router.get('/api/getGroupTable',controller.school.getGroupTable);
+  router.get('/api/getGroupOptionData',controller.school.getGroupOptionData);
+  router.post('/api/updateGroupTeacher',controller.school.updateGroupTeacher);
+  router.post('/api/addNewSchoolGroup',controller.school.addNewSchoolGroup);
+  router.get('/api/getContractTable',controller.school.getContractTable);
 };

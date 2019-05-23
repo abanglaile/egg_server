@@ -20,7 +20,7 @@ class schoolService extends Service {
     }
 
     async getTeacherList(schoolId){
-        const results = await this.app.mysql.query(`select st.*,u.realname,u.avatar, 
+        const results = await this.app.mysql.query(`select st.*,u.realname,u.avatar, tg.stu_group_id,
             sg.group_name from school_teacher st,users u, teacher_group tg, school_group sg 
             where st.school_id = ? and st.teacher_id = u.userid and tg.teacher_id = st.teacher_id 
             and tg.stu_group_id = sg.stu_group_id;`, [schoolId]);
@@ -53,11 +53,9 @@ class schoolService extends Service {
                 teacher_index[e.teacher_id] = list_index;
                 list_index++;
             }
-
-            return teacher_list;
         }
+        return teacher_list;
     }
-
 }
 
 module.exports = schoolService;

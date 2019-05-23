@@ -189,14 +189,14 @@ class LessonService extends Service {
     }
 
     async deleteLessonKpComment(lesson_id, comment_id){
-        await this.app.mysql.delete('lesson_kp_comment', {comment_id: comment_id});
+        // await this.app.mysql.delete('lesson_kp_comment', {comment_id: comment_id});
         await this.app.mysql.delete('kp_comment', {comment_id: comment_id});
         return await this.app.mysql.delete('student_kp_comment', {comment_id: comment_id});
         //return await this.getLessonKpComment(lesson_id);
     }
 
     async deleteLessonPfComment(lesson_id, comment_id){
-        await this.app.mysql.delete('lesson_pf_comment', {comment_id: comment_id});
+        // await this.app.mysql.delete('lesson_pf_comment', {comment_id: comment_id});
         await this.app.mysql.delete('pf_comment', {comment_id: comment_id});
         return await this.app.mysql.delete('student_pf_comment', {comment_id: comment_id});
         // return await this.getLessonPfComment(lesson_id);

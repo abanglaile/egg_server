@@ -284,6 +284,13 @@ class TeacherController extends Controller {
         this.ctx.body = results;
     }
 
+    async accLessonAward(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.lesson.accLessonAward(query.lesson_id);
+        this.ctx.body = results;
+    }
+    
     async deleteOneLesson(){
         const { ctx, service } = this;
         const {body} = ctx.request;
@@ -372,6 +379,13 @@ class TeacherController extends Controller {
         const { ctx, service } = this;
         const {body} = ctx.request;
         const results = await service.lesson.addLessonContent(body.lesson_content);
+        ctx.body = results;
+    }
+
+    async addLessonAward(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.addLessonAward(body.lesson_id);
         ctx.body = results;
     }
 

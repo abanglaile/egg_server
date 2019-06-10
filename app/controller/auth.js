@@ -8,7 +8,7 @@ class AuthController extends Controller {
       const { ctx, service } = this;
       const {body} = ctx.request;
       if(body.username){
-          const results = await service.user.signin(body.username, body.password);
+          const results = await service.user.signin(body.username, body.password, body.redirect);
           console.log(results);
           
           this.ctx.body = results;

@@ -38,10 +38,24 @@ class SchoolController extends Controller {
         ctx.body = results;
     }
 
+    async updateGroupHour(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.group.updateGroupHour(body.stu_group_id,body.student_id,body.num,body.label);
+        ctx.body = results;
+    }
+
     async addNewSchoolGroup(){
         const { ctx, service } = this;
         const {body} = ctx.request;
         const results = await service.group.addNewSchoolGroup(body.new_group, body.groupTeacher);
+        ctx.body = results;
+    }
+    
+    async getConsumeLesson(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.lesson.getConsumeLesson(body.stu_group_id,body.label,body.filter_option);
         ctx.body = results;
     }
 }

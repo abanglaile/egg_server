@@ -288,6 +288,38 @@ class LessonService extends Service {
         return await this.getLessonBasic(lesson_id);
     }
 
+    async getConsumeLesson(stu_group_id, label, filter_option){
+        console.log("filter_option:",JSON.stringify(filter_option));
+        let {start_time, end_time} = filter_option;
+        console.log("start_time:",start_time);
+        let query = `select l.*,u.realname as teacher_name, ass.realname as assistant_name,
+        ll.label_name,sg.group_name,r.room_name from lesson l LEFT JOIN users ass on 
+        l.assistant_id = ass.userid,users u,lesson_label ll,school_group sg, school_room r 
+        where l.stu_group_id = ? and l.teacher_id = u.userid and l.stu_group_id = sg.stu_group_id 
+        and r.room_id = l.room_id and l.label_id = ll.label_id and l.is_sign = 1`;
+        let params = [stu_group_id];
+
+        if(start_time){
+            query += ' and l.start_time >=?';
+            params.push(start_time);
+        }
+        if(end_time){
+            query += ' and l.end_time <= ?';
+            params.push(end_time);
+        }
+        if(label){
+            query += ' and l.label_id = ?';
+            params.push(label);
+        }
+
+        query += ' order by l.start_time desc;';
+        console.log("query:",query);
+        const res = await this.app.mysql.query(query, params);
+        console.log("res:",JSON.stringify(res));
+        return res;
+    }
+
+
     // async updateLessonCourse(lesson_id, course_label){
     //     const uret = await this.app.mysql.update('lesson', {course_label: course_label},
     //         {where: {lesson_id: lesson_id}})

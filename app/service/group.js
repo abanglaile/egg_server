@@ -207,10 +207,23 @@ class GroupService extends Service {
         return res3;
     }
 
+    async updateGroupHour(stu_group_id, student_id, num, label){
+        let row = (label == 'guide')? {guide_hour:num} : {class_hour:num};
+        
+        const res = await this.app.mysql.update('group_student', row,{
+            where:{
+                stu_group_id : stu_group_id,
+                student_id : student_id,
+            }
+        });
+
+        return res;
+    }
+
     async getContractTable(school_id){
-        const results = await this.app.mysql.query(`select sg.*,gs.student_id,
-            gs.group_hour,gs.consume_hour,u.realname from school_group sg left join 
-            group_student gs on sg.stu_group_id = gs.stu_group_id inner join users u
+        const results = await this.app.mysql.query(`select sg.*,gs.*,
+            u.realname from school_group sg left join group_student gs
+             on sg.stu_group_id = gs.stu_group_id inner join users u
              on gs.student_id = u.userid where sg.school_id = ?;`, [school_id]);
 
         return results;

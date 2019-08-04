@@ -188,4 +188,25 @@ module.exports = app => {
   router.get('/api/getContractTable',controller.school.getContractTable);
   router.post('/api/updateGroupHour',controller.school.updateGroupHour);
   router.post('/api/getConsumeLesson',controller.school.getConsumeLesson);
+
+  // 增益
+  router.get('/api/getBuffByID', controller.buff.getBuffByID);
+  router.get('/api/getBuffByName', controller.buff.getBuffByName);
+  router.post('/api/addBuff', controller.buff.addBuff);
+  router.put('/api/updateBuff', controller.buff.updateBuff);
+  router.delete('/api/deleteBuff', controller.buff.deleteBuff);
+  // 虚拟自习室
+  router.get('/api/getVirtualroom', controller.virtualroom.getVirtualroom);
+  router.get('/api/getVirtualroomByID', controller.virtualroom.getVirtualroomByID);
+  router.get('/api/getVirtualroomByName', controller.virtualroom.getVirtualroomByName);
+  router.get('/api/getVirtualroomByAdmin', controller.virtualroom.getVirtualroomByAdmin);
+  router.post('/api/addVirtualroom', controller.virtualroom.addVirtualroom);
+  router.put('/api/updateVirtualroom', controller.virtualroom.updateVirtualroom);
+  router.delete('/api/deleteVirtualroom', controller.virtualroom.deleteVirtualroom);
+  // 签约
+  router.post('/api/addVirtualroomSign', controller.virtualroom.addVirtualroomSign);
+  router.get('/api/getVirtualroomSign', controller.virtualroom.getVirtualroomSign);
+  // 增益管理
+  router.post('/api/addVirtualroomBuff', controller.virtualroom.addVirtualroomBuff);
+  router.get('/api/getVirtualroomBuff', controller.virtualroom.getVirtualroomBuff);
 };

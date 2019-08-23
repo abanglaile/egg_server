@@ -115,7 +115,7 @@ class EntryExerController extends Controller {
     async updateBreakdown(){
         const { ctx, service } = this;
         const {body} = ctx.request;
-        const reply = await service.exercise.updateOneBreakdown(body.exercise_id, body.breakdown);
+        const reply = await service.exercise.updateOneBreakdown(body.exercise_id, body.breakdown, body.answer_assist_url);
 
         this.ctx.body = reply;
     }

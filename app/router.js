@@ -105,6 +105,12 @@ module.exports = app => {
   router.get('/api/getTestKpResult', controller.teacher.getTestKpResult);
   router.get('/api/getTestResultInfo', controller.teacher.getTestResultInfo);
 
+  router.get('/api/getStudentList', controller.teacher.getStudentList);
+  router.get('/api/getStuCourse', controller.teacher.getStuCourse);
+  router.get('/api/getStuPfCommentList', controller.teacher.getStuPfCommentList);
+  router.post('/api/getStuKpCommentList', controller.teacher.getStuKpCommentList);
+  
+
   router.get('/api/getClassGroup', controller.teacher.getClassGroup);
   router.get('/api/getSchool', controller.teacher.getSchool);
   router.get('/api/getGroupData', controller.teacher.getGroupData);

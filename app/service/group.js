@@ -202,9 +202,8 @@ class GroupService extends Service {
             });
         }
 
-        const res3 = await this.service.teacher.getSchoolTeacher(group_id);
-            
-        return res3;
+        // const res3 = await this.service.teacher.getSchoolTeacher(group_id);
+        return res1;
     }
 
     async updateGroupHour(stu_group_id, student_id, num, label){
@@ -227,6 +226,47 @@ class GroupService extends Service {
              on gs.student_id = u.userid where sg.school_id = ?;`, [school_id]);
 
         return results;
+    }
+
+    async getStudentList(teacher_id){
+        const results = await this.app.mysql.query(`select g.student_id,u.realname,
+        u.avatar,s.group_name,cl.course_label_name from teacher_group tg
+        LEFT JOIN group_student g on g.stu_group_id = tg.stu_group_id
+        LEFT JOIN users u on u.userid = g.student_id
+        LEFT JOIN school_group s on s.stu_group_id = tg.stu_group_id
+        INNER JOIN course_label cl on cl.course_label = s.course_label
+        where tg.teacher_id = ?;`, [teacher_id]);
+
+        var group_list = [];
+        var group_index = [];
+        var list_index = 0;
+        for(var i = 0; i < results.length; i++){
+            var e = results[i];
+            const index = group_index[e.student_id];
+            if(index >= 0){
+                group_list[index].group_info.push({
+                    course_label_name: e.course_label_name,
+                    group_name: e.group_name,
+                });
+            }else{
+                var group_info = [];
+                group_info.push({
+                    course_label_name: e.course_label_name,
+                    group_name: e.group_name,
+                });
+                var group = {
+                    student_id : e.student_id,
+                    realname : e.realname,
+                    avatar : e.avatar,
+                    group_info : group_info,
+                };
+                group_list[list_index] = group;
+                group_index[e.student_id] = list_index;
+                list_index++;
+            }
+        }
+        
+        return group_list;
     }
 
 

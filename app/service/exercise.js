@@ -96,6 +96,7 @@ class ExerciseService extends Service {
             title_img_url: results[0].title_img_url,
             title_audio_url: results[0].title_audio_url,
             answer: results[0].answer,
+            answer_assist_url :  results[0].answer_assist_url,
             exercise_rating: results[0].exercise_rating, 
             breakdown: breakdown
         };
@@ -167,8 +168,22 @@ class ExerciseService extends Service {
     }
   }
 
-  async updateOneBreakdown(exercise_id, breakdown){
+  async updateAssistUrl(exercise_id, answer_assist_url) {
+    const params = {
+            answer_assist_url: answer_assist_url, 
+        };
+    const options = {
+      where: {
+        exercise_id: exercise_id
+      }
+    };
+    const res = await this.app.mysql.update('exercise',params,options);
+    return res;
+  }
+
+  async updateOneBreakdown(exercise_id, breakdown, answer_assist_url){
     const update_break = await this.updateBreakdown(exercise_id, breakdown);
+    const update_assist = await this.updateAssistUrl(exercise_id, answer_assist_url);
     //无主测点时不更新
     var mask = 0;
     for(var i = 0; i < breakdown.length; i++){

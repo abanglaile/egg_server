@@ -23,7 +23,7 @@ class ManagerController extends Controller {
         const {ctx, service} = this;
         const {body} = ctx.request;
         if(body.save_url){
-            const ret = await service.media.saveTestMedia(body.save_url);
+            const ret = await service.media.saveTestMedia(body.save_url, body.save_wav_url);
             this.ctx.body = ret;
         }        
     }

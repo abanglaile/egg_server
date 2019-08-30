@@ -182,4 +182,7 @@ module.exports = app => {
   //教师班级配置管理
   router.get('/api/getTeacherList',controller.school.getTeacherList);
 
+  //game
+  router.get('/api/getStuTasklog', controller.game.getStuTasklog);
+  router.post('/api/deleteTaskLog',controller.game.deleteTaskLog);
 };

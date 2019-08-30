@@ -90,7 +90,7 @@ class LessonService extends Service {
     async accLessonAward(lesson_id){
         let kp_award = await this.app.mysql.query(`select skc.student_id, u.realname, count(skc.comment_id) as award_count 
         from kp_comment kc inner join student_kp_comment skc
-        on kc.comment_id = skc.comment_id and kc.comment_source = ?
+        on kc.side = 1 and kc.comment_id = skc.comment_id and kc.comment_source = ?
         INNER JOIN users u on skc.student_id = u.userid group by student_id`, [lesson_id]);
         return kp_award;
     }

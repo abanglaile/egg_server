@@ -44,8 +44,8 @@ class TaskService extends Service {
     }
 
     async searchTaskSource(input){
-        return await this.app.mysql.query(`select t.source_id, t.source_name, t.source_type 
-            from task_source t where t.source_name like ? and t.source_type <> 3`, '%'+input+'%');
+        return await this.app.mysql.query(`select t.* from task_source t 
+            where t.source_name like ? and t.source_type <> 3`, '%'+input+'%');
     }
 
     async searchTeacherTask(teacher_id, input){
@@ -101,6 +101,31 @@ class TaskService extends Service {
         }) 
     }
 
+    async getStuTasklog(student_id, online, submit_time){
+        let sql = `select t.*, ts.source_name, ts.course_label, tl.final_exp from task_log tl inner join task t on tl.task_id = t.task_id
+            inner join task_source ts on t.source_id = ts.source_id  where tl.student_id = ? `;
+        sql += online ? 'and (tl.verify_state < 2 or tl.verify_state is null)' : 'and tl.verify_state = 2';
+        let params = [student_id];
+        if(submit_time){
+            sql += ' and tl.submit_time >= ?';
+            params.push(submit_time);
+        }
+        const res = await this.app.mysql.query(sql, params);
+        return res;
+    }
+
+    async getStuTasklog(student_id, online, submit_time){
+        let sql = `select t.*, ts.source_name, ts.course_label, tl.final_exp from task_log tl inner join task t on tl.task_id = t.task_id
+            inner join task_source ts on t.source_id = ts.source_id  where tl.student_id = ? `;
+        sql += online ? 'and (tl.verify_state < 2 or tl.verify_state is null)' : 'and tl.verify_state = 2';
+        let params = [student_id];
+        if(submit_time){
+            sql += ' and tl.submit_time >= ?';
+            params.push(submit_time);
+        }
+        const res = await this.app.mysql.query(sql, params);
+        return res;
+    }
 }
 
 module.exports = TaskService;

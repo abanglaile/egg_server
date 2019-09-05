@@ -29,8 +29,10 @@ class FixExerciseRating extends Subscription {
       [exercise_logs[i].exercise_id, exercise_logs[i].new_exercise_rating]);
     }
     for(let i = 0; i < breakdown_logs.length; i++){
-      await this.app.mysql.query(`insert into sn_rating_history(exercise_id, sn, sn_rating) values(?, ?, ?)`, 
-        [breakdown_logs[i].exercise_id, breakdown_logs[i].sn,  breakdown_logs[i].new_sn_rating]);
+      if(breakdown_logs[i].new_sn_rating){
+        await this.app.mysql.query(`insert into sn_rating_history(exercise_id, sn, sn_rating) values(?, ?, ?)`, 
+        [breakdown_logs[i].exercise_id, breakdown_logs[i].sn, breakdown_logs[i].new_sn_rating]);
+      }
     }
     await this.app.mysql.query(`delete t.* from exercise_log_trigger t where t.logid <= ?`, [res.logid]);
   }

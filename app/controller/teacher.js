@@ -503,7 +503,7 @@ class TeacherController extends Controller {
         }
     }
 
-    async getSchool(teacher_id){
+    async getSchool(){
         const {ctx, service } = this;
         const {query} = ctx.request;
         if(query.teacher_id){
@@ -511,7 +511,40 @@ class TeacherController extends Controller {
             this.ctx.body=results;
         }
     }
+
+    async getStudentList(){
+        const {ctx, service } = this;
+        const {query} = ctx.request;
+        if(query.teacher_id){
+            const results = await service.group.getStudentList(query.teacher_id);
+            this.ctx.body=results;
+        }
+    } 
+
+    async getStuPfCommentList(){
+        const {ctx, service } = this;
+        const {query} = ctx.request;
+        if(query.student_id){
+            const results = await service.comment.getStuPfCommentList(query.student_id);
+            this.ctx.body=results;
+        }
+    }
+
+    async getStuKpCommentList(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.comment.getStuKpCommentList(body.student_id, body.filter_option);
+        this.ctx.body = results;
+    }
     
+    async getStuCourse(){
+        const {ctx, service } = this;
+        const {query} = ctx.request;
+        if(query.student_id){
+            const results = await service.course.getStuCourse(query.student_id);
+            this.ctx.body=results;
+        }
+    }
 }
 
 module.exports = TeacherController;

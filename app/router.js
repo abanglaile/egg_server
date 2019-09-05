@@ -105,6 +105,12 @@ module.exports = app => {
   router.get('/api/getTestKpResult', controller.teacher.getTestKpResult);
   router.get('/api/getTestResultInfo', controller.teacher.getTestResultInfo);
 
+  router.get('/api/getStudentList', controller.teacher.getStudentList);
+  router.get('/api/getStuCourse', controller.teacher.getStuCourse);
+  router.get('/api/getStuPfCommentList', controller.teacher.getStuPfCommentList);
+  router.post('/api/getStuKpCommentList', controller.teacher.getStuKpCommentList);
+  
+
   router.get('/api/getClassGroup', controller.teacher.getClassGroup);
   router.get('/api/getSchool', controller.teacher.getSchool);
   router.get('/api/getGroupData', controller.teacher.getGroupData);
@@ -179,10 +185,38 @@ module.exports = app => {
 
   //个人考试评价
   router.get('/api/getStuEvalBytest',controller.student.getStuEvalBytest);
-  //教师班级配置管理
+  //教师、班级配置管理、合同管理
   router.get('/api/getTeacherList',controller.school.getTeacherList);
 
   //game
   router.get('/api/getStuTasklog', controller.game.getStuTasklog);
   router.post('/api/deleteTaskLog',controller.game.deleteTaskLog);
+  router.get('/api/getGroupTable',controller.school.getGroupTable);
+  router.get('/api/getGroupOptionData',controller.school.getGroupOptionData);
+  router.post('/api/updateGroupTeacher',controller.school.updateGroupTeacher);
+  router.post('/api/addNewSchoolGroup',controller.school.addNewSchoolGroup);
+  router.get('/api/getContractTable',controller.school.getContractTable);
+  router.post('/api/updateGroupHour',controller.school.updateGroupHour);
+  router.post('/api/getConsumeLesson',controller.school.getConsumeLesson);
+
+  // 增益
+  router.get('/api/getBuffByID', controller.buff.getBuffByID);
+  router.get('/api/getBuffByName', controller.buff.getBuffByName);
+  router.post('/api/addBuff', controller.buff.addBuff);
+  router.put('/api/updateBuff', controller.buff.updateBuff);
+  router.delete('/api/deleteBuff', controller.buff.deleteBuff);
+  // 虚拟自习室
+  router.get('/api/getVirtualroom', controller.virtualroom.getVirtualroom);
+  router.get('/api/getVirtualroomByID', controller.virtualroom.getVirtualroomByID);
+  router.get('/api/getVirtualroomByName', controller.virtualroom.getVirtualroomByName);
+  router.get('/api/getVirtualroomByAdmin', controller.virtualroom.getVirtualroomByAdmin);
+  router.post('/api/addVirtualroom', controller.virtualroom.addVirtualroom);
+  router.put('/api/updateVirtualroom', controller.virtualroom.updateVirtualroom);
+  router.delete('/api/deleteVirtualroom', controller.virtualroom.deleteVirtualroom);
+  // 签约
+  router.post('/api/addVirtualroomSign', controller.virtualroom.addVirtualroomSign);
+  router.get('/api/getVirtualroomSign', controller.virtualroom.getVirtualroomSign);
+  // 增益管理
+  router.post('/api/addVirtualroomBuff', controller.virtualroom.addVirtualroomBuff);
+  router.get('/api/getVirtualroomBuff', controller.virtualroom.getVirtualroomBuff);
 };

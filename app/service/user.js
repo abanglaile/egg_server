@@ -113,8 +113,8 @@ class userService extends Service {
     return res;
   }
 
-  async findOneinUsers(user){
-    const res = await this.app.mysql.get('user_auths',{ userid : user.userid });
+  async findOneinUsers(userid){
+    const res = await this.app.mysql.get('users',{ userid : userid });
     return res;
   }
 
@@ -146,18 +146,30 @@ class userService extends Service {
     return conditions.userid;
   }
 
-  async signin(username, password) {
-    const ctx = this.ctx;
-    const user = await this.findOne({ username });
-    if (user) {
-      if(user.credential === password){
-        return user;
+  async signin(username, password, redirect) {
+    if(redirect != '/school-zq/'){
+      const user = await this.findOne({ username });
+      if (user) {
+        if(user.credential === password){
+          return user;
+        }
+        // const attemptKey = crypto.pbkdf2Sync(password, user.salt, 100000, 512, 'sha512');
+        // const attemptPassword = attemptKey.toString('hex');
+        // if (user.password === attemptPassword) return user;
+        // return null;
       }
-      // const attemptKey = crypto.pbkdf2Sync(password, user.salt, 100000, 512, 'sha512');
-      // const attemptPassword = attemptKey.toString('hex');
-      // if (user.password === attemptPassword) return user;
-      // return null;
+    }else{
+      const user = await this.findOne({ username });
+      if (user) {
+        if(user.credential === password){
+          const one = await this.findOneinUsers(user.userid);
+          if(one.role == 3){
+            return user;
+          }
+        }
+      }
     }
+    
     return null;
 
   }

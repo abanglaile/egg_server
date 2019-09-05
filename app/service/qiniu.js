@@ -30,7 +30,10 @@ class qiniuService extends Service {
         const uploadToken = putPolicy.uploadToken(mac);
         let putExtra = new qiniu.form_up.PutExtra();
         //要上传文件的本地路径
-         let filePath = '/usr/local/www/kpmanager/img/test.png';
+        var filePath = '/usr/local/www/kpmanager/img/test.png';
+        if(filename.lastIndexOf('midi') > 0){
+            filePath = '/usr/local/www/kpmanager/img/test.wav';
+        }
         // let filePath = 'D:\\www\\kpmanager\\img\\test.png';
         var ret = await putFile(uploadToken, filename, filePath, putExtra);
         console.log(ret);
@@ -63,6 +66,11 @@ class qiniuService extends Service {
     }
 
     async getQiniuToken(){
+        var options = {
+            scope: bucket,
+        };
+        var putPolicy = new qiniu.rs.PutPolicy(options);
+
         const uptoken = putPolicy.uploadToken(mac);
         return uptoken;
     }

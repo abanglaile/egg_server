@@ -12,19 +12,25 @@ class mediaService extends Service {
         return ret;
     }
 
-    async saveTestMedia(url){
+    async saveTestMedia(url, wav_url){
         let filename = url.substring(url.lastIndexOf("/") + 1, url.length);
+        var wavName = '';
+        if(wav_url){
+            wavName = wav_url.substring(wav_url.lastIndexOf("/") + 1, wav_url.length);
+            const res = await this.service.qiniu.uploadTestFile(wavName);
+        }
         const ret = await this.service.qiniu.uploadTestFile(filename);
         console.log("saveTestMedia ret:   ",ret);
         const code = await this.service.lily.getTestly();
         const insert_ret = await this.app.mysql.query(`INSERT INTO media_res
-            (code, url, tag) VALUES(?, ?, ?)
+            (code, url, wav_url, tag) VALUES(?, ?, ?, ?)
             ON DUPLICATE KEY UPDATE
-            code = ?`, [code, url, 2, code]);
+            code = ?, wav_url = ?`, [code, url, wav_url, 2, code, wav_url]);
         console.log(code);
         return {
             code: code,
             url: url,
+            wav_url: wav_url,
             ret: ret,
         }
     }

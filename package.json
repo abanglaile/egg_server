@@ -20,7 +20,8 @@
     "egg-redis": "^2.0.0",
     "node-cmd": "^3.0.0",
     "node-uuid": "^1.4.8",
-    "qiniu": "^7.2.0"
+    "qiniu": "^7.2.0",
+    "timidity": "^1.0.1"
   },
   "devDependencies": {
     "egg-bin": "^4.7.0"

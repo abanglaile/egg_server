@@ -68,6 +68,19 @@ class GroupService extends Service {
         return addres.insertId;
     }
 
+    async addNewSchoolGroup(new_group, groupTeacher){
+        const addres = await this.app.mysql.insert('school_group',new_group);
+
+        for(var i = 0;i < groupTeacher.length;i++){
+            const res2 = await this.app.mysql.insert('teacher_group', { 
+                teacher_id : groupTeacher[i],
+                stu_group_id : addres.insertId,
+            });
+        }
+
+        return addres.insertId;
+    }
+
     async deleteOneGroup(stu_group_id){
         const del1 = await this.app.mysql.delete('school_group', {
             stu_group_id: stu_group_id,
@@ -137,6 +150,126 @@ class GroupService extends Service {
         
         return flag;
     }
+
+    async getGroupTable(school_id){
+        const results = await this.app.mysql.query(`select sg.*,cl.course_label_name,
+        tg.teacher_id, u.realname from school_group sg, teacher_group tg, users u,
+        course_label cl where sg.school_id = 1 and sg.stu_group_id = tg.stu_group_id
+         and u.userid = tg.teacher_id and cl.course_label= sg.course_label;`, [school_id]);
+
+        var group_list = [];
+        var group_index = [];
+        var list_index = 0;
+        for(var i = 0; i < results.length; i++){
+            var e = results[i];
+            const index = group_index[e.stu_group_id];
+            if(index >= 0){
+                group_list[index].teacher_group.push({
+                    teacher_id: e.teacher_id,
+                    realname: e.realname,
+                });
+            }else{
+                var teacher_group = [];
+                teacher_group.push({
+                    teacher_id: e.teacher_id,
+                    realname: e.realname,
+                });
+                var group = {
+                    group_id : e.stu_group_id,
+                    group_name : e.group_name,
+                    group_type : e.group_type,
+                    course_label : e.course_label,
+                    course_label_name : e.course_label_name,
+                    teacher_group : teacher_group,
+                };
+                group_list[list_index] = group;
+                group_index[e.stu_group_id] = list_index;
+                list_index++;
+            }
+        }
+        return group_list;
+    }
+    
+    async updateGroupTeacher(selected_teacher, group_id){
+        const res1 = await this.app.mysql.delete('teacher_group', {
+            stu_group_id : group_id,
+        });
+
+        for(var i = 0;i < selected_teacher.length;i++){
+            const res2 = await this.app.mysql.insert('teacher_group', { 
+                teacher_id : selected_teacher[i],
+                stu_group_id : group_id,
+            });
+        }
+
+        // const res3 = await this.service.teacher.getSchoolTeacher(group_id);
+        return res1;
+    }
+
+    async updateGroupHour(stu_group_id, student_id, num, label){
+        let row = (label == 'guide')? {guide_hour:num} : {class_hour:num};
+        
+        const res = await this.app.mysql.update('group_student', row,{
+            where:{
+                stu_group_id : stu_group_id,
+                student_id : student_id,
+            }
+        });
+
+        return res;
+    }
+
+    async getContractTable(school_id){
+        const results = await this.app.mysql.query(`select sg.*,gs.*,
+            u.realname from school_group sg left join group_student gs
+             on sg.stu_group_id = gs.stu_group_id inner join users u
+             on gs.student_id = u.userid where sg.school_id = ?;`, [school_id]);
+
+        return results;
+    }
+
+    async getStudentList(teacher_id){
+        const results = await this.app.mysql.query(`select g.student_id,u.realname,
+        u.avatar,s.group_name,cl.course_label_name from teacher_group tg
+        LEFT JOIN group_student g on g.stu_group_id = tg.stu_group_id
+        LEFT JOIN users u on u.userid = g.student_id
+        LEFT JOIN school_group s on s.stu_group_id = tg.stu_group_id
+        INNER JOIN course_label cl on cl.course_label = s.course_label
+        where tg.teacher_id = ?;`, [teacher_id]);
+
+        var group_list = [];
+        var group_index = [];
+        var list_index = 0;
+        for(var i = 0; i < results.length; i++){
+            var e = results[i];
+            const index = group_index[e.student_id];
+            if(index >= 0){
+                group_list[index].group_info.push({
+                    course_label_name: e.course_label_name,
+                    group_name: e.group_name,
+                });
+            }else{
+                var group_info = [];
+                group_info.push({
+                    course_label_name: e.course_label_name,
+                    group_name: e.group_name,
+                });
+                var group = {
+                    student_id : e.student_id,
+                    realname : e.realname,
+                    avatar : e.avatar,
+                    group_info : group_info,
+                };
+                group_list[list_index] = group;
+                group_index[e.student_id] = list_index;
+                list_index++;
+            }
+        }
+        
+        return group_list;
+    }
+
+
 }
 
 module.exports = GroupService;

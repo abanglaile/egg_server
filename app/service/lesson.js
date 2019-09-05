@@ -50,16 +50,35 @@ class LessonService extends Service {
     }
 
     async signLesson(lesson_id){
-        return await this.app.mysql.update('lesson', {is_sign: true}, {where: {lesson_id: lesson_id}});
+        const result = await this.app.mysql.query(`select l.stu_group_id,l.label_id, 
+            timestampdiff(minute, l.start_time ,l.end_time) as minu from lesson l 
+            where l.lesson_id = ?;`, [lesson_id]);
+        let lesson = result[0];
+        let consume_hour = (lesson.minu/60).toFixed(1);
+        var sql = '';
+        let params = [consume_hour, lesson.stu_group_id];
+        if(lesson.label_id == 'guide'){
+            sql += 'update group_student set consume_guide_hour = consume_guide_hour + ? where stu_group_id = ?;';
+        }
+        if(lesson.label_id == 'class'){
+            sql += 'update group_student set consume_class_hour = consume_class_hour + ? where stu_group_id = ?;';
+        }
+        const res1 = await this.app.mysql.update('lesson', {is_sign: true}, {where: {lesson_id: lesson_id}});
+        if(sql != ''){
+            const res2 =  await this.app.mysql.query(sql, params);
+        }
+        return res1;
     }
 
     async getLessonBasic(lesson_id){
-        let lesson = await this.app.mysql.query(`select l.*, cl.course_label, cl.course_label_name, r.room_name, g.group_name, u1.realname as teacher_name, 
+        let lesson = await this.app.mysql.query(`select l.*, cl.course_label, 
+            cl.course_label_name, r.room_name, g.group_name, u1.realname as teacher_name, 
             u2.realname as assistant_name, ll.label_name
             from lesson l left join users u1 on l.teacher_id = u1.userid 
             left join users u2 on l.assistant_id = u2.userid, 
             school_room r, school_group g, lesson_label ll, course_label cl  
-            where l.lesson_id = ? and cl.course_label = g.course_label and l.stu_group_id = g.stu_group_id and l.label_id = ll.label_id`, 
+            where l.lesson_id = ? and cl.course_label = g.course_label and 
+            l.stu_group_id = g.stu_group_id and l.label_id = ll.label_id`, 
             [lesson_id]);
         return await lesson[0];
     }
@@ -221,14 +240,14 @@ class LessonService extends Service {
     }
 
     async deleteLessonKpComment(lesson_id, comment_id){
-        //await this.app.mysql.delete('lesson_kp_comment', {comment_id: comment_id});
+        // await this.app.mysql.delete('lesson_kp_comment', {comment_id: comment_id});
         await this.app.mysql.delete('kp_comment', {comment_id: comment_id});
         return await this.app.mysql.delete('student_kp_comment', {comment_id: comment_id});
         //return await this.getLessonKpComment(lesson_id);
     }
 
     async deleteLessonPfComment(lesson_id, comment_id){
-        //await this.app.mysql.delete('lesson_pf_comment', {comment_id: comment_id});
+        // await this.app.mysql.delete('lesson_pf_comment', {comment_id: comment_id});
         await this.app.mysql.delete('pf_comment', {comment_id: comment_id});
         return await this.app.mysql.delete('student_pf_comment', {comment_id: comment_id});
         // return await this.getLessonPfComment(lesson_id);
@@ -287,6 +306,48 @@ class LessonService extends Service {
         },{where: {lesson_id: lesson_id}})
         return await this.getLessonBasic(lesson_id);
     }
+
+    async getConsumeLesson(stu_group_id, label, filter_option){
+        console.log("filter_option:",JSON.stringify(filter_option));
+        let {start_time, end_time} = filter_option;
+        console.log("start_time:",start_time);
+        let query = `select l.*,TIMESTAMPDIFF(minute,l.start_time,l.end_time) as minu,
+        u.realname as teacher_name, ass.realname as assistant_name,
+        ll.label_name,sg.group_name,r.room_name from lesson l LEFT JOIN users ass on 
+        l.assistant_id = ass.userid,users u,lesson_label ll,school_group sg, school_room r 
+        where l.stu_group_id = ? and l.teacher_id = u.userid and l.stu_group_id = sg.stu_group_id 
+        and r.room_id = l.room_id and l.label_id = ll.label_id and l.is_sign = 1`;
+        let params = [stu_group_id];
+
+        if(start_time){
+            query += ' and l.start_time >=?';
+            params.push(start_time);
+        }
+        if(end_time){
+            query += ' and l.end_time <= ?';
+            params.push(end_time);
+        }
+        if(label){
+            query += ' and l.label_id = ?';
+            params.push(label);
+        }
+
+        query += ' order by l.start_time desc;';
+        console.log("query:",query);
+        const res = await this.app.mysql.query(query, params);
+        var total_time = 0;
+        for(var i=0;i<res.length;i++){
+            total_time += res[i].minu;
+        }
+        total_time = (total_time/60).toFixed(1);
+        console.log("res:",JSON.stringify(res));
+        var lesson_list = {
+            lessonList : res,
+            total_time : total_time,
+        };
+        return lesson_list;
+    }
+
 
     // async updateLessonCourse(lesson_id, course_label){
     //     const uret = await this.app.mysql.update('lesson', {course_label: course_label},

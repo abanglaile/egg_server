@@ -7,3 +7,5 @@ run/**
 logs/egg-example/common-error.log
 *.log
 run/router.json
+run/router.json
+app/schedule/fixExerciseRating.js

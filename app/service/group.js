@@ -27,18 +27,18 @@ class GroupService extends Service {
             const index = student_index[e.stu_group_id];
             // console.log(i + " " + index);
             if(index >= 0){
-                console.log(index);
+                console.log('index:',index);
                 student_data[index].children.push({
                     title: e.realname, 
-                    value: e.student_id, 
-                    key: e.student_id,
+                    value: e.student_id + '-' + e.stu_group_id,
+                    key: e.student_id + '-' + e.stu_group_id,
                 });
             }else{
                 var children = [];
                 children.push({
                     title: e.realname, 
-                    value: e.student_id, 
-                    key: e.student_id, 
+                    value: e.student_id + '-' + e.stu_group_id,
+                    key: e.student_id + '-' + e.stu_group_id,
                 });
                 var group = {
                     title: e.group_name, 
@@ -154,7 +154,7 @@ class GroupService extends Service {
     async getGroupTable(school_id){
         const results = await this.app.mysql.query(`select sg.*,cl.course_label_name,
         tg.teacher_id, u.realname from school_group sg, teacher_group tg, users u,
-        course_label cl where sg.school_id = 1 and sg.stu_group_id = tg.stu_group_id
+        course_label cl where sg.school_id = ? and sg.stu_group_id = tg.stu_group_id
          and u.userid = tg.teacher_id and cl.course_label= sg.course_label;`, [school_id]);
 
         var group_list = [];

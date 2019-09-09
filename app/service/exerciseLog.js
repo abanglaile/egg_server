@@ -18,13 +18,25 @@ class ExerciseLogService extends Service {
                 const kp_SA = log.sn_state ? 1 : 0;
                 const sn_SA = log.sn_state ? 0 : 1;
                 
+                let student_chapter = await this.app.mysql.query(`select k.chapterid, sc.chapter_rating from kptable k left join student_chapter sc
+                    on sc.student_id = ? and k.chapterid = sc.chapterid where k.kpid = ?`, [log.student_id, log.kpid]);
+                const chapter_old_rating = student_chapter.chapter_rating ? student_chapter.chapter_rating : 500;
+                const chapter_delta = this.elo_rating(chapter_old_rating, log.sn_old_rating);
+                const chapter_delta_rating = K*(kp_SA - chapter_delta);
+                const chapter_result = await this.app.mysql.query(`replace into student_chapter 
+                    (student_id, chapter_rating, chapterid) VALUES(?,?,?);`
+                    ,[student_id,(chapter_rating + delta_chapter_rating), student_chapter.chapterid]);
+
                 const kp_delta = this.elo_rating(log.kp_old_rating, log.sn_old_rating);
                 const sn_delta = this.elo_rating(log.sn_old_rating, log.kp_old_rating);
+                const chapter_delta = this.elo_rating(chapter_old_rating, log.sn_old_rating);
                 log.kp_delta_rating = K*(kp_SA - kp_delta);
+                log.chapter_delta_rating = K*(kp_SA - chapter_delta);
                 log.sn_delta_rating = K*(sn_SA - sn_delta);
             }else{
                 log.kp_delta_rating = 0;
                 log.sn_delta_rating = 0;
+                log.chapter_delta_rating = 0;
             }
         }
         return breakdown_sn;
@@ -144,24 +156,20 @@ class ExerciseLogService extends Service {
         let kp_exercise = await this.app.mysql.get('kp_exercise', {exercise_id: exercise_log.exercise_id});
         
         let student_rating = this.service.rating.getStudentRating(student_id, kp_exercise.course_id);
-        let chapter_rating = this.app.mysql.get('student_chapter', {student_id: student_id, chapterid: kp_exercise.chapterid});
+        // let chapter_rating = this.app.mysql.get('student_chapter', {student_id: student_id, chapterid: kp_exercise.chapterid});
 
         student_rating = await student_rating;
-        chapter_rating = await chapter_rating;
-        // console.log("student_rating",student_rating);
-        console.log("chapter_rating1",chapter_rating);
+        // chapter_rating = await chapter_rating;
 
         student_rating = student_rating ? student_rating : 500;
-        chapter_rating = chapter_rating ? chapter_rating.chapter_rating : 500;
+        //chapter_rating = chapter_rating ? chapter_rating.chapter_rating : 500;
         
-
-        console.log("chapter_rating2",chapter_rating);
         const result = exercise_log.exercise_state;
 
         //计算学生、章节、题目得分
         const st_delta = this.elo_rating(student_rating, exercise_rating);
         const ex_delta = this.elo_rating(exercise_rating, student_rating);
-        const ch_delta = this.elo_rating(chapter_rating, exercise_rating);
+        //const ch_delta = this.elo_rating(chapter_rating, exercise_rating);
         console.log("st_delta ",st_delta);
 
         const K = 32;
@@ -191,11 +199,11 @@ class ExerciseLogService extends Service {
             (student_id,student_rating ,course_id) VALUES(?,?,?)`
          ,[student_id,(student_rating + exercise_log.delta_student_rating),kp_exercise.course_id]);
 
-        console.log("chapter_rating ",chapter_rating);
-        console.log("delta_chapter_rating", delta_chapter_rating);
-        const chapter_result = await this.app.mysql.query(`replace into student_chapter 
-        (student_id,chapter_rating ,chapterid) VALUES(?,?,?);`
-        ,[student_id,(chapter_rating + delta_chapter_rating),kp_exercise.chapterid]);
+        // console.log("chapter_rating ",chapter_rating);
+        // console.log("delta_chapter_rating", delta_chapter_rating);
+        // const chapter_result = await this.app.mysql.query(`replace into student_chapter 
+        // (student_id,chapter_rating ,chapterid) VALUES(?,?,?);`
+        // ,[student_id,(chapter_rating + delta_chapter_rating),kp_exercise.chapterid]);
 
         exercise_log.logid = insert_result.insertId;
         //async

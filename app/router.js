@@ -187,6 +187,10 @@ module.exports = app => {
   router.get('/api/getStuEvalBytest',controller.student.getStuEvalBytest);
   //教师、班级配置管理、合同管理
   router.get('/api/getTeacherList',controller.school.getTeacherList);
+
+  //game
+  router.get('/api/getStuTasklog', controller.game.getStuTasklog);
+  router.post('/api/deleteTaskLog',controller.game.deleteTaskLog);
   router.get('/api/getGroupTable',controller.school.getGroupTable);
   router.get('/api/getGroupOptionData',controller.school.getGroupOptionData);
   router.post('/api/updateGroupTeacher',controller.school.updateGroupTeacher);

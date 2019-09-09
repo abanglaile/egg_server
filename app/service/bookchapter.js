@@ -75,12 +75,22 @@ class bookchapterService extends Service {
     return res;
   }
 
-  async searchKp(input){
-      return await this.app.mysql.query(`select k.kpid, k.kpname from kptable k where k.kpname like ?`, '%'+input+'%');
+  async searchKp(input, course_label){
+    const course_sql = `INNER JOIN chapter ch on ch.chapterid = k.chapterid 
+    INNER JOIN book b on b.bookid = ch.bookid 
+    INNER JOIN course c on b.course_id = c.course_id and c.course_label = ?`;
+    const sql = "select k.kpid, k.kpname from kptable k" 
+        + (course_label ? course_sql : "") +  "where k.kpname like ?";
+    let params = [];
+    if(course_label){
+        params.push(course_label);
+    }
+    params.push('%'+input+'%');
+    return await this.app.mysql.query(sql, params);
+        
   }
 
   async getChapterName(chapter_id) {
-
     const res = await this.app.mysql.select('chapter', {
         where : { chapterid : chapter_id},
         columns : ['chaptername'],

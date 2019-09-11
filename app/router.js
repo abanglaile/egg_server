@@ -219,4 +219,7 @@ module.exports = app => {
   // 增益管理
   router.post('/api/addVirtualroomBuff', controller.virtualroom.addVirtualroomBuff);
   router.get('/api/getVirtualroomBuff', controller.virtualroom.getVirtualroomBuff);
+  //微信小程序
+  router.get('/api/wxGetAllComment',controller.wxMiniProgram.wxGetAllComment);
+  router.post('/api/wxPostComment',controller.wxMiniProgram.wxPostComment);
 };

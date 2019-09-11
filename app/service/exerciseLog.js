@@ -64,14 +64,19 @@ class ExerciseLogService extends Service {
         //     [student_id, test_id]); 
         return test_kp;
     }
+
+    //当学生student_chapter表中没有存储chapter standard时，设定chapter standard初始值
+    defaultChapterRating(chapterid){
+        return 500
+    }
+    
     //查询做题步骤分析
     async getStuTestStepAnalysis(student_id, test_id){
         const query_result = await this.app.mysql.query(
-            `select ks.kp_standard, bk.kpname, bk.sn_state, sk.kp_rating,bk.kp_delta_rating, 
-            kt.chapterid, c.chaptername,cs.chapter_standard,sc.chapter_rating from breakdown_log bk 
+            `select bk.kpname, bk.sn_state,bk.kp_delta_rating,ks.kp_standard, sk.kp_rating,kt.chapterid, c.chaptername,cs.chapter_standard,sc.chapter_rating from breakdown_log bk 
             INNER JOIN student_kp sk on bk.student_id =sk.student_id and bk.kpid = sk.kpid
-            INNER JOIN kp_standard ks on ks.kpid = bk.kpid 
-            INNER JOIN kptable kt on ks.kpid = kt.kpid 
+            INNER JOIN kp_standard ks on bk.kpid = ks.kpid
+            INNER JOIN kptable kt on bk.kpid = kt.kpid 
             INNER JOIN chapter c on kt.chapterid = c.chapterid 
             INNER JOIN chapter_standard cs on cs.chapterid = c.chapterid 
 			left JOIN student_chapter sc on sc.student_id = bk.student_id and sc.chapterid = kt.chapterid
@@ -89,7 +94,7 @@ class ExerciseLogService extends Service {
                 result.push({
                     'chapter_id':element.chapterid,
                     'chapter_name':element.chaptername,
-                    'chapter_ratting': (element.chapter_rating/element.chapter_standard)*100,
+                    'chapter_ratting': ((element.chapter_rating!=null?element.chapter_rating:this.defaultChapterRating(element.chapter_id))/element.chapter_standard)*100,
                     'chapter_correct_percent': 0,
                     'chapter_correct_times': 0,
                     'chapter_exercise_times': 0,

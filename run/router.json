@@ -1845,6 +1845,8 @@
     "paramNames": [],
     "path": "/api/getVirtualroomSign",
     "regexp": "/^\\/api\\/getVirtualroomSign(?:\\/(?=$))?$/",
+    "path": "/api/wxGetAllComment",
+    "regexp": "/^\\/api\\/wxGetAllComment(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

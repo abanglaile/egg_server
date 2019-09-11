@@ -18,25 +18,22 @@ class ExerciseLogService extends Service {
                 const kp_SA = log.sn_state ? 1 : 0;
                 const sn_SA = log.sn_state ? 0 : 1;
                 
-                let student_chapter = await this.app.mysql.query(`select k.chapterid, sc.chapter_rating from kptable k left join student_chapter sc
+                let student_chapter = await this.app.mysql.queryOne(`select k.chapterid, sc.chapter_rating from kptable k left join student_chapter sc
                     on sc.student_id = ? and k.chapterid = sc.chapterid where k.kpid = ?`, [log.student_id, log.kpid]);
                 const chapter_old_rating = student_chapter.chapter_rating ? student_chapter.chapter_rating : 500;
                 const chapter_delta = this.elo_rating(chapter_old_rating, log.sn_old_rating);
                 const chapter_delta_rating = K*(kp_SA - chapter_delta);
                 const chapter_result = await this.app.mysql.query(`replace into student_chapter 
                     (student_id, chapter_rating, chapterid) VALUES(?,?,?);`
-                    ,[student_id,(chapter_rating + delta_chapter_rating), student_chapter.chapterid]);
+                    ,[log.student_id, (chapter_old_rating + chapter_delta_rating), student_chapter.chapterid]);
 
                 const kp_delta = this.elo_rating(log.kp_old_rating, log.sn_old_rating);
                 const sn_delta = this.elo_rating(log.sn_old_rating, log.kp_old_rating);
-                const chapter_delta = this.elo_rating(chapter_old_rating, log.sn_old_rating);
                 log.kp_delta_rating = K*(kp_SA - kp_delta);
-                log.chapter_delta_rating = K*(kp_SA - chapter_delta);
                 log.sn_delta_rating = K*(sn_SA - sn_delta);
             }else{
                 log.kp_delta_rating = 0;
                 log.sn_delta_rating = 0;
-                log.chapter_delta_rating = 0;
             }
         }
         return breakdown_sn;
@@ -44,7 +41,7 @@ class ExerciseLogService extends Service {
 
     async submitBreakdownLog(exercise_log){
         let breakdown_sn = exercise_log.breakdown_sn;
-        breakdown_sn = this.updateKpRating(breakdown_sn);
+        breakdown_sn = await this.updateKpRating(breakdown_sn);
         const insert_result = await this.app.mysql.insert('breakdown_log', breakdown_sn);
         const update_result = await this.app.mysql.update('exercise_log', {exercise_status: 2},
             {where: {logid: exercise_log.logid}});
@@ -67,17 +64,22 @@ class ExerciseLogService extends Service {
         //     [student_id, test_id]); 
         return test_kp;
     }
+
+    //当学生student_chapter表中没有存储chapter standard时，设定chapter standard初始值
+    defaultChapterRating(chapterid){
+        return 500
+    }
+    
     //查询做题步骤分析
     async getStuTestStepAnalysis(student_id, test_id){
         const query_result = await this.app.mysql.query(
-            `select ks.kp_standard, bk.kpname, bk.sn_state, sk.kp_rating,bk.kp_delta_rating, 
-            kt.chapterid, c.chaptername,cs.chapter_standard,sc.chapter_rating from breakdown_log bk 
+            `select bk.kpname, bk.sn_state,bk.kp_delta_rating,ks.kp_standard, sk.kp_rating,kt.chapterid, c.chaptername,cs.chapter_standard,sc.chapter_rating from breakdown_log bk 
             INNER JOIN student_kp sk on bk.student_id =sk.student_id and bk.kpid = sk.kpid
-            INNER JOIN kp_standard ks on ks.kpid = bk.kpid 
-            INNER JOIN kptable kt on ks.kpid = kt.kpid 
+            INNER JOIN kp_standard ks on bk.kpid = ks.kpid
+            INNER JOIN kptable kt on bk.kpid = kt.kpid 
             INNER JOIN chapter c on kt.chapterid = c.chapterid 
             INNER JOIN chapter_standard cs on cs.chapterid = c.chapterid 
-			INNER JOIN student_chapter sc on sc.student_id = bk.student_id and sc.chapterid = kt.chapterid
+			left JOIN student_chapter sc on sc.student_id = bk.student_id and sc.chapterid = kt.chapterid
             where bk.student_id = ? and bk.test_id = ? ORDER BY kt.chapterid,bk.kpname`,[student_id,test_id]
         ) 
         //归类KP，汇总数据
@@ -92,7 +94,7 @@ class ExerciseLogService extends Service {
                 result.push({
                     'chapter_id':element.chapterid,
                     'chapter_name':element.chaptername,
-                    'chapter_ratting': (element.chapter_rating/element.chapter_standard)*100,
+                    'chapter_ratting': ((element.chapter_rating!=null?element.chapter_rating:this.defaultChapterRating(element.chapter_id))/element.chapter_standard)*100,
                     'chapter_correct_percent': 0,
                     'chapter_correct_times': 0,
                     'chapter_exercise_times': 0,
@@ -176,7 +178,7 @@ class ExerciseLogService extends Service {
         const ex_SA = result ? 0 : 1;
         const st_SA = result ? 1 : 0;
 
-        const delta_chapter_rating = Math.ceil(K*(st_SA - ch_delta));
+        // const delta_chapter_rating = Math.ceil(K*(st_SA - ch_delta));
 
         exercise_log.old_student_rating = student_rating
         exercise_log.delta_exercise_rating = Math.ceil(K*(ex_SA - ex_delta))

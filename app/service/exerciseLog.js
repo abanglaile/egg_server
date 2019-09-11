@@ -8,7 +8,7 @@ class ExerciseLogService extends Service {
         return 1/(1 + Math.pow(10, m));
     }
 
-    updateKpRating(breakdown_sn){
+    async updateKpRating(breakdown_sn){
         const K = 32;
         for(var j = 0; j < breakdown_sn.length; j++){
             var log = breakdown_sn[j];

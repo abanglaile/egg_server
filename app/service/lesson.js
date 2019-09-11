@@ -75,8 +75,9 @@ class LessonService extends Service {
             cl.course_label_name, r.room_name, g.group_name, u1.realname as teacher_name, 
             u2.realname as assistant_name, ll.label_name
             from lesson l left join users u1 on l.teacher_id = u1.userid 
-            left join users u2 on l.assistant_id = u2.userid, 
-            school_room r, school_group g, lesson_label ll, course_label cl  
+            left join users u2 on l.assistant_id = u2.userid
+            inner join school_room r on l.room_id = r.room_id, 
+            school_group g, lesson_label ll, course_label cl  
             where l.lesson_id = ? and cl.course_label = g.course_label and 
             l.stu_group_id = g.stu_group_id and l.label_id = ll.label_id`, 
             [lesson_id]);

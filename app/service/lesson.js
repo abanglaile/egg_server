@@ -57,15 +57,27 @@ class LessonService extends Service {
         let consume_hour = (lesson.minu/60).toFixed(1);
         var sql = '';
         let params = [consume_hour, lesson.stu_group_id];
+        var old_consume_time = '';
         if(lesson.label_id == 'guide'){
             sql += 'update group_student set consume_guide_hour = consume_guide_hour + ? where stu_group_id = ?;';
+            old_consume_time =  await this.app.mysql.get('group_student',{stu_group_id:lesson.stu_group_id});
+            old_consume_time = old_consume_time.consume_guide_hour;
         }
         if(lesson.label_id == 'class'){
             sql += 'update group_student set consume_class_hour = consume_class_hour + ? where stu_group_id = ?;';
+            old_consume_time =  await this.app.mysql.get('group_student',{stu_group_id:lesson.stu_group_id});
+            old_consume_time = old_consume_time.consume_class_hour;
         }
         const res1 = await this.app.mysql.update('lesson', {is_sign: true}, {where: {lesson_id: lesson_id}});
         if(sql != ''){
             const res2 =  await this.app.mysql.query(sql, params);
+            const res3 = await this.app.mysql.insert('sign_lesson',{
+                lesson_id : lesson_id,
+                consume_hour : consume_hour,
+                label_id :  lesson.label_id,
+                old_consume_hour : old_consume_time,
+
+            });
         }
         return res1;
     }

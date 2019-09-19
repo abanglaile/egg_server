@@ -79,7 +79,7 @@ class ExerciseLogService extends Service {
             INNER JOIN kptable kt on bk.kpid = kt.kpid 
             INNER JOIN chapter c on kt.chapterid = c.chapterid 
             INNER JOIN chapter_standard cs on cs.chapterid = c.chapterid 
-			left JOIN student_chapter sc on sc.student_id = bk.student_id and sc.chapterid = kt.chapterid
+			LEFT JOIN student_chapter sc on sc.student_id = bk.student_id and sc.chapterid = kt.chapterid
             where bk.student_id = ? and bk.test_id = ? ORDER BY kt.chapterid,bk.kpname`,[student_id,test_id]
         ) 
         //归类KP，汇总数据
@@ -130,22 +130,24 @@ class ExerciseLogService extends Service {
             now_kp_name = element.kpname;
             chapter_length = result.length;
             kp_length = result[chapter_length-1].kp_status.length;
-            //更新正确题目数
             if (element.sn_state != -1){
+                //更新正确题目数
                 result[chapter_length-1].kp_status[kp_length-1].kp_correct_times += element.sn_state;
                 result[chapter_length-1].chapter_correct_times += element.sn_state;
+                //更新题目数量
+                result[chapter_length-1].chapter_exercise_times++;
+                result[chapter_length-1].kp_status[kp_length-1].kp_exercise_times++;
+                //更新delta_rating
+                result[chapter_length-1].kp_status[kp_length-1].kp_delta_rating += element.kp_delta_rating;
             }
-            //更新题目数量
-            result[chapter_length-1].chapter_exercise_times++;
-            result[chapter_length-1].kp_status[kp_length-1].kp_exercise_times++;
-            //更新delta_rating
-            result[chapter_length-1].kp_status[kp_length-1].kp_delta_rating += element.kp_delta_rating;
         });
         // 循环计算KP正确率
         for (var i=0;i<result.length;i++){
-            result[i].chapter_correct_percent = (result[i].chapter_correct_times/result[i].chapter_exercise_times)*100;
+            var chapter_correct_percent_tmp = (result[i].chapter_correct_times/result[i].chapter_exercise_times)*100;
+            result[i].chapter_correct_percent = chapter_correct_percent_tmp.toFixed(1);
             result[i].kp_status.forEach(element => {
-                element.kp_correct_percent=(element.kp_correct_times/element.kp_exercise_times)*100;
+                var kp_correct_percent_tmp = (element.kp_correct_times/element.kp_exercise_times)*100;
+                element.kp_correct_percent= kp_correct_percent_tmp.toFixed(1);
             });
         }
         return result;

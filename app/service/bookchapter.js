@@ -80,7 +80,7 @@ class bookchapterService extends Service {
     INNER JOIN book b on b.bookid = ch.bookid 
     INNER JOIN course c on b.course_id = c.course_id and c.course_label = ?`;
     const sql = "select k.kpid, k.kpname from kptable k" 
-        + (course_label ? course_sql : "") +  "where k.kpname like ?";
+        + (course_label ? course_sql : "") +  " where k.kpname like ?";
     let params = [];
     if(course_label){
         params.push(course_label);

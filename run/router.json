@@ -1845,6 +1845,45 @@
     "paramNames": [],
     "path": "/api/getVirtualroomSign",
     "regexp": "/^\\/api\\/getVirtualroomSign(?:\\/(?=$))?$/",
+<<<<<<< Updated upstream
+=======
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/addVirtualroomBuff",
+    "regexp": "/^\\/api\\/addVirtualroomBuff(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getVirtualroomBuff",
+    "regexp": "/^\\/api\\/getVirtualroomBuff(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+>>>>>>> Stashed changes
     "path": "/api/wxGetAllComment",
     "regexp": "/^\\/api\\/wxGetAllComment(?:\\/(?=$))?$/",
     "stack": [

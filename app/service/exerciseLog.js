@@ -9,7 +9,7 @@ class ExerciseLogService extends Service {
     }
 
     async updateKpRating(breakdown_sn){
-        const K = 32;
+        const K = 128;
         for(var j = 0; j < breakdown_sn.length; j++){
             var log = breakdown_sn[j];
             //只记录已评估的知识点
@@ -176,7 +176,7 @@ class ExerciseLogService extends Service {
         //const ch_delta = this.elo_rating(chapter_rating, exercise_rating);
         console.log("st_delta ",st_delta);
 
-        const K = 32;
+        const K = 128;
         const ex_SA = result ? 0 : 1;
         const st_SA = result ? 1 : 0;
 

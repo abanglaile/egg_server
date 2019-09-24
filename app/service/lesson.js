@@ -69,6 +69,7 @@ class LessonService extends Service {
             old_consume_time = old_consume_time.consume_class_hour;
         }
         const res1 = await this.app.mysql.update('lesson', {is_sign: true}, {where: {lesson_id: lesson_id}});
+        
         if(sql != ''){
             const res2 =  await this.app.mysql.query(sql, params);
             const res3 = await this.app.mysql.insert('sign_lesson',{

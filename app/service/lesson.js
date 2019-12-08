@@ -50,37 +50,43 @@ class LessonService extends Service {
     }
 
     async signLesson(lesson_id){
-        const result = await this.app.mysql.query(`select l.stu_group_id,l.label_id, 
+        const lesson = await this.app.mysql.queryOne(`select l.stu_group_id,l.label_id, l.is_sign,
             timestampdiff(minute, l.start_time ,l.end_time) as minu from lesson l 
             where l.lesson_id = ?;`, [lesson_id]);
-        let lesson = result[0];
-        let consume_hour = (lesson.minu/60).toFixed(1);
-        var sql = '';
-        let params = [consume_hour, lesson.stu_group_id];
-        var old_consume_time = '';
-        if(lesson.label_id == 'guide'){
-            sql += 'update group_student set consume_guide_hour = consume_guide_hour + ? where stu_group_id = ?;';
-            old_consume_time =  await this.app.mysql.get('group_student',{stu_group_id:lesson.stu_group_id});
-            old_consume_time = old_consume_time.consume_guide_hour;
-        }
-        if(lesson.label_id == 'class'){
-            sql += 'update group_student set consume_class_hour = consume_class_hour + ? where stu_group_id = ?;';
-            old_consume_time =  await this.app.mysql.get('group_student',{stu_group_id:lesson.stu_group_id});
-            old_consume_time = old_consume_time.consume_class_hour;
-        }
-        const res1 = await this.app.mysql.update('lesson', {is_sign: true}, {where: {lesson_id: lesson_id}});
-        
-        if(sql != ''){
-            const res2 =  await this.app.mysql.query(sql, params);
-            const res3 = await this.app.mysql.insert('sign_lesson',{
-                lesson_id : lesson_id,
-                consume_hour : consume_hour,
-                label_id :  lesson.label_id,
-                old_consume_hour : old_consume_time,
+        // let consume_hour = (lesson.minu/60).toFixed(1);
+        if(!lesson.is_sign){
+            var consume_min = parseInt(lesson.minu);
+            var sql = '';
+            let params = [consume_min, lesson.stu_group_id];
+            var old_consume_time = 0;
+            if(lesson.label_id == 'guide'){
+                // sql += 'update group_student set consume_guide_min = ? where stu_group_id = ?;';
+                sql += 'update group_student set consume_guide_min = consume_guide_min + ? where stu_group_id = ?;';
+                const guide_res =  await this.app.mysql.query(`select * from group_student where stu_group_id = ?;`,[lesson.stu_group_id]);
+                old_consume_time = guide_res[0].consume_guide_min;
+            }
+            if(lesson.label_id == 'class'){
+                // sql += 'update group_student set consume_class_min = ? where stu_group_id = ?;';
+                sql += 'update group_student set consume_class_min = consume_class_min + ? where stu_group_id = ?;';
+                const class_res =  await this.app.mysql.query(`select * from group_student where stu_group_id = ?;`,[lesson.stu_group_id]);
+                old_consume_time = class_res[0].consume_class_min;
+            }
+            // let  params = [consume_min + old_consume_time, lesson.stu_group_id];
+            if(sql != ''){
+                const res2 = await this.app.mysql.query(sql, params);
+                const res1 = await this.app.mysql.update('lesson', {is_sign: true}, {where: {lesson_id: lesson_id}});
+                const res3 = await this.app.mysql.insert('sign_lesson',{
+                    lesson_id : lesson_id,
+                    consume_min : consume_min,
+                    label_id :  lesson.label_id,
+                    old_consume_min : old_consume_time,
 
-            });
+                });
+                return res1;
+            }
+            
         }
-        return res1;
+       
     }
 
     async getLessonBasic(lesson_id){
@@ -353,7 +359,7 @@ class LessonService extends Service {
         for(var i=0;i<res.length;i++){
             total_time += res[i].minu;
         }
-        total_time = (total_time/60).toFixed(1);
+        // total_time = (total_time/60).toFixed(1);
         console.log("res:",JSON.stringify(res));
         var lesson_list = {
             lessonList : res,

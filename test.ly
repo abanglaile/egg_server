@@ -1,5 +1,5 @@
 \version "2.18.2"
-#(set! paper-alist (cons '("my size" . (cons (* 27 mm) (* 26 mm))) paper-alist))
+#(set! paper-alist (cons '("my size" . (cons (* 95 mm) (* 75 mm))) paper-alist))
 
 \header { 
   tagline = ""  % removed 
@@ -15,8 +15,30 @@
   }
 }
 {
- \new PianoStaff <<
-    \new Staff { \time 1/1 \key c \major < f' a' c'' >1   }
-    \new Staff { \clef "bass" \key  c\major < ees > }
-  >>
+\time 8/4
+\clef treble
+s1 a1\bar"||"
+ }
+\layout {
+  indent = 0
+  \context {
+    \Staff
+    \remove "Time_signature_engraver"
+  }
+\context {
+    \Score
+    \remove "Bar_number_engraver"
+  }
 }
+{
+\time 4/4
+\clef treble
+g1  a b  c' d' |
+\break
+e' f' g' a' b' |
+\break
+c''  d'' e'' f'' g''\bar "||"
+}
+ \addlyrics {
+    A B C D E F G H I J K L M N O 
+  }

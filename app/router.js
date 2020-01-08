@@ -222,4 +222,11 @@ module.exports = app => {
   //微信小程序
   router.get('/api/wxGetAllComment',controller.wxMiniProgram.wxGetAllComment);
   router.post('/api/wxPostComment',controller.wxMiniProgram.wxPostComment);
+
+  // 家长学生绑定
+  router.get('/api/getCodeByUserid', controller.parentBond.getCodeByUserid);
+  router.get('/api/getUserByCode', controller.parentBond.getUserByCode);
+  router.post('/api/parentBond', controller.parentBond.parentBond);
+  router.delete('/api/parentUnBond', controller.parentBond.parentUnBond);
+  router.get('/api/getBondStudent', controller.parentBond.getBondStudent);
 };

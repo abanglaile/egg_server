@@ -153,9 +153,11 @@ class GroupService extends Service {
 
     async getGroupTable(school_id){
         const results = await this.app.mysql.query(`select sg.*,cl.course_label_name,
-        tg.teacher_id, u.realname from school_group sg, teacher_group tg, users u,
-        course_label cl where sg.school_id = ? and sg.stu_group_id = tg.stu_group_id
-         and u.userid = tg.teacher_id and cl.course_label= sg.course_label;`, [school_id]);
+                        tg.teacher_id, u.realname from school_group sg
+                        left join teacher_group tg on sg.stu_group_id = tg.stu_group_id
+                        left join users u on u.userid = tg.teacher_id
+                        inner join course_label cl on cl.course_label= sg.course_label
+                        where sg.school_id = ?;`, [school_id]);
 
         var group_list = [];
         var group_index = [];
@@ -207,7 +209,7 @@ class GroupService extends Service {
     }
 
     async updateGroupHour(stu_group_id, student_id, num, label){
-        let row = (label == 'guide')? {guide_hour:num} : {class_hour:num};
+        let row = (label == 'guide')? {guide_min:num} : {class_min:num};
         
         const res = await this.app.mysql.update('group_student', row,{
             where:{

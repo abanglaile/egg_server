@@ -58,6 +58,28 @@ class AuthController extends Controller {
     this.ctx.body = results;
   }
 
+  async getXcxAuth(){
+    const { ctx, service } = this;
+    const {query} = ctx.request;
+
+    const results = await service.user.getXcxAuth(query.code);
+    this.ctx.body = results;
+  }
+
+  async batchGetwxInfo(){
+    const { ctx, service } = this;
+    const {query} = ctx.request;
+    const results = await service.user.batchGetwxInfo();
+    this.ctx.body = results;
+  }
+
+  async getXcxUnionid(){
+    const { ctx, service } = this;
+    const {query} = ctx.request;
+    const results = await service.user.getXcxUnionid(query.encryptedData,query.iv,query.sessionKey);
+    this.ctx.body = results;
+  }
+
   async checkInviteCode(){
     const { ctx, service } = this;
     const {body} = ctx.request;

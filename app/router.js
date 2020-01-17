@@ -48,6 +48,9 @@ module.exports = app => {
   //weixin
   // router.get('/api/get_wx_auth',controller.auth.getWxAuth);
   router.get('/api/get_wx_auth',controller.auth.getWxAuth);
+  router.get('/api/get_xcx_auth',controller.auth.getXcxAuth);
+  router.get('/api/get_xcx_unionid',controller.auth.getXcxUnionid);
+  router.get('/api/batchGetwxInfo',controller.auth.batchGetwxInfo);
   //邀请码绑定,用户信息注册
   router.post('/api/check_invi_code',controller.auth.checkInviteCode);
   router.post('/api/set_userinfo',controller.auth.setUserInfo);

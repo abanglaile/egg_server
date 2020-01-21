@@ -69,6 +69,15 @@ class ExerciseLogService extends Service {
     defaultChapterRating(chapterid){
         return 500
     }
+
+    keepTwoDecimal(num) {  
+        var result = parseFloat(num);  
+        if (isNaN(result)) {   
+            return false;  
+        }  
+        result = Math.round(num * 100) / 100;  
+        return result;
+    }
     
     //查询做题步骤分析
     async getStuTestStepAnalysis(student_id, test_id){
@@ -107,7 +116,7 @@ class ExerciseLogService extends Service {
                             'kp_exercise_times': 0,
                             'kp_rating':element.kp_rating,
                             'kp_standard':element.kp_standard,
-                            'kp_correct_rating': ((element.kp_rating/element.kp_standard)*100),
+                            'kp_correct_rating': this.keepTwoDecimal((element.kp_rating/element.kp_standard)*100),
                         }
                     ]
                 });
@@ -123,7 +132,7 @@ class ExerciseLogService extends Service {
                         'kp_exercise_times': 0,
                         'kp_rating':element.kp_rating,
                         'kp_standard':element.kp_standard,
-                        'kp_correct_rating': ((element.kp_rating/element.kp_standard)*100).toFixed(1),
+                        'kp_correct_rating': this.keepTwoDecimal((element.kp_rating/element.kp_standard)*100),
                     }
                 )
             }
@@ -144,19 +153,80 @@ class ExerciseLogService extends Service {
         // 循环计算KP正确率
         for (var i=0;i<result.length;i++){
             var chapter_correct_percent_tmp = (result[i].chapter_correct_times/result[i].chapter_exercise_times)*100;
-            result[i].chapter_correct_percent = chapter_correct_percent_tmp.toFixed(1);
+            result[i].chapter_correct_percent = this.keepTwoDecimal(chapter_correct_percent_tmp);
             result[i].kp_status.forEach(element => {
                 var kp_correct_percent_tmp = (element.kp_correct_times/element.kp_exercise_times)*100;
-                element.kp_correct_percent= kp_correct_percent_tmp.toFixed(1);
+                element.kp_correct_percent = this.keepTwoDecimal(kp_correct_percent_tmp);
             });
         }
         return result;
     }
 
-    async submitExerciseLog(exercise_log) {
+    async checkAnswer(exercise_type, log_answer){
+        switch(exercise_type){
+            case 0:
+                for(var i = 0; i < log_answer.length; i++){
+                    if(log_answer[i].fill != (log_answer[i].value)){
+                        return 0
+                    }
+                }
+                return 1
+            case 1:
+            case 2:
+                for(var i = 0; i < log_answer.length; i++){
+                    if(log_answer[i].correct != (log_answer[i].select ? true :false)){
+                        return 0;
+                    }
+                }
+                return 1
+            default:
+                //主观题
+                return -1
+        }
+        return  
+    }
+
+    async updateExerciseLogRating(exercise_log){
+        let kp_exercise = await this.app.mysql.get('kp_exercise', {exercise_id: exercise_log.exercise_id});
+        let student_rating = await this.service.rating.getStudentRating(student_id, kp_exercise.course_id);
+        //给予默认值
+        student_rating = student_rating ? student_rating : 500;
+
+        //计算学生、章节、题目得分
+        const st_delta = this.elo_rating(student_rating, exercise_rating);
+        const ex_delta = this.elo_rating(exercise_rating, student_rating);
+        console.log("st_delta ",st_delta);
+
+        const K = 128;
+        const ex_SA = result ? 0 : 1;
+        const st_SA = result ? 1 : 0;
+
+        exercise_log.old_student_rating = student_rating
+        exercise_log.delta_exercise_rating = Math.ceil(K*(ex_SA - ex_delta))
+        exercise_log.delta_student_rating = Math.ceil(K*(st_SA - st_delta));
+    }
+
+    async submitExerciseLog(exercise_log, exercise_type) {
         const exercise_rating = exercise_log.old_exercise_rating;
         const student_id = exercise_log.student_id;
-        exercise_log.submit_time = new Date();
+        if(!exercise_log.logid){
+            exercise_log.exercise_state = checkAnswer(exercise_type, exercise_log.answer) 
+        }
+        exercise_log.exercise_status = exercise_log.exercise_state > 0 ? 2 : 1;
+          
+        //题目对错确定
+        if(exercise_log.exercise_state >= 0){
+            updateExerciseLogRating(exercise_log);
+        }
+        /*
+        if(exercise_log.exercise_status == 0.5){
+            //主观题直接入库
+            delete exercise_log.breakdown_sn;
+            const insert_result = await this.app.mysql.insert('exercise_log', exercise_log);
+            exercise_log.logid = insert_result.insertId;
+            return exercise_log;    
+        }
+
         let kp_exercise = await this.app.mysql.get('kp_exercise', {exercise_id: exercise_log.exercise_id});
         
         let student_rating = this.service.rating.getStudentRating(student_id, kp_exercise.course_id);
@@ -186,14 +256,33 @@ class ExerciseLogService extends Service {
         exercise_log.delta_exercise_rating = Math.ceil(K*(ex_SA - ex_delta))
         exercise_log.delta_student_rating = Math.ceil(K*(st_SA - st_delta));
         exercise_log.exercise_status = result ? 2 : 1;//题目正确不需要再反馈
-
         var answer = exercise_log.answer;
         exercise_log.answer = JSON.stringify(exercise_log.answer);
+        */
+
+        
         var breakdown_sn = exercise_log.breakdown_sn;
         delete exercise_log.breakdown_sn;
-        const insert_result = await this.app.mysql.insert('exercise_log', exercise_log);
-
-        //更新学生总体、章节天梯分
+        if(exercise_log.logid){
+            //人工批改只需要更新天梯分相关字段
+            await this.app.mysql.update('exercise_log', {
+                old_student_rating: exercise_log.old_student_rating,
+                delta_exercise_rating: exercise_log.delta_exercise_rating,
+                delta_student_rating: exercise_log.delta_student_rating
+            })
+        }
+        else{
+            //第一次提交做题记录
+            exercise_log.submit_time = new Date(); 
+            exercise_log.answer = JSON.stringify(exercise_log.answer);
+            const insert_result = await this.app.mysql.insert('exercise_log', exercise_log);
+            exercise_log.logid = insert_result.insertId;
+            //等待自批改
+            if(exercise_log.exercise_state < 0)
+                return exercise_log
+        }
+        
+        //更新学生总体天梯分
         const rating_history_result = await this.app.mysql.insert('student_rating_history', {
             student_id: student_id,
             student_rating: student_rating + exercise_log.delta_student_rating,
@@ -203,30 +292,32 @@ class ExerciseLogService extends Service {
             (student_id,student_rating ,course_id) VALUES(?,?,?)`
          ,[student_id,(student_rating + exercise_log.delta_student_rating),kp_exercise.course_id]);
 
-        // console.log("chapter_rating ",chapter_rating);
-        // console.log("delta_chapter_rating", delta_chapter_rating);
-        // const chapter_result = await this.app.mysql.query(`replace into student_chapter 
-        // (student_id,chapter_rating ,chapterid) VALUES(?,?,?);`
-        // ,[student_id,(chapter_rating + delta_chapter_rating),kp_exercise.chapterid]);
-
-        exercise_log.logid = insert_result.insertId;
         //async
         this.app.mysql.insert('exercise_log_trigger', {logid: exercise_log.logid});
 
-        for(var i = 0; i < breakdown_sn.length; i++){
-            breakdown_sn[i].logid = exercise_log.logid;
-            if(result){
-                breakdown_sn[i].sn_state = 1;
-            }else if(breakdown_sn.length == 1){
-                breakdown_sn[i].sn_state = 0;
-            }    
+        //只与一个知识点相关或答案正确直接提交分解
+        if(result || breakdown_sn.length == 1){
+            for(var i = 0; i < breakdown_sn.length; i++){
+                breakdown_sn[i].logid = exercise_log.logid;
+                breakdown_sn[i].sn_state = result;   
+            }
+            exercise_log.breakdown_sn = breakdown_sn;
+            exercise_log = await this.submitBreakdownLog(exercise_log); 
         }
-        exercise_log.breakdown_sn = breakdown_sn;
-        exercise_log.answer = answer;
-        if(result || breakdown_sn.length == 1)
-            exercise_log = await this.submitBreakdownLog(exercise_log);
-        
-        return exercise_log; 
+        return exercise_log;
+        // for(var i = 0; i < breakdown_sn.length; i++){
+        //     breakdown_sn[i].logid = exercise_log.logid;
+        //     if(result){
+        //         breakdown_sn[i].sn_state = 1;
+        //     }else if(breakdown_sn.length == 1){
+        //         breakdown_sn[i].sn_state = 0;
+        //     }    
+        // }
+        // exercise_log.breakdown_sn = breakdown_sn;
+        // exercise_log.answer = answer;
+        // if(result || breakdown_sn.length == 1)
+        //     exercise_log = await this.submitBreakdownLog(exercise_log);
+         
     }
 
     async getTestExerciseLog(test_id, student_id){

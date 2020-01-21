@@ -18,5 +18,14 @@ class WXMiniProgramAPI extends wxMiniProgram {
             this.ctx.body = result;
         }
     }
+
+    async getStudentLesson() {
+        const { ctx, service } = this;
+        const { body } = ctx.request;
+        if (body) {
+            const result = await service.lesson.getStudentLesson(query.student_id, query.filter_option);
+            this.ctx.body = result;
+        }
+    }
 }
 module.exports = WXMiniProgramAPI;

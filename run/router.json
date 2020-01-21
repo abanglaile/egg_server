@@ -1893,34 +1893,8 @@
       "POST"
     ],
     "paramNames": [],
-    "path": "/api/addVirtualroomBuff",
-    "regexp": "/^\\/api\\/addVirtualroomBuff(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
-      "HEAD",
-      "GET"
-    ],
-    "paramNames": [],
-    "path": "/api/getVirtualroomBuff",
-    "regexp": "/^\\/api\\/getVirtualroomBuff(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
-      "HEAD",
-      "GET"
-    ],
-    "paramNames": [],
-    "path": "/api/wxGetAllComment",
-    "regexp": "/^\\/api\\/wxGetAllComment(?:\\/(?=$))?$/",
+    "path": "/api/wxPostComment",
+    "regexp": "/^\\/api\\/wxPostComment(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -1931,8 +1905,8 @@
       "POST"
     ],
     "paramNames": [],
-    "path": "/api/wxPostComment",
-    "regexp": "/^\\/api\\/wxPostComment(?:\\/(?=$))?$/",
+    "path": "/api/getStudentLesson",
+    "regexp": "/^\\/api\\/getStudentLesson(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

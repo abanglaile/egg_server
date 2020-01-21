@@ -222,4 +222,5 @@ module.exports = app => {
   //微信小程序
   router.get('/api/wxGetAllComment',controller.wxMiniProgram.wxGetAllComment);
   router.post('/api/wxPostComment',controller.wxMiniProgram.wxPostComment);
+  router.post('/api/getStudentLesson',controller.wxMiniProgram.getStudentLesson);
 };

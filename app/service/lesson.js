@@ -3,6 +3,52 @@ const uuid = require('uuid');
 
 class LessonService extends Service {
 
+    async getStudentLesson(student__id, filter_option){
+        console.log("filter_option:",JSON.stringify(filter_option));
+        let {select_teacher, start_time, end_time, group_id, course_label, label_id} = filter_option;
+        let query = `select l.*, u.realname as teacher_name,
+            r.room_name, g.group_name, g.course_label,
+            ll.label_name, lc.course_label_name from 
+            group_student gs inner join lesson l on gs.student_id = ? and gs.stu_group_id = l.stu_group_id,
+            users u, course_label lc, school_room r, school_group g,
+            lesson_label ll where l.teacher_id = u.userid and 
+            lc.course_label = g.course_label and r.room_id = l.room_id and  
+            l.stu_group_id = g.stu_group_id and l.label_id = ll.label_id`;
+        let params = [teacher_id];
+
+        if(is_sign){
+            query += ' and l.is_sign = ?';
+            params.push(is_sign);
+        }
+        if(start_time){
+            query += ' and l.start_time >= ?';
+            params.push(start_time);
+        }
+        if(end_time){
+            query += ' and l.end_time <= ?';
+            params.push(end_time);
+        }
+        if(group_id){
+            query += ' and l.stu_group_id = ?';
+            params.push(group_id);
+        }
+        if(course_label){
+            query += ' and l.course_label = ?';
+            params.push(course_label);
+        }
+        if(label_id){
+            query += ' and l.label_id = ?';
+            params.push(label_id);
+        }
+
+        query += ' order by l.start_time desc;';
+        console.log("query:",query);
+        const lesson_list = await this.app.mysql.query(query, params);
+        console.log("lesson_list:",JSON.stringify(lesson_list));
+        console.log("params:",JSON.stringify(params));
+        return lesson_list;
+    }
+
     async getTeacherLesson(teacher_id, filter_option){
         console.log("filter_option:",JSON.stringify(filter_option));
         let {select_teacher, start_time, end_time, group_id, course_label, label_id} = filter_option;
@@ -71,14 +117,14 @@ class LessonService extends Service {
         const res1 = await this.app.mysql.update('lesson', {is_sign: true}, {where: {lesson_id: lesson_id}});
         
         if(sql != ''){
-            const res2 =  await this.app.mysql.query(sql, params);
-            const res3 = await this.app.mysql.insert('sign_lesson',{
-                lesson_id : lesson_id,
-                consume_hour : consume_hour,
-                label_id :  lesson.label_id,
-                old_consume_hour : old_consume_time,
+            //const res2 =  await this.app.mysql.query(sql, params);
+            // const res3 = await this.app.mysql.insert('sign_lesson',{
+            //     lesson_id : lesson_id,
+            //     consume_hour : consume_hour,
+            //     label_id :  lesson.label_id,
+            //     old_consume_hour : old_consume_time,
+            // });
 
-            });
         }
         return res1;
     }

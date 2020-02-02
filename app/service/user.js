@@ -393,13 +393,23 @@ class userService extends Service {
     const ctx = this.ctx;
     var url='https://api.weixin.qq.com/sns/jscode2session?appid=' + XCX_APPID + '&secret=' + XCX_APPSECRET + '&grant_type=authorization_code&js_code=' + code;
     const res = await ctx.curl(url,{dataType:'json',});
-    this.ctx.logger.error("res error:",JSON.stringify(res));
+    this.ctx.logger.error("res getXcxAuth:",JSON.stringify(res));
+    const res1 = await this.app.mysql.get('xcx_session_key', { xcx_openid: res.data.openid });
+    if(res1.session_key){
+      const res2 = await this.app.mysql.update('xcx_session_key', {session_key:res.data.session_key}, {where: {xcx_openid: res.data.openid}});
+    }else{
+      const res2 = await this.app.mysql.insert('xcx_session_key', {
+        xcx_openid : res.data.openid,
+        session_key : res.data.session_key,
+      });
+    }
     return res;
   }
 
-  async getXcxUnionid(encryptedData,iv,sessionKey){
-    this.ctx.logger.error("sessionKey:",sessionKey);
-    var pc = new WXBizDataCrypt(XCX_APPID, sessionKey);
+  async getXcxUnionid(encryptedData,iv,openid){
+    this.ctx.logger.error("openid:",openid);
+    const res_session = await this.app.mysql.get('xcx_session_key', { xcx_openid: openid });
+    var pc = new WXBizDataCrypt(XCX_APPID, res_session.session_key);
     var res = pc.decryptData(encryptedData , iv);
     this.ctx.logger.error("getXcxUnionid res:",JSON.stringify(res));
     //解码出unionid,并通过unionid拿到对应的userid

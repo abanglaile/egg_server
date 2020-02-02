@@ -76,7 +76,7 @@ class AuthController extends Controller {
   async getXcxUnionid(){
     const { ctx, service } = this;
     const {query} = ctx.request;
-    const results = await service.user.getXcxUnionid(query.encryptedData,query.iv,query.sessionKey);
+    const results = await service.user.getXcxUnionid(query.encryptedData,query.iv,query.openid);
     this.ctx.body = results;
   }
 

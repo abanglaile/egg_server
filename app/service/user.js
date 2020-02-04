@@ -240,153 +240,7 @@ class userService extends Service {
           }
         }
     }
-
     return count_update;
-    // var user_list = {
-    //   "user_list": [{
-    //       "openid": "oymMZ1IMo7xM51oedMAx5LRi7QhA", 
-    //       "lang": "zh_CN"
-    //     },{
-    //       "openid": "oymMZ1I88xdvAypqlSftlAdN5x08", 
-    //       "lang": "zh_CN" 
-    //     },{
-    //       "openid": "oymMZ1Mke_LnYfxxomWDpWGyIDKM", 
-    //       "lang": "zh_CN"
-    //   }]
-    // }
-    // var url2 = 'https://api.weixin.qq.com/cgi-bin/user/info/batchget?access_token='+res.data.access_token;
-    // const res2 = await ctx.curl(url2,{
-    //   method: 'POST',
-    //   contentType: 'json',
-    //   data: user_list,
-    //   dataType:'json',
-    // });
-    // this.ctx.logger.error("batchGetwxInfo res:",JSON.stringify(res2));
-    // return res2;
-    //batchGetwxInfo res:如下
-  //   {
-  //     "data": {
-  //         "user_info_list": [
-  //             {
-  //                 "subscribe": 1,
-  //                 "openid": "oymMZ1IMo7xM51oedMAx5LRi7QhA",
-  //                 "nickname": "欧蕉蕉",
-  //                 "sex": 2,
-  //                 "language": "en",
-  //                 "city": "广州",
-  //                 "province": "广东",
-  //                 "country": "中国",
-  //                 "headimgurl": "http://thirdwx.qlogo.cn/mmopen/HPUvZQouMqevbicRGhO6CH05kBF1kDLdqZzKAAHg7eicBZE24uV0gY0z1wQfYBUfSxGDWUR8MYfRvcvbucmxJic43k7FfQa89hw/132",
-  //                 "subscribe_time": 1544773986,
-  //                 "unionid": "oTXTB04Hn6W8g64Dq3PsJOuwHwTw",
-  //                 "remark": "",
-  //                 "groupid": 0,
-  //                 "tagid_list": [],
-  //                 "subscribe_scene": "ADD_SCENE_PROFILE_CARD",
-  //                 "qr_scene": 0,
-  //                 "qr_scene_str": ""
-  //             },
-  //             {
-  //                 "subscribe": 1,
-  //                 "openid": "oymMZ1I88xdvAypqlSftlAdN5x08",
-  //                 "nickname": ".",
-  //                 "sex": 2,
-  //                 "language": "zh_CN",
-  //                 "city": "广州",
-  //                 "province": "广东",
-  //                 "country": "中国",
-  //                 "headimgurl": "http://thirdwx.qlogo.cn/mmopen/4cx6TUewpkiagustAliatrBTTp3cTNOco3Wqm4pfVsvuibqbCB9dZJSHANHozqycQtRkvS4WTdVlCgWrAMBeq0V7qSOSBEoKJOR/132",
-  //                 "subscribe_time": 1545205577,
-  //                 "unionid": "oTXTB085GCbvxUHZw_h8vl6B01Rg",
-  //                 "remark": "",
-  //                 "groupid": 0,
-  //                 "tagid_list": [],
-  //                 "subscribe_scene": "ADD_SCENE_QR_CODE",
-  //                 "qr_scene": 0,
-  //                 "qr_scene_str": ""
-  //             },
-  //             {
-  //                 "subscribe": 0,
-  //                 "openid": "oymMZ1Mke_LnYfxxomWDpWGyIDKM",
-  //                 "tagid_list": []
-  //             }
-  //         ]
-  //     },
-  //     "status": 200,
-  //     "headers": {
-  //         "connection": "keep-alive",
-  //         "content-type": "application/json; encoding=utf-8",
-  //         "date": "Wed, 08 Jan 2020 09:50:32 GMT",
-  //         "content-length": "1074"
-  //     },
-  //     "res": {
-  //         "status": 200,
-  //         "statusCode": 200,
-  //         "headers": {
-  //             "connection": "keep-alive",
-  //             "content-type": "application/json; encoding=utf-8",
-  //             "date": "Wed, 08 Jan 2020 09:50:32 GMT",
-  //             "content-length": "1074"
-  //         },
-  //         "size": 1074,
-  //         "aborted": false,
-  //         "rt": 319,
-  //         "keepAliveSocket": true,
-  //         "data": {
-  //             "user_info_list": [
-  //                 {
-  //                     "subscribe": 1,
-  //                     "openid": "oymMZ1IMo7xM51oedMAx5LRi7QhA",
-  //                     "nickname": "欧蕉蕉",
-  //                     "sex": 2,
-  //                     "language": "en",
-  //                     "city": "广州",
-  //                     "province": "广东",
-  //                     "country": "中国",
-  //                     "headimgurl": "http://thirdwx.qlogo.cn/mmopen/HPUvZQouMqevbicRGhO6CH05kBF1kDLdqZzKAAHg7eicBZE24uV0gY0z1wQfYBUfSxGDWUR8MYfRvcvbucmxJic43k7FfQa89hw/132",
-  //                     "subscribe_time": 1544773986,
-  //                     "unionid": "oTXTB04Hn6W8g64Dq3PsJOuwHwTw",
-  //                     "remark": "",
-  //                     "groupid": 0,
-  //                     "tagid_list": [],
-  //                     "subscribe_scene": "ADD_SCENE_PROFILE_CARD",
-  //                     "qr_scene": 0,
-  //                     "qr_scene_str": ""
-  //                 },
-  //                 {
-  //                     "subscribe": 1,
-  //                     "openid": "oymMZ1I88xdvAypqlSftlAdN5x08",
-  //                     "nickname": ".",
-  //                     "sex": 2,
-  //                     "language": "zh_CN",
-  //                     "city": "广州",
-  //                     "province": "广东",
-  //                     "country": "中国",
-  //                     "headimgurl": "http://thirdwx.qlogo.cn/mmopen/4cx6TUewpkiagustAliatrBTTp3cTNOco3Wqm4pfVsvuibqbCB9dZJSHANHozqycQtRkvS4WTdVlCgWrAMBeq0V7qSOSBEoKJOR/132",
-  //                     "subscribe_time": 1545205577,
-  //                     "unionid": "oTXTB085GCbvxUHZw_h8vl6B01Rg",
-  //                     "remark": "",
-  //                     "groupid": 0,
-  //                     "tagid_list": [],
-  //                     "subscribe_scene": "ADD_SCENE_QR_CODE",
-  //                     "qr_scene": 0,
-  //                     "qr_scene_str": ""
-  //                 },
-  //                 {
-  //                     "subscribe": 0,
-  //                     "openid": "oymMZ1Mke_LnYfxxomWDpWGyIDKM",
-  //                     "tagid_list": []
-  //                 }
-  //             ]
-  //         },
-  //         "requestUrls": [
-  //             "https://api.weixin.qq.com/cgi-bin/user/info/batchget?access_token=29_zKNmwbAkPThgfa-MwpbeqZRq_qmKfXCv7BboRHE_E77ObO2iX9oAIvD2KndEJNqbc6OFxHeM_oA1yYf8J6qcXOL7gva9CiGnx-WfH9Ht4jx_apDlus_E7eFuEiay0lSDpMGm8D22the1rxiHCKYiAIAWES"
-  //         ],
-  //         "timing": null,
-  //         "remoteAddress": "58.251.80.204",
-  //         "remotePort": 443
-  //     }
-  // }
   }
 
   async getXcxAuth(code){
@@ -394,16 +248,29 @@ class userService extends Service {
     var url='https://api.weixin.qq.com/sns/jscode2session?appid=' + XCX_APPID + '&secret=' + XCX_APPSECRET + '&grant_type=authorization_code&js_code=' + code;
     const res = await ctx.curl(url,{dataType:'json',});
     this.ctx.logger.error("res getXcxAuth:",JSON.stringify(res));
-    const res1 = await this.app.mysql.get('xcx_session_key', { xcx_openid: res.data.openid });
-    if(res1.session_key){
-      const res2 = await this.app.mysql.update('xcx_session_key', {session_key:res.data.session_key}, {where: {xcx_openid: res.data.openid}});
+    if(res.data.unionid){
+      const res_user = await this.app.mysql.get('user_auths', { unionid: res.data.unionid });
+      this.ctx.logger.error("[res_user]:",JSON.stringify(res_user));
+      if(res_user){
+        return { userid : res_user.userid, unionid : res.data.unionid, openid : res.data.openid};
+      }else{//
+        return { unionid : res.data.unionid ,openid : res.data.openid};
+      }
     }else{
-      const res2 = await this.app.mysql.insert('xcx_session_key', {
-        xcx_openid : res.data.openid,
-        session_key : res.data.session_key,
-      });
+      return {openid : res.data.openid};
     }
-    return res;
+
+    //在数据库保存返回的session_key，用于后续用户数据的解密鉴权
+    // const res1 = await this.app.mysql.get('xcx_session_key', { xcx_openid: res.data.openid });
+    // if(res1.session_key){
+    //   const res2 = await this.app.mysql.update('xcx_session_key', {session_key:res.data.session_key}, {where: {xcx_openid: res.data.openid}});
+    // }else{
+    //   const res2 = await this.app.mysql.insert('xcx_session_key', {
+    //     xcx_openid : res.data.openid,
+    //     session_key : res.data.session_key,
+    //   });
+    // }
+    // return res;
   }
 
   async getXcxUnionid(encryptedData,iv,openid){

@@ -1,9 +1,43 @@
 const Service = require('egg').Service;
+const uuid = require('uuid');
 const Hashids = require('hashids/cjs');
 
 let hashids = new Hashids('zhiqiu-egg-server')
 
 class parentBondService extends Service {
+    // async setUserInfo(wx_info, stu, groupValue) {
+    //     var userid = uuid.v1().replace(/-/g, '');
+    //     console.log("userid: ", userid);
+    //     const res1 = await this.app.mysql.insert('user_auths', {
+    //         userid: userid,
+    //         identity_type: 'weixin',
+    //         identifier: wx_info.openid,
+    //         credential: wx_info.access_token,
+    //     });
+
+    //     const res2 = await this.app.mysql.insert('users', {
+    //         userid: userid,
+    //         nickname: wx_info.nickname,
+    //         avatar: wx_info.imgurl,
+    //         role: stu ? 2 : 1,
+    //         // realname: realname,
+    //     });
+
+    //     if (stu && groupValue) {
+    //         const res3 = await this.app.mysql.insert('group_student', {
+    //             stu_group_id: groupValue,
+    //             student_id: userid,
+    //         });
+    //     }
+
+    //     return ({
+    //         userid: userid,
+    //         nickname: wx_info.nickname,
+    //         imgurl: wx_info.imgurl,
+    //         // realname: realname,
+    //     });
+    // }
+
     async getCodeByUserid(id) {
         // 根据学生id 生成邀请码
         const sn = hashids.encodeHex(id);
@@ -17,21 +51,47 @@ class parentBondService extends Service {
         return user;
     }
 
-    async parentBond(parent_id, student_id) {
+    async parentBond(parent_id, student_id, wx_info) {
+        let userid = parent_id;
+        // 检查是否为新用户
+        if (parent_id === null) {
+            // 新用户
+            userid = uuid.v1().replace(/-/g, '');
+            const res1 = await this.app.mysql.insert('user_auths', {
+                userid: userid,
+                unionid: wx_info.unionid,
+                identity_type: 'weixin',
+                identifier: wx_info.openid,
+            });
+
+            const res2 = await this.app.mysql.insert('users', {
+                userid: userid,
+                nickname: wx_info.nickname,
+                avatar: wx_info.imgurl,
+                role: 3,
+                // realname: realname,
+            });
+        }
+        
         // 绑定家长和学生
         const check = await this.app.mysql.get('parent_student', {
-            parent_id,
+            parent_id: userid,
             student_id
         });
+        let output = {
+            userid,
+            msg: ''
+        };
         if (check) {
-            return '已绑定该学生';
+            output.msg = '已绑定该学生';
         } else {
             const result = await this.app.mysql.insert('parent_student', {
-                parent_id,
+                parent_id: userid,
                 student_id
             });
-            return result.affectedRows === 1 ? '绑定成功' : '绑定失败';
+            output.msg = result.affectedRows === 1 ? '绑定成功' : '绑定失败';
         }
+        return output;
     }
 
     async parentUnBond(parent_id, student_id) {
@@ -44,6 +104,10 @@ class parentBondService extends Service {
     }
 
     async getBondStudent(parent_id) {
+        // 首次访问
+        if (parent_id === 'null') {
+            return []
+        }
         // 获取家长已绑定的学生列表
         const students = await this.app.mysql.select('parent_student', {
             where: {

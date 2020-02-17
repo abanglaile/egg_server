@@ -116,11 +116,14 @@ class parentBondService extends Service {
             columns: ['student_id']
         });
         const ids = students.map(node => node.student_id);
-        const result = await this.app.mysql.select('users', {
-            where: {
-                userid: ids
-            }
-        });
+        let result = [];
+        if (ids.length > 0) {
+            result = await this.app.mysql.select('users', {
+                where: {
+                    userid: ids
+                }
+            });
+        }
         return result;
     }
 }

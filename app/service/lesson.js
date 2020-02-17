@@ -3,20 +3,21 @@ const uuid = require('uuid');
 
 class LessonService extends Service {
 
-    async getStudentLesson(student__id, filter_option){
+    async getStudentLesson(student_id, filter_option){
         console.log("filter_option:",JSON.stringify(filter_option));
-        let {select_teacher, start_time, end_time, group_id, course_label, label_id} = filter_option;
-        let query = `select l.*, u.realname as teacher_name,
+        let {is_sign, start_time, end_time, group_id, course_label_list, label_id_list} = filter_option;
+        let query = `select concat_ws('-', date_format(l.start_time, '%Y年%m月%d日 %H:%i'), date_format(l.end_time, '%H:%i')) as lesson_time,
+            u.realname as teacher_name,
             r.room_name, g.group_name, g.course_label,
-            ll.label_name, lc.course_label_name from 
+            ll.label_name, ll.label_id, lc.course_label_name from 
             group_student gs inner join lesson l on gs.student_id = ? and gs.stu_group_id = l.stu_group_id,
             users u, course_label lc, school_room r, school_group g,
             lesson_label ll where l.teacher_id = u.userid and 
             lc.course_label = g.course_label and r.room_id = l.room_id and  
             l.stu_group_id = g.stu_group_id and l.label_id = ll.label_id`;
-        let params = [teacher_id];
+        let params = [student_id];
 
-        if(is_sign){
+        if(is_sign >= 0){
             query += ' and l.is_sign = ?';
             params.push(is_sign);
         }
@@ -28,24 +29,17 @@ class LessonService extends Service {
             query += ' and l.end_time <= ?';
             params.push(end_time);
         }
-        if(group_id){
-            query += ' and l.stu_group_id = ?';
-            params.push(group_id);
+        if(course_label_list){
+            query += ' and l.course_label in (' + course_label_list.join(',') + ')';          
         }
-        if(course_label){
-            query += ' and l.course_label = ?';
-            params.push(course_label);
-        }
-        if(label_id){
-            query += ' and l.label_id = ?';
-            params.push(label_id);
+        if(label_id_list){
+            query += ' and l.label_id in (?)'
+            params.push(label_id_list.join(','));
         }
 
         query += ' order by l.start_time desc;';
-        console.log("query:",query);
+        console.log(query);
         const lesson_list = await this.app.mysql.query(query, params);
-        console.log("lesson_list:",JSON.stringify(lesson_list));
-        console.log("params:",JSON.stringify(params));
         return lesson_list;
     }
 
@@ -96,37 +90,43 @@ class LessonService extends Service {
     }
 
     async signLesson(lesson_id){
-        const result = await this.app.mysql.query(`select l.stu_group_id,l.label_id, 
+        const lesson = await this.app.mysql.queryOne(`select l.stu_group_id,l.label_id, l.is_sign,
             timestampdiff(minute, l.start_time ,l.end_time) as minu from lesson l 
             where l.lesson_id = ?;`, [lesson_id]);
-        let lesson = result[0];
-        let consume_hour = (lesson.minu/60).toFixed(1);
-        var sql = '';
-        let params = [consume_hour, lesson.stu_group_id];
-        var old_consume_time = '';
-        if(lesson.label_id == 'guide'){
-            sql += 'update group_student set consume_guide_hour = consume_guide_hour + ? where stu_group_id = ?;';
-            old_consume_time =  await this.app.mysql.get('group_student',{stu_group_id:lesson.stu_group_id});
-            old_consume_time = old_consume_time.consume_guide_hour;
-        }
-        if(lesson.label_id == 'class'){
-            sql += 'update group_student set consume_class_hour = consume_class_hour + ? where stu_group_id = ?;';
-            old_consume_time =  await this.app.mysql.get('group_student',{stu_group_id:lesson.stu_group_id});
-            old_consume_time = old_consume_time.consume_class_hour;
-        }
-        const res1 = await this.app.mysql.update('lesson', {is_sign: true}, {where: {lesson_id: lesson_id}});
-        
-        if(sql != ''){
-            //const res2 =  await this.app.mysql.query(sql, params);
-            // const res3 = await this.app.mysql.insert('sign_lesson',{
-            //     lesson_id : lesson_id,
-            //     consume_hour : consume_hour,
-            //     label_id :  lesson.label_id,
-            //     old_consume_hour : old_consume_time,
-            // });
+        // let consume_hour = (lesson.minu/60).toFixed(1);
+        if(!lesson.is_sign){
+            var consume_min = parseInt(lesson.minu);
+            var sql = '';
+            let params = [consume_min, lesson.stu_group_id];
+            var old_consume_time = 0;
+            if(lesson.label_id == 'guide'){
+                // sql += 'update group_student set consume_guide_min = ? where stu_group_id = ?;';
+                sql += 'update group_student set consume_guide_min = consume_guide_min + ? where stu_group_id = ?;';
+                const guide_res =  await this.app.mysql.query(`select * from group_student where stu_group_id = ?;`,[lesson.stu_group_id]);
+                old_consume_time = guide_res[0].consume_guide_min;
+            }
+            if(lesson.label_id == 'class'){
+                // sql += 'update group_student set consume_class_min = ? where stu_group_id = ?;';
+                sql += 'update group_student set consume_class_min = consume_class_min + ? where stu_group_id = ?;';
+                const class_res =  await this.app.mysql.query(`select * from group_student where stu_group_id = ?;`,[lesson.stu_group_id]);
+                old_consume_time = class_res[0].consume_class_min;
+            }
+            // let  params = [consume_min + old_consume_time, lesson.stu_group_id];
+            if(sql != ''){
+                const res2 = await this.app.mysql.query(sql, params);
+                const res1 = await this.app.mysql.update('lesson', {is_sign: true}, {where: {lesson_id: lesson_id}});
+                const res3 = await this.app.mysql.insert('sign_lesson',{
+                    lesson_id : lesson_id,
+                    consume_min : consume_min,
+                    label_id :  lesson.label_id,
+                    old_consume_min : old_consume_time,
 
+                });
+                return res1;
+            }
+            
         }
-        return res1;
+       
     }
 
     async getLessonBasic(lesson_id){
@@ -399,7 +399,7 @@ class LessonService extends Service {
         for(var i=0;i<res.length;i++){
             total_time += res[i].minu;
         }
-        total_time = (total_time/60).toFixed(1);
+        // total_time = (total_time/60).toFixed(1);
         console.log("res:",JSON.stringify(res));
         var lesson_list = {
             lessonList : res,

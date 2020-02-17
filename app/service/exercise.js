@@ -43,6 +43,7 @@ class ExerciseService extends Service {
                 breakdown: breakdown,
                 title_img_url : e.title_img_url,
                 title_audio_url : e.title_audio_url,
+                answer_assist_url : e.answer_assist_url,
             };
             var exercise_sample = {
               sample : JSON.parse(e.sample),

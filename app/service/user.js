@@ -1,10 +1,13 @@
 const Service = require('egg').Service;
 const crypto = require('crypto');
 const uuid = require('uuid');
+var WXBizDataCrypt = require('./WXBizDataCrypt')
 
 /* 微信登陆 */
 // var AppID = 'wx6f3a777231ad1747';
 const AppID = "wx1dc40895f45755ba";
+const XCX_APPID = 'wxdaa11d7859e34a5e';
+const XCX_APPSECRET = '931ad7ea1c0d91082111e36aae4aac7e';
 // var AppSecret = '881a3265d13a362a6f159fb782f951f9';
 const AppSecret = 'c90dcd79135556af5d1ed69c8433b009';
 
@@ -181,6 +184,235 @@ class userService extends Service {
     const users = await query;
 
     return users;
+  }
+
+  async batchGetwxInfo(){
+    //step1: 拿到微信公众号操作的全局access_token
+    const ctx = this.ctx;
+    var url1 = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='+AppID+'&secret='+AppSecret;
+    const res = await ctx.curl(url1,{dataType:'json',});
+    this.ctx.logger.error("全局 access_token:",JSON.stringify(res.data.access_token));
+    //step2: 获取目前所有的unionid为空，且有openid的项
+    var openids = await this.app.mysql.query(`select * from user_auths where identity_type = 'weixin' and unionid IS NULL;`,[]);
+    var all_list = [];
+    var one_list = [];
+    var count = 0;
+    for(var i = 0; i < openids.length; i++){
+      if(count < 100){
+        one_list.push({
+            "openid" : openids[i].identifier, 
+            "lang" : "zh_CN"
+        });
+        count += 1;
+      }else{
+        all_list.push({
+          "user_list" : one_list,
+        });
+        count = 0;
+        one_list = [];
+      }
+    }
+    if(count > 0){
+      all_list.push({
+        "user_list" : one_list,
+      });
+    }
+    // return all_list;
+    //step3: 
+    var url2 = 'https://api.weixin.qq.com/cgi-bin/user/info/batchget?access_token='+res.data.access_token;
+    var res_wx = null;
+    var count_update = 0;
+    for(var j = 0; j < all_list.length; j++){
+        res_wx = await ctx.curl(url2,{
+          method: 'POST',
+          contentType: 'json',
+          data: all_list[j],
+          dataType:'json',
+        });
+        this.ctx.logger.error("微信返回多少个：",JSON.stringify(res_wx.data.user_info_list.length));
+        if(res_wx.status == 200){
+          for(var m = 0; m < res_wx.data.user_info_list.length; m++){
+            var e = res_wx.data.user_info_list[m];
+            if(e.subscribe == 1){
+              count_update += 1;
+              let res_update = await this.app.mysql.update('user_auths', {unionid:e.unionid}, {where: {identifier: e.openid}});
+            }
+          }
+        }
+    }
+
+    return count_update;
+    // var user_list = {
+    //   "user_list": [{
+    //       "openid": "oymMZ1IMo7xM51oedMAx5LRi7QhA", 
+    //       "lang": "zh_CN"
+    //     },{
+    //       "openid": "oymMZ1I88xdvAypqlSftlAdN5x08", 
+    //       "lang": "zh_CN" 
+    //     },{
+    //       "openid": "oymMZ1Mke_LnYfxxomWDpWGyIDKM", 
+    //       "lang": "zh_CN"
+    //   }]
+    // }
+    // var url2 = 'https://api.weixin.qq.com/cgi-bin/user/info/batchget?access_token='+res.data.access_token;
+    // const res2 = await ctx.curl(url2,{
+    //   method: 'POST',
+    //   contentType: 'json',
+    //   data: user_list,
+    //   dataType:'json',
+    // });
+    // this.ctx.logger.error("batchGetwxInfo res:",JSON.stringify(res2));
+    // return res2;
+    //batchGetwxInfo res:如下
+  //   {
+  //     "data": {
+  //         "user_info_list": [
+  //             {
+  //                 "subscribe": 1,
+  //                 "openid": "oymMZ1IMo7xM51oedMAx5LRi7QhA",
+  //                 "nickname": "欧蕉蕉",
+  //                 "sex": 2,
+  //                 "language": "en",
+  //                 "city": "广州",
+  //                 "province": "广东",
+  //                 "country": "中国",
+  //                 "headimgurl": "http://thirdwx.qlogo.cn/mmopen/HPUvZQouMqevbicRGhO6CH05kBF1kDLdqZzKAAHg7eicBZE24uV0gY0z1wQfYBUfSxGDWUR8MYfRvcvbucmxJic43k7FfQa89hw/132",
+  //                 "subscribe_time": 1544773986,
+  //                 "unionid": "oTXTB04Hn6W8g64Dq3PsJOuwHwTw",
+  //                 "remark": "",
+  //                 "groupid": 0,
+  //                 "tagid_list": [],
+  //                 "subscribe_scene": "ADD_SCENE_PROFILE_CARD",
+  //                 "qr_scene": 0,
+  //                 "qr_scene_str": ""
+  //             },
+  //             {
+  //                 "subscribe": 1,
+  //                 "openid": "oymMZ1I88xdvAypqlSftlAdN5x08",
+  //                 "nickname": ".",
+  //                 "sex": 2,
+  //                 "language": "zh_CN",
+  //                 "city": "广州",
+  //                 "province": "广东",
+  //                 "country": "中国",
+  //                 "headimgurl": "http://thirdwx.qlogo.cn/mmopen/4cx6TUewpkiagustAliatrBTTp3cTNOco3Wqm4pfVsvuibqbCB9dZJSHANHozqycQtRkvS4WTdVlCgWrAMBeq0V7qSOSBEoKJOR/132",
+  //                 "subscribe_time": 1545205577,
+  //                 "unionid": "oTXTB085GCbvxUHZw_h8vl6B01Rg",
+  //                 "remark": "",
+  //                 "groupid": 0,
+  //                 "tagid_list": [],
+  //                 "subscribe_scene": "ADD_SCENE_QR_CODE",
+  //                 "qr_scene": 0,
+  //                 "qr_scene_str": ""
+  //             },
+  //             {
+  //                 "subscribe": 0,
+  //                 "openid": "oymMZ1Mke_LnYfxxomWDpWGyIDKM",
+  //                 "tagid_list": []
+  //             }
+  //         ]
+  //     },
+  //     "status": 200,
+  //     "headers": {
+  //         "connection": "keep-alive",
+  //         "content-type": "application/json; encoding=utf-8",
+  //         "date": "Wed, 08 Jan 2020 09:50:32 GMT",
+  //         "content-length": "1074"
+  //     },
+  //     "res": {
+  //         "status": 200,
+  //         "statusCode": 200,
+  //         "headers": {
+  //             "connection": "keep-alive",
+  //             "content-type": "application/json; encoding=utf-8",
+  //             "date": "Wed, 08 Jan 2020 09:50:32 GMT",
+  //             "content-length": "1074"
+  //         },
+  //         "size": 1074,
+  //         "aborted": false,
+  //         "rt": 319,
+  //         "keepAliveSocket": true,
+  //         "data": {
+  //             "user_info_list": [
+  //                 {
+  //                     "subscribe": 1,
+  //                     "openid": "oymMZ1IMo7xM51oedMAx5LRi7QhA",
+  //                     "nickname": "欧蕉蕉",
+  //                     "sex": 2,
+  //                     "language": "en",
+  //                     "city": "广州",
+  //                     "province": "广东",
+  //                     "country": "中国",
+  //                     "headimgurl": "http://thirdwx.qlogo.cn/mmopen/HPUvZQouMqevbicRGhO6CH05kBF1kDLdqZzKAAHg7eicBZE24uV0gY0z1wQfYBUfSxGDWUR8MYfRvcvbucmxJic43k7FfQa89hw/132",
+  //                     "subscribe_time": 1544773986,
+  //                     "unionid": "oTXTB04Hn6W8g64Dq3PsJOuwHwTw",
+  //                     "remark": "",
+  //                     "groupid": 0,
+  //                     "tagid_list": [],
+  //                     "subscribe_scene": "ADD_SCENE_PROFILE_CARD",
+  //                     "qr_scene": 0,
+  //                     "qr_scene_str": ""
+  //                 },
+  //                 {
+  //                     "subscribe": 1,
+  //                     "openid": "oymMZ1I88xdvAypqlSftlAdN5x08",
+  //                     "nickname": ".",
+  //                     "sex": 2,
+  //                     "language": "zh_CN",
+  //                     "city": "广州",
+  //                     "province": "广东",
+  //                     "country": "中国",
+  //                     "headimgurl": "http://thirdwx.qlogo.cn/mmopen/4cx6TUewpkiagustAliatrBTTp3cTNOco3Wqm4pfVsvuibqbCB9dZJSHANHozqycQtRkvS4WTdVlCgWrAMBeq0V7qSOSBEoKJOR/132",
+  //                     "subscribe_time": 1545205577,
+  //                     "unionid": "oTXTB085GCbvxUHZw_h8vl6B01Rg",
+  //                     "remark": "",
+  //                     "groupid": 0,
+  //                     "tagid_list": [],
+  //                     "subscribe_scene": "ADD_SCENE_QR_CODE",
+  //                     "qr_scene": 0,
+  //                     "qr_scene_str": ""
+  //                 },
+  //                 {
+  //                     "subscribe": 0,
+  //                     "openid": "oymMZ1Mke_LnYfxxomWDpWGyIDKM",
+  //                     "tagid_list": []
+  //                 }
+  //             ]
+  //         },
+  //         "requestUrls": [
+  //             "https://api.weixin.qq.com/cgi-bin/user/info/batchget?access_token=29_zKNmwbAkPThgfa-MwpbeqZRq_qmKfXCv7BboRHE_E77ObO2iX9oAIvD2KndEJNqbc6OFxHeM_oA1yYf8J6qcXOL7gva9CiGnx-WfH9Ht4jx_apDlus_E7eFuEiay0lSDpMGm8D22the1rxiHCKYiAIAWES"
+  //         ],
+  //         "timing": null,
+  //         "remoteAddress": "58.251.80.204",
+  //         "remotePort": 443
+  //     }
+  // }
+  }
+
+  async getXcxAuth(code){
+    const ctx = this.ctx;
+    var url='https://api.weixin.qq.com/sns/jscode2session?appid=' + XCX_APPID + '&secret=' + XCX_APPSECRET + '&grant_type=authorization_code&js_code=' + code;
+    const res = await ctx.curl(url,{dataType:'json',});
+    this.ctx.logger.error("res error:",JSON.stringify(res));
+    return res;
+  }
+
+  async getXcxUnionid(encryptedData,iv,sessionKey){
+    this.ctx.logger.error("sessionKey:",sessionKey);
+    var pc = new WXBizDataCrypt(XCX_APPID, sessionKey);
+    var res = pc.decryptData(encryptedData , iv);
+    this.ctx.logger.error("getXcxUnionid res:",JSON.stringify(res));
+    //解码出unionid,并通过unionid拿到对应的userid
+    if(res.unionId){
+      const res_user = await this.app.mysql.get('user_auths', { unionid: res.unionId });
+      if(res_user){
+        return { userid : res_user.userid, unionid : res.unionId };
+      }else{//
+        return { unionid : res.unionId };
+      }
+    }
+    // this.ctx.logger.error("decryptData:",JSON.stringify(data));
+    return 0;
   }
 
   async getWxAuth(code,state){

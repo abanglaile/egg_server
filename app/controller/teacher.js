@@ -92,10 +92,10 @@ class TeacherController extends Controller {
         this.ctx.body = results;
     }
 
-    async getStudentGroup(){
+    async getTeacherGroup(){
         const { ctx, service } = this;
         const {query} = ctx.request;
-        const results = await service.group.getStudentGroup(query.teacher_id);
+        const results = await service.group.getTeacherGroup(query.teacher_id);
         this.ctx.body = results;
     }
     

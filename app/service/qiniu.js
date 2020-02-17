@@ -34,7 +34,8 @@ class qiniuService extends Service {
         if(filename.lastIndexOf('midi') > 0){
             filePath = '/usr/local/www/kpmanager/img/test.wav';
         }
-        // let filePath = 'D:\\www\\kpmanager\\img\\test.png';
+        // var filePath = 'C:\\Users\\Administrator\\Documents\\GitHub\\kpmanager\\img\\test.png';
+        
         var ret = await putFile(uploadToken, filename, filePath, putExtra);
         console.log(ret);
         return ret;

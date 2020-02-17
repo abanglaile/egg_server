@@ -48,6 +48,9 @@ module.exports = app => {
   //weixin
   // router.get('/api/get_wx_auth',controller.auth.getWxAuth);
   router.get('/api/get_wx_auth',controller.auth.getWxAuth);
+  router.get('/api/get_xcx_auth',controller.auth.getXcxAuth);
+  router.get('/api/get_xcx_unionid',controller.auth.getXcxUnionid);
+  router.get('/api/batchGetwxInfo',controller.auth.batchGetwxInfo);
   //邀请码绑定,用户信息注册
   router.post('/api/check_invi_code',controller.auth.checkInviteCode);
   router.post('/api/set_userinfo',controller.auth.setUserInfo);
@@ -114,7 +117,7 @@ module.exports = app => {
   router.get('/api/getClassGroup', controller.teacher.getClassGroup);
   router.get('/api/getSchool', controller.teacher.getSchool);
   router.get('/api/getGroupData', controller.teacher.getGroupData);
-  router.get('/api/getStudentGroup', controller.teacher.getStudentGroup);
+  router.get('/api/getTeacherGroup', controller.teacher.getTeacherGroup);
   router.post('/api/addNewGroup', controller.teacher.addNewGroup);
   router.post('/api/deleteOneGroup', controller.teacher.deleteOneGroup);
   router.post('/api/deleteOneStudent', controller.teacher.deleteOneStudent);
@@ -219,8 +222,18 @@ module.exports = app => {
   // 增益管理
   router.post('/api/addVirtualroomBuff', controller.virtualroom.addVirtualroomBuff);
   router.get('/api/getVirtualroomBuff', controller.virtualroom.getVirtualroomBuff);
+  
   //微信小程序
   router.get('/api/wxGetAllComment',controller.wxMiniProgram.wxGetAllComment);
   router.post('/api/wxPostComment',controller.wxMiniProgram.wxPostComment);
-  router.post('/api/getStudentLesson',controller.wxMiniProgram.getStudentLesson);
+
+  router.post('/api/getStudentLesson',controller.parent.getStudentLesson);
+  router.get('/api/getStudentGroup',controller.parent.getStudentGroup);
+
+  // 家长学生绑定
+  router.get('/api/getCodeByUserid', controller.parent.getCodeByUserid);
+  router.get('/api/getUserByCode', controller.parent.getUserByCode);
+  router.post('/api/parent', controller.parent.parentBond);
+  router.delete('/api/parentUnBond', controller.parent.parentUnBond);
+  router.get('/api/getBondStudent', controller.parent.getBondStudent);
 };

@@ -1,6 +1,12 @@
 const Service = require('egg').Service;
 
 class GroupService extends Service {
+    async getStudentGroup(student_id){
+        return await this.app.mysql.query(`select s.course_label, g.stu_group_id, s.group_name, 
+        (g.class_min - g.consume_class_min) as remain_class, (g.guide_min - g.consume_guide_min) as remain_guide  
+        from group_student g inner join school_group s 
+        on g.stu_group_id = s.stu_group_id and g.student_id = ?`, [student_id]);
+    }
 
     async getClassGroup(teacher_id){
 
@@ -12,12 +18,12 @@ class GroupService extends Service {
         return res;
     }
 
-    async getStudentGroup(teacher_id){
+    async getTeacherGroup(teacher_id){
 
         const results = await this.app.mysql.query(`select t.stu_group_id, s.group_name, 
         g.student_id,u.realname from teacher_group t, group_student g, school_group s,
         users u where t.teacher_id = ? and t.stu_group_id = g.stu_group_id and 
-        u.userid = g.student_id and s.stu_group_id = g.stu_group_id;`, teacher_id);
+        u.userid = g.student_id and s.stu_group_id = g.stu_group_id;`, [teacher_id]);
 
         var student_data = [];
         var student_index = [];
@@ -153,9 +159,11 @@ class GroupService extends Service {
 
     async getGroupTable(school_id){
         const results = await this.app.mysql.query(`select sg.*,cl.course_label_name,
-        tg.teacher_id, u.realname from school_group sg, teacher_group tg, users u,
-        course_label cl where sg.school_id = ? and sg.stu_group_id = tg.stu_group_id
-         and u.userid = tg.teacher_id and cl.course_label= sg.course_label;`, [school_id]);
+                        tg.teacher_id, u.realname from school_group sg
+                        left join teacher_group tg on sg.stu_group_id = tg.stu_group_id
+                        left join users u on u.userid = tg.teacher_id
+                        inner join course_label cl on cl.course_label= sg.course_label
+                        where sg.school_id = ?;`, [school_id]);
 
         var group_list = [];
         var group_index = [];
@@ -207,7 +215,7 @@ class GroupService extends Service {
     }
 
     async updateGroupHour(stu_group_id, student_id, num, label){
-        let row = (label == 'guide')? {guide_hour:num} : {class_hour:num};
+        let row = (label == 'guide')? {guide_min:num} : {class_min:num};
         
         const res = await this.app.mysql.update('group_student', row,{
             where:{
@@ -267,6 +275,14 @@ class GroupService extends Service {
         }
         
         return group_list;
+    }
+
+    async getGroupStudent(student_id){
+        return await this.app.mysql.query(`select (gs.guide_min - gs.consume_guide_min) as remain_guide_min 
+            (gs.class_min - gs.consume_class_min) as remain_class_min, sg.group_name, sg.course_label 
+            from group_student gs inner join school_group sg
+            on sg.stu_group_id = gs.stu_group_id
+            on gs.student_id = ?;`, [student_id]);
     }
 
 

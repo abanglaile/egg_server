@@ -112,7 +112,8 @@ module.exports = app => {
   router.get('/api/getStuCourse', controller.teacher.getStuCourse);
   router.get('/api/getStuPfCommentList', controller.teacher.getStuPfCommentList);
   router.post('/api/getStuKpCommentList', controller.teacher.getStuKpCommentList);
-  
+
+  router.get('/api/getClassHourTable', controller.teacher.getClassHourTable);
 
   router.get('/api/getClassGroup', controller.teacher.getClassGroup);
   router.get('/api/getSchool', controller.teacher.getSchool);
@@ -175,6 +176,7 @@ module.exports = app => {
   router.post('/api/deleteOneLesson',controller.teacher.deleteOneLesson);
 
   router.post('/api/signLesson', controller.teacher.signLesson);
+  router.post('/api/undoSignLesson', controller.teacher.undoSignLesson);
 
   router.get('/api/getTaskTable', controller.teacher.getTaskTable);
   router.post('/api/deleteOneTask', controller.teacher.deleteOneTask);

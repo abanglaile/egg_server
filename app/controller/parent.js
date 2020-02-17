@@ -18,7 +18,7 @@ class ParentController extends Controller {
 
     async parentBond() {
         const { ctx, service } = this;
-        const results = await service.parentBond.parentBond(ctx.request.query.parent_id, ctx.request.query.student_id);
+        const results = await service.parentBond.parentBond(ctx.request.body.parent_id, ctx.request.body.student_id, ctx.request.body.wx_info);
         this.ctx.body = results;
     }
 

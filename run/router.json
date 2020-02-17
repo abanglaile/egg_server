@@ -909,6 +909,19 @@
       "GET"
     ],
     "paramNames": [],
+    "path": "/api/getClassHourTable",
+    "regexp": "/^\\/api\\/getClassHourTable(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/api/getClassGroup",
     "regexp": "/^\\/api\\/getClassGroup(?:\\/(?=$))?$/",
     "stack": [
@@ -1470,6 +1483,18 @@
     "paramNames": [],
     "path": "/api/signLesson",
     "regexp": "/^\\/api\\/signLesson(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/undoSignLesson",
+    "regexp": "/^\\/api\\/undoSignLesson(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

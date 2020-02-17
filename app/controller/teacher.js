@@ -157,6 +157,15 @@ class TeacherController extends Controller {
             this.ctx.body = results;
         }
     }
+
+    async undoSignLesson() {
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        if(body.lesson_id){
+            const results = await service.lesson.undoSignLesson(body.lesson_id);
+            this.ctx.body = results;
+        }
+    }
     
     async getBookChapter(){
         const { ctx, service } = this;
@@ -517,6 +526,15 @@ class TeacherController extends Controller {
         const {query} = ctx.request;
         if(query.teacher_id){
             const results = await service.group.getStudentList(query.teacher_id);
+            this.ctx.body=results;
+        }
+    }
+    
+    async getClassHourTable(){
+        const {ctx, service } = this;
+        const {query} = ctx.request;
+        if(query.teacher_id){
+            const results = await service.group.getClassHourTable(query.teacher_id);
             this.ctx.body=results;
         }
     } 

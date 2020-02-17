@@ -232,7 +232,36 @@ class GroupService extends Service {
             u.realname from school_group sg left join group_student gs
              on sg.stu_group_id = gs.stu_group_id inner join users u
              on gs.student_id = u.userid where sg.school_id = ?;`, [school_id]);
+        
+        return results;
+    }
 
+    async getClassHourTable(teacher_id){
+        const results = await this.app.mysql.query(`select s.group_name,g.*,u.realname
+            from teacher_group tg
+            LEFT JOIN group_student g on g.stu_group_id = tg.stu_group_id
+            LEFT JOIN users u on u.userid = g.student_id
+            LEFT JOIN school_group s on s.stu_group_id = tg.stu_group_id
+            where tg.teacher_id = ?;`, [teacher_id]);
+
+        var remain_guide_min = 0;
+        var remain_class_min = 0;
+        for(var i = 0; i < results.length; i++){
+            var e = results[i];
+            if(e.guide_min >= e.consume_guide_min){
+                remain_guide_min = e.guide_min - e.consume_guide_min;
+            }else{
+                remain_guide_min = -1;
+            }
+            results[i]['remain_guide_min'] = remain_guide_min;
+            if(e.class_min >= e.consume_class_min){
+                remain_class_min = e.class_min - e.consume_class_min;
+            }else{
+                remain_class_min = -1;
+            }
+            results[i]['remain_class_min'] = remain_class_min;
+        }
+        // console.log("results:",JSON.stringify(results));
         return results;
     }
 

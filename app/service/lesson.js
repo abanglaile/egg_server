@@ -375,6 +375,11 @@ class LessonService extends Service {
         return await this.getLessonContent(lesson_content.lesson_id);
     }
 
+    async updateLessonLabel(lesson_id, label_id){
+        const ret = await this.app.mysql.update('lesson', {label_id: label_id}, {where: {lesson_id: lesson_id}});
+        return await this.getLessonBasic(lesson_id);
+    }
+
     async updateLessonTeacher(lesson_id, teacher_id){
         const ret = await this.app.mysql.update('lesson', {teacher_id: teacher_id}, {where: {lesson_id: lesson_id}});
         return await this.getLessonBasic(lesson_id);

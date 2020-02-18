@@ -1421,6 +1421,18 @@
       "POST"
     ],
     "paramNames": [],
+    "path": "/api/updateLessonLabel",
+    "regexp": "/^\\/api\\/updateLessonLabel(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
     "path": "/api/updateLessonTeacher",
     "regexp": "/^\\/api\\/updateLessonTeacher(?:\\/(?=$))?$/",
     "stack": [

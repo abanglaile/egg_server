@@ -210,8 +210,10 @@ class ExerciseLogService extends Service {
         const exercise_rating = exercise_log.old_exercise_rating;
         const student_id = exercise_log.student_id;
         if(!exercise_log.logid){
+            //学生提交答案
             exercise_log.exercise_state = checkAnswer(exercise_type, exercise_log.answer) 
         }
+        //1：已提交答案未提交反馈 2：已提交反馈 
         exercise_log.exercise_status = exercise_log.exercise_state > 0 ? 2 : 1;
           
         //题目对错确定
@@ -264,7 +266,7 @@ class ExerciseLogService extends Service {
         var breakdown_sn = exercise_log.breakdown_sn;
         delete exercise_log.breakdown_sn;
         if(exercise_log.logid){
-            //人工批改只需要更新天梯分相关字段
+            //主观题批改答案提交，更新相关天梯分
             await this.app.mysql.update('exercise_log', {
                 old_student_rating: exercise_log.old_student_rating,
                 delta_exercise_rating: exercise_log.delta_exercise_rating,
@@ -272,12 +274,12 @@ class ExerciseLogService extends Service {
             })
         }
         else{
-            //第一次提交做题记录
+            //学生提交答案，插入答题记录
             exercise_log.submit_time = new Date(); 
             exercise_log.answer = JSON.stringify(exercise_log.answer);
             const insert_result = await this.app.mysql.insert('exercise_log', exercise_log);
             exercise_log.logid = insert_result.insertId;
-            //等待自批改
+            //主观题未批改，直接返回
             if(exercise_log.exercise_state < 0)
                 return exercise_log
         }
@@ -295,8 +297,9 @@ class ExerciseLogService extends Service {
         //async
         this.app.mysql.insert('exercise_log_trigger', {logid: exercise_log.logid});
 
-        //只与一个知识点相关或答案正确直接提交分解
-        if(result || breakdown_sn.length == 1){
+        //答案已批改：只与一个知识点相关或答案正确直接提交分解
+        if(exercise_log.exercise_state > 0 || 
+            (exercise_log.exercise_state == 0 && breakdown_sn.length == 1)){
             for(var i = 0; i < breakdown_sn.length; i++){
                 breakdown_sn[i].logid = exercise_log.logid;
                 breakdown_sn[i].sn_state = result;   

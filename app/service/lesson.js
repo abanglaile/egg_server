@@ -6,7 +6,7 @@ class LessonService extends Service {
     async getStudentLesson(student_id, filter_option){
         console.log("filter_option:",JSON.stringify(filter_option));
         let {is_sign, start_time, end_time, group_id, course_label_list, label_id_list} = filter_option;
-        let query = `select concat_ws('-', date_format(l.start_time, '%Y年%m月%d日 %H:%i'), date_format(l.end_time, '%H:%i')) as lesson_time,
+        let query = `select l.start_time, l.end_time, l.is_sign,
             u.realname as teacher_name,
             r.room_name, g.group_name, g.course_label,
             ll.label_name, ll.label_id, lc.course_label_name from 
@@ -18,8 +18,7 @@ class LessonService extends Service {
         let params = [student_id];
 
         if(is_sign >= 0){
-            query += ' and l.is_sign = ?';
-            params.push(is_sign);
+            query += is_sign ? ' and l.is_sign = 1' : ' and l.is_sign is null';
         }
         if(start_time){
             query += ' and l.start_time >= ?';

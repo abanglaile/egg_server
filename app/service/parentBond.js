@@ -40,13 +40,15 @@ class parentBondService extends Service {
 
     async getCodeByUserid(id) {
         // 根据学生id 生成邀请码
-        const sn = hashids.encodeHex(id);
+        let sn = Buffer.from(id, 'utf-8').toString('hex');
+        sn = hashids.encodeHex(sn);
         return sn;
     }
 
     async getUserByCode(code) {
         // 根据邀请码获取学生信息
-        const id = hashids.decodeHex(code);
+        let id = hashids.decodeHex(code);
+        id = Buffer.from(id, 'hex').toString('utf-8');
         const user = await this.app.mysql.get('users', { userid: id });
         return user;
     }

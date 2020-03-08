@@ -126,9 +126,7 @@ class TestService extends Service {
             teststate: res.enable_time ? 1 : 0,
         });
         return test_info;
-    }
-
-  
+    }  
 
 }
 

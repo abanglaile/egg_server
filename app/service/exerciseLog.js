@@ -162,7 +162,7 @@ class ExerciseLogService extends Service {
         return result;
     }
 
-    async checkAnswer(exercise_type, log_answer){
+    checkAnswer(exercise_type, log_answer){
         switch(exercise_type){
             case 0:
                 for(var i = 0; i < log_answer.length; i++){
@@ -186,22 +186,18 @@ class ExerciseLogService extends Service {
         return  
     }
 
-    async updateExerciseLogRating(exercise_log){
-        let kp_exercise = await this.app.mysql.get('kp_exercise', {exercise_id: exercise_log.exercise_id});
-        let student_rating = await this.service.rating.getStudentRating(student_id, kp_exercise.course_id);
-        //给予默认值
-        student_rating = student_rating ? student_rating : 500;
+    async updateExerciseLogRating(exercise_log, K){
+        const { old_student_rating, old_exercise_rating, exercise_state } = exercise_log
 
         //计算学生、章节、题目得分
-        const st_delta = this.elo_rating(student_rating, exercise_rating);
-        const ex_delta = this.elo_rating(exercise_rating, student_rating);
+        const st_delta = this.elo_rating(old_student_rating, old_exercise_rating);
+        const ex_delta = this.elo_rating(old_exercise_rating, old_student_rating);
         console.log("st_delta ",st_delta);
 
-        const K = 128;
-        const ex_SA = result ? 0 : 1;
-        const st_SA = result ? 1 : 0;
+        K = 128;
+        const ex_SA = exercise_state ? 0 : 1;
+        const st_SA = exercise_state ? 1 : 0;
 
-        exercise_log.old_student_rating = student_rating
         exercise_log.delta_exercise_rating = Math.ceil(K*(ex_SA - ex_delta))
         exercise_log.delta_student_rating = Math.ceil(K*(st_SA - st_delta));
     }
@@ -211,14 +207,19 @@ class ExerciseLogService extends Service {
         const student_id = exercise_log.student_id;
         if(!exercise_log.logid){
             //学生提交答案
-            exercise_log.exercise_state = checkAnswer(exercise_type, exercise_log.answer) 
+            exercise_log.exercise_state = this.checkAnswer(exercise_type, exercise_log.answer) 
         }
         //1：已提交答案未提交反馈 2：已提交反馈 
         exercise_log.exercise_status = exercise_log.exercise_state > 0 ? 2 : 1;
-          
+        
+        const test = await this.app.mysql.get('teacher_test',{ test_id : exercise_log.test_id });
+        let student_rating = await this.service.rating.getStudentRating(student_id, test.course_id);
+        exercise_log.old_student_rating = student_rating ? student_rating : 500;
+
         //题目对错确定
+        //TO-DO：输入测试elo 参数K
         if(exercise_log.exercise_state >= 0){
-            updateExerciseLogRating(exercise_log);
+            await this.updateExerciseLogRating(exercise_log);
         }
         /*
         if(exercise_log.exercise_status == 0.5){
@@ -262,23 +263,32 @@ class ExerciseLogService extends Service {
         exercise_log.answer = JSON.stringify(exercise_log.answer);
         */
 
-        
         var breakdown_sn = exercise_log.breakdown_sn;
-        delete exercise_log.breakdown_sn;
+        var answer = exercise_log.answer
         if(exercise_log.logid){
             //主观题批改答案提交，更新相关天梯分
             await this.app.mysql.update('exercise_log', {
+                exercise_state: exercise_log.exercise_state,
                 old_student_rating: exercise_log.old_student_rating,
                 delta_exercise_rating: exercise_log.delta_exercise_rating,
                 delta_student_rating: exercise_log.delta_student_rating
-            })
+            }, {where: {logid: exercise_log.logid}})
         }
         else{
             //学生提交答案，插入答题记录
             exercise_log.submit_time = new Date(); 
-            exercise_log.answer = JSON.stringify(exercise_log.answer);
+            exercise_log.answer = JSON.stringify(answer);
+            
+            delete exercise_log.breakdown_sn;
             const insert_result = await this.app.mysql.insert('exercise_log', exercise_log);
             exercise_log.logid = insert_result.insertId;
+            //插入后还原数据
+            for(var i = 0; i < breakdown_sn.length; i++){
+                breakdown_sn[i].logid = exercise_log.logid; 
+            }
+            exercise_log.breakdown_sn = breakdown_sn
+            exercise_log.answer = answer
+            
             //主观题未批改，直接返回
             if(exercise_log.exercise_state < 0)
                 return exercise_log
@@ -287,12 +297,12 @@ class ExerciseLogService extends Service {
         //更新学生总体天梯分
         const rating_history_result = await this.app.mysql.insert('student_rating_history', {
             student_id: student_id,
-            student_rating: student_rating + exercise_log.delta_student_rating,
-            course_id: kp_exercise.course_id,
+            student_rating: exercise_log.old_student_rating + exercise_log.delta_student_rating,
+            course_id: test.course_id,
         })
         const rating_result = await this.app.mysql.query(`replace into student_rating
-            (student_id,student_rating ,course_id) VALUES(?,?,?)`
-         ,[student_id,(student_rating + exercise_log.delta_student_rating),kp_exercise.course_id]);
+            (student_id, student_rating ,course_id) VALUES(?,?,?)`
+         ,[student_id,(exercise_log.old_student_rating + exercise_log.delta_student_rating), test.course_id]);
 
         //async
         this.app.mysql.insert('exercise_log_trigger', {logid: exercise_log.logid});
@@ -301,8 +311,8 @@ class ExerciseLogService extends Service {
         if(exercise_log.exercise_state > 0 || 
             (exercise_log.exercise_state == 0 && breakdown_sn.length == 1)){
             for(var i = 0; i < breakdown_sn.length; i++){
-                breakdown_sn[i].logid = exercise_log.logid;
-                breakdown_sn[i].sn_state = result;   
+                //breakdown_sn[i].logid = exercise_log.logid;
+                breakdown_sn[i].sn_state = exercise_log.exercise_state;   
             }
             exercise_log.breakdown_sn = breakdown_sn;
             exercise_log = await this.submitBreakdownLog(exercise_log); 
@@ -365,6 +375,7 @@ class ExerciseLogService extends Service {
                     answer: JSON.parse(b.answer),
                     sample_index: b.sample_index,
                     delta_student_rating: b.delta_student_rating,
+                    old_exercise_rating: b.old_exercise_rating,
                     //sample : b.sample ? b.sample : {},
                     exercise_sample : {
                         sample : b.sample,

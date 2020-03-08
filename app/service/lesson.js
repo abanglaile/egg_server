@@ -28,10 +28,10 @@ class LessonService extends Service {
             query += ' and l.end_time <= ?';
             params.push(end_time);
         }
-        if(course_label_list){
+        if(course_label_list && course_label_list.length){
             query += ' and l.course_label in (' + course_label_list.join(',') + ')';          
         }
-        if(label_id_list){
+        if(label_id_list && label_id_list.length){
             query += ' and l.label_id in (?)'
             params.push(label_id_list.join(','));
         }

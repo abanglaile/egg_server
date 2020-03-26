@@ -569,6 +569,13 @@ class TeacherController extends Controller {
             this.ctx.body=results;
         }
     }
+
+    async getUnreviewedExers(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.exerciseLog.getUnreviewedExers(query.test_id);
+        this.ctx.body = results;
+    }
 }
 
 module.exports = TeacherController;

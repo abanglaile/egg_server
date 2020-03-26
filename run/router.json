@@ -922,6 +922,19 @@
       "GET"
     ],
     "paramNames": [],
+    "path": "/api/getUnreviewedExers",
+    "regexp": "/^\\/api\\/getUnreviewedExers(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/api/getClassGroup",
     "regexp": "/^\\/api\\/getClassGroup(?:\\/(?=$))?$/",
     "stack": [

@@ -592,5 +592,64 @@ class ExerciseLogService extends Service {
         });
     }
 
+    //TO-DO
+    async getUnreviewedExers(test_id) {
+        const results = await this.app.mysql.query(
+            `select e.student_id ,u.realname,e.test_id,e.exercise_id,e.exercise_state,e.submit_time,e.answer as submit_answer,ex.*,b.*,k.kpname
+            from exercise_log e inner join breakdown b on e.exercise_id = b.exercise_id 
+            inner join exercise ex on e.exercise_id = ex.exercise_id
+             inner join kptable k on b.kpid = k.kpid
+            inner join users u on e.student_id = u.userid
+             where e.test_id = ? and e.exercise_status = 1 order by e.submit_time asc;`,[test_id]
+        ) 
+        var exercise_list = [];
+        var exercise_index = [];
+        var list_index = 0;
+        for(var i = 0; i < results.length; i++){
+            var e = results[i];
+            const index = exercise_index[e.exercise_id + "-" + e.student_id];
+            console.log(i + " " + index);
+            if(index >= 0){
+                console.log(index);
+                exercise_list[index].breakdown.push({
+                    sn: e.sn, 
+                    content: e.content, 
+                    presn: e.presn, 
+                    kpid: e.kpid,
+                    kpname: e.kpname,
+                });
+            }else{
+                var breakdown = [];
+                breakdown.push({
+                    sn: e.sn, 
+                    content: e.content, 
+                    presn: e.presn, 
+                    kpid: e.kpid,
+                    kpname: e.kpname,
+                });
+                var exercise = {
+                    student_id: e.student_id,
+                    realname: e.realname,
+                    exercise_id: e.exercise_id, 
+                    exercise_state: e.exercise_state, 
+                    submit_time: e.submit_time,
+                    submit_answer: e.submit_answer,
+                    title: e.title, 
+                    answer: JSON.parse(e.answer),
+                    title_img_url : e.title_img_url,
+                    title_audio_url : e.title_audio_url,
+                    answer_assist_url : e.answer_assist_url,
+                    breakdown: breakdown,
+                };
+
+                exercise_list[list_index] = exercise;
+                exercise_index[e.exercise_id + "-" + e.student_id] = list_index;
+                list_index++;
+            }
+        }
+        return exercise_list;
+    }
+
+
 }
 module.exports = ExerciseLogService;

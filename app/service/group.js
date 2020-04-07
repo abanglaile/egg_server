@@ -258,17 +258,10 @@ class GroupService extends Service {
         var remain_class_min = 0;
         for(var i = 0; i < results.length; i++){
             var e = results[i];
-            if(e.guide_min >= e.consume_guide_min){
-                remain_guide_min = e.guide_min - e.consume_guide_min;
-            }else{
-                remain_guide_min = -1;
-            }
+            remain_guide_min = e.guide_min - e.consume_guide_min;
             results[i]['remain_guide_min'] = remain_guide_min;
-            if(e.class_min >= e.consume_class_min){
-                remain_class_min = e.class_min - e.consume_class_min;
-            }else{
-                remain_class_min = -1;
-            }
+
+            remain_class_min = e.class_min - e.consume_class_min;
             results[i]['remain_class_min'] = remain_class_min;
         }
         // console.log("results:",JSON.stringify(results));

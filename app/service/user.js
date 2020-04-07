@@ -247,10 +247,10 @@ class userService extends Service {
     const ctx = this.ctx;
     var url='https://api.weixin.qq.com/sns/jscode2session?appid=' + XCX_APPID + '&secret=' + XCX_APPSECRET + '&grant_type=authorization_code&js_code=' + code;
     const res = await ctx.curl(url,{dataType:'json',});
-    this.ctx.logger.error("res getXcxAuth:",JSON.stringify(res));
+    // this.ctx.logger.error("res getXcxAuth:",JSON.stringify(res));
     if(res.data.unionid){
       const res_user = await this.app.mysql.get('user_auths', { unionid: res.data.unionid });
-      this.ctx.logger.error("[res_user]:",JSON.stringify(res_user));
+      // this.ctx.logger.error("[res_user]:",JSON.stringify(res_user));
       if(res_user){
         return { userid : res_user.userid, unionid : res.data.unionid, openid : res.data.openid};
       }else{//

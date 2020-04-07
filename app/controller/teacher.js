@@ -569,6 +569,15 @@ class TeacherController extends Controller {
             this.ctx.body=results;
         }
     }
+
+    async submitCheckAnswer(){
+        const { ctx, service } = this;
+        const { body } = ctx.request;
+        if(body.exercise_log && body.breakdown_sn){
+            const results = await service.exerciseLog.submitCheckAnswer(exercise_log, breakdown_sn);
+            this.ctx.body = results;
+        }
+    }
 }
 
 module.exports = TeacherController;

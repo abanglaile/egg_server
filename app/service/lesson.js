@@ -6,6 +6,9 @@ class LessonService extends Service {
     async getStudentLesson(student_id, filter_option){
         console.log("filter_option:",JSON.stringify(filter_option));
         let {is_sign, start_time, end_time, group_id, course_label_list, label_id_list} = filter_option;
+        if( (label_id_list && label_id_list.length == 0) || course_label_list && course_label_list.length == 0)
+            return []
+        
         let query = `select l.start_time, l.end_time, l.is_sign,
             u.realname as teacher_name,
             r.room_name, g.group_name, g.course_label,
@@ -28,10 +31,10 @@ class LessonService extends Service {
             query += ' and l.end_time <= ?';
             params.push(end_time);
         }
-        if(course_label_list && course_label_list.length){
+        if(course_label_list){
             query += ' and l.course_label in (' + course_label_list.join(',') + ')';          
         }
-        if(label_id_list && label_id_list.length){
+        if(label_id_list){
             query += ' and l.label_id in (?)'
             params.push(label_id_list.join(','));
         }

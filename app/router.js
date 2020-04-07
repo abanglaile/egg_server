@@ -190,6 +190,8 @@ module.exports = app => {
   
   router.get('/api/getStuInfoById', controller.teacher.getStuInfoById);
 
+  router.post('/api/submitCheckAnswer', controller.teacher.submitCheckAnswer);
+
   //个人考试评价
   router.get('/api/getStuEvalBytest',controller.student.getStuEvalBytest);
   //教师、班级配置管理、合同管理

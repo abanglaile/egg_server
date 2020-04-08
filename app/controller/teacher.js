@@ -570,10 +570,17 @@ class TeacherController extends Controller {
         }
     }
 
-    async getUnreviewedExers(){
+    async getUncheckedExers(){
         const { ctx, service } = this;
         const {query} = ctx.request;
-        const results = await service.exerciseLog.getUnreviewedExers(query.test_id);
+        const results = await service.exerciseLog.getUncheckedExers(query.test_id);
+        this.ctx.body = results;
+    }
+    
+    async getCheckedExers(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.exerciseLog.getCheckedExers(query.test_id);
         this.ctx.body = results;
     }
 }

@@ -922,8 +922,8 @@
       "GET"
     ],
     "paramNames": [],
-    "path": "/api/getUnreviewedExers",
-    "regexp": "/^\\/api\\/getUnreviewedExers(?:\\/(?=$))?$/",
+    "path": "/api/getUncheckedExers",
+    "regexp": "/^\\/api\\/getUncheckedExers(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

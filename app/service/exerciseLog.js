@@ -593,15 +593,15 @@ class ExerciseLogService extends Service {
     }
 
     //TO-DO
-    async getUnreviewedExers(test_id) {
+    async getUncheckedExers(test_id){
         const results = await this.app.mysql.query(
-            `select e.student_id ,u.realname,e.test_id,e.exercise_id,e.exercise_state,e.submit_time,e.answer as submit_answer,ex.*,b.*,k.kpname
+            `select e.logid, e.student_id ,u.realname,e.test_id,e.exercise_id,e.submit_time,e.answer as submit_answer,ex.*,b.*,k.kpname
             from exercise_log e inner join breakdown b on e.exercise_id = b.exercise_id 
             inner join exercise ex on e.exercise_id = ex.exercise_id
              inner join kptable k on b.kpid = k.kpid
             inner join users u on e.student_id = u.userid
              where e.test_id = ? and e.exercise_status = 1 order by e.submit_time asc;`,[test_id]
-        ) 
+        ); 
         var exercise_list = [];
         var exercise_index = [];
         var list_index = 0;
@@ -617,6 +617,7 @@ class ExerciseLogService extends Service {
                     presn: e.presn, 
                     kpid: e.kpid,
                     kpname: e.kpname,
+                    sn_old_rating: e.sn_rating,
                 });
             }else{
                 var breakdown = [];
@@ -626,12 +627,14 @@ class ExerciseLogService extends Service {
                     presn: e.presn, 
                     kpid: e.kpid,
                     kpname: e.kpname,
+                    sn_old_rating: e.sn_rating,
                 });
                 var exercise = {
+                    logid: e.logid,
                     student_id: e.student_id,
                     realname: e.realname,
+                    testid: e.test_id,
                     exercise_id: e.exercise_id, 
-                    exercise_state: e.exercise_state, 
                     submit_time: e.submit_time,
                     submit_answer: e.submit_answer,
                     title: e.title, 
@@ -648,6 +651,18 @@ class ExerciseLogService extends Service {
             }
         }
         return exercise_list;
+    }
+
+    async getCheckedExers(test_id){
+        const results = await this.app.mysql.query(
+            `select e.logid,e.student_id ,u.realname,e.test_id,e.exercise_id,e.exercise_state,e.submit_time,e.answer as submit_answer,ex.*,
+            b.*,bl.sn_state,bl.kpname from exercise_log e 
+            inner join breakdown_log bl on e.logid = bl.logid 
+            inner join breakdown b on b.exercise_id = bl.exercise_id and b.sn = bl.sn
+            inner join exercise ex on e.exercise_id = ex.exercise_id
+            inner join users u on e.student_id = u.userid
+            where e.test_id = ? and e.exercise_status = 2 order by bl.update_time asc;`,[test_id]
+        ); 
     }
 
 

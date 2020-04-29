@@ -217,7 +217,19 @@ class userService extends Service {
         "user_list" : one_list,
       });
     }
-    // return all_list;
+    //
+    // var test_list = [];
+    // var temp_one = [];
+    // for(var m=2;m<all_list.length;m++){
+    //   for(var n=0;n<all_list[m].user_list.length;n++){
+    //     temp_one.push(all_list[m].user_list[n]);
+    //     test_list.push({
+    //       "user_list" : temp_one,
+    //     });
+    //     temp_one = [];
+    //   }
+    // }
+    // this.ctx.logger.error("test_list长度:",test_list.length);
     //step3: 
     var url2 = 'https://api.weixin.qq.com/cgi-bin/user/info/batchget?access_token='+res.data.access_token;
     var res_wx = null;
@@ -229,11 +241,15 @@ class userService extends Service {
           data: all_list[j],
           dataType:'json',
         });
+        // if(res_wx.data.errcode){
+        //   this.ctx.logger.error("错误openid：",JSON.stringify(test_list[j].user_list[0].openid));
+        // }
+        // this.ctx.logger.error("微信返回：",JSON.stringify(res_wx.data));
         this.ctx.logger.error("微信返回多少个：",JSON.stringify(res_wx.data.user_info_list.length));
         if(res_wx.status == 200){
           for(var m = 0; m < res_wx.data.user_info_list.length; m++){
             var e = res_wx.data.user_info_list[m];
-            if(e.subscribe == 1){
+            if(e.subscribe == 1){//关注了公众号才会返回unionid
               count_update += 1;
               let res_update = await this.app.mysql.update('user_auths', {unionid:e.unionid}, {where: {identifier: e.openid}});
             }

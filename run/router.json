@@ -935,6 +935,19 @@
       "GET"
     ],
     "paramNames": [],
+    "path": "/api/getCheckedExers",
+    "regexp": "/^\\/api\\/getCheckedExers(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/api/getClassGroup",
     "regexp": "/^\\/api\\/getClassGroup(?:\\/(?=$))?$/",
     "stack": [
@@ -1621,6 +1634,18 @@
     "paramNames": [],
     "path": "/api/getStuInfoById",
     "regexp": "/^\\/api\\/getStuInfoById(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/submitCheckAnswer",
+    "regexp": "/^\\/api\\/submitCheckAnswer(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

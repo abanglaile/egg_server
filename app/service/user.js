@@ -193,7 +193,7 @@ class userService extends Service {
     const res = await ctx.curl(url1,{dataType:'json',});
     this.ctx.logger.error("全局 access_token:",JSON.stringify(res.data.access_token));
     //step2: 获取目前所有的unionid为空，且有openid的项
-    var openids = await this.app.mysql.query(`select * from user_auths where identity_type = 'weixin' and unionid IS NULL;`,[]);
+    var openids = await this.app.mysql.query(`select * from user_auths where identity_type = 'weixin' and unionid IS NULL and identifier IS NOT NULL;`,[]);
     var all_list = [];
     var one_list = [];
     var count = 0;

@@ -116,7 +116,8 @@ module.exports = app => {
 
   router.get('/api/getClassHourTable', controller.teacher.getClassHourTable);
   //作业批改接口
-  router.get('/api/getUnreviewedExers', controller.teacher.getUnreviewedExers);
+  router.get('/api/getUncheckedExers', controller.teacher.getUncheckedExers);
+  router.get('/api/getCheckedExers', controller.teacher.getCheckedExers);
 
   router.get('/api/getClassGroup', controller.teacher.getClassGroup);
   router.get('/api/getSchool', controller.teacher.getSchool);

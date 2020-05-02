@@ -62,7 +62,7 @@ class parentBondService extends Service {
             const res1 = await this.app.mysql.insert('user_auths', {
                 userid: userid,
                 unionid: wx_info.unionid,
-                identity_type: 'weixin',
+                identity_type: 'weixin_xcx',
                 identifier: wx_info.openid,
             });
 
@@ -70,7 +70,7 @@ class parentBondService extends Service {
                 userid: userid,
                 nickname: wx_info.nickname,
                 avatar: wx_info.imgurl,
-                role: 3,
+                role: 4,//4、家长，3、管理员
                 // realname: realname,
             });
         }

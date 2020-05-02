@@ -44,7 +44,7 @@ class mediaService extends Service {
         const res = await this.app.mysql.insert('media_res', {
             url : url,
             tag : type,
-        });
+        }); 
         const result = await this.searchMeidaByUrl(url);
         return result;
     }

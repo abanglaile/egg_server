@@ -59,6 +59,48 @@ class TestLogService extends Service {
         return {code: 0};
     }
 
+    async isTestLogFinish(test_id, student_id, exindex){
+        const logs = await this.app.mysql.query(`select e.exercise_id, e.exercise_index, el.exercise_status, el.exercise_state from exercise_test e
+        left join (select distinct exercise_id, exercise_status, exercise_state from exercise_log 
+            where test_id = ? and student_id = ?) el on e.exercise_id = el.exercise_id
+            where e.test_id = ?`, [test_id, student_id, test_id])
+        let correct_exercise = 0, total_exercise = logs.length
+        var next = -1
+        var i = (exindex + 1) % logs.length
+        while(i != exindex){
+            if(logs[i].exercise_status == 2){
+                i = ++i % logs.length
+                if(logs[i].exercise_state == 1){
+                    correct_exercise++
+                }
+            }else if(logs[i].exercise_status == 1 && !(logs[i].exercise_state >= 0)){
+                //主观题
+                i = ++i % logs.length
+                next = -2
+            }else{
+                return i
+            }             
+        }
+        if(next == -2){
+            return -2
+        }
+        var delta_score = total_exercise + correct_exercise * 2; 
+        var sta = ((correct_exercise/total_exercise)*100).toFixed(1);
+        const res = await this.app.mysql.update('test_log', {
+                finish_time: new Date(), 
+                delta_score: delta_score,
+                correct_exercise: correct_exercise,
+                total_exercise: total_exercise,//动态测试需要更改teacher_test题目数目
+                test_state: sta,
+            }, {
+            where: {
+                test_id: test_id,
+                student_id: student_id,
+            }
+        })
+        return -1
+    }
+
     async getTestLog(student_id, test_id){
         const res = await this.app.mysql.query('select t.*, tt.test_type, tt.test_config, tt.test_name '
         +'from test_log t, teacher_test tt where t.student_id = ? and tt.test_id = t.test_id and t.test_id = ?;'

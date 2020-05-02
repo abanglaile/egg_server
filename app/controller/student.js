@@ -109,7 +109,7 @@ class StudentController extends Controller {
         const { ctx, service } = this;
         const {body} = ctx.request;
         if(body.exercise_log){
-            const results = await service.exerciseLog.submitExerciseLog(body.exercise_log, body.exercise_type);
+            const results = await service.exerciseLog.submitExerciseLog(body.exercise_log, body.exercise_type, body.exindex);
             console.log(results);
             this.ctx.body = results;
         }

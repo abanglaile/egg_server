@@ -570,7 +570,6 @@ class TeacherController extends Controller {
         }
     }
 
-<<<<<<< HEAD
     async submitCheckAnswer(){
         const { ctx, service } = this;
         const { body } = ctx.request;
@@ -578,13 +577,13 @@ class TeacherController extends Controller {
             const results = await service.exerciseLog.submitCheckAnswer(exercise_log, breakdown_sn);
             this.ctx.body = results;
         }
-=======
+    }
+    
     async getUnreviewedExers(){
         const { ctx, service } = this;
         const {query} = ctx.request;
         const results = await service.exerciseLog.getUnreviewedExers(query.test_id);
         this.ctx.body = results;
->>>>>>> origin/master
     }
 }
 

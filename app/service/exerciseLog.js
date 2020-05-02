@@ -187,7 +187,6 @@ class ExerciseLogService extends Service {
                 //主观题
                 return -1
         }
-        return  
     }
 
     async updateExerciseLogRating(exercise_log, K){
@@ -198,12 +197,11 @@ class ExerciseLogService extends Service {
         const ex_delta = this.elo_rating(old_exercise_rating, old_student_rating);
         console.log("st_delta ",st_delta);
 
-        K = 128;
         const ex_SA = exercise_state ? 0 : 1;
         const st_SA = exercise_state ? 1 : 0;
 
         exercise_log.delta_exercise_rating = Math.ceil(K*(ex_SA - ex_delta))
-        exercise_log.delta_student_rating = Math.ceil(K*(st_SA - st_delta));
+        exercise_log.delta_student_rating = Math.ceil(K*(st_SA - st_delta))
     }
 
     async submitCheckAnswer(exercise_log, breakdown_sn) {
@@ -246,9 +244,10 @@ class ExerciseLogService extends Service {
         return exercise_log;
     }
 
-    async submitExerciseLog(exercise_log, exercise_type) {
+    async submitExerciseLog(exercise_log, exercise_type, exindex) {
         const exercise_rating = exercise_log.old_exercise_rating;
-        const student_id = exercise_log.student_id;
+        const {student_id, test_id} = exercise_log;
+        const K = 32
         exercise_log.exercise_state = this.checkAnswer(exercise_type, exercise_log.answer) 
         //1：已提交答案未提交反馈 2：已提交反馈 
         exercise_log.exercise_status = 1;
@@ -260,7 +259,7 @@ class ExerciseLogService extends Service {
         //题目对错确定
         //TO-DO：输入测试elo 参数K
         if(exercise_log.exercise_state >= 0){
-            await this.updateExerciseLogRating(exercise_log);
+            await this.updateExerciseLogRating(exercise_log, K);
         }
         
         var breakdown_sn = exercise_log.breakdown_sn;
@@ -284,8 +283,10 @@ class ExerciseLogService extends Service {
         exercise_log.answer = answer
         
         //主观题未批改，直接返回
-        if(exercise_log.exercise_state < 0)
+        if(exercise_log.exercise_state < 0){
+            exercise_log.next = await this.service.testLog.isTestLogFinish(test_id, student_id, exindex)
             return exercise_log
+        }
         
         //更新学生总体天梯分
         const rating_history_result = await this.app.mysql.insert('student_rating_history', {
@@ -301,10 +302,13 @@ class ExerciseLogService extends Service {
         this.app.mysql.insert('exercise_log_trigger', {logid: exercise_log.logid});
 
         //不需要反馈直接提交
-        if(breakdown_sn[0].sn_state >= 0)
-            exercise_log = await this.submitBreakdownLog(exercise_log); 
-       
-        return exercise_log;
+        if(exercise_log.exercise_state > 0 || (exercise_log.exercise_state == 0 && breakdown_sn.length == 1)){
+            exercise_log = await this.submitBreakdownLog(exercise_log);
+            //检查测试是否全部完成
+            //update test_log's correct and total size
+            exercise_log.next = await this.service.testLog.isTestLogFinish(test_id, student_id, exindex)
+        }
+        return exercise_log
     }
 
     async getTestExerciseLog(test_id, student_id){

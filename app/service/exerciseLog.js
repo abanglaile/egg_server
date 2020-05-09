@@ -3,9 +3,15 @@ const { promisify } = require('util');
 
 class ExerciseLogService extends Service {
     //利用elo_rating方法更新rating
-    elo_rating(Ra, Rb){
+    elo_rating(Ra, Rb, K){
         const m = (Rb - Ra)/400;
-        return 1/(1 + Math.pow(10, m));
+        return Math.ceil(K/(1 + Math.pow(10, m)));
+    }
+
+    elo_st_rating(ra, rb, mean, variance, K){
+        const Ra = (ra - mean)*100/variance
+        const Rb = (rb - mean)*100/variance
+        return this.elo_rating(Ra, Rb, K)
     }
 
     async updateKpRating(breakdown_sn){
@@ -15,26 +21,33 @@ class ExerciseLogService extends Service {
             //只记录已评估的知识点
             if(log.sn_state >= 0){
                 //学生知识点与知识点在题目中体现的难度变化
-                const kp_SA = log.sn_state ? 1 : 0;
-                const sn_SA = log.sn_state ? 0 : 1;
+                const kp_SA = log.sn_state ? 1 : -1;
+                const sn_SA = log.sn_state ? -1 : 1;
                 
-                let student_chapter = await this.app.mysql.queryOne(`select k.chapterid, sc.chapter_rating from kptable k left join student_chapter sc
-                    on sc.student_id = ? and k.chapterid = sc.chapterid where k.kpid = ?`, [log.student_id, log.kpid]);
-                const chapter_old_rating = student_chapter ? student_chapter.chapter_rating : 500;
+                // let student_chapter = await this.app.mysql.queryOne(`select k.chapterid, sc.chapter_rating from kptable k left join student_chapter sc
+                //     on sc.student_id = ? and k.chapterid = sc.chapterid where k.kpid = ?`, [log.student_id, log.kpid]);
+                // const chapter_old_rating = student_chapter ? student_chapter.chapter_rating : 500;
                 
-                const chapter_delta = this.elo_rating(chapter_old_rating, log.sn_old_rating);
-                const chapter_delta_rating = K*(kp_SA - chapter_delta);
-                const chapter_result = await this.app.mysql.query(`replace into student_chapter 
-                    (student_id, chapter_rating, chapterid) VALUES(?,?,?);`
-                    ,[log.student_id, (chapter_old_rating + chapter_delta_rating), student_chapter.chapterid]);
+                // const chapter_delta = this.elo_rating(chapter_old_rating, log.sn_old_rating);
+                // const chapter_delta_rating = K*(kp_SA - chapter_delta);
+                // const chapter_result = await this.app.mysql.query(`replace into student_chapter 
+                //     (student_id, chapter_rating, chapterid) VALUES(?,?,?);`
+                //     ,[log.student_id, (chapter_old_rating + chapter_delta_rating), student_chapter.chapterid]);
 
-                const student_kp = await this.app.mysql.queryOne(`select sk.kp_rating from student_kp sk
-                    where student_id = ? and kpid = ?`, [log.student_id, log.kpid])
-                log.kp_old_rating = student_kp ? student_kp.kp_rating : 500;
-                const kp_delta = this.elo_rating(log.kp_old_rating, log.sn_old_rating);
-                const sn_delta = this.elo_rating(log.sn_old_rating, log.kp_old_rating);
-                log.kp_delta_rating = K*(kp_SA - kp_delta);
-                log.sn_delta_rating = K*(sn_SA - sn_delta);
+                const student_kp = await this.app.mysql.queryOne(`select sk.kp_rating, ks.* from student_kp sk
+                    left join kp_standard ks on sk.kpid = ? and sk.kpid = ks.kpid 
+                    where sk.student_id = ?`, [log.kpid, log.student_id])
+                
+                let mean = 500, variance = 32
+                if(student_kp){
+                    mean = student_kp.mean ? student_kp.mean : 500
+                }
+
+                log.kp_old_rating = student_kp ? student_kp.kp_rating : mean;
+                const kp_delta = this.elo_st_rating(log.kp_old_rating, log.sn_old_rating, mean, variance, 50);
+                const sn_delta = this.elo_rating(log.sn_old_rating, log.kp_old_rating, K);
+                log.kp_delta_rating = kp_SA * kp_delta;
+                log.sn_delta_rating = sn_SA * sn_delta;
             }else{
                 log.kp_delta_rating = 0;
                 log.sn_delta_rating = 0;
@@ -193,15 +206,15 @@ class ExerciseLogService extends Service {
         const { old_student_rating, old_exercise_rating, exercise_state } = exercise_log
 
         //计算学生、章节、题目得分
-        const st_delta = this.elo_rating(old_student_rating, old_exercise_rating);
-        const ex_delta = this.elo_rating(old_exercise_rating, old_student_rating);
+        const st_delta = this.elo_rating(old_student_rating, old_exercise_rating, K);
+        const ex_delta = this.elo_rating(old_exercise_rating, old_student_rating, K);
         console.log("st_delta ",st_delta);
 
-        const ex_SA = exercise_state ? 0 : 1;
-        const st_SA = exercise_state ? 1 : 0;
+        const ex_SA = exercise_state ? -1 : 1;
+        const st_SA = exercise_state ? 1 : -1;
 
-        exercise_log.delta_exercise_rating = Math.ceil(K*(ex_SA - ex_delta))
-        exercise_log.delta_student_rating = Math.ceil(K*(st_SA - st_delta))
+        exercise_log.delta_exercise_rating = ex_SA * ex_delta
+        exercise_log.delta_student_rating = st_SA * st_delta
     }
 
     async submitCheckAnswer(exercise_log, breakdown_sn) {
@@ -210,7 +223,8 @@ class ExerciseLogService extends Service {
         let student_rating = await this.service.rating.getStudentRating(student_id, test.course_id);
         exercise_log.old_student_rating = student_rating ? student_rating : 500;
 
-        this.updateExerciseLogRating(exercise_log);
+        const K = 32
+        this.updateExerciseLogRating(exercise_log, K);
         //主观题批改答案提交，更新相关天梯分
         await this.app.mysql.update('exercise_log', {
             exercise_state: exercise_log.exercise_state,

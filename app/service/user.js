@@ -273,7 +273,12 @@ class userService extends Service {
         return { unionid : res.data.unionid ,openid : res.data.openid};
       }
     }else{
-      return {openid : res.data.openid};
+      const user = await this.app.mysql.get('user_auths', { identifier: res.data.openid });
+      if(user){
+        return { userid : user.userid, openid : res.data.openid };
+      }else{
+        return {openid : res.data.openid};
+      }
     }
 
     //在数据库保存返回的session_key，用于后续用户数据的解密鉴权
@@ -287,6 +292,74 @@ class userService extends Service {
     //   });
     // }
     // return res;
+  }
+
+  async getStuXcxAuth(code,wx_info){
+    const ctx = this.ctx;
+    var url='https://api.weixin.qq.com/sns/jscode2session?appid=' + XCX_APPID + '&secret=' + XCX_APPSECRET + '&grant_type=authorization_code&js_code=' + code;
+    const res = await ctx.curl(url,{dataType:'json',});
+    if(res.data.unionid){
+      const res_user = await this.app.mysql.get('user_auths', { unionid: res.data.unionid });
+      //存在userid，则进行users的头像和昵称更新
+      if(res_user){
+        const row = {
+          nickname: wx_info.nickname,
+          avatar : wx_info.imgurl,
+        };
+        const result = await this.app.mysql.update('users', row, {
+          where: {
+            userid: res_user.userid,
+          }
+        }); 
+        return { userid : res_user.userid, unionid : res.data.unionid, openid : res.data.openid};
+      }else{//不存在则新建userid
+        let userid = uuid.v1().replace(/-/g, '');
+        await this.app.mysql.insert('user_auths', {
+            userid: userid,
+            unionid: res.data.unionid,
+            identity_type: 'weixin_xcx',
+            identifier: res.data.openid,
+        });
+        await this.app.mysql.insert('users', {
+            userid: userid,
+            nickname: wx_info.nickname,
+            avatar: wx_info.imgurl,
+            role: 2,//4、家长，3、管理员,2、学生
+            // realname: realname,
+        });
+        return { userid : userid, unionid : res.data.unionid ,openid : res.data.openid};
+      }
+    }else{//不存在unionid,但是有openid
+      const user = await this.app.mysql.get('user_auths', { identifier: res.data.openid });
+      if(user){
+        const row = {
+          nickname: wx_info.nickname,
+          avatar : wx_info.imgurl,
+        };
+        await this.app.mysql.update('users', row, {
+          where: {
+            userid: user.userid,
+          }
+        }); 
+        return { userid : user.userid, openid : res.data.openid };
+      }else{
+        let userid = uuid.v1().replace(/-/g, '');
+        await this.app.mysql.insert('user_auths', {
+            userid: userid,
+            // unionid: null,
+            identity_type: 'weixin_xcx',
+            identifier: res.data.openid,
+        });
+        await this.app.mysql.insert('users', {
+            userid: userid,
+            nickname: wx_info.nickname,
+            avatar: wx_info.imgurl,
+            role: 2,//4、家长，3、管理员,2、学生
+            // realname: realname,
+        });
+        return { userid : userid, openid : res.data.openid};
+      }
+    }
   }
 
   async getXcxUnionid(encryptedData,iv,openid){

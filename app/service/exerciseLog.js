@@ -56,6 +56,12 @@ class ExerciseLogService extends Service {
         return breakdown_sn;
     }
 
+    async submitFeedback(exercise_log, exindex){
+        exercise_log = await this.submitBreakdownLog(exercise_log)
+        exercise_log.next = await this.service.testLog.isTestLogFinish(exercise_log.test_id, exercise_log.student_id, exindex)
+        return exercise_log        
+    }
+
     async submitBreakdownLog(exercise_log){
         let breakdown_sn = exercise_log.breakdown_sn;
         breakdown_sn = await this.updateKpRating(breakdown_sn);
@@ -219,6 +225,7 @@ class ExerciseLogService extends Service {
 
     async submitCheckAnswer(exercise_log, breakdown_sn) {
         const student_id = exercise_log.student_id;
+        
         const test = await this.app.mysql.get('teacher_test',{ test_id : exercise_log.test_id });
         let student_rating = await this.service.rating.getStudentRating(student_id, test.course_id);
         exercise_log.old_student_rating = student_rating ? student_rating : 500;

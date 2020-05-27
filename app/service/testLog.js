@@ -36,6 +36,7 @@ class TestLogService extends Service {
         return res;
     }
 
+    //舍弃
     async submitTestLog(exercise_log){
         var delta_score = 0; 
         var correct = 0;
@@ -63,8 +64,8 @@ class TestLogService extends Service {
         const logs = await this.app.mysql.query(`select e.exercise_id, e.exercise_index, el.exercise_status, el.exercise_state from exercise_test e
         left join (select distinct exercise_id, exercise_status, exercise_state from exercise_log 
             where test_id = ? and student_id = ?) el on e.exercise_id = el.exercise_id
-            where e.test_id = ?`, [test_id, student_id, test_id])
-        let correct_exercise = 0, total_exercise = logs.length
+            where e.test_id = ? order by e.exercise_index`, [test_id, student_id, test_id])
+        let correct_exercise = logs[exindex].exercise_state == 1 ? 1 : 0, total_exercise = logs.length
         var next = -1
         var i = (exindex + 1) % logs.length
         while(i != exindex){

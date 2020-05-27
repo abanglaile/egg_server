@@ -85,15 +85,6 @@ class StudentController extends Controller {
         
     }
 
-    async submitTestLog(){
-        const { ctx, service } = this;
-        const {body} = ctx.request;
-        if(body.exercise_log){
-            const results = await service.testLog.submitTestLog(body.exercise_log);
-            this.ctx.body = results;
-        }
-    }
-
     async generateTestByKp(){
         const { ctx, service } = this;
         const {body} = ctx.request;
@@ -115,11 +106,11 @@ class StudentController extends Controller {
         }
     }
 
-    async submitBreakdownLog(){
+    async submitFeedback(){
         const { ctx, service } = this;
         const {body} = ctx.request;
         if(body.exercise_log){
-            const results = await service.exerciseLog.submitBreakdownLog(body.exercise_log);
+            const results = await service.exerciseLog.submitFeedback(body.exercise_log, body.exindex);
             console.log(results);
             this.ctx.body = results;
         }

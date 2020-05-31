@@ -19,6 +19,12 @@ class userService extends Service {
     return res;
   }
 
+  async getMyRealname(userid){
+    const res = await this.app.mysql.get('users',{userid : userid});
+    let name = res? res.realname : null;
+    return name;
+  }
+
   async getStudentInfo(student_id){
     var sql = `select u.userid,u.realname,u.avatar,u.score,t.stu_group_id,t.group_name from users u left join 
     (select g.student_id,g.stu_group_id,sg.group_name from group_student g,
@@ -317,7 +323,7 @@ class userService extends Service {
         await this.app.mysql.insert('user_auths', {
             userid: userid,
             unionid: res.data.unionid,
-            identity_type: 'weixin_xcx',
+            identity_type: 'weixin_xcx_stu',
             identifier: res.data.openid,
         });
         await this.app.mysql.insert('users', {

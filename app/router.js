@@ -85,6 +85,14 @@ module.exports = app => {
   router.get('/api/getUserInfo',controller.teacher.getUserInfo);
   router.post('/api/updateStuName',controller.student.updateStuName);
   router.post('/api/addStuGroupId',controller.student.addStuGroupId);
+
+  /*微信小程序学生端个人中心开始*/
+  router.get('/api/getMyStuGroupData',controller.student.getMyStuGroupData);
+  router.get('/api/getMyRealname',controller.student.getMyRealname);
+  router.get('/api/getCodeByGroupid', controller.school.getCodeByGroupid);
+  router.get('/api/getGroupByCode', controller.school.getGroupByCode);
+  router.post('/api/groupBind', controller.student.groupBind);
+  /*微信小程序学生端个人中心结束*/
   
 
   //个人信息统计

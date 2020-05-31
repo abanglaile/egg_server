@@ -1,4 +1,7 @@
 const Service = require('egg').Service;
+const Hashids = require('hashids/cjs');
+
+let hashids = new Hashids('zhiqiu-egg-server')
 
 class GroupService extends Service {
     async getStudentGroup(student_id){
@@ -156,6 +159,34 @@ class GroupService extends Service {
         
         return flag;
     }
+
+    async groupBind(userid, group_id){
+        // 学生绑定班级分组
+        const check = await this.app.mysql.get('group_student', {
+            stu_group_id: group_id,
+            student_id: userid
+        });
+        let output = {
+            userid,
+            msg: ''
+        };
+        if (check) {
+            output.msg = '已绑定该班级';
+        } else {
+            const result = await this.app.mysql.insert('group_student', {
+                stu_group_id: group_id,
+                student_id: userid
+            });
+            output.msg = result.affectedRows === 1 ? '绑定成功' : '绑定失败';
+        }
+        return output;
+    }
+
+    async getMyStuGroupData(userid){
+        return await this.app.mysql.query(`select gs.stu_group_id,sg.group_name from 
+        group_student gs,school_group sg where gs.stu_group_id = sg.stu_group_id and 
+        gs.student_id = ?;`, [userid]);
+    } 
 
     async getGroupTable(school_id){
         const results = await this.app.mysql.query(`select sg.*,cl.course_label_name,
@@ -315,6 +346,19 @@ class GroupService extends Service {
             from group_student gs inner join school_group sg
             on sg.stu_group_id = gs.stu_group_id
             on gs.student_id = ?;`, [student_id]);
+    }
+
+    async getGroupByCode(code){
+        // 根据绑定获取班级分组信息
+        let id = hashids.decodeHex(code);
+        const group = await this.app.mysql.get('school_group', { stu_group_id: id });
+        return group;
+    }
+
+    async getCodeByGroupid(id) {
+        // 根据班级分组id 生成绑定码
+        const sn = hashids.encodeHex(id);
+        return sn;
     }
 
 

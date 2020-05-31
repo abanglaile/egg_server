@@ -317,6 +317,19 @@
       "GET"
     ],
     "paramNames": [],
+    "path": "/api/get_stu_xcx_auth",
+    "regexp": "/^\\/api\\/get_stu_xcx_auth(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/api/get_xcx_unionid",
     "regexp": "/^\\/api\\/get_xcx_unionid(?:\\/(?=$))?$/",
     "stack": [
@@ -491,20 +504,8 @@
       "POST"
     ],
     "paramNames": [],
-    "path": "/api/submitBreakdownLog",
-    "regexp": "/^\\/api\\/submitBreakdownLog(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
-      "POST"
-    ],
-    "paramNames": [],
-    "path": "/api/submitTestLog",
-    "regexp": "/^\\/api\\/submitTestLog(?:\\/(?=$))?$/",
+    "path": "/api/submitFeedback",
+    "regexp": "/^\\/api\\/submitFeedback(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -632,6 +633,70 @@
     "paramNames": [],
     "path": "/api/addStuGroupId",
     "regexp": "/^\\/api\\/addStuGroupId(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getMyStuGroupData",
+    "regexp": "/^\\/api\\/getMyStuGroupData(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getMyRealname",
+    "regexp": "/^\\/api\\/getMyRealname(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getCodeByGroupid",
+    "regexp": "/^\\/api\\/getCodeByGroupid(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getGroupByCode",
+    "regexp": "/^\\/api\\/getGroupByCode(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/groupBind",
+    "regexp": "/^\\/api\\/groupBind(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

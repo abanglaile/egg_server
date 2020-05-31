@@ -58,6 +58,21 @@ class SchoolController extends Controller {
         const results = await service.lesson.getConsumeLesson(body.stu_group_id,body.label,body.filter_option);
         ctx.body = results;
     }
+
+    async getGroupByCode(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.group.getGroupByCode(query.code);
+        ctx.body = results;
+    }
+    
+    async getCodeByGroupid(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.group.getCodeByGroupid(query.stu_group_id);
+        ctx.body = results;
+    }
+
 }
 
 module.exports = SchoolController;

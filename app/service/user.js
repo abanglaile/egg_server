@@ -8,6 +8,8 @@ var WXBizDataCrypt = require('./WXBizDataCrypt')
 const AppID = "wx1dc40895f45755ba";
 const XCX_APPID = 'wxdaa11d7859e34a5e';
 const XCX_APPSECRET = '931ad7ea1c0d91082111e36aae4aac7e';
+const STU_XCX_APPID = 'wx399694102b0ebc51';
+const STU_XCX_APPSECRET = '9b372c2429d5d0e36abe44f4af6e443f';
 // var AppSecret = '881a3265d13a362a6f159fb782f951f9';
 const AppSecret = 'c90dcd79135556af5d1ed69c8433b009';
 
@@ -302,7 +304,7 @@ class userService extends Service {
 
   async getStuXcxAuth(code,wx_info){
     const ctx = this.ctx;
-    var url='https://api.weixin.qq.com/sns/jscode2session?appid=' + XCX_APPID + '&secret=' + XCX_APPSECRET + '&grant_type=authorization_code&js_code=' + code;
+    var url='https://api.weixin.qq.com/sns/jscode2session?appid=' + STU_XCX_APPID + '&secret=' + STU_XCX_APPSECRET + '&grant_type=authorization_code&js_code=' + code;
     const res = await ctx.curl(url,{dataType:'json',});
     if(res.data.unionid){
       const res_user = await this.app.mysql.get('user_auths', { unionid: res.data.unionid });

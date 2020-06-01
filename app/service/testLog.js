@@ -15,7 +15,7 @@ class TestLogService extends Service {
         s.correct_exercise, s.total_exercise ,date_format(t.enable_time, '%m/%d') as formatdate
         from teacher_test t, test_log s,users u where s.student_id = ? and 
         u.userid = t.teacher_id and t.test_id = s.test_id and s.finish_time
-        is null and t.test_type = 1 and t.enable_time IS NOT NULL ORDER BY t.enable_time DESC;`
+        is null and (t.test_type = 1 or t.test_type = 3) and t.enable_time IS NOT NULL ORDER BY t.enable_time DESC;`
         , [student_id]);
         return res;
     }

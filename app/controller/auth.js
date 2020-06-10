@@ -68,8 +68,8 @@ class AuthController extends Controller {
 
   async getStuXcxAuth(){
     const { ctx, service } = this;
-    const {query} = ctx.request;
-    const results = await service.user.getStuXcxAuth(query.code,query.wx_info);
+    const {body} = ctx.request;
+    const results = await service.user.getStuXcxAuth(body.code,body.wx_info);
     this.ctx.body = results;
   }
 

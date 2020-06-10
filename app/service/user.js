@@ -303,9 +303,11 @@ class userService extends Service {
   }
 
   async getStuXcxAuth(code,wx_info){
+    // this.ctx.logger.error("wx_info:",JSON.stringify(wx_info));
     const ctx = this.ctx;
     var url='https://api.weixin.qq.com/sns/jscode2session?appid=' + STU_XCX_APPID + '&secret=' + STU_XCX_APPSECRET + '&grant_type=authorization_code&js_code=' + code;
     const res = await ctx.curl(url,{dataType:'json',});
+    // this.ctx.logger.error("res:",JSON.stringify(res));
     if(res.data.unionid){
       const res_user = await this.app.mysql.get('user_auths', { unionid: res.data.unionid });
       //存在userid，则进行users的头像和昵称更新

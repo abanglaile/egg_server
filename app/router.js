@@ -196,7 +196,7 @@ module.exports = app => {
   router.post('/api/submitCheckAnswer', controller.teacher.submitCheckAnswer);
 
   //个人考试评价
-  router.get('/api/getStuEvalBytest',controller.student.getStuEvalBytest);
+  router.get('/api/getTestResult',controller.student.getTestResult);
   //教师、班级配置管理、合同管理
   router.get('/api/getTeacherList',controller.school.getTeacherList);
 

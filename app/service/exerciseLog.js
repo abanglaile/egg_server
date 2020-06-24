@@ -1,6 +1,8 @@
 const Service = require('egg').Service;
 const { promisify } = require('util');
 
+const { cumulativeStdNormalProbability } = require('simple-statistics')
+
 class ExerciseLogService extends Service {
     //利用elo_rating方法更新rating
     elo_rating(Ra, Rb, K){
@@ -100,6 +102,106 @@ class ExerciseLogService extends Service {
         }  
         result = Math.round(num * 100) / 100;  
         return result;
+    }
+
+    getMastery(rating, mean, variance) {
+        return cumulativeStdNormalProbability((rating - mean)/variance)
+    }
+
+    async getTestKpResult(student_id, test_id){
+        const breakdown_log = await this.app.mysql.query(`select c.chaptername, c.chapterid, 
+            bl.sn_state, bl.kpid, bl.kpname, ks.mean, ks.variance,
+            bl.kp_old_rating, bl.kp_delta_rating  
+            from breakdown_log bl inner join kptable k on k.kpid = bl.kpid 
+            inner join chapter c on k.chapterid = c.chapterid
+            left join kp_standard ks on ks.kpid = bl.kpid
+            where bl.student_id = ? and bl.test_id = ? order by update_time asc`, [student_id, test_id])
+        
+        let kp_result = []
+        for(let i = 0; i < breakdown_log.length; i++){
+            let log = breakdown_log[i]
+            const kpid = 'k' + log.kpid
+            const chapter_name = log.chaptername
+
+            const plus = log.sn_state == 1 ? 1 : sn_state == 0 ? -1 : 0
+            if(kp_result[chapter_name] && kp_result[chapter_name][kpid]){
+                kp_result[chapter_name][kpid].kp_new_rating += log.kp_delta_rating
+            }else{
+                if(!kp_result[chapter_name]){
+                    kp_result[chapter_name] = {}
+                }
+                kp_result[chapter_name][kpid] = {
+                    kpid: log.kpid,
+                    kpname: log.kpname,
+                    mean: log.mean ? log.mean : 500,
+                    variance: log.variance ? log.variance : 130,
+                    kp_old_rating: log.kp_old_rating,
+                    kp_new_rating: log.kp_old_rating + plus * log.kp_delta_rating,
+                }
+            }
+        }
+        let chapter_change = []
+        for(let chapter_name in kp_result){
+            let ch_r = {kp_change: [], chapter_name: chapter_name}
+            let kp_r = kp_result[chapter_name] 
+            for(let kpid in kp_r){
+                console.log(kp_r[kpid])
+                kp_r[kpid].kp_old_rating = Math.round(100 * this.getMastery(kp_r[kpid].kp_old_rating, kp_r[kpid].mean, kp_r[kpid].variance))
+                kp_r[kpid].kp_new_rating = Math.round(100 * this.getMastery(kp_r[kpid].kp_new_rating, kp_r[kpid].mean, kp_r[kpid].variance))
+                ch_r.kp_change.push(kp_r[kpid])
+            }
+            chapter_change.push(ch_r)
+        }
+        console.log(chapter_change)
+        return chapter_change
+    }
+
+    async getTestExerciseResult(student_id, test_id){
+        let exercise_log = await this.app.mysql.query(`select el.submit_time, el.exercise_state, el.old_student_rating, el.delta_student_rating, et.exercise_index
+            from exercise_log el inner join exercise_test et on el.test_id = et.test_id and el.exercise_id = et.exercise_id
+            where el.student_id = ? and el.test_id = ? and el.delta_student_rating > 0 order by el.submit_time asc`, [student_id, test_id])
+        const old_student_rating = exercise_log[0].old_student_rating
+        let new_student_rating = old_student_rating
+        let res = []
+        for(let i = 0; i < exercise_log.length; i++){
+            new_student_rating += exercise_log[i].delta_student_rating
+            const index = exercise_log[i].exercise_index
+            res[index] = {
+                exercise_state: exercise_log[i].exercise_state
+            }
+        }
+        return {
+            exercise_log: res,
+            new_student_rating: new_student_rating,
+            delta_student_rating: new_student_rating - old_student_rating
+        }
+    }
+
+    formatTime(seconds) {
+        var min = Math.floor(seconds / 60),
+            second = seconds % 60,
+            hour, newMin, time;
+    
+        if (min > 60) {
+            hour = Math.floor(min / 60);
+            newMin = min % 60;
+        }
+        if (hour < 10 && hour) { hour = '0' + hour;}
+        if (newMin < 10) { newMin = '0' + newMin;}
+        if (second < 10) { second = '0' + second;}
+        if (min < 10) { min = '0' + min;}
+    
+        return time = hour? (hour + ':' + newMin + ':' + second) : (min + ':' + second);
+    }
+
+    async getTestResult(student_id, test_id){
+        let test = await this.service.testLog.getTestLog(student_id, test_id)
+        let result = await this.getTestExerciseResult(student_id, test_id)
+        result.kp_log = await this.getTestKpResult(student_id, test_id)
+        result.test_time = this.formatTime((test.finish_time.getTime() - test.start_time.getTime())/1000)
+        result.delta_score = test.delta_score
+        result.test_accuracy = parseInt(test.correct_exercise / test.total_exercise)
+        return result
     }
     
     //查询做题步骤分析
@@ -484,6 +586,7 @@ class ExerciseLogService extends Service {
                 //公开测试
                 test_log = {test_id: test_id, student_id: student_id, start_time: new Date(), total_exercise: test.total_exercise};
                 const res = await this.app.mysql.insert('test_log', test_log);
+                test_log = await this.service.testLog.getTestLog(student_id, test_id);
             }else{
                 return;
             }

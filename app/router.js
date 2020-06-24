@@ -49,7 +49,7 @@ module.exports = app => {
   // router.get('/api/get_wx_auth',controller.auth.getWxAuth);
   router.get('/api/get_wx_auth',controller.auth.getWxAuth);
   router.get('/api/get_xcx_auth',controller.auth.getXcxAuth);
-  router.get('/api/get_stu_xcx_auth',controller.auth.getStuXcxAuth);
+  router.post('/api/get_stu_xcx_auth',controller.auth.getStuXcxAuth);
   router.get('/api/get_xcx_unionid',controller.auth.getXcxUnionid);
   router.get('/api/batchGetwxInfo',controller.auth.batchGetwxInfo);
   //邀请码绑定,用户信息注册
@@ -85,6 +85,14 @@ module.exports = app => {
   router.get('/api/getUserInfo',controller.teacher.getUserInfo);
   router.post('/api/updateStuName',controller.student.updateStuName);
   router.post('/api/addStuGroupId',controller.student.addStuGroupId);
+
+  /*微信小程序学生端个人中心开始*/
+  router.get('/api/getMyStuGroupData',controller.student.getMyStuGroupData);
+  router.get('/api/getMyRealname',controller.student.getMyRealname);
+  router.get('/api/getCodeByGroupid', controller.school.getCodeByGroupid);
+  router.get('/api/getGroupByCode', controller.school.getGroupByCode);
+  router.post('/api/groupBind', controller.student.groupBind);
+  /*微信小程序学生端个人中心结束*/
   
 
   //个人信息统计
@@ -199,10 +207,10 @@ module.exports = app => {
   router.get('/api/getTestResult',controller.student.getTestResult);
   //教师、班级配置管理、合同管理
   router.get('/api/getTeacherList',controller.school.getTeacherList);
+  router.get('/api/getStuEvalBytest',controller.student.getStuEvalBytest);
 
-  //game
-  router.get('/api/getStuTasklog', controller.game.getStuTasklog);
-  router.post('/api/deleteTaskLog',controller.game.deleteTaskLog);
+  /****学校管理端：班级配置管理、合同管理**********/
+  router.get('/api/getTeacherList',controller.school.getTeacherList);
   router.get('/api/getGroupTable',controller.school.getGroupTable);
   router.get('/api/getGroupOptionData',controller.school.getGroupOptionData);
   router.post('/api/updateGroupTeacher',controller.school.updateGroupTeacher);
@@ -210,6 +218,15 @@ module.exports = app => {
   router.get('/api/getContractTable',controller.school.getContractTable);
   router.post('/api/updateGroupHour',controller.school.updateGroupHour);
   router.post('/api/getConsumeLesson',controller.school.getConsumeLesson);
+  router.get('/api/searchStuName',controller.school.searchStuName);
+  router.post('/api/addNewContract',controller.school.addNewContract);
+  router.get('/api/getHistoryContract',controller.school.getHistoryContract);
+  /********************************************/
+
+  //game
+  router.get('/api/getStuTasklog', controller.game.getStuTasklog);
+  router.post('/api/deleteTaskLog',controller.game.deleteTaskLog);
+  
 
   // 增益
   router.get('/api/getBuffByID', controller.buff.getBuffByID);

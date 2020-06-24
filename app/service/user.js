@@ -8,6 +8,8 @@ var WXBizDataCrypt = require('./WXBizDataCrypt')
 const AppID = "wx1dc40895f45755ba";
 const XCX_APPID = 'wxdaa11d7859e34a5e';
 const XCX_APPSECRET = '931ad7ea1c0d91082111e36aae4aac7e';
+const STU_XCX_APPID = 'wx399694102b0ebc51';
+const STU_XCX_APPSECRET = '9b372c2429d5d0e36abe44f4af6e443f';
 // var AppSecret = '881a3265d13a362a6f159fb782f951f9';
 const AppSecret = 'c90dcd79135556af5d1ed69c8433b009';
 
@@ -17,6 +19,12 @@ class userService extends Service {
     const res = await this.app.mysql.get('users',{userid : userid});
     console.log("res:",res);
     return res;
+  }
+
+  async getMyRealname(userid){
+    const res = await this.app.mysql.get('users',{userid : userid});
+    let name = res? res.realname : null;
+    return name;
   }
 
   async getStudentInfo(student_id){
@@ -295,9 +303,11 @@ class userService extends Service {
   }
 
   async getStuXcxAuth(code,wx_info){
+    // this.ctx.logger.error("wx_info:",JSON.stringify(wx_info));
     const ctx = this.ctx;
-    var url='https://api.weixin.qq.com/sns/jscode2session?appid=' + XCX_APPID + '&secret=' + XCX_APPSECRET + '&grant_type=authorization_code&js_code=' + code;
+    var url='https://api.weixin.qq.com/sns/jscode2session?appid=' + STU_XCX_APPID + '&secret=' + STU_XCX_APPSECRET + '&grant_type=authorization_code&js_code=' + code;
     const res = await ctx.curl(url,{dataType:'json',});
+    // this.ctx.logger.error("res:",JSON.stringify(res));
     if(res.data.unionid){
       const res_user = await this.app.mysql.get('user_auths', { unionid: res.data.unionid });
       //存在userid，则进行users的头像和昵称更新
@@ -317,7 +327,7 @@ class userService extends Service {
         await this.app.mysql.insert('user_auths', {
             userid: userid,
             unionid: res.data.unionid,
-            identity_type: 'weixin_xcx',
+            identity_type: 'weixin_xcx_stu',
             identifier: res.data.openid,
         });
         await this.app.mysql.insert('users', {
@@ -562,6 +572,13 @@ class userService extends Service {
         realname : realname,          
     });
 
+  }
+
+  async searchStuName(input){
+    const sql = "select u.userid as student_id,u.realname from users u where u.realname like ?;";
+    let params = [];
+    params.push('%'+input+'%');
+    return await this.app.mysql.query(sql, params);
   }
 }
 

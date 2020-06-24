@@ -214,6 +214,15 @@ class StudentController extends Controller {
             this.ctx.body = results;
         }
     }
+
+    async groupBind(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        if(body.userid){
+            const results = await service.group.groupBind(body.userid, body.group_id);
+            this.ctx.body = results;
+        }
+    }
     //根据学生id 获取学生综合能力（总正确率、近20/50题情况）  
     //在 kl_api
     async getStuAbility(){
@@ -312,6 +321,25 @@ class StudentController extends Controller {
         const { query } = ctx.request;
         if(query.student_id && query.test_id){
             const result = await service.exerciseLog.getTestResult(query.student_id, query.test_id)
+            this.ctx.body = result;
+        }
+    }
+
+    //获取学生已绑定分组
+    async getMyStuGroupData(){
+        const { ctx,service } = this;
+        const { query } = ctx.request;
+        if(query.userid){
+            const result = await service.group.getMyStuGroupData(query.userid);
+            this.ctx.body = result;
+        }
+    }
+
+    async getMyRealname(){
+        const { ctx,service } = this;
+        const { query } = ctx.request;
+        if(query.userid){
+            const result = await service.user.getMyRealname(query.userid);
             this.ctx.body = result;
         }
     }

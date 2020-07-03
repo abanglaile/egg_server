@@ -573,6 +573,13 @@ class userService extends Service {
     });
 
   }
+
+  async searchStuName(input){
+    const sql = "select u.userid as student_id,u.realname from users u where u.realname like ?;";
+    let params = [];
+    params.push('%'+input+'%');
+    return await this.app.mysql.query(sql, params);
+  }
 }
 
 module.exports = userService;

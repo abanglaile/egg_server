@@ -316,12 +316,11 @@ class StudentController extends Controller {
     }
 
     //根据测试数据，生成学生的单份测试反馈情况
-    async getStuEvalBytest(){
+    async getTestResult(){
         const { ctx,service } = this;
         const { query } = ctx.request;
-        if(query.student_id){
-            
-            const result = await service.rating
+        if(query.student_id && query.test_id){
+            const result = await service.exerciseLog.getTestResult(query.student_id, query.test_id)
             this.ctx.body = result;
         }
     }

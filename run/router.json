@@ -1747,31 +1747,6 @@
       "GET"
     ],
     "paramNames": [],
-    "path": "/api/getStuTasklog",
-    "regexp": "/^\\/api\\/getStuTasklog(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
-      "POST"
-    ],
-    "paramNames": [],
-    "path": "/api/deleteTaskLog",
-    "regexp": "/^\\/api\\/deleteTaskLog(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
-      "HEAD",
-      "GET"
-    ],
-    "paramNames": [],
     "path": "/api/getGroupTable",
     "regexp": "/^\\/api\\/getGroupTable(?:\\/(?=$))?$/",
     "stack": [
@@ -1848,6 +1823,69 @@
     "paramNames": [],
     "path": "/api/getConsumeLesson",
     "regexp": "/^\\/api\\/getConsumeLesson(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/searchStuName",
+    "regexp": "/^\\/api\\/searchStuName(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/addNewContract",
+    "regexp": "/^\\/api\\/addNewContract(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getHistoryContract",
+    "regexp": "/^\\/api\\/getHistoryContract(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getStuTasklog",
+    "regexp": "/^\\/api\\/getStuTasklog(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/deleteTaskLog",
+    "regexp": "/^\\/api\\/deleteTaskLog(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

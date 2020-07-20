@@ -93,13 +93,20 @@ class TestService extends Service {
         return del2;
     }
 
-    async distributeTest(test_id,keys){
-        const upres = await this.app.mysql.query(`update teacher_test t set t.enable_time = 
-        (SELECT now()) where test_id = ?;`, [test_id]);
-        const test = await this.app.mysql.get('teacher_test',{ test_id : test_id });
-        console.log("keys:",keys);
-        const addres = await this.addSomeTestLog(test_id, keys, test.total_exercise);        
-        return test.enable_time;
+    async distributeTest(test_id,keys,test_type){
+        if(test_type == 1){//班组测试
+            const upres = await this.app.mysql.query(`update teacher_test t set t.enable_time = 
+            (SELECT now()) where test_id = ?;`, [test_id]);
+            const test = await this.app.mysql.get('teacher_test',{ test_id : test_id });
+            console.log("keys:",keys);
+            const addres = await this.addSomeTestLog(test_id, keys, test.total_exercise);        
+            return test.enable_time;
+        }else{//公开测试
+            const upres = await this.app.mysql.query(`update teacher_test t set t.enable_time = 
+            (SELECT now()) ,t.test_type = 3 where test_id = ?;`, [test_id]);
+            const test = await this.app.mysql.get('teacher_test',{ test_id : test_id });
+            return test.enable_time;
+        }
     }
 
     async copyTest(teacher_id, test_id, copy_name){

@@ -71,7 +71,7 @@ class TeacherController extends Controller {
         const { ctx, service } = this;
         const {body} = ctx.request;
         if(body.test_id){
-            const results = await service.test.distributeTest(body.test_id,body.keys);
+            const results = await service.test.distributeTest(body.test_id,body.keys,body.test_type);
             this.ctx.body = results;
         }
     }

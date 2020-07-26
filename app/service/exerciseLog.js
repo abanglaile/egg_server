@@ -123,7 +123,7 @@ class ExerciseLogService extends Service {
             const kpid = 'k' + log.kpid
             const chapter_name = log.chaptername
 
-            const plus = log.sn_state == 1 ? 1 : sn_state == 0 ? -1 : 0
+            const plus = log.sn_state == 1 ? 1 : log.sn_state == 0 ? -1 : 0
             if(kp_result[chapter_name] && kp_result[chapter_name][kpid]){
                 kp_result[chapter_name][kpid].kp_new_rating += log.kp_delta_rating
             }else{
@@ -159,7 +159,7 @@ class ExerciseLogService extends Service {
     async getTestExerciseResult(student_id, test_id){
         let exercise_log = await this.app.mysql.query(`select el.submit_time, el.exercise_state, el.old_student_rating, el.delta_student_rating, et.exercise_index
             from exercise_log el inner join exercise_test et on el.test_id = et.test_id and el.exercise_id = et.exercise_id
-            where el.student_id = ? and el.test_id = ? and el.delta_student_rating > 0 order by el.submit_time asc`, [student_id, test_id])
+            where el.student_id = ? and el.test_id = ? order by el.submit_time asc`, [student_id, test_id])
         const old_student_rating = exercise_log[0].old_student_rating
         let new_student_rating = old_student_rating
         let res = []

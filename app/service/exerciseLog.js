@@ -13,7 +13,7 @@ class ExerciseLogService extends Service {
     elo_st_rating(ra, rb, mean, variance, K){
         const Ra = (ra - mean)*100/variance
         const Rb = (rb - mean)*100/variance
-        return this.elo_rating(Ra, Rb, K)
+        return this.elo_rating(Ra, Rb, K) * variance + mean
     }
 
     async updateKpRating(breakdown_sn){
@@ -402,6 +402,15 @@ class ExerciseLogService extends Service {
         //主观题未批改，直接返回
         if(exercise_log.exercise_state < 0){
             exercise_log.next = await this.service.testLog.isTestLogFinish(test_id, student_id, exindex)
+            await this.app.mysql.insert('check_msg', {
+                logid: exercise_log.logid,
+                check_user: test.teacher_id,
+                submit_user: exercise_log.student_id,
+                submit_time: new Date(),
+                title: test.test_name + "第" + exindex + "题提交批改",
+                log_type: 1,
+                read: 0
+            })
             return exercise_log
         }
         

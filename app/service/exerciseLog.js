@@ -13,7 +13,7 @@ class ExerciseLogService extends Service {
     elo_st_rating(ra, rb, mean, variance, K){
         const Ra = (ra - mean)*100/variance
         const Rb = (rb - mean)*100/variance
-        return this.elo_rating(Ra, Rb, K)
+        return this.elo_rating(Ra, Rb, K) * variance + mean
     }
 
     async updateKpRating(breakdown_sn){
@@ -123,7 +123,7 @@ class ExerciseLogService extends Service {
             const kpid = 'k' + log.kpid
             const chapter_name = log.chaptername
 
-            const plus = log.sn_state == 1 ? 1 : sn_state == 0 ? -1 : 0
+            const plus = log.sn_state == 1 ? 1 : log.sn_state == 0 ? -1 : 0
             if(kp_result[chapter_name] && kp_result[chapter_name][kpid]){
                 kp_result[chapter_name][kpid].kp_new_rating += log.kp_delta_rating
             }else{
@@ -159,7 +159,7 @@ class ExerciseLogService extends Service {
     async getTestExerciseResult(student_id, test_id){
         let exercise_log = await this.app.mysql.query(`select el.submit_time, el.exercise_state, el.old_student_rating, el.delta_student_rating, et.exercise_index
             from exercise_log el inner join exercise_test et on el.test_id = et.test_id and el.exercise_id = et.exercise_id
-            where el.student_id = ? and el.test_id = ? and el.delta_student_rating > 0 order by el.submit_time asc`, [student_id, test_id])
+            where el.student_id = ? and el.test_id = ? order by el.submit_time asc`, [student_id, test_id])
         const old_student_rating = exercise_log[0].old_student_rating
         let new_student_rating = old_student_rating
         let res = []
@@ -402,6 +402,15 @@ class ExerciseLogService extends Service {
         //主观题未批改，直接返回
         if(exercise_log.exercise_state < 0){
             exercise_log.next = await this.service.testLog.isTestLogFinish(test_id, student_id, exindex)
+            await this.app.mysql.insert('check_msg', {
+                logid: exercise_log.logid,
+                check_user: test.teacher_id,
+                submit_user: exercise_log.student_id,
+                submit_time: new Date(),
+                title: test.test_name + "第" + exindex + "题提交批改",
+                log_type: 1,
+                read: 0
+            })
             return exercise_log
         }
         

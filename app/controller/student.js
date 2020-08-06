@@ -343,6 +343,33 @@ class StudentController extends Controller {
             this.ctx.body = result;
         }
     }
+
+    async getCourseBook() {
+        const { ctx,service } = this;
+        const { query } = ctx.request;
+        if(query.course_id){
+            const result = await service.bookchapter.getCourseBook(query.course_id);
+            this.ctx.body = result;
+        }
+    }
+
+    async getCourseStatus() {
+        const { ctx,service } = this;
+        const { query } = ctx.request;
+        if(query.student_id && query.course_id){
+            const result = await service.rating.getCourseStatus(query.student_id, query.course_id);
+            this.ctx.body = result;
+        }
+    }
+
+    async getBookChapterStatus() {
+        const { ctx,service } = this;
+        const { query } = ctx.request;
+        if(query.student_id && query.book_id){
+            const result = await service.rating.getBookChapterStatus(query.student_id, query.book_id);
+            this.ctx.body = result;
+        }
+    }
 }
 
 module.exports = StudentController;

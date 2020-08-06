@@ -94,6 +94,12 @@ module.exports = app => {
   router.post('/api/groupBind', controller.student.groupBind);
   /*微信小程序学生端个人中心结束*/
   
+  /*微信小程序学生端学科*/
+  router.get('/api/getStudentCourse', controller.student.getStudentCourse)
+  router.get('/api/getCourseBook', controller.student.getCourseBook)
+  router.get('/api/getCourseStatus', controller.student.getCourseStatus)
+  router.get('/api/getBookChapterStatus', controller.student.getBookChapterStatus)
+  /********/
 
   //个人信息统计
   router.get('/api/getStuAbility',controller.student.getStuAbility);

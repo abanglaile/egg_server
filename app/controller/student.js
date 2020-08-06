@@ -344,6 +344,15 @@ class StudentController extends Controller {
         }
     }
 
+    async getStudentCourse(){
+        const { ctx,service } = this;
+        const { query } = ctx.request;
+        if(query.student_id){
+            const result = await service.course.getStudentCourse(query.student_id);
+            this.ctx.body = result;
+        }
+    }
+
     async getCourseBook() {
         const { ctx,service } = this;
         const { query } = ctx.request;

@@ -16,7 +16,8 @@ class FixExerciseRating extends Subscription {
       type: 'worker',
       //cron: '5 * * * * *',
       interval: '1h',
-      immediate: true,   
+      immediate: true,
+      disable:true,   
     };
   }
 

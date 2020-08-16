@@ -47,19 +47,54 @@ class TestService extends Service {
     }
 
     async getTestTable(teacher_id) {
-        const results = await this.app.mysql.query(`select t.test_id,t.test_name,t.enable_time from
-         teacher_test t where t.teacher_id = ? ORDER BY t.group_time desc;`, [teacher_id]);
+        // const results = await this.app.mysql.query(`select t.test_id,t.test_name,t.enable_time from
+        //  teacher_test t where t.teacher_id = ? ORDER BY t.group_time desc;`, [teacher_id]);
+        // var test_data = [];
+        // for(var i = 0; i < results.length; i++){
+        //     var e = results[i];
+        //     test_data.push({
+        //         key:e.test_id,
+        //         testname:e.test_name,
+        //         teststate: e.enable_time ? 1 : 0,
+        //         time: e.enable_time,
+        //     });
+        // }
+        //res_test 测试信息，及每个测试待批改题数
+        const res_test = await this.app.mysql.query(`select t.test_id,t.test_name,
+            t.enable_time,count(c.logid) as uncheck_num from teacher_test t LEFT JOIN 
+            exercise_log el on t.test_id = el.test_id LEFT JOIN 
+            check_msg c on el.logid = c.logid and c.read = 0 where t.teacher_id = ? 
+            GROUP BY t.test_id ORDER BY t.group_time desc;`, [teacher_id]);
+        //res_check 需要批改的testid，包括已批改完毕的
+        const res_check = await this.app.mysql.query(`select t.test_id from
+            teacher_test t INNER JOIN  exercise_log el on t.test_id = el.test_id
+            INNER JOIN check_msg c on el.logid = c.logid 
+            where t.teacher_id = ? GROUP BY t.test_id;`, [teacher_id]);
+
         var test_data = [];
-        for(var i = 0; i < results.length; i++){
-            var e = results[i];
+        for(var i = 0; i < res_test.length; i++){
+            var e = res_test[i];
             test_data.push({
                 key:e.test_id,
                 testname:e.test_name,
                 teststate: e.enable_time ? 1 : 0,
                 time: e.enable_time,
+                is_check: await this.is_check(res_check,e.test_id),//是否存在批改题目
+                uncheck_num: e.uncheck_num,//未批改的题目
             });
-        }
+        }        
         return test_data;
+    }
+
+    async is_check(res_check,test_id){
+        if(res_check.length){
+            for(var i = 0; i < res_check.length; i++){
+                if(res_check[i].test_id == test_id){
+                    return 1;
+                }
+            }
+        }
+        return 0;
     }
 
     async getTeacherTest(teacher_id) {

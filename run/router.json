@@ -974,6 +974,19 @@
       "GET"
     ],
     "paramNames": [],
+    "path": "/api/getXcxCode",
+    "regexp": "/^\\/api\\/getXcxCode(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/api/getStudentList",
     "regexp": "/^\\/api\\/getStudentList(?:\\/(?=$))?$/",
     "stack": [

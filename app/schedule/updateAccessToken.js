@@ -1,3 +1,5 @@
+const { sumNthPowerDeviations } = require('simple-statistics');
+
 const Subscription = require('egg').Subscription;
 
 const STU_XCX_APPID = 'wx399694102b0ebc51';
@@ -19,7 +21,7 @@ class UpdateAccessToken extends Subscription {
       type: 'worker',
       interval: '119m',
       immediate: true,
-      disable : true,   
+      disable : false,   
     };
   }
 

@@ -122,6 +122,7 @@ module.exports = app => {
   router.get('/api/getTestInfoById', controller.teacher.getTestInfoById);
   router.get('/api/getTestKpResult', controller.teacher.getTestKpResult);
   router.get('/api/getTestResultInfo', controller.teacher.getTestResultInfo);
+  router.get('/api/getXcxCode', controller.teacher.getXcxCode);
 
   router.get('/api/getStudentList', controller.teacher.getStudentList);
   router.get('/api/getStuCourse', controller.teacher.getStuCourse);

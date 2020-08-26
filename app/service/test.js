@@ -1,4 +1,5 @@
 const Service = require('egg').Service;
+const fs = require('fs');
 
 class TestService extends Service {
 
@@ -60,7 +61,7 @@ class TestService extends Service {
         //     });
         // }
         //res_test 测试信息，及每个测试待批改题数
-        const res_test = await this.app.mysql.query(`select t.test_id,t.test_name,
+        const res_test = await this.app.mysql.query(`select t.test_id,t.test_name,t.test_type,
             t.enable_time,count(c.logid) as uncheck_num from teacher_test t LEFT JOIN 
             exercise_log el on t.test_id = el.test_id LEFT JOIN 
             check_msg c on el.logid = c.logid and c.read = 0 where t.teacher_id = ? 
@@ -77,6 +78,7 @@ class TestService extends Service {
             test_data.push({
                 key:e.test_id,
                 testname:e.test_name,
+                test_type:e.test_type,
                 teststate: e.enable_time ? 1 : 0,
                 time: e.enable_time,
                 is_check: await this.is_check(res_check,e.test_id),//是否存在批改题目
@@ -109,7 +111,7 @@ class TestService extends Service {
         const addres = await this.app.mysql.insert('teacher_test', { 
             test_name: req.test_name,
             teacher_id: req.teacher_id,
-            test_type: 1,
+            // test_type: 1,
             total_exercise: req.test_exercise.length,
             course_id: req.course_id,
         });
@@ -169,6 +171,43 @@ class TestService extends Service {
         });
         return test_info;
     }  
+
+    async getXcxCode(test_id){
+        const res = await this.app.mysql.get('teacher_test',{ test_id : test_id });
+        if(res.xcx_code_url){
+            return res.xcx_code_url;
+        }
+        const res_token = await this.app.mysql.get('access_token',{ token_type : 'xcx_stu' });
+        var url = 'https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token='+res_token.access_token;
+        var res_wxacode = await this.ctx.curl(url,{
+            method: 'POST',
+            contentType: 'json',
+            data: {
+                // page : 'pages/index/index',
+                page : 'pages/test/test',
+                scene : 'id='+test_id,
+                width : 300,
+                // scene : '',
+            },
+            // writeStream: fs.createWriteStream('./qrcode.txt'),
+            // dataType:'json',
+        });
+        // console.log('res_wxacode:',JSON.stringify(res_wxacode));
+        // console.log('all:',res_wxacode);
+        // console.log('data:',res_wxacode.buffer);
+        if(res_wxacode.status == 200){
+            // return res_wxacode.data.data;
+            var base64Img = res_wxacode.data.toString('base64');
+            console.log('base64Img:',base64Img);
+            // var decodeImg = Buffer.from(base64Img, 'base64'); 
+            // const fileName = './qrcode.png';
+            // fs.writeFileSync(fileName, decodeImg);
+            return base64Img;
+        }else{
+            return '';
+        }
+
+    }
 
 }
 

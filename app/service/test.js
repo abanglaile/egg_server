@@ -184,8 +184,10 @@ class TestService extends Service {
             contentType: 'json',
             data: {
                 // page : 'pages/index/index',
-                page : 'pages/test/test',
-                scene : 'id='+test_id,
+                // page : 'pages/test/test',
+                // scene : 'id='+test_id,
+                page : 'pages/index/index',
+                scene : 'id='+test_id+'&to=test/test',
                 width : 300,
                 // scene : '',
             },

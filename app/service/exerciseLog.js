@@ -332,6 +332,12 @@ class ExerciseLogService extends Service {
         let student_rating = await this.service.rating.getStudentRating(student_id, test.course_id);
         exercise_log.old_student_rating = student_rating ? student_rating : 500;
 
+        //主观题批改完后更新check_msg
+        await this.app.mysql.update('check_msg', {
+            check_time: new Date(),
+            read: 1,
+        }, {where: {logid: exercise_log.logid}})
+
         const K = 32
         this.updateExerciseLogRating(exercise_log, K);
         //主观题批改答案提交，更新相关天梯分

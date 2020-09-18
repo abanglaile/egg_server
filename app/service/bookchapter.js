@@ -104,6 +104,10 @@ class bookchapterService extends Service {
     return res;
   }
 
+  async getCourseBook(course_id) {
+    return await this.app.mysql.query(`select * from book where course_id = ?`, [course_id]);
+  }
+
 }
 
 module.exports = bookchapterService;

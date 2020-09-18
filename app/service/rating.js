@@ -1,4 +1,5 @@
 const Service = require('egg').Service;
+const { cumulativeStdNormalProbability } = require('simple-statistics')
 
 class RatingService extends Service {
 
@@ -120,6 +121,83 @@ class RatingService extends Service {
             inner join breakdown b on bl.exercise_id = b.exercise_id and bl.sn = b.sn 
             group by bl.exercise_id, bl.sn`, [logid]);
     }
+
+
+    /******获取学生学科总体信息 ******/
+    async getCourseStatus(student_id ,course_id){
+        //TO-DO: update student rating
+        const res1 = await this.app.mysql.queryOne(`select count(*) as practice from teacher_test tt ,
+        exercise_log el where el.test_id = tt.test_id and tt.course_id = ? 
+        and el.student_id = ?`,[course_id,student_id]);
+    
+        const res2 = await this.app.mysql.queryOne(`select count(*) as correct from teacher_test tt ,
+        exercise_log el where el.test_id = tt.test_id and el.exercise_state = 1 and tt.course_id = ? 
+        and el.student_id = ?`,[course_id,student_id]);
+    
+        const rating = await this.service.rating.getStudentRating(student_id, course_id);
+    
+        return {
+            practice : res1.practice,   //做过的题目总数
+            rate : res1.practice ? ((res2.correct/res1.practice)*100).toFixed(1) : 0,  //总正确率
+            rating : rating ? rating : '未评估',  //最新的天梯分
+        };
+    }
+
+    /*获取书本章节掌握度*/
+    async getBookChapterStatus(student_id ,book_id){
+        let kp_status = await this.app.mysql.query(`select c.chapterid, c.chaptername, k.kp_df, k.kpid, k.kpname, ks.mean, ks.variance, sk.kp_rating 
+        from kptable k inner join chapter c on k.chapterid = c.chapterid and c.bookid = ?
+        LEFT JOIN kp_standard ks on ks.kpid = k.kpid 
+        LEFT JOIN student_kp sk on k.kpid = sk.kpid and sk.student_id = ? order by k.kpid`, [book_id, student_id]);
+
+        let chapter_status = []
+        for(let i = 0; i < kp_status.length; i++){
+            let kp_mastery = 0, index = chapter_status.length - 1
+            if(kp_status[i].kp_rating){
+                let mean = 500, variance = 130 
+                if(kp_status[i].mean){
+                    mean = kp_status[i].mean
+                    variance = kp_status[i].variance
+                }
+                kp_mastery = Math.round(100 * cumulativeStdNormalProbability((kp.kp_rating - mean)/variance))
+            }
+            let kp_df = kp_status[i].kp_df ? kp_status[i].kp_df : 1
+            let kp_dfl = parseInt(kp_df / 33) + 1
+            if(index >= 0 && chapter_status[index].chapter_name == kp_status[i].chaptername){
+                chapter_status[index].kp_status.push({
+                    kpname: kp_status[i].kpname,
+                    kpid: kp_status[i].kpid,
+                    kp_rating: kp_status[i].kp_rating,
+                    kp_df: kp_df,
+                    kp_dfl: kp_dfl,
+                    kp_mastery: kp_mastery
+                })
+            }else{
+                let chapter_mastery = 0, weight = 0
+                if(index >= 0){
+                    //对章节掌握度进行结算
+                    chapter_status[index].kp_status.map((item) => {
+                        chapter_mastery += item.kp_mastery * item.kp_df
+                        weight += item.kp_df
+                    })
+                    chapter_status[index].chapter_mastery = chapter_mastery/weight
+                }
+                chapter_status.push({
+                    chapter_name: kp_status[i].chaptername,
+                    kp_status: [{
+                        kpname: kp_status[i].kpname,
+                        kpid: kp_status[i].kpid,
+                        kp_rating: kp_status[i].kp_rating,
+                        kp_df: kp_df,
+                        kp_dfl: kp_dfl,
+                        kp_mastery: kp_mastery
+                    }]
+                })
+            }
+        }
+        return chapter_status
+    }
+
 }
 
 module.exports = RatingService;

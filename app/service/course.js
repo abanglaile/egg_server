@@ -6,6 +6,13 @@ class CourseService extends Service {
     return res;
   }
 
+  async getStuCourse() {
+    const course_list = await this.app.mysql.query('select course from course inneer join teacher_test tt ', {});
+    course_list.map({
+
+    })
+  }
+
   async getCourseLabel() {
     const res = await this.app.mysql.select('course_label');
     return res;
@@ -19,6 +26,12 @@ class CourseService extends Service {
     where gs.student_id = ?;`, [student_id]);
 
     return results;
+  }
+
+  async getStudentCourse(student_id){
+    return await this.app.mysql.query(`select c.course_id, c,course_name
+    from teacher_test tt inner join test_log tl on tt.test_id = tl.test_id and tl.student_id = ?
+    inner join course c on tt.course_id = c.course_id`, [student_id]);
   }
 
 }

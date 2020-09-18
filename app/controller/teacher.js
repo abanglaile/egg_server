@@ -85,6 +85,13 @@ class TeacherController extends Controller {
         }
     }
 
+    async getXcxCode(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.test.getXcxCode(query.test_id);
+        this.ctx.body = results;
+    }
+
     async getClassGroup(){
         const { ctx, service } = this;
         const {query} = ctx.request;

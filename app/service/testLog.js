@@ -103,7 +103,7 @@ class TestLogService extends Service {
     }
 
     async getTestLog(student_id, test_id){
-        const res = await this.app.mysql.query('select t.*, tt.test_type, tt.test_config, tt.test_name '
+        const res = await this.app.mysql.query('select t.*, tt.test_type, tt.test_config, tt.test_name, tt.course_id '
         +'from test_log t, teacher_test tt where t.student_id = ? and tt.test_id = t.test_id and t.test_id = ?;'
         , [student_id, test_id]);
 

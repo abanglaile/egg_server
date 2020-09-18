@@ -707,6 +707,58 @@
       "GET"
     ],
     "paramNames": [],
+    "path": "/api/getStudentCourse",
+    "regexp": "/^\\/api\\/getStudentCourse(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getCourseBook",
+    "regexp": "/^\\/api\\/getCourseBook(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getCourseStatus",
+    "regexp": "/^\\/api\\/getCourseStatus(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getBookChapterStatus",
+    "regexp": "/^\\/api\\/getBookChapterStatus(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/api/getStuAbility",
     "regexp": "/^\\/api\\/getStuAbility(?:\\/(?=$))?$/",
     "stack": [
@@ -911,6 +963,19 @@
     "paramNames": [],
     "path": "/api/getTestResultInfo",
     "regexp": "/^\\/api\\/getTestResultInfo(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getXcxCode",
+    "regexp": "/^\\/api\\/getXcxCode(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

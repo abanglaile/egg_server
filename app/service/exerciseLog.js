@@ -707,11 +707,12 @@ class ExerciseLogService extends Service {
     async getUncheckedExers(test_id){
         const results = await this.app.mysql.query(
             `select e.logid, e.student_id ,u.realname,e.test_id,e.exercise_id,e.old_exercise_rating,e.submit_time,e.answer as submit_answer,ex.*,b.*,k.kpname
-            from exercise_log e inner join breakdown b on e.exercise_id = b.exercise_id 
+            from exercise_log e inner join breakdown b on e.exercise_id = b.exercise_id
+			inner join check_msg c on c.logid = e.logid
             inner join exercise ex on e.exercise_id = ex.exercise_id
-             inner join kptable k on b.kpid = k.kpid
+            inner join kptable k on b.kpid = k.kpid
             inner join users u on e.student_id = u.userid
-             where e.test_id = ? and e.exercise_status = 1 order by e.submit_time asc;`,[test_id]
+            where e.test_id = ? and c.read = 0 order by e.submit_time asc;`,[test_id]
         ); 
         var exercise_list = [];
         var exercise_index = [];
@@ -771,10 +772,11 @@ class ExerciseLogService extends Service {
             `select e.logid,e.student_id ,u.realname,e.test_id,e.exercise_id,e.exercise_state,e.submit_time,e.answer as submit_answer,ex.*,
             b.*,bl.sn_state,bl.kpname from exercise_log e 
             inner join breakdown_log bl on e.logid = bl.logid 
+			inner join check_msg c on c.logid = e.logid
             inner join breakdown b on b.exercise_id = bl.exercise_id and b.sn = bl.sn
             inner join exercise ex on e.exercise_id = ex.exercise_id
             inner join users u on e.student_id = u.userid
-            where e.test_id = ? and e.exercise_status = 2 order by bl.update_time asc;`,[test_id]
+            where e.test_id = ? and c.read = 1 order by bl.update_time asc;`,[test_id]
         ); 
         var exercise_list = [];
         var exercise_index = [];

@@ -577,19 +577,6 @@
   {
     "name": null,
     "methods": [
-      "HEAD",
-      "GET"
-    ],
-    "paramNames": [],
-    "path": "/api/getCourse",
-    "regexp": "/^\\/api\\/getCourse(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
       "POST"
     ],
     "paramNames": [],
@@ -716,12 +703,36 @@
   {
     "name": null,
     "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/setDefaultCourse",
+    "regexp": "/^\\/api\\/setDefaultCourse(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
       "HEAD",
       "GET"
     ],
     "paramNames": [],
-    "path": "/api/getCourseBook",
-    "regexp": "/^\\/api\\/getCourseBook(?:\\/(?=$))?$/",
+    "path": "/api/getStudentBook",
+    "regexp": "/^\\/api\\/getStudentBook(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/setDefaultBook",
+    "regexp": "/^\\/api\\/setDefaultBook(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -1964,6 +1975,18 @@
     "paramNames": [],
     "path": "/api/deleteTaskLog",
     "regexp": "/^\\/api\\/deleteTaskLog(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/submitTaskLog",
+    "regexp": "/^\\/api\\/submitTaskLog(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

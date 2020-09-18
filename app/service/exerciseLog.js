@@ -363,7 +363,8 @@ class ExerciseLogService extends Service {
 
         exercise_log.breakdown_sn = breakdown_sn;
         exercise_log = await this.submitBreakdownLog(exercise_log);
-        
+
+        await this.service.testLog.checkTestLogFinish(exercise_log.test_id, student_id)        
         return exercise_log;
     }
 

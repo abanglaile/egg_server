@@ -102,6 +102,36 @@ class TestLogService extends Service {
         return -1
     }
 
+    async checkTestLogFinish(test_id, student_id){
+        const logs = await this.app.mysql.query(`select e.exercise_id, e.exercise_index, el.exercise_status, el.exercise_state from exercise_test e
+        left join (select distinct exercise_id, exercise_status, exercise_state from exercise_log 
+            where test_id = ? and student_id = ?) el on e.exercise_id = el.exercise_id
+            where e.test_id = ?`, [test_id, student_id, test_id])
+
+        let correct_exercise = 0, total_exercise = logs.length
+        for(let i = 0; i < logs.length; i++){
+            if(logs[i].exercise_state == 1){
+                correct_exercise++
+            }
+            if(logs[i].exercise_status != 2)
+                return 
+        }
+        var delta_score = total_exercise + correct_exercise * 2; 
+        var sta = ((correct_exercise/total_exercise)*100).toFixed(1);
+        const res = await this.app.mysql.update('test_log', {
+                finish_time: new Date(), 
+                delta_score: delta_score,
+                correct_exercise: correct_exercise,
+                total_exercise: total_exercise,//动态测试需要更改teacher_test题目数目
+                test_state: sta,
+            }, {
+            where: {
+                test_id: test_id,
+                student_id: student_id,
+            }
+        })
+    }
+
     async getTestLog(student_id, test_id){
         const res = await this.app.mysql.query('select t.*, tt.test_type, tt.test_config, tt.test_name, tt.course_id '
         +'from test_log t, teacher_test tt where t.student_id = ? and tt.test_id = t.test_id and t.test_id = ?;'

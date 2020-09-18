@@ -16,7 +16,8 @@ class UpdateKpStandard extends Subscription {
       type: 'worker',
       //cron: '5 * * * * *',
       interval: '10h',
-      immediate: false,   
+      immediate: false,
+      disable : true,   
     };
   }
 

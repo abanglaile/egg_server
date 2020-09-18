@@ -101,9 +101,11 @@ class TaskService extends Service {
         }) 
     }
 
-    async getStuTasklog(student_id, online, submit_time){
-        let sql = `select t.*, ts.source_name, ts.course_label, tl.final_exp from task_log tl inner join task t on tl.task_id = t.task_id
-            inner join task_source ts on t.source_id = ts.source_id  where tl.student_id = ? `;
+    async getStuTaskLog(student_id, online, submit_time){
+        let sql = `select t.*, ts.source_name, cl.course_label_name, tl.final_exp from task_log tl inner join task t on tl.task_id = t.task_id
+            inner join task_source ts on t.source_id = ts.source_id 
+            inner join course_label cl on cl.course_label = ts.course_label
+            where tl.student_id = ? `;
         sql += online ? 'and (tl.verify_state < 2 or tl.verify_state is null)' : 'and tl.verify_state = 2';
         let params = [student_id];
         if(submit_time){
@@ -114,18 +116,19 @@ class TaskService extends Service {
         return res;
     }
 
-    async getStuTasklog(student_id, online, submit_time){
-        let sql = `select t.*, ts.source_name, ts.course_label, tl.final_exp from task_log tl inner join task t on tl.task_id = t.task_id
-            inner join task_source ts on t.source_id = ts.source_id  where tl.student_id = ? `;
-        sql += online ? 'and (tl.verify_state < 2 or tl.verify_state is null)' : 'and tl.verify_state = 2';
-        let params = [student_id];
-        if(submit_time){
-            sql += ' and tl.submit_time >= ?';
-            params.push(submit_time);
-        }
-        const res = await this.app.mysql.query(sql, params);
+    async submitTaskLog(task_log){
+        const submit_url = ""
+        const res = await this.app.mysql.update('task_log', {
+                submit_time: new Date(), 
+                submit_url: submit_url
+            }, {
+            where: {
+                task_id: task_log.task_id,
+                student_id: task_log.student_id,
+            }
+        })
         return res;
-    }
+    }    
 }
 
 module.exports = TaskService;

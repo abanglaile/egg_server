@@ -108,6 +108,26 @@ class bookchapterService extends Service {
     return await this.app.mysql.query(`select * from book where course_id = ?`, [course_id]);
   }
 
+  async getStudentBook(student_id, course_id) {
+    let book_list = await this.app.mysql.query('select bookid as book_id, bookname as book_name from book where course_id = ?', [course_id]);
+    let current = await this.app.mysql.queryOne('select book_id from default_course where course_id = ? and student_id = ?', [course_id, student_id])
+    if(!current || !current.book_id){
+        current = book_list[0]
+    }
+    return {
+        books: book_list,
+        current_book: current.book_id
+    }
+  }
+
+  async setDefaultBook(student_id, course_id, book_id){
+    return await this.app.mysql.query(`replace into default_course(course_id, student_id, book_id, is_default) 
+    values (?, ?, ?, 1)`, [course_id, student_id, book_id]);
+    //return await getStudentCourse(student_id) 
+  }
+
+  
+
 }
 
 module.exports = bookchapterService;

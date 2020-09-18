@@ -155,8 +155,7 @@ class StudentController extends Controller {
         const {body} = ctx.request;
         if(body.test_id){
             const results = await service.testLog.getTestStatus(body.test_id);
-            console.log(results);
-            
+            console.log(results);        
             this.ctx.body = results;
         }
     }
@@ -167,7 +166,6 @@ class StudentController extends Controller {
         if(body.test_id){
             const results = await service.testLog.getTestRankingList(body.test_id);
             console.log(results);
-            
             this.ctx.body = results;
         }
     }
@@ -310,7 +308,7 @@ class StudentController extends Controller {
         const { ctx, service } = this;
         const {query} = ctx.request;
         if(query.student_id){
-            const results = await service.rating.getKpWithScore(query.student_id,query.chapter_id);
+            const results = await service.rating.getKpWithScore(query.student_id, query.chapter_id);
             this.ctx.body = results;
         }
     }
@@ -353,11 +351,29 @@ class StudentController extends Controller {
         }
     }
 
-    async getCourseBook() {
+    async setDefaultCourse(){
+        const { ctx,service } = this;
+        const { body } = ctx.request;
+        if(body.student_id && body.course_id){
+            const result = await service.course.setDefaultCourse(body.student_id, body.course_id);
+            this.ctx.body = result;
+        }
+    }
+
+    async setDefaultBook(){
+        const { ctx,service } = this;
+        const { body } = ctx.request;
+        if(body.student_id && body.book_id){
+            const result = await service.bookchapter.setDefaultBook(body.student_id, body.course_id, body.book_id);
+            this.ctx.body = result;
+        }
+    }
+
+    async getStudentBook() {
         const { ctx,service } = this;
         const { query } = ctx.request;
-        if(query.course_id){
-            const result = await service.bookchapter.getCourseBook(query.course_id);
+        if(query.student_id && query.course_id){
+            const result = await service.bookchapter.getStudentBook(query.student_id, query.course_id);
             this.ctx.body = result;
         }
     }
@@ -379,6 +395,7 @@ class StudentController extends Controller {
             this.ctx.body = result;
         }
     }
+
 }
 
 module.exports = StudentController;

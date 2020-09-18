@@ -573,7 +573,16 @@ class TeacherController extends Controller {
         const {query} = ctx.request;
         if(query.student_id){
             const results = await service.course.getStuCourse(query.student_id);
-            this.ctx.body=results;
+            this.ctx.body = results;
+        }
+    }
+
+    async getStudentCourse(){
+        const {ctx, service } = this;
+        const {query} = ctx.request;
+        if(query.student_id){
+            const results = await service.course.getStudentCourse(query.student_id);
+            this.ctx.body = results;
         }
     }
 

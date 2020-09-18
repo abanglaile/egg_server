@@ -128,7 +128,7 @@ class RatingService extends Service {
         //TO-DO: update student rating
         const res1 = await this.app.mysql.queryOne(`select count(*) as practice from teacher_test tt ,
         exercise_log el where el.test_id = tt.test_id and tt.course_id = ? 
-        and el.student_id = ?`,[course_id,student_id]);
+        and el.student_id = ?`,[course_id, student_id]);
     
         const res2 = await this.app.mysql.queryOne(`select count(*) as correct from teacher_test tt ,
         exercise_log el where el.test_id = tt.test_id and el.exercise_state = 1 and tt.course_id = ? 
@@ -137,14 +137,14 @@ class RatingService extends Service {
         const rating = await this.service.rating.getStudentRating(student_id, course_id);
     
         return {
-            practice : res1.practice,   //做过的题目总数
-            rate : res1.practice ? ((res2.correct/res1.practice)*100).toFixed(1) : 0,  //总正确率
-            rating : rating ? rating : '未评估',  //最新的天梯分
+            practice: res1.practice,   //做过的题目总数
+            rate: res1.practice ? ((res2.correct/res1.practice)*100).toFixed(1) : 0,  //总正确率
+            rating: rating ? rating : '未评估',  //最新的天梯分
         };
     }
 
     /*获取书本章节掌握度*/
-    async getBookChapterStatus(student_id ,book_id){
+    async getBookChapterStatus(student_id, book_id){
         let kp_status = await this.app.mysql.query(`select c.chapterid, c.chaptername, k.kp_df, k.kpid, k.kpname, ks.mean, ks.variance, sk.kp_rating 
         from kptable k inner join chapter c on k.chapterid = c.chapterid and c.bookid = ?
         LEFT JOIN kp_standard ks on ks.kpid = k.kpid 
@@ -159,7 +159,7 @@ class RatingService extends Service {
                     mean = kp_status[i].mean
                     variance = kp_status[i].variance
                 }
-                kp_mastery = Math.round(100 * cumulativeStdNormalProbability((kp.kp_rating - mean)/variance))
+                kp_mastery = Math.round(100 * cumulativeStdNormalProbability((kp_status[i].kp_rating - mean)/variance))
             }
             let kp_df = kp_status[i].kp_df ? kp_status[i].kp_df : 1
             let kp_dfl = parseInt(kp_df / 33) + 1
@@ -180,7 +180,7 @@ class RatingService extends Service {
                         chapter_mastery += item.kp_mastery * item.kp_df
                         weight += item.kp_df
                     })
-                    chapter_status[index].chapter_mastery = chapter_mastery/weight
+                    chapter_status[index].chapter_mastery = Math.round(chapter_mastery/weight)
                 }
                 chapter_status.push({
                     chapter_name: kp_status[i].chaptername,

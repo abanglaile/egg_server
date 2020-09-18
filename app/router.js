@@ -78,8 +78,6 @@ module.exports = app => {
   router.get('/api/getKpRatingHistory', controller.student.getKpRatingHistory);
   router.get('/api/getKpAbility', controller.student.getKpAbility);
 
-  router.get('/api/getCourse', controller.student.getCourse);
-
   //个人中心
   router.post('/api/getStudentInfo',controller.student.getStudentInfo);
   router.get('/api/getUserInfo',controller.teacher.getUserInfo);
@@ -96,7 +94,9 @@ module.exports = app => {
   
   /*微信小程序学生端学科*/
   router.get('/api/getStudentCourse', controller.student.getStudentCourse)
-  router.get('/api/getCourseBook', controller.student.getCourseBook)
+  router.post('/api/setDefaultCourse', controller.student.setDefaultCourse)
+  router.get('/api/getStudentBook', controller.student.getStudentBook)
+  router.post('/api/setDefaultBook', controller.student.setDefaultBook)
   router.get('/api/getCourseStatus', controller.student.getCourseStatus)
   router.get('/api/getBookChapterStatus', controller.student.getBookChapterStatus)
   /********/
@@ -231,8 +231,10 @@ module.exports = app => {
   /********************************************/
 
   //game
-  router.get('/api/getStuTasklog', controller.game.getStuTasklog);
+  router.get('/api/getStuTasklog', controller.game.getStuTaskLog);
   router.post('/api/deleteTaskLog',controller.game.deleteTaskLog);
+  router.post('/api/submitTaskLog',controller.game.submitTaskLog);
+
   
 
   // 增益

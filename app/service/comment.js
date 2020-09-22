@@ -61,7 +61,7 @@ class CommentService extends Service {
             query += ' and sg.course_label = ?';
             params.push(course_label);
         }
-        if(side){
+        if(side != null){
             query += ' and kc.side = ?';
             params.push(side);
         }

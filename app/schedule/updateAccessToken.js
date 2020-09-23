@@ -21,7 +21,7 @@ class UpdateAccessToken extends Subscription {
       type: 'worker',
       interval: '119m',
       immediate: true,
-      disable : false,   
+      disable : true,   
     };
   }
 

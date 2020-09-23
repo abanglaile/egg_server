@@ -1849,6 +1849,19 @@
       "GET"
     ],
     "paramNames": [],
+    "path": "/api/getMyStuGroupData2",
+    "regexp": "/^\\/api\\/getMyStuGroupData2(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/api/getGroupOptionData",
     "regexp": "/^\\/api\\/getGroupOptionData(?:\\/(?=$))?$/",
     "stack": [

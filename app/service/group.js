@@ -189,6 +189,13 @@ class GroupService extends Service {
             s.school_id = sg.school_id and gs.student_id = ?;`, [userid]);
     } 
 
+    async getMyStuGroupData2(userid,school_id){
+        return await this.app.mysql.query(`select gs.stu_group_id,sg.group_name,
+            sg.group_type,s.school_name from group_student gs,school_group sg, 
+            school s where gs.stu_group_id = sg.stu_group_id and 
+            s.school_id = sg.school_id and gs.student_id = ? and sg.school_id = ?;`, [userid,school_id]);
+    } 
+
     async getGroupTable(school_id){
         const results = await this.app.mysql.query(`select sg.*,cl.course_label_name,
                         tg.teacher_id, u.realname from school_group sg

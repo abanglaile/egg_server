@@ -219,6 +219,7 @@ module.exports = app => {
   /****学校管理端：班级配置管理、合同管理**********/
   router.get('/api/getTeacherList',controller.school.getTeacherList);
   router.get('/api/getGroupTable',controller.school.getGroupTable);
+  router.get('/api/getMyStuGroupData2',controller.student.getMyStuGroupData2);
   router.get('/api/getGroupOptionData',controller.school.getGroupOptionData);
   router.post('/api/updateGroupTeacher',controller.school.updateGroupTeacher);
   router.post('/api/addNewSchoolGroup',controller.school.addNewSchoolGroup);

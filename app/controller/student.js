@@ -332,6 +332,15 @@ class StudentController extends Controller {
             this.ctx.body = result;
         }
     }
+    //按学校获取学生已绑定分组
+    async getMyStuGroupData2(){
+        const { ctx,service } = this;
+        const { query } = ctx.request;
+        if(query.userid){
+            const result = await service.group.getMyStuGroupData2(query.userid,query.school_id);
+            this.ctx.body = result;
+        }
+    }
 
     async getMyRealname(){
         const { ctx,service } = this;

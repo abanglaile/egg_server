@@ -102,7 +102,7 @@ class TaskService extends Service {
     }
 
     async getStuTaskLog(student_id, online, submit_time){
-        let sql = `select t.*, ts.source_name, cl.course_label_name, tl.final_exp from task_log tl inner join task t on tl.task_id = t.task_id
+        let sql = `select t.*, ts.source_name, ts.sub_name, cl.course_label_name, tl.final_exp from task_log tl inner join task t on tl.task_id = t.task_id
             inner join task_source ts on t.source_id = ts.source_id 
             inner join course_label cl on cl.course_label = ts.course_label
             where tl.student_id = ? `;
@@ -120,7 +120,8 @@ class TaskService extends Service {
         const submit_url = ""
         const res = await this.app.mysql.update('task_log', {
                 submit_time: new Date(), 
-                submit_url: submit_url
+                submit_url: submit_url,
+                verify_state: 0
             }, {
             where: {
                 task_id: task_log.task_id,

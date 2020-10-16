@@ -123,24 +123,31 @@ class RatingService extends Service {
     }
 
 
-    /******获取学生学科总体信息 ******/
+    /******获取学生学科战力排名信息 ******/
     async getCourseStatus(student_id ,course_id){
-        //TO-DO: update student rating
-        const res1 = await this.app.mysql.queryOne(`select count(*) as practice from teacher_test tt ,
-        exercise_log el where el.test_id = tt.test_id and tt.course_id = ? 
-        and el.student_id = ?`,[course_id, student_id]);
-    
-        const res2 = await this.app.mysql.queryOne(`select count(*) as correct from teacher_test tt ,
-        exercise_log el where el.test_id = tt.test_id and el.exercise_state = 1 and tt.course_id = ? 
-        and el.student_id = ?`,[course_id,student_id]);
-    
-        const rating = await this.service.rating.getStudentRating(student_id, course_id);
-    
+        let status = await this.app.mysql.query(`select r.student_rating, cs.mean, cs.variance
+        from student_rating_history r
+        left join course_standard cs on cs.course_id = r.course_id and r.course_id = ? and r.student_id = ?
+        order by update_time desc limit 2`,[course_id, student_id]);
+        if(!status){
+            return { student_rating: 0 }
+        }
+        const student_rating = status[0].student_rating
+        let mean = 500, variance = 130, delta_rating = student_rating
+        if(status[0].mean){
+            mean = status[0].mean
+            variance = status[0].variance
+        }
+        if(status.length > 1){
+            delta_rating = status[0].student_rating - status[1].student_rating
+        }
+        let rating_ranking = Math.round(100 *cumulativeStdNormalProbability((student_rating - mean)/variance))
+        
         return {
-            practice: res1.practice,   //做过的题目总数
-            rate: res1.practice ? ((res2.correct/res1.practice)*100).toFixed(1) : 0,  //总正确率
-            rating: rating ? rating : '未评估',  //最新的天梯分
-        };
+            delta_rating: delta_rating,
+            rating_ranking: rating_ranking,
+            student_rating: student_rating
+        }
     }
 
     /*获取书本章节掌握度*/
@@ -150,9 +157,10 @@ class RatingService extends Service {
         LEFT JOIN kp_standard ks on ks.kpid = k.kpid 
         LEFT JOIN student_kp sk on k.kpid = sk.kpid and sk.student_id = ? order by k.kpid`, [book_id, student_id]);
 
-        let chapter_status = []
+        let chapter_status = [], index = 0, kp_mastery
         for(let i = 0; i < kp_status.length; i++){
-            let kp_mastery = 0, index = chapter_status.length - 1
+            kp_mastery = 0
+            index = chapter_status.length - 1
             if(kp_status[i].kp_rating){
                 let mean = 500, variance = 130 
                 if(kp_status[i].mean){
@@ -195,6 +203,13 @@ class RatingService extends Service {
                 })
             }
         }
+        //对章节掌握度进行结算
+        let chapter_mastery = 0, weight = 0
+        chapter_status[index].kp_status.map((item) => {
+            chapter_mastery += item.kp_mastery * item.kp_df
+            weight += item.kp_df
+        })
+        chapter_status[index].chapter_mastery = Math.round(chapter_mastery/weight)
         return chapter_status
     }
 

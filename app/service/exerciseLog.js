@@ -172,8 +172,8 @@ class ExerciseLogService extends Service {
         }
         return {
             exercise_log: res,
-            new_student_rating: new_student_rating,
-            delta_student_rating: new_student_rating - old_student_rating
+            student_rating: new_student_rating,
+            delta_rating: new_student_rating - old_student_rating
         }
     }
 
@@ -191,12 +191,15 @@ class ExerciseLogService extends Service {
         if (second < 10) { second = '0' + second;}
         if (min < 10) { min = '0' + min;}
     
+        
         return time = hour? (hour + ':' + newMin + ':' + second) : (min + ':' + second);
     }
 
     async getTestResult(student_id, test_id){
         let test = await this.service.testLog.getTestLog(student_id, test_id)
         let result = await this.getTestExerciseResult(student_id, test_id)
+        let status = await this.service.rating.getCourseStatus(student_id, test.course_id)
+        result.rating_ranking = status.rating_ranking
         result.kp_log = await this.getTestKpResult(student_id, test_id)
         result.test_time = this.formatTime((test.finish_time.getTime() - test.start_time.getTime())/1000)
         result.delta_score = test.delta_score

@@ -38,6 +38,13 @@ class SchoolController extends Controller {
         ctx.body = results;
     }
 
+    async changGroupState(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.group.changGroupState(body.group_id,body.group_state);
+        ctx.body = results;
+    }
+
     async updateGroupHour(){
         const { ctx, service } = this;
         const {body} = ctx.request;

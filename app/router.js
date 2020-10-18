@@ -222,6 +222,7 @@ module.exports = app => {
   router.get('/api/getMyStuGroupData2',controller.student.getMyStuGroupData2);
   router.get('/api/getGroupOptionData',controller.school.getGroupOptionData);
   router.post('/api/updateGroupTeacher',controller.school.updateGroupTeacher);
+  router.post('/api/changGroupState',controller.school.changGroupState);
   router.post('/api/addNewSchoolGroup',controller.school.addNewSchoolGroup);
   router.get('/api/getContractTable',controller.school.getContractTable);
   router.post('/api/updateGroupHour',controller.school.updateGroupHour);

@@ -73,7 +73,6 @@ class TaskService extends Service {
     }
 
     async getTaskInfoById(task_id){
-
         const results = await this.app.mysql.query(`select t.*,s.source_name from task t,
         task_source s where t.source_id = s.source_id and t.task_id = ?; `, [task_id]);
 
@@ -114,6 +113,12 @@ class TaskService extends Service {
         }
         const res = await this.app.mysql.query(sql, params);
         return res;
+    }
+
+    async getTaskLog(student_id, task_id){
+        return await this.app.mysql.queryOne(`select t.*, tl.*, ts.* from task_log tl 
+            inner join task t on tl.task_id = t.task_id and tl.student_id = ? and tl.task_id = ?
+            inner join task_source ts on t.source_id = ts.source_id`, [student_id, task_id]);
     }
 
     async submitTaskLog(task_log){

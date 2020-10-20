@@ -127,7 +127,8 @@ class RatingService extends Service {
     async getCourseStatus(student_id ,course_id){
         let status = await this.app.mysql.query(`select r.student_rating, cs.mean, cs.variance
         from student_rating_history r
-        left join course_standard cs on cs.course_id = r.course_id and r.course_id = ? and r.student_id = ?
+        left join course_standard cs on cs.course_id = r.course_id
+        where r.course_id = ? and r.student_id = ?
         order by update_time desc limit 2`,[course_id, student_id]);
         if(!status){
             return { student_rating: 0 }

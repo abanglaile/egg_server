@@ -10,6 +10,12 @@ class GameController extends Controller {
         this.ctx.body = results;
     }
 
+    async getTaskLog(){
+        const { ctx, service } = this;
+        const results = await service.task.getTaskLog(ctx.request.query.student_id, ctx.request.query.task_id);
+        this.ctx.body = results;
+    }
+
     async deleteTaskLog(){
         const { ctx, service } = this;
         const {body} = ctx.request;

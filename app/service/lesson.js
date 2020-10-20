@@ -23,9 +23,11 @@ class LessonService extends Service {
         if(is_sign >= 0){
             query += is_sign ? ' and l.is_sign = 1' : ' and l.is_sign is null';
         }
+        let desc = false
         if(start_time){
             query += ' and l.start_time >= ?';
             params.push(start_time);
+            desc = true
         }
         if(end_time){
             query += ' and l.end_time <= ?';
@@ -39,7 +41,10 @@ class LessonService extends Service {
             params.push(label_id_list.join(','));
         }
 
-        query += ' order by l.start_time desc;';
+        query += ' order by l.start_time';
+        if(desc){
+            query += " desc"
+        }
         console.log(query);
         const lesson_list = await this.app.mysql.query(query, params);
         return lesson_list;
@@ -351,7 +356,9 @@ class LessonService extends Service {
 
     async getLessonContent(lesson_id){
         const lesson_content = await this.app.mysql.select('lesson_content',
-            {where: {lesson_id: lesson_id}});
+            {where: {lesson_id: lesson_id},
+            orders: [['create_time', 'asc']],
+        });
         return lesson_content;
     }
 

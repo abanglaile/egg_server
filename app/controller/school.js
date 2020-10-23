@@ -97,7 +97,7 @@ class SchoolController extends Controller {
     async getHistoryContract(){
         const { ctx, service } = this;
         const {query} = ctx.request;
-        const results = await service.contract.getHistoryContract(query.stu_group_id);
+        const results = await service.contract.getHistoryContract(query.stu_group_id,query.student_id);
         ctx.body = results;
     }
 

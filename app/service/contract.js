@@ -13,10 +13,16 @@ class ContractService extends Service {
     }
 
     async getHistoryContract(stu_group_id, student_id){
-        const res = await this.app.mysql.query(`select s.group_name,h.* from history_contract h ,
+        if(student_id){
+            var res = await this.app.mysql.query(`select s.group_name,h.* from history_contract h ,
             school_group s where s.stu_group_id = h.stu_group_id and h.stu_group_id = ? 
             and h.student_id = ? 
-            order by h.payment_time desc;`, [stu_group_id, student_id]); 
+            order by h.payment_time desc;`, [stu_group_id, student_id]);   
+        }else{
+            var res = await this.app.mysql.query(`select s.group_name,h.* from history_contract h ,
+            school_group s where s.stu_group_id = h.stu_group_id and h.stu_group_id = ? 
+            order by h.payment_time desc;`, [stu_group_id]); 
+        }
 
         var total_fee = 0;
         for(var i=0;i<res.length;i++){

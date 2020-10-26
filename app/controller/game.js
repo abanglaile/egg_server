@@ -42,6 +42,15 @@ class GameController extends Controller {
             this.ctx.body = results;
         }
     }
+
+    async gainExp(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        if(body.student_id && body.task_id){
+            const results = await service.task.gainExp(body.student_id, body.task_id);
+            this.ctx.body = results;
+        }
+    }
 }
 
 module.exports = GameController;

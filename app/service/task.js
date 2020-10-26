@@ -101,11 +101,11 @@ class TaskService extends Service {
     }
 
     async getStuTaskLog(student_id, online, submit_time){
-        let sql = `select t.*, ts.source_name, ts.sub_name, cl.course_label_name, tl.final_exp from task_log tl inner join task t on tl.task_id = t.task_id
+        let sql = `select t.*, ts.source_name, ts.sub_name, cl.course_label_name, tl.verify_state from task_log tl inner join task t on tl.task_id = t.task_id
             inner join task_source ts on t.source_id = ts.source_id 
             inner join course_label cl on cl.course_label = ts.course_label
             where tl.student_id = ? `;
-        sql += online ? 'and (tl.verify_state < 2 or tl.verify_state is null)' : 'and tl.verify_state = 2';
+        sql += online ? 'and (tl.verify_state < 3 or tl.verify_state is null)' : 'and tl.verify_state = 3';
         let params = [student_id];
         if(submit_time){
             sql += ' and tl.submit_time >= ?';
@@ -126,7 +126,10 @@ class TaskService extends Service {
         const res = await this.app.mysql.update('task_log', {
                 submit_time: new Date(), 
                 submit_url: submit_url,
-                verify_state: 0
+                correct_rate: task_log.correct_rate,
+                total_ex: task_log.total_ex,
+                wrong_ex: task_log.wrong_ex,
+                verify_state: 1
             }, {
             where: {
                 task_id: task_log.task_id,
@@ -134,7 +137,27 @@ class TaskService extends Service {
             }
         })
         return res;
-    }    
+    }
+    
+    async gainExp(student_id, task_id){
+        const res = await this.app.mysql.update('task_log', {
+            verify_state: 3
+        }, {
+            where: {
+                task_id: task_id,
+                student_id: student_id,
+            }
+        })
+
+        const task_log = await this.app.mysql.get('task_log', {
+            task_id: task_id,
+            student_id: student_id
+        })
+        await this.service.exp.addStuExp(student_id, task_log.final_exp)
+        return {
+            delta_exp: task_log.final_exp
+        }
+    }
 }
 
 module.exports = TaskService;

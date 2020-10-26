@@ -237,7 +237,7 @@ module.exports = app => {
   router.get('/api/getTaskLog',controller.game.getTaskLog);
   router.post('/api/deleteTaskLog',controller.game.deleteTaskLog);
   router.post('/api/submitTaskLog',controller.game.submitTaskLog);
-
+  router.post('/api/gainExp', controller.game.gainExp);
   
 
   // 增益

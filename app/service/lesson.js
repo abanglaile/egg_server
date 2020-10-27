@@ -9,7 +9,7 @@ class LessonService extends Service {
         if( (label_id_list && label_id_list.length == 0) || course_label_list && course_label_list.length == 0)
             return []
         
-        let query = `select l.start_time, l.end_time, l.is_sign,
+        let query = `select l.lesson_id, l.start_time, l.end_time, l.is_sign,
             u.realname as teacher_name,
             r.room_name, g.group_name, g.course_label,
             ll.label_name, ll.label_id, lc.course_label_name from 

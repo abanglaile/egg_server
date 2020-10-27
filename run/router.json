@@ -1986,8 +1986,8 @@
       "GET"
     ],
     "paramNames": [],
-    "path": "/api/getTaskLog",
-    "regexp": "/^\\/api\\/getTaskLog(?:\\/(?=$))?$/",
+    "path": "/api/getStuTasklog",
+    "regexp": "/^\\/api\\/getStuTasklog(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -1999,8 +1999,8 @@
       "GET"
     ],
     "paramNames": [],
-    "path": "/api/getStuTasklog",
-    "regexp": "/^\\/api\\/getStuTasklog(?:\\/(?=$))?$/",
+    "path": "/api/getTaskLog",
+    "regexp": "/^\\/api\\/getTaskLog(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

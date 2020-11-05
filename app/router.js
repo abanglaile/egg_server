@@ -235,6 +235,7 @@ module.exports = app => {
   //game
   router.get('/api/getStuTasklog', controller.game.getStuTaskLog);
   router.get('/api/getTaskLog',controller.game.getTaskLog);
+  router.get('/api/getExp', controller.game.getExp);
   router.post('/api/deleteTaskLog',controller.game.deleteTaskLog);
   router.post('/api/submitTaskLog',controller.game.submitTaskLog);
   router.post('/api/gainExp', controller.game.gainExp);

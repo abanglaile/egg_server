@@ -43,6 +43,12 @@ class GameController extends Controller {
         }
     }
 
+    async getExp(){
+        const { ctx, service } = this;
+        const results = await service.exp.getStuTotalExp(ctx.request.query.student_id);
+        this.ctx.body = results;
+    }
+
     async gainExp(){
         const { ctx, service } = this;
         const {body} = ctx.request;

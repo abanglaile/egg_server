@@ -57,8 +57,59 @@ class TaskService extends Service {
     async getTaskTable(teacher_id) {
         const results = await this.app.mysql.query(`select t.*,s.source_name from task t ,task_source s 
         where t.create_user = ? and t.source_id = s.source_id order by t.create_time desc;`, [teacher_id]);
-    
-        return results;
+        const results = await this.app.mysql.query(`select t.*,s.source_name,s.sub_name,s.version,
+            l.student_id,u.realname from task t
+            INNER JOIN task_log l on t.task_id = l.task_id
+            INNER JOIN task_source s on t.source_id = s.source_id
+            INNER JOIN users u on l.student_id = u.userid 
+            where  t.create_user = ? order by t.create_time desc;
+            `, [teacher_id]);
+
+        // const results = await this.app.mysql.query(`select t.*,s.source_name,s.sub_name,s.version,l.student_id,u.realname,c.read from task t
+        //     INNER JOIN task_log l on t.task_id = l.task_id
+        //     INNER JOIN task_source s on t.source_id = s.source_id
+        //     LEFT JOIN check_msg c on c.logid = t.task_id and c.read = 0 and c.submit_user = l.student_id
+        //     INNER JOIN users u on l.student_id = u.userid
+        //     where  t.create_user = ? order by t.create_time desc;
+        //     `, [teacher_id]);
+
+        var task_data = [];
+        var task_index = [];
+        var list_index = 0;
+        for(var i = 0; i < results.length; i++){
+            var e = results[i];
+            const index = task_index[e.task_id];
+            // console.log(i + " " + index);
+            if(index >= 0){
+                task_data[index].stu.push({
+                    student_id: e.student_id, 
+                    realname : e.realname,
+                    // read : e.read,
+                });
+            }else{
+                var stu = [];
+                stu.push({
+                    student_id: e.student_id, 
+                    realname : e.realname,
+                    // read : e.read,
+                });
+                var group = {
+                    task_id: e.task_id, 
+                    create_time: e.create_time, 
+                    source_id : e.source_id,
+                    remark : e.remark,
+                    task_type : e.task_type,
+                    source_name : e.source_name,
+                    sub_name : e.sub_name,
+                    version : e.version,
+                    stu : stu,
+                };
+                task_data[list_index] = group;
+                task_index[e.task_id] = list_index;
+                list_index++;
+            }
+        }
+        return task_data;
     }
 
     async deleteOneTask(task_id){

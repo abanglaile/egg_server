@@ -418,7 +418,7 @@ class ExerciseLogService extends Service {
                 submit_user: exercise_log.student_id,
                 submit_time: new Date(),
                 title: test.test_name + "第" + exindex + "题提交批改",
-                log_type: 1,
+                log_type: 1,//测试任务
                 read: 0
             })
             return exercise_log

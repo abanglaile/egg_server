@@ -53,10 +53,14 @@ class TaskService extends Service {
         from task t, task_source ts where t.source_id = ts.source_id and t.create_user = ? and (ts.source_name like ? or t.remark like ?)`, [teacher_id, '%'+input+'%', '%'+input+'%']);
     }
 
+    async getTaskTable(teacher_id){
+        return await this.app.mysql.query(`select t.*,s.source_name,s.sub_name from task t ,task_source s 
+           where t.create_user = ? and t.source_id = s.source_id order by t.create_time desc;`, [teacher_id]);
+    }
 
-    async getTaskTable(teacher_id) {
-        const results = await this.app.mysql.query(`select t.*,s.source_name from task t ,task_source s 
-        where t.create_user = ? and t.source_id = s.source_id order by t.create_time desc;`, [teacher_id]);
+    async getTaskLogTable(teacher_id) {
+        // const results = await this.app.mysql.query(`select t.*,s.source_name from task t ,task_source s 
+        // where t.create_user = ? and t.source_id = s.source_id order by t.create_time desc;`, [teacher_id]);
         const results = await this.app.mysql.query(`select t.*,s.source_name,s.sub_name,s.version,
             l.student_id,u.realname from task t
             INNER JOIN task_log l on t.task_id = l.task_id

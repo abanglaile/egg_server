@@ -38,6 +38,13 @@ class TeacherController extends Controller {
         const results = await service.task.getTaskTable(query.teacher_id);
         this.ctx.body = results;
     }
+
+    async getTaskLogTable(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.task.getTaskLogTable(query.teacher_id);
+        this.ctx.body = results;
+    }
     
     async addNewTest(){
         const { ctx, service } = this;

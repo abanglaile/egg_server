@@ -199,6 +199,7 @@ module.exports = app => {
   router.post('/api/undoSignLesson', controller.teacher.undoSignLesson);
 
   router.get('/api/getTaskTable', controller.teacher.getTaskTable);
+  router.get('/api/getTaskLogTable', controller.teacher.getTaskLogTable);
   router.post('/api/deleteOneTask', controller.teacher.deleteOneTask);
   router.get('/api/getTaskInfoById', controller.teacher.getTaskInfoById);
   router.get('/api/getTaskResultInfo', controller.teacher.getTaskResultInfo);

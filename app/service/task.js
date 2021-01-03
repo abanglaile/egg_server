@@ -61,21 +61,21 @@ class TaskService extends Service {
     async getTaskLogTable(teacher_id) {
         // const results = await this.app.mysql.query(`select t.*,s.source_name from task t ,task_source s 
         // where t.create_user = ? and t.source_id = s.source_id order by t.create_time desc;`, [teacher_id]);
-        const results = await this.app.mysql.query(`select t.*,s.source_name,s.sub_name,s.version,
-            l.student_id,u.realname from task t
-            INNER JOIN task_log l on t.task_id = l.task_id
-            INNER JOIN task_source s on t.source_id = s.source_id
-            INNER JOIN users u on l.student_id = u.userid 
-            where  t.create_user = ? order by t.create_time desc;
-            `, [teacher_id]);
-
-        // const results = await this.app.mysql.query(`select t.*,s.source_name,s.sub_name,s.version,l.student_id,u.realname,c.read from task t
+        // const results = await this.app.mysql.query(`select t.*,s.source_name,s.sub_name,s.version,
+        //     l.student_id,u.realname from task t
         //     INNER JOIN task_log l on t.task_id = l.task_id
         //     INNER JOIN task_source s on t.source_id = s.source_id
-        //     LEFT JOIN check_msg c on c.logid = t.task_id and c.read = 0 and c.submit_user = l.student_id
-        //     INNER JOIN users u on l.student_id = u.userid
+        //     INNER JOIN users u on l.student_id = u.userid 
         //     where  t.create_user = ? order by t.create_time desc;
         //     `, [teacher_id]);
+
+        const results = await this.app.mysql.query(`select t.task_id,t.remark,l.verify_state,
+            count(*) as num,t.update_time,t.task_type,s.source_name,s.sub_name,s.version from task t
+            INNER JOIN task_log l on t.task_id = l.task_id
+            INNER JOIN task_source s on t.source_id = s.source_id
+            where  t.create_user = ? GROUP BY l.task_id,l.verify_state 
+            order by t.update_time desc ;
+            `, [teacher_id]);
 
         var task_data = [];
         var task_index = [];
@@ -83,36 +83,47 @@ class TaskService extends Service {
         for(var i = 0; i < results.length; i++){
             var e = results[i];
             const index = task_index[e.task_id];
-            // console.log(i + " " + index);
             if(index >= 0){
-                task_data[index].stu.push({
-                    student_id: e.student_id, 
-                    realname : e.realname,
-                    // read : e.read,
-                });
+                task_data[index].verify_sta[e.verify_state] = e.num;
             }else{
-                var stu = [];
-                stu.push({
-                    student_id: e.student_id, 
-                    realname : e.realname,
-                    // read : e.read,
-                });
+                var verify_sta = {};
+                verify_sta[e.verify_state] = e.num;
+              
                 var group = {
                     task_id: e.task_id, 
-                    create_time: e.create_time, 
-                    source_id : e.source_id,
+                    update_time: e.update_time, 
                     remark : e.remark,
                     task_type : e.task_type,
                     source_name : e.source_name,
                     sub_name : e.sub_name,
                     version : e.version,
-                    stu : stu,
+                    verify_sta : verify_sta,
                 };
                 task_data[list_index] = group;
                 task_index[e.task_id] = list_index;
                 list_index++;
             }
         }
+        //verify_state小状态（0:未提交 1:已提交(待审核) 2:审核通过 3:已领取(通过后积分) 4：审核未通过）
+        /***task 大状态 （
+        uncheck  待审核 存在小状态为1
+        focus  待督办 存在小状态为0 或存在小状态为4
+        checked  已审核 其他
+        *****/
+        var task_state = null; 
+        for(var j=0;j<task_data.length;j++){
+            task_state = null; 
+            var ele = task_data[j].verify_sta;
+            if(ele[1] > 0){//待审核 存在小状态为1
+                task_state = 'uncheck';
+            }else if(ele[0] > 0 || ele[4] > 0){//待督办 存在小状态为0
+                task_state = 'focus';
+            }else{
+                task_state = 'checked';
+            }
+            task_data[j].taskState = task_state;
+        }
+
         return task_data;
     }
 

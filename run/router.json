@@ -1551,6 +1551,18 @@
       "POST"
     ],
     "paramNames": [],
+    "path": "/api/addTask",
+    "regexp": "/^\\/api\\/addTask(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
     "path": "/api/addHomework",
     "regexp": "/^\\/api\\/addHomework(?:\\/(?=$))?$/",
     "stack": [

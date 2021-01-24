@@ -377,6 +377,13 @@ class TeacherController extends Controller {
         ctx.body = results;
     }
 
+    async addTask(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.task.addTask(body.task);
+        ctx.body = results;
+    }
+
     async addHomework(){
         const { ctx, service } = this;
         const {body} = ctx.request;

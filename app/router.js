@@ -6,6 +6,7 @@ module.exports = app => {
   // router.get('/about', m.isSignined(), controller.home.index);
   router.get('/api/getBookChapter', controller.entryexercise.getBookChapter);
   router.get('/api/getChapterKp', controller.entryexercise.getChapterKp);
+  router.get('/api/getKpTagBykpid', controller.entryexercise.getKpTagBykpid);
   router.get('/api/getExerciseByKp', controller.entryexercise.getExerciseByKp);
   router.get('/api/getExercise', controller.entryexercise.getExercise);
   router.get('/api/getSampleList', controller.entryexercise.getSampleList);

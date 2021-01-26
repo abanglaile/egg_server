@@ -28,6 +28,12 @@ class EntryExerController extends Controller {
     
         this.ctx.body = results;
     }
+    
+    async getKpTagBykpid(){
+        const { ctx, service } = this;
+        const results = await service.exercise.getKpTagBykpid(ctx.request.query.kpid);
+        this.ctx.body = results;
+    }
 
     async getExercise(){
         const { ctx, service } = this;

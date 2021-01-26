@@ -84,6 +84,8 @@ class ExerciseService extends Service {
                 content: results[i].content, 
                 presn: results[i].presn, 
                 kpid: results[i].kpid,
+                kp_tag_id:results[i].kp_tag_id,
+                kp_tag_name:results[i].kp_tag_name,
                 kpname: results[i].kpname,
                 sn_rating : results[i].sn_rating,
                 checked: kpids['#' + results[i].kpid]?true:false//记录主测点
@@ -107,8 +109,11 @@ class ExerciseService extends Service {
   }
 
   async getExerciseByExid(exercise_id) {
-    const res = await this.app.mysql.query('select e.* , b.*, t.kpname from exercise e, '
-    +'breakdown b, kptable t where e.exercise_id = ? and b.exercise_id = e.exercise_id and b.kpid = t.kpid', exercise_id);
+    const res = await this.app.mysql.query(`select e.* , b.*, t.kpname, kt.kp_tag_name from 
+      exercise e, kptable t ,breakdown b 
+      left join kp_tag kt on kt.kp_tag_id = b.kp_tag_id
+      where e.exercise_id = ? and 
+      b.exercise_id = e.exercise_id and b.kpid = t.kpid;`, exercise_id);
 
     return res;
   }
@@ -119,6 +124,11 @@ class ExerciseService extends Service {
       });
       
     return res;    
+  }
+
+  async getKpTagBykpid(kpid){
+    return await this.app.mysql.query(`select * from kp_tag where kpid = ? 
+      order by kp_tag_index asc;`, kpid);
   }
 
   async addOneExercise(course_id,exercise){
@@ -296,7 +306,15 @@ class ExerciseService extends Service {
     var params = [exercise_id];
     for(var i = 0; i < breakdown.length; i++){
         sql = sql + "insert into breakdown set ?;"
-        params.push({exercise_id: exercise_id, sn: breakdown[i].sn, sn_rating: breakdown[i].sn_rating, content: breakdown[i].content, presn: breakdown[i].presn, kpid: breakdown[i].kpid, sn_rating: breakdown[i].sn_rating});
+        params.push({exercise_id: exercise_id, 
+          sn: breakdown[i].sn, 
+          sn_rating: breakdown[i].sn_rating, 
+          content: breakdown[i].content, 
+          presn: breakdown[i].presn, 
+          kpid: breakdown[i].kpid, 
+          kp_tag_id: breakdown[i].kp_tag_id, 
+          sn_rating: breakdown[i].sn_rating
+        });
     }
     const res = await this.app.mysql.query(sql,params);
     return res;

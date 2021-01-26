@@ -32,6 +32,19 @@
       "GET"
     ],
     "paramNames": [],
+    "path": "/api/getKpTagBykpid",
+    "regexp": "/^\\/api\\/getKpTagBykpid(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/api/getExerciseByKp",
     "regexp": "/^\\/api\\/getExerciseByKp(?:\\/(?=$))?$/",
     "stack": [

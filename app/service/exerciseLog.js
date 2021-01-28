@@ -651,7 +651,8 @@ class ExerciseLogService extends Service {
                         kpname: breakdown[j].kpname, 
                         sn_state: sn_state, 
                         sn_old_rating: breakdown[j].sn_rating,
-                        kp_old_rating: breakdown[j].kp_rating, 
+                        kp_old_rating: breakdown[j].kp_rating,
+                        kp_tag_id: breakdown[j].kp_tag_id 
                     };
                 }
                 exercise_log[i] = {
@@ -697,7 +698,8 @@ class ExerciseLogService extends Service {
                             kpname: breakdown[j].kpname, 
                             sn_state: sn_state, 
                             sn_old_rating: breakdown[j].sn_rating, 
-                            kp_old_rating: breakdown[j].kp_rating, 
+                            kp_old_rating: breakdown[j].kp_rating,
+                            kp_tag_id: breakdown[j].kp_tag_id 
                         };
                     }
                     exercise_log[i].breakdown_sn = breakdown_sn;

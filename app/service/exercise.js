@@ -399,6 +399,7 @@ class ExerciseService extends Service {
                 kpname: e.kpname,
                 sn_rating: e.sn_rating,
                 kp_rating: e.kp_rating ? e.kp_rating : default_rating,
+                kp_tag_id: e.kp_tag_id
             }
         }else {
             var breakdown = [];
@@ -410,6 +411,7 @@ class ExerciseService extends Service {
                 kpname: e.kpname,
                 sn_rating: e.sn_rating,
                 kp_rating: e.kp_rating ? e.kp_rating : default_rating,
+                kp_tag_id: e.kp_tag_id
             };
             exercise_list[index] = {
                 exercise_id: e.exercise_id, 

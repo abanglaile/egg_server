@@ -513,6 +513,7 @@ class ExerciseLogService extends Service {
                     kpname: b.kpname,
                     kp_old_rating: b.kp_old_rating,
                     kp_delta_rating: b.kp_delta_rating,
+                    kp_tag_id: b.kp_tag_id,
                 }
             }
         }        

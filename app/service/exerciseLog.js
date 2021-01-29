@@ -127,10 +127,8 @@ class ExerciseLogService extends Service {
             const plus = log.sn_state == 1 ? 1 : log.sn_state == 0 ? -1 : 0
             if(kp_result[chapter_name] && kp_result[chapter_name][kpid]){
                 kp_result[chapter_name][kpid].kp_new_rating += log.kp_delta_rating
-                
-                kp_result[chapter_name][kpid].weak_kp_tags
-                 = log.sn_state ? kp_result[chapter_name][kpid].weak_kp_tags 
-                    : (kp_result[chapter_name][kpid].weak_kp_tags + 1)
+                //添加薄弱项标签
+                kp_result[chapter_name][kpid].weak_kp_tags = this.addWeakTag(log.sn_state, kp_result[chapter_name][kpid].weak_kp_tags, log.kp_tag_id)
             }else{
                 if(!kp_result[chapter_name]){
                     kp_result[chapter_name] = {}
@@ -142,7 +140,7 @@ class ExerciseLogService extends Service {
                     variance: log.variance ? log.variance : 130,
                     kp_old_rating: log.kp_old_rating,
                     kp_new_rating: log.kp_old_rating + plus * log.kp_delta_rating,
-                    weak_kp_tags: log.sn_state ? 0 : 1
+                    weak_kp_tags: log.sn_state ? [] : [log.kp_tag_id]
                 }
             }
         }
@@ -160,6 +158,18 @@ class ExerciseLogService extends Service {
         }
         console.log(chapter_change)
         return chapter_change
+    }
+
+    addWeakTag(sn_state, weak_kp_tags, kp_tag_id){
+        if(sn_state){
+            return weak_kp_tags
+        }else{
+            for(let i = 0; i < weak_kp_tags.length; i++){
+                if(weak_kp_tags[i] == kp_tag_id)
+                    return weak_kp_tags
+            }
+            return weak_kp_tags.push(kp_tag_id)
+        }
     }
 
     async getTestExerciseResult(student_id, test_id){

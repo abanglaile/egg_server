@@ -111,10 +111,11 @@ class ExerciseLogService extends Service {
 
     async getTestKpResult(student_id, test_id){
         const breakdown_log = await this.app.mysql.query(`select c.chaptername, c.chapterid, 
-            bl.sn_state, bl.kpid, bl.kpname, ks.mean, ks.variance,
+            bl.sn_state, bl.kpid, bl.kpname, kg.kp_tag_name, ks.mean, ks.variance,
             bl.kp_old_rating, bl.kp_delta_rating  
             from breakdown_log bl inner join kptable k on k.kpid = bl.kpid 
             inner join chapter c on k.chapterid = c.chapterid
+            inner join kp_tag kg on kg.kp_tag_id = bl.kp_tag_id
             left join kp_standard ks on ks.kpid = bl.kpid
             where bl.student_id = ? and bl.test_id = ? order by update_time asc`, [student_id, test_id])
         
@@ -128,7 +129,7 @@ class ExerciseLogService extends Service {
             if(kp_result[chapter_name] && kp_result[chapter_name][kpid]){
                 kp_result[chapter_name][kpid].kp_new_rating += log.kp_delta_rating
                 //添加薄弱项标签
-                kp_result[chapter_name][kpid].weak_kp_tags = this.addWeakTag(log.sn_state, kp_result[chapter_name][kpid].weak_kp_tags, log.kp_tag_id)
+                kp_result[chapter_name][kpid].weak_kp_tags = this.addWeakTag(log.sn_state, kp_result[chapter_name][kpid].weak_kp_tags, log.kp_tag_name)
             }else{
                 if(!kp_result[chapter_name]){
                     kp_result[chapter_name] = {}
@@ -140,7 +141,7 @@ class ExerciseLogService extends Service {
                     variance: log.variance ? log.variance : 130,
                     kp_old_rating: log.kp_old_rating,
                     kp_new_rating: log.kp_old_rating + plus * log.kp_delta_rating,
-                    weak_kp_tags: log.sn_state ? [] : [log.kp_tag_id]
+                    weak_kp_tags: log.sn_state || !log.kp_tag_name ? [] : [log.kp_tag_name]
                 }
             }
         }
@@ -160,15 +161,16 @@ class ExerciseLogService extends Service {
         return chapter_change
     }
 
-    addWeakTag(sn_state, weak_kp_tags, kp_tag_id){
-        if(sn_state){
+    addWeakTag(sn_state, weak_kp_tags, kp_tag_name){
+        if(sn_state || !kp_tag_name){
             return weak_kp_tags
         }else{
             for(let i = 0; i < weak_kp_tags.length; i++){
-                if(weak_kp_tags[i] == kp_tag_id)
+                if(weak_kp_tags[i] == kp_tag_name)
                     return weak_kp_tags
             }
-            return weak_kp_tags.push(kp_tag_id)
+            weak_kp_tags.push(kp_tag_name)
+            return weak_kp_tags
         }
     }
 

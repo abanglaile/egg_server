@@ -114,6 +114,9 @@ module.exports = app => {
   router.post('/api/getTestRankingList', controller.student.getTestRankingList);
   
   /*教师端接口*/
+  //路径管理
+  router.get('/api/getStudentChapterNode', controller.teacher.getStudentChapterNode);
+
   router.get('/api/getTestTable', controller.teacher.getTestTable);
   router.post('/api/addNewTest', controller.teacher.addNewTest);
   router.post('/api/deleteOneTest', controller.teacher.deleteOneTest);

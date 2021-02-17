@@ -622,6 +622,13 @@ class TeacherController extends Controller {
         const results = await service.exerciseLog.getCheckedExers(query.test_id);
         this.ctx.body = results;
     }
+
+    async getStudentChapterNode(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.path.getStudentChapterNode(query.student_id, query.group_id, query.path_chapter_id);
+        this.ctx.body = results;
+    }
 }
 
 module.exports = TeacherController;

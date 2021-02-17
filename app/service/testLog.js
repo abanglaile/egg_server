@@ -61,10 +61,11 @@ class TestLogService extends Service {
     }
 
     async isTestLogFinish(test_id, student_id, exindex){
-        const logs = await this.app.mysql.query(`select e.exercise_id, e.exercise_index, el.exercise_status, el.exercise_state from exercise_test e
-        left join (select distinct exercise_id, exercise_status, exercise_state from exercise_log 
+        const logs = await this.app.mysql.query(`select tt.is_eval, e.exercise_id, e.exercise_index, el.exercise_status, el.exercise_state 
+        from teacher_test tt, exercise_test e left join 
+        (select distinct exercise_id, exercise_status, exercise_state from exercise_log 
             where test_id = ? and student_id = ?) el on e.exercise_id = el.exercise_id
-            where e.test_id = ? order by e.exercise_index`, [test_id, student_id, test_id])
+            where e.test_id = ? and tt.test_id = ? order by e.exercise_index`, [test_id, student_id, test_id, test_id])
         let correct_exercise = logs[exindex].exercise_state == 1 ? 1 : 0, total_exercise = logs.length
         var next = -1
         var i = (exindex + 1) % logs.length
@@ -85,14 +86,26 @@ class TestLogService extends Service {
         if(next == -2){
             return -2
         }
+
+        //test finish
+        let result = {}
+        if(logs[0].is_eval == 2){
+            //学前测评
+            result = await this.service.path.getPreTestResult(student_id, test_id)
+            //可异步执行
+            await this.service.path.finishPreTest(student_id, test_id)
+        }
+        console.log(result);
         var delta_score = total_exercise + correct_exercise * 2; 
         var sta = ((correct_exercise/total_exercise)*100).toFixed(1);
+        
         const res = await this.app.mysql.update('test_log', {
                 finish_time: new Date(), 
                 delta_score: delta_score,
                 correct_exercise: correct_exercise,
                 total_exercise: total_exercise,//动态测试需要更改teacher_test题目数目
                 test_state: sta,
+                result: JSON.stringify(result),
             }, {
             where: {
                 test_id: test_id,

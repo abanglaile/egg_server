@@ -188,10 +188,10 @@ class TaskService extends Service {
     }
 
     async submitTaskLog(task_log){
-        const submit_url = ""
+        // const submit_url = ""
         const res = await this.app.mysql.update('task_log', {
                 submit_time: new Date(), 
-                submit_url: submit_url,
+                submit_url: task_log.submit_url,
                 correct_rate: task_log.correct_rate,
                 total_ex: task_log.total_ex,
                 wrong_ex: task_log.wrong_ex,

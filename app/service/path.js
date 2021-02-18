@@ -76,6 +76,7 @@ class PathService extends Service {
                 }
                 chapter_node_list[index].node_tasks.push({
                     task_desc: log.task_desc,
+                    task_count: log.task_count,
                     total_ex: log.total_ex,
                     wrong_ex: log.total_ex,
                     correct_rate: log.correct_rate

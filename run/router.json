@@ -1101,6 +1101,32 @@
       "GET"
     ],
     "paramNames": [],
+    "path": "/api/getGroupPath",
+    "regexp": "/^\\/api\\/getGroupPath(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getPathTable",
+    "regexp": "/^\\/api\\/getPathTable(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/api/getClassGroup",
     "regexp": "/^\\/api\\/getClassGroup(?:\\/(?=$))?$/",
     "stack": [
@@ -1787,6 +1813,18 @@
     "paramNames": [],
     "path": "/api/setVerifyRes",
     "regexp": "/^\\/api\\/setVerifyRes(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/distributeTaskLog",
+    "regexp": "/^\\/api\\/distributeTaskLog(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

@@ -516,6 +516,13 @@ class TeacherController extends Controller {
         const results = await service.task.assignTask(body.task, body.students);
         this.ctx.body = results;
     }
+    
+    async distributeTaskLog(){
+        const { ctx, service } = this;
+        const {body} = ctx.request;
+        const results = await service.task.distributeTaskLog(body.students, body.tasklog);
+        this.ctx.body = results;
+    }
 
     //查询做题步骤分析
     async getStuTestStepAnalysis(){
@@ -620,6 +627,20 @@ class TeacherController extends Controller {
         const { ctx, service } = this;
         const {query} = ctx.request;
         const results = await service.exerciseLog.getCheckedExers(query.test_id);
+        this.ctx.body = results;
+    }
+
+    async getGroupPath(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.path.getGroupPath(query.path_id,query.group_id);
+        this.ctx.body = results;
+    }
+
+    async getPathTable(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.path.getPathTable(query.teacher_id);
         this.ctx.body = results;
     }
 }

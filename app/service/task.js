@@ -26,9 +26,22 @@ class TaskService extends Service {
         return task;
     }
 
+    async distributeTaskLog(users,tasklog){
+        for(let i = 0; i < users.length; i++){
+            let task_log = {
+                task_id: tasklog.task_id,
+                student_id: users[i].student_id,
+                verify_user: tasklog.verify_user,
+                start_time: new Date(),
+            }
+            await this.addTaskLog(task_log);
+        }
+        return tasklog;
+    }
+
     async addTaskLog(task_log){
-        return await this.app.mysql.query('insert ignore into task_log(task_id, student_id, start_time) values(?, ?, ?)', 
-            [task_log.task_id, task_log.student_id, task_log.start_time]);
+        return await this.app.mysql.query('insert ignore into task_log(task_id, student_id, verify_user, start_time) values(?, ?, ?, ?)', 
+            [task_log.task_id, task_log.student_id, task_log.verify_user, task_log.start_time]);
     }
 
     async deleteTaskLog(task_id, users){
@@ -139,7 +152,7 @@ class TaskService extends Service {
     }
 
     async getTaskInfoById(task_id){
-        const results = await this.app.mysql.query(`select t.*,s.source_name from task t,
+        const results = await this.app.mysql.query(`select t.*,s.source_name,s.sub_name from task t,
         task_source s where t.source_id = s.source_id and t.task_id = ?; `, [task_id]);
 
         return results[0];

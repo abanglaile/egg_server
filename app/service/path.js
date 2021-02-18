@@ -1,9 +1,8 @@
 const Service = require('egg').Service;
-const uuid = require('uuid');
 
-class LessonService extends Service {
+class PathService extends Service {
 
-    async getStudentPathChapter(student_id, , group_id, path_id){
+    async getStudentPathChapter(student_id, group_id, path_id){
         const path_chapter_list = await this.app.mysql.query(`select cn.path_chapter_name, sp.chapter_index, sp.node_index
             from student_path sp, chapter_node cn
             where sp.student_id = ? and sp.group_id = ? and sp.path_id = ? and sp.path_chapter_id = cn.path_chapter_id`,
@@ -12,7 +11,7 @@ class LessonService extends Service {
         return path_chapter_list;
     }
 
-    async getStudentChapterNode(student_id, group_id, path_chapter_id, group_id){
+    async getStudentChapterNode(student_id, path_chapter_id, group_id){
         const task_logs = await this.app.mysql.query(`select cn.node_name, cn.node_index, 
             nt.task_index, snt.visible, kt.kp_tag_name, sn.invisible,
             tl.total_ex, tl.wrong_ex, tl.correct_rate
@@ -101,4 +100,80 @@ class LessonService extends Service {
         pre_test.kp_mastery = Math.round(100 * this.service.exerciseLog.getMastery(pre_test.kp_new_rating, pre_test.mean, pre_test.variance))
         return pre_test
     }
+
+    async getGroupPath(path_id, group_id){
+        const res_pathname = await this.app.mysql.get('path', { path_id: path_id });
+        const res_group = await this.app.mysql.get('school_group', { stu_group_id: group_id });
+        const res_path = await this.app.mysql.query(`
+            select * from path_chapter c where c.path_id = ? 
+            order by chapter_index asc;`,[path_id]);
+        const res_stupath = await this.app.mysql.query(`
+        select u.realname,s.*,c.path_chapter_name,n.node_name from student_path s 
+        LEFT JOIN path_chapter c on s.path_id = c.path_id and 
+        c.chapter_index = s.path_chapter_index
+        LEFT JOIN chapter_node n on n.path_chapter_id = c.path_chapter_id and n.node_index = s.node_index 
+        left join users u on s.student_id = u.userid where s.stu_group_id = ?
+        and s.path_id = ? order by s.path_chapter_index asc;`,[group_id,path_id]);
+
+        var stu_path_list = [];
+        var stu_path_index = [];
+        var list_index = 0;
+        for(var i = 0; i < res_stupath.length; i++){
+            var e = res_stupath[i];
+            const index = stu_path_index[e.path_chapter_index];
+            if(index >= 0){
+                stu_path_list[index].stu_info.push({
+                    student_id: e.student_id,
+                    realname: e.realname,
+                });
+            }else{
+                var stu_info = [];
+                stu_info.push({
+                    student_id: e.student_id,
+                    realname: e.realname,
+                });
+                var group = {
+                    chapter_index : e.path_chapter_index,
+                    stu_info : stu_info,
+                };
+                stu_path_list[list_index] = group;
+                stu_path_index[e.path_chapter_index] = list_index;
+                list_index++;
+            }
+        }
+        // for(var m= 0; m< res_path.length; m++){
+        //     for(var n= 0; n< stu_path_list.length; n++){
+        //         if(res_path[m].chapter_index == stu_path_list[n].chapter_index){
+        //             res_path[m].push({
+        //                 stu_num : stu_path_list[n].stu_info.length,
+        //                 stu_info : stu_path_list[n].stu_info,
+        //             });
+        //         }
+        //     }
+        // }
+        for(var n= 0; n< stu_path_list.length; n++){
+            res_path[stu_path_list[n].chapter_index].chapter_stu = {
+                stu_num : stu_path_list[n].stu_info.length,
+                stu_info : stu_path_list[n].stu_info,
+            };
+        }
+
+        var group_path = {
+            path_name : res_pathname.path_name,
+            group_name : res_group.group_name,
+            path_info : res_path,
+            stu_path : res_stupath,
+        };
+
+        return group_path;
+    }
+
+    async getPathTable(teacher_id){
+        return await this.app.mysql.query(`select sg.stu_group_id,sg.group_name,gp.bond_time,p.* 
+        from teacher_group t INNER JOIN group_path gp on t.stu_group_id  = gp.stu_group_id
+        INNER join school_group sg on sg.stu_group_id = t.stu_group_id
+        INNER join path p on p.path_id = gp.path_id where t.teacher_id = ?;`, [teacher_id]);
+    }
 }
+
+module.exports = PathService;

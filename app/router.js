@@ -135,6 +135,10 @@ module.exports = app => {
   router.get('/api/getUncheckedExers', controller.teacher.getUncheckedExers);
   router.get('/api/getCheckedExers', controller.teacher.getCheckedExers);
 
+  //路径管理接口
+  router.get('/api/getGroupPath', controller.teacher.getGroupPath);
+  router.get('/api/getPathTable', controller.teacher.getPathTable);
+
   router.get('/api/getClassGroup', controller.teacher.getClassGroup);
   router.get('/api/getSchool', controller.teacher.getSchool);
   router.get('/api/getGroupData', controller.teacher.getGroupData);
@@ -207,6 +211,7 @@ module.exports = app => {
   router.get('/api/getTaskResultInfo', controller.teacher.getTaskResultInfo);
   router.get('/api/searchTaskSource', controller.teacher.searchTaskSource);
   router.post('/api/setVerifyRes',controller.teacher.setVerifyRes);
+  router.post('/api/distributeTaskLog',controller.teacher.distributeTaskLog);
   router.post('/api/distributeNewHomeWork',controller.teacher.distributeNewHomeWork);
   
   router.get('/api/getStuInfoById', controller.teacher.getStuInfoById);

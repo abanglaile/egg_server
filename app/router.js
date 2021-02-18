@@ -113,7 +113,7 @@ module.exports = app => {
   router.post('/api/getTestStatus', controller.student.getTestStatus);
   router.post('/api/getTestRankingList', controller.student.getTestRankingList);
   
-  /*教师端接口*/
+  /*教师端接口*/  
   router.get('/api/getTestTable', controller.teacher.getTestTable);
   router.post('/api/addNewTest', controller.teacher.addNewTest);
   router.post('/api/deleteOneTest', controller.teacher.deleteOneTest);
@@ -138,6 +138,7 @@ module.exports = app => {
   //路径管理接口
   router.get('/api/getGroupPath', controller.teacher.getGroupPath);
   router.get('/api/getPathTable', controller.teacher.getPathTable);
+  router.get('/api/getStudentChapterNode', controller.teacher.getStudentChapterNode);
 
   router.get('/api/getClassGroup', controller.teacher.getClassGroup);
   router.get('/api/getSchool', controller.teacher.getSchool);

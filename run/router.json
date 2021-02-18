@@ -885,6 +885,19 @@
       "GET"
     ],
     "paramNames": [],
+    "path": "/api/getStudentChapterNode",
+    "regexp": "/^\\/api\\/getStudentChapterNode(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/api/getTestTable",
     "regexp": "/^\\/api\\/getTestTable(?:\\/(?=$))?$/",
     "stack": [

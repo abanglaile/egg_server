@@ -885,19 +885,6 @@
       "GET"
     ],
     "paramNames": [],
-    "path": "/api/getStudentChapterNode",
-    "regexp": "/^\\/api\\/getStudentChapterNode(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
-      "HEAD",
-      "GET"
-    ],
-    "paramNames": [],
     "path": "/api/getTestTable",
     "regexp": "/^\\/api\\/getTestTable(?:\\/(?=$))?$/",
     "stack": [
@@ -1129,6 +1116,32 @@
     "paramNames": [],
     "path": "/api/getPathTable",
     "regexp": "/^\\/api\\/getPathTable(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getStudentPathChapter",
+    "regexp": "/^\\/api\\/getStudentPathChapter(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getStudentChapterNode",
+    "regexp": "/^\\/api\\/getStudentChapterNode(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

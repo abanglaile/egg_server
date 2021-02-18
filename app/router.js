@@ -138,6 +138,7 @@ module.exports = app => {
   //路径管理接口
   router.get('/api/getGroupPath', controller.teacher.getGroupPath);
   router.get('/api/getPathTable', controller.teacher.getPathTable);
+  router.get('/api/getStudentPathChapter', controller.teacher.getStudentPathChapter);
   router.get('/api/getStudentChapterNode', controller.teacher.getStudentChapterNode);
 
   router.get('/api/getClassGroup', controller.teacher.getClassGroup);

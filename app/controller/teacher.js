@@ -642,7 +642,14 @@ class TeacherController extends Controller {
         const {query} = ctx.request;
         const results = await service.path.getPathTable(query.teacher_id);
     }
-    
+
+    async getStudentPathChapter(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.path.getStudentPathChapter(query.student_id, query.group_id, query.path_id);
+        this.ctx.body = results;
+    }
+
     async getStudentChapterNode(){
         const { ctx, service } = this;
         const {query} = ctx.request;

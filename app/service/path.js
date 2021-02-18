@@ -3,12 +3,23 @@ const Service = require('egg').Service;
 class PathService extends Service {
 
     async getStudentPathChapter(student_id, group_id, path_id){
-        const path_chapter_list = await this.app.mysql.query(`select cn.path_chapter_name, sp.chapter_index, sp.node_index
-            from student_path sp inner join , chapter_node cn
-            where sp.student_id = ? and sp.group_id = ? and sp.path_id = ? and sp.path_chapter_id = cn.path_chapter_id`,
-            [student_id, group_id, path_id]);
-        
-        return path_chapter_list;
+        // const path_chapter_list = await this.app.mysql.query(`select cn.path_chapter_name,
+        //  sp.chapter_index, sp.node_index from student_path sp inner join , 
+        //  chapter_node cn where sp.student_id = ? and sp.group_id = ? 
+        //  and sp.path_id = ? and sp.path_chapter_id = cn.path_chapter_id`,
+        //     [student_id, group_id, path_id]);
+        const path_chapter_list = await this.app.mysql.query(`select * from path_chapter p 
+            where p.path_id = ? order by p.chapter_index asc;`,[path_id]);
+        const stu_path = await this.app.mysql.query(`select p.path_chapter_id,s.* from 
+            student_path s,path_chapter p where s.path_id = p.path_id and 
+            s.path_chapter_index = p.chapter_index and s.student_id = ? 
+            and s.stu_group_id = ? and s.path_id = ?;
+            `,[student_id,group_id,path_id]);
+       
+        return {path_chapter_list:path_chapter_list,
+                current_chapter_index:stu_path[0].path_chapter_index,
+                current_chapter_id:stu_path[0].path_chapter_id,
+                current_node_index:stu_path[0].node_index};
     }
 
     async getStudentChapterNode(student_id, group_id, path_chapter_id){
@@ -81,6 +92,7 @@ class PathService extends Service {
                 })
             }
         }
+        console.log("chapter_node_list:",JSON.stringify(chapter_node_list));
         return chapter_node_list
     }
 

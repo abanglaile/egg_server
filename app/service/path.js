@@ -24,9 +24,10 @@ class PathService extends Service {
 
     async getStudentChapterNode(student_id, group_id, path_chapter_id){
         const task_logs = await this.app.mysql.query(`select cn.node_id, cn.node_name, cn.node_index, 
-            nt.task_index, nt.task_desc, snt.visible, kt.kp_tag_name, sn.invisible,
-            tl.total_ex, tl.wrong_ex, tl.correct_rate
+            nt.task_index, nt.task_desc, t.task_count, snt.visible, kt.kp_tag_name, sn.invisible,
+            tl.total_ex, tl.wrong_ex, tl.correct_rate, tl.verify_state
             from node_task nt inner join kp_tag kt on nt.kp_tag_id = kt.kp_tag_id
+            inner join task t on nt.task_id = t.task_id
             left join student_node_task snt on nt.task_id = snt.task_id and snt.student_id = ?
             left join task_log tl on nt.task_id = tl.task_id and tl.student_id = ?
             , chapter_node cn left join student_node sn on cn.node_id = sn.node_id and sn.student_id = ?
@@ -86,6 +87,7 @@ class PathService extends Service {
                 }
                 chapter_node_list[index].node_tasks.push({
                     task_desc: log.task_desc,
+                    task_count: log.task_count,
                     total_ex: log.total_ex,
                     wrong_ex: log.total_ex,
                     correct_rate: log.correct_rate
@@ -192,6 +194,30 @@ class PathService extends Service {
         };
 
         return group_path;
+    }
+
+    //未考虑group_id重复参加情况
+    async finishPreTest(student_id, test_id){
+        const node_tasks = await this.app.mysql.query(`select nt.task_id from breakdown_log bl, 
+            node_task nt inner join node_test ntt on ntt.test_id = ? and ntt.node_id = nt.node_id
+            where bl.student_id = ? and bl.test_id = ? and bl.kp_tag_id = nt.kp_tag_id
+            and bl.sn_state = 0 group by nt.task_id`, [test_id, student_id, test_id])
+        
+        for(let i = 0; i < node_tasks.length; i++){
+            node_tasks[i].student_id = student_id
+            node_tasks[i].visible = 1
+        }
+        return await this.app.mysql.insert('student_node_task', node_tasks);
+    }
+    
+    async finishNodeTask(student_id, task_id){
+        const node_tasks = await this.app.mysql.query(`select cn.node_id, cn.node_name, cn.node_index, 
+        nt.task_index, nt.task_desc, t.task_count, snt.visible, sn.invisible,
+        from node_task nt inner join task t on nt.task_id = t.task_id
+        left join student_node_task snt on nt.task_id = snt.task_id and snt.student_id = ?
+        , chapter_node cn left join student_node sn on cn.node_id = sn.node_id and sn.student_id = ?
+        where nt.node_id = cn.node_id and cn.path_chapter_id = ?
+        order by cn.node_index, nt.task_index`, [test_id, student_id, test_id])
     }
 
     async getPathTable(teacher_id){

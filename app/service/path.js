@@ -14,9 +14,10 @@ class PathService extends Service {
 
     async getStudentChapterNode(student_id, group_id, path_chapter_id){
         const task_logs = await this.app.mysql.query(`select cn.node_id, cn.node_name, cn.node_index, 
-            nt.task_index, nt.task_desc, snt.visible, kt.kp_tag_name, sn.invisible,
-            tl.total_ex, tl.wrong_ex, tl.correct_rate
+            nt.task_index, nt.task_desc, t.task_count, snt.visible, kt.kp_tag_name, sn.invisible,
+            tl.total_ex, tl.wrong_ex, tl.correct_rate, tl.verify_state
             from node_task nt inner join kp_tag kt on nt.kp_tag_id = kt.kp_tag_id
+            inner join task t on nt.task_id = t.task_id
             left join student_node_task snt on nt.task_id = snt.task_id and snt.student_id = ?
             left join task_log tl on nt.task_id = tl.task_id and tl.student_id = ?
             , chapter_node cn left join student_node sn on cn.node_id = sn.node_id and sn.student_id = ?
@@ -129,7 +130,17 @@ class PathService extends Service {
         }
 
         return await this.app.mysql.insert('student_node_task', node_tasks);
-    } 
+    }
+    
+    async finishNodeTask(student_id, task_id){
+        const node_tasks = await this.app.mysql.query(`select cn.node_id, cn.node_name, cn.node_index, 
+        nt.task_index, nt.task_desc, t.task_count, snt.visible, sn.invisible,
+        from node_task nt inner join task t on nt.task_id = t.task_id
+        left join student_node_task snt on nt.task_id = snt.task_id and snt.student_id = ?
+        , chapter_node cn left join student_node sn on cn.node_id = sn.node_id and sn.student_id = ?
+        where nt.node_id = cn.node_id and cn.path_chapter_id = ?
+        order by cn.node_index, nt.task_index`, [test_id, student_id, test_id])
+    }
 }
 
 module.exports = PathService;

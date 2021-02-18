@@ -1,5 +1,4 @@
 const Service = require('egg').Service;
-const uuid = require('uuid');
 
 class PathService extends Service {
 
@@ -117,6 +116,73 @@ class PathService extends Service {
         return pre_test
     }
 
+    async getGroupPath(path_id, group_id){
+        const res_pathname = await this.app.mysql.get('path', { path_id: path_id });
+        const res_group = await this.app.mysql.get('school_group', { stu_group_id: group_id });
+        const res_path = await this.app.mysql.query(`
+            select * from path_chapter c where c.path_id = ? 
+            order by chapter_index asc;`,[path_id]);
+        const res_stupath = await this.app.mysql.query(`
+        select u.realname,s.*,c.path_chapter_name,n.node_name from student_path s 
+        LEFT JOIN path_chapter c on s.path_id = c.path_id and 
+        c.chapter_index = s.path_chapter_index
+        LEFT JOIN chapter_node n on n.path_chapter_id = c.path_chapter_id and n.node_index = s.node_index 
+        left join users u on s.student_id = u.userid where s.stu_group_id = ?
+        and s.path_id = ? order by s.path_chapter_index asc;`,[group_id,path_id]);
+
+        var stu_path_list = [];
+        var stu_path_index = [];
+        var list_index = 0;
+        for(var i = 0; i < res_stupath.length; i++){
+            var e = res_stupath[i];
+            const index = stu_path_index[e.path_chapter_index];
+            if(index >= 0){
+                stu_path_list[index].stu_info.push({
+                    student_id: e.student_id,
+                    realname: e.realname,
+                });
+            }else{
+                var stu_info = [];
+                stu_info.push({
+                    student_id: e.student_id,
+                    realname: e.realname,
+                });
+                var group = {
+                    chapter_index : e.path_chapter_index,
+                    stu_info : stu_info,
+                };
+                stu_path_list[list_index] = group;
+                stu_path_index[e.path_chapter_index] = list_index;
+                list_index++;
+            }
+        }
+        // for(var m= 0; m< res_path.length; m++){
+        //     for(var n= 0; n< stu_path_list.length; n++){
+        //         if(res_path[m].chapter_index == stu_path_list[n].chapter_index){
+        //             res_path[m].push({
+        //                 stu_num : stu_path_list[n].stu_info.length,
+        //                 stu_info : stu_path_list[n].stu_info,
+        //             });
+        //         }
+        //     }
+        // }
+        for(var n= 0; n< stu_path_list.length; n++){
+            res_path[stu_path_list[n].chapter_index].chapter_stu = {
+                stu_num : stu_path_list[n].stu_info.length,
+                stu_info : stu_path_list[n].stu_info,
+            };
+        }
+
+        var group_path = {
+            path_name : res_pathname.path_name,
+            group_name : res_group.group_name,
+            path_info : res_path,
+            stu_path : res_stupath,
+        };
+
+        return group_path;
+    }
+
     //未考虑group_id重复参加情况
     async finishPreTest(student_id, test_id){
         const node_tasks = await this.app.mysql.query(`select nt.task_id from breakdown_log bl, 
@@ -128,7 +194,6 @@ class PathService extends Service {
             node_tasks[i].student_id = student_id
             node_tasks[i].visible = 1
         }
-
         return await this.app.mysql.insert('student_node_task', node_tasks);
     }
     
@@ -140,6 +205,13 @@ class PathService extends Service {
         , chapter_node cn left join student_node sn on cn.node_id = sn.node_id and sn.student_id = ?
         where nt.node_id = cn.node_id and cn.path_chapter_id = ?
         order by cn.node_index, nt.task_index`, [test_id, student_id, test_id])
+    }
+
+    async getPathTable(teacher_id){
+        return await this.app.mysql.query(`select sg.stu_group_id,sg.group_name,gp.bond_time,p.* 
+        from teacher_group t INNER JOIN group_path gp on t.stu_group_id  = gp.stu_group_id
+        INNER join school_group sg on sg.stu_group_id = t.stu_group_id
+        INNER join path p on p.path_id = gp.path_id where t.teacher_id = ?;`, [teacher_id]);
     }
 }
 

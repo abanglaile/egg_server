@@ -885,19 +885,6 @@
       "GET"
     ],
     "paramNames": [],
-    "path": "/api/getStudentChapterNode",
-    "regexp": "/^\\/api\\/getStudentChapterNode(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
-      "HEAD",
-      "GET"
-    ],
-    "paramNames": [],
     "path": "/api/getTestTable",
     "regexp": "/^\\/api\\/getTestTable(?:\\/(?=$))?$/",
     "stack": [
@@ -1103,6 +1090,45 @@
     "paramNames": [],
     "path": "/api/getCheckedExers",
     "regexp": "/^\\/api\\/getCheckedExers(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getGroupPath",
+    "regexp": "/^\\/api\\/getGroupPath(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getPathTable",
+    "regexp": "/^\\/api\\/getPathTable(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getStudentChapterNode",
+    "regexp": "/^\\/api\\/getStudentChapterNode(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -1800,6 +1826,18 @@
     "paramNames": [],
     "path": "/api/setVerifyRes",
     "regexp": "/^\\/api\\/setVerifyRes(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/distributeTaskLog",
+    "regexp": "/^\\/api\\/distributeTaskLog(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

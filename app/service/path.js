@@ -10,19 +10,28 @@ class PathService extends Service {
         //     [student_id, group_id, path_id]);
         const path_chapter_list = await this.app.mysql.query(`select * from path_chapter p 
             where p.path_id = ? order by p.chapter_index asc;`,[path_id]);
-        const stu_path = await this.app.mysql.query(`select p.path_chapter_id,s.* from 
-            student_path s,path_chapter p where s.path_id = p.path_id and 
-            s.path_chapter_index = p.chapter_index and s.student_id = ? 
-            and s.stu_group_id = ? and s.path_id = ?;
+        const stu_path = await this.app.mysql.query(`select p.path_chapter_id,s.*,u.realname,
+        pa.path_name ,sg.group_name from student_path s,path_chapter p,users u,path pa,school_group sg 
+        where s.path_id = p.path_id and s.path_chapter_index = p.chapter_index and 
+        u.userid=s.student_id and pa.path_id = s.path_id and sg.stu_group_id = s.stu_group_id 
+        and s.student_id = ? and s.stu_group_id = ? and s.path_id = ?;
             `,[student_id,group_id,path_id]);
        
-        return {path_chapter_list:path_chapter_list,
-                current_chapter_index:stu_path[0].path_chapter_index,
-                current_chapter_id:stu_path[0].path_chapter_id,
-                current_node_index:stu_path[0].node_index};
+        return {
+                    path_chapter_list:path_chapter_list,
+                    current_chapter_index:stu_path[0].path_chapter_index,
+                    current_chapter_id:stu_path[0].path_chapter_id,
+                    current_node_index:stu_path[0].node_index,
+                    realname:stu_path[0].realname,
+                    path_name:stu_path[0].path_name,
+                    group_name:stu_path[0].group_name,
+                };
     }
 
     async getStudentChapterNode(student_id, group_id, path_chapter_id){
+        // console.log("student_id:",student_id);
+        // console.log("group_id:",group_id);
+        // console.log("path_chapter_id:",path_chapter_id);
         const task_logs = await this.app.mysql.query(`select cn.node_id, cn.node_name, cn.node_index, 
             nt.task_index, nt.task_desc, t.task_count, snt.visible, kt.kp_tag_name, sn.invisible,
             tl.total_ex, tl.wrong_ex, tl.correct_rate, tl.verify_state
@@ -95,6 +104,7 @@ class PathService extends Service {
             }
         }
         console.log("chapter_node_list:",JSON.stringify(chapter_node_list));
+        // console.log("result:",JSON.stringify(chapter_node_list[0].pre_test));
         return chapter_node_list
     }
 

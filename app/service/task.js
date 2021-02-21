@@ -85,8 +85,8 @@ class TaskService extends Service {
         //     `, [teacher_id]);
 
         const results = await this.app.mysql.query(`select t.task_id,l.verify_state,
-            count(*) as num,t.update_time,t.task_type,s.source_name,s.sub_name,s.version from task t
-            INNER JOIN task_log l on t.task_id = l.task_id
+            count(*) as num,t.update_time,t.task_type,t.assign_type,s.source_name,s.sub_name,
+            s.version from task t INNER JOIN task_log l on t.task_id = l.task_id
             INNER JOIN task_source s on t.source_id = s.source_id
             where  l.verify_user = ? GROUP BY l.task_id,l.verify_state 
             order by t.update_time desc ;
@@ -108,6 +108,7 @@ class TaskService extends Service {
                     task_id: e.task_id, 
                     update_time: e.update_time, 
                     task_type : e.task_type,
+                    assign_type : e.assign_type,
                     source_name : e.source_name,
                     sub_name : e.sub_name,
                     version : e.version,
@@ -160,17 +161,18 @@ class TaskService extends Service {
     }
 
     async getTaskResultInfo(task_id){
-        const results = await this.app.mysql.query(`select l.*,u.realname from task_log l ,
-        users u where l.student_id = u.userid and l.task_id = ?;`, task_id);
+        const results = await this.app.mysql.query(`select l.*,t.assign_type,u.realname from 
+        task_log l ,task t, users u where l.student_id = u.userid and 
+        t.task_id = l.task_id and l.task_id = ?;`, task_id);
         // console.log("results");
         return results;
     }
 
-    async setVerifyRes(verifyState, comment, taskid, teacher_id, student_id){
+    async setVerifyRes(verifyState, comment, taskid, student_id,assign_type){
         const res = await this.app.mysql.update('task_log', {
             verify_time: new Date(), 
             verify_state: verifyState,
-            verify_user: teacher_id,
+            // verify_user: teacher_id,
             comment: comment,
             }, {
             where: {

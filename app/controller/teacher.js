@@ -506,7 +506,7 @@ class TeacherController extends Controller {
         const { ctx, service } = this;
         const {body} = ctx.request;
         const results = await service.task.setVerifyRes(body.verifyState,
-                         body.comment,body.taskid,body.student_id,body.assign_type);
+                         body.comment,body.taskid,body.teacher_id,body.student_id,body.assign_type);
         this.ctx.body = results;   
     }
 

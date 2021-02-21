@@ -1153,6 +1153,19 @@
       "GET"
     ],
     "paramNames": [],
+    "path": "/api/finishNodeTask",
+    "regexp": "/^\\/api\\/finishNodeTask(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/api/getClassGroup",
     "regexp": "/^\\/api\\/getClassGroup(?:\\/(?=$))?$/",
     "stack": [

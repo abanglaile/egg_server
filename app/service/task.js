@@ -143,7 +143,6 @@ class TaskService extends Service {
     }
 
     async deleteOneTask(task_id){
-
         const del1 = await this.app.mysql.delete('task', {
             task_id: task_id,
         });
@@ -168,18 +167,22 @@ class TaskService extends Service {
         return results;
     }
 
-    async setVerifyRes(verifyState, comment, taskid, student_id,assign_type){
+    async setVerifyRes(verify_state, comment, task_id, verify_user, student_id, assign_type){
         const res = await this.app.mysql.update('task_log', {
             verify_time: new Date(), 
-            verify_state: verifyState,
-            // verify_user: teacher_id,
+            verify_state: verify_state,
+            // verify_user: verify_user,
             comment: comment,
             }, {
             where: {
-                task_id: taskid,
+                task_id: task_id,
                 student_id: student_id,
             }
-        }) 
+        })
+        if(assign_type == 1){
+            await this.service.path.finishNodeTask(student_id, task_id, verify_user)
+        }
+        return res
     }
 
     async getStuTaskLog(student_id, online, submit_time){

@@ -34,7 +34,7 @@ class PathService extends Service {
         // console.log("path_chapter_id:",path_chapter_id);
         const task_logs = await this.app.mysql.query(`select cn.node_id, cn.node_name, cn.node_index, 
             nt.task_index, nt.task_desc, t.task_count, snt.visible, kt.kp_tag_name, sn.invisible,
-            tl.total_ex, tl.wrong_ex, tl.correct_rate, tl.verify_state
+            tl.total_ex, tl.wrong_ex, tl.correct_rate, tl.verify_state, tl.start_time, nt.task_id
             from node_task nt inner join kp_tag kt on nt.kp_tag_id = kt.kp_tag_id
             inner join task t on nt.task_id = t.task_id
             left join student_node_task snt on nt.task_id = snt.task_id and snt.student_id = ?
@@ -45,7 +45,7 @@ class PathService extends Service {
              [student_id, student_id, student_id, path_chapter_id]);
 
         const test_logs = await this.app.mysql.query(`select nt.test_id, nt.test_desc, nt.test_index,
-        cn.node_index, cn.node_name, cn.node_id, tt.total_exercise, tl.correct_exercise 
+        cn.node_index, cn.node_name, cn.node_id, tt.total_exercise, tl.correct_exercise, tl.result 
         from node_test nt inner join teacher_test tt on nt.test_id = tt.test_id
         left join test_log tl on nt.test_id = tl.test_id and tl.student_id = ?,
         chapter_node cn left join student_node sn on cn.node_id = sn.node_id and sn.student_id = ?
@@ -58,9 +58,10 @@ class PathService extends Service {
             if(!test_logs[i].invisble){
                 if(test_logs[i].test_index == 0){
                     //pre_test
-                    if(test_logs[i].correct_exercise){
-                        test_logs[i].result = await this.getPreTestResult(student_id, test_logs[i].test_id)
-                    }
+                    test_logs[i].result = test_logs[i].result ? JSON.parse(test_logs[i].result) : null
+                    // if(test_logs[i].correct_exercise){
+                    //     test_logs[i].result = await this.getPreTestResult(student_id, test_logs[i].test_id)
+                    // }
                     let node = {
                         node_id: test_logs[i].node_id,
                         node_name: test_logs[i].node_name,
@@ -97,6 +98,9 @@ class PathService extends Service {
                 chapter_node_list[index].node_tasks.push({
                     task_desc: log.task_desc,
                     task_count: log.task_count,
+                    verify_state: log.verify_state,
+                    task_id: log.task_id,
+                    start_time: log.start_time,
                     total_ex: log.total_ex,
                     wrong_ex: log.total_ex,
                     correct_rate: log.correct_rate
@@ -211,23 +215,78 @@ class PathService extends Service {
         const node_tasks = await this.app.mysql.query(`select nt.task_id from breakdown_log bl, 
             node_task nt inner join node_test ntt on ntt.test_id = ? and ntt.node_id = nt.node_id
             where bl.student_id = ? and bl.test_id = ? and bl.kp_tag_id = nt.kp_tag_id
-            and bl.sn_state = 0 group by nt.task_id`, [test_id, student_id, test_id])
+            and bl.sn_state = 0 group by nt.task_id order by nt.task_index`, [test_id, student_id, test_id])
         
         for(let i = 0; i < node_tasks.length; i++){
             node_tasks[i].student_id = student_id
             node_tasks[i].visible = 1
         }
-        return await this.app.mysql.insert('student_node_task', node_tasks);
+        await this.app.mysql.insert('student_node_task', node_tasks);
+
+        if(node_tasks[0]){
+            let node_test = await this.app.mysql.queryOne(`select tg.teacher_id
+                from node_test nt inner join chapter_node cn on nt.node_id = cn.node_id and nt.test_id = ?
+                inner join path_chapter pc on cn.path_chapter_id = pc.path_chapter_id
+                inner join student_path sp on sp.student_id = ? and sp.path_id = pc.path_id
+                inner join teacher_group tg on tg.stu_group_id = sp.stu_group_id and tg.role = 1`, [test_id, student_id])
+            
+            await this.service.task.addTaskLog({
+                student_id: student_id,
+                task_id: node_tasks[0].task_id,
+                verify_user: node_test.teacher_id,
+                start_time: new Date(),
+            })
+        }
+        return
     }
     
-    async finishNodeTask(student_id, task_id){
-        const node_tasks = await this.app.mysql.query(`select cn.node_id, cn.node_name, cn.node_index, 
-        nt.task_index, nt.task_desc, t.task_count, snt.visible, sn.invisible,
-        from node_task nt inner join task t on nt.task_id = t.task_id
+    async finishNodeTask(student_id, task_id, verify_user){
+        const node_task = await this.app.mysql.queryOne(`select cn.node_index, cn.path_chapter_id, 
+        nt.task_index, pc.chapter_index, nt.node_id, pc.path_id 
+        from node_task nt inner join chapter_node cn on nt.node_id = cn.node_id and nt.task_id = ?
+        , path_chapter pc where pc.path_chapter_id = cn.path_chapter_id`, [task_id])
+
+        let next_task = await this.app.mysql.queryOne(`select cn.node_id, cn.node_index, nt.task_index, nt.task_id 
+        from node_task nt inner join task t on nt.task_id = t.task_id 
         left join student_node_task snt on nt.task_id = snt.task_id and snt.student_id = ?
         , chapter_node cn left join student_node sn on cn.node_id = sn.node_id and sn.student_id = ?
-        where nt.node_id = cn.node_id and cn.path_chapter_id = ?
-        order by cn.node_index, nt.task_index`, [test_id, student_id, test_id])
+        where nt.node_id = cn.node_id and cn.path_chapter_id = ? and sn.invisible is null and snt.visible = 1
+        and (nt.task_index > ? or cn.node_index > ?)
+        order by cn.node_index, nt.task_index LIMIT 1`,
+        [student_id, student_id, node_task.path_chapter_id, node_task.task_index, node_task.node_index])
+        
+        if(next_task){
+            if(next_task.node_id != node_task.node_id){
+                await this.app.mysql.query(`update student_path set node_index = ? where student_id = ? and path_id = ?`
+                , [next_task.node_index, student_id, node_task.path_id])
+            }else {
+                await this.service.task.addTaskLog({
+                    student_id: student_id,
+                    task_id: next_task.task_id,
+                    verify_user: verify_user,
+                    start_time: new Date(),
+                })
+            }
+            return next_task
+        }
+        //next_chapter
+        let next_node = await this.app.mysql.query(`select cn.node_index, pc.path_chapter_name, pc.chapter_index 
+        from chapter_node cn left join student_node sn on cn.node_id = sn.node_id and sn.student_id = ?
+        inner join path_chapter pc on pc.chapter_index > ? and pc.path_chapter_id = cn.path_chapter_id
+        where sn.invisible is null
+        order by cn.node_index, pc.chapter_index LIMIT 1`,
+        [nt.student_id, nt.path_chapter_index])
+
+        await this.app.mysql.query(`update student_path set node_index = ?, chapter_index = ?
+        where student_id = ? and path_id = ?`, 
+        [next_node.node_index, next_node.chapter_index, student_id, node_task.path_id])
+        
+    }
+
+    async updateStudentPathProgress(chapter_index, task_id){
+        
+
+        next_task.pre_node_id = nt.node_id
     }
 
     async getPathTable(teacher_id){

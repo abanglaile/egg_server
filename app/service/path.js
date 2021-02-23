@@ -1,21 +1,40 @@
 const Service = require('egg').Service;
 
 class PathService extends Service {
+    async getStudentPath(student_id){
+        return await this.app.mysql.queryOne(`select pc.path_chapter_name as current_path_name,
+        cn.node_name as current_node_name, sp.chapter_index, sp.node_index, pc.path_name, p.kp_count, p.task_count 
+        from student_path sp inner join path p on pc.path_id = p.path_id and sp.student_id = ?
+        inner join path_chapter pc on sp.path_id = pc.path_id and sp.path_chapter_index = pc.chapter_index
+        inner join chapter_node cn on pc.path_chapter_id = cn.path_chapter_id and cn.node_index = sp.node_index`, [student_id]);
+    }
+
+    async getStudentPathChapter2(){
+        const student_path = await await this.app.mysql.queryOne(`select pc.path_chapter_name as current_path_name,
+        cn.node_name as current_node_name, sp.chapter_index, sp.node_index, pc.path_name, p.kp_count, p.task_count 
+        from student_path sp inner join path p on pc.path_id = p.path_id and pc.path_id = ? and sp.student_id = ? 
+        inner join path_chapter pc on sp.path_id = pc.path_id and sp.path_chapter_index = pc.chapter_index
+        inner join chapter_node cn on pc.path_chapter_id = cn.path_chapter_id and cn.node_index = sp.node_index`,
+        [student_id, path_id]);
+
+        const path_chapter = await this.app.mysql.query(`select pc.path_chapter_name, 
+        pc.path_chapter_index, pc.task_count, pc.kp_count
+        from path_chapter pc order by p.chapter_index asc;`, [path_id])
+
+        return {
+            student_path: student_path,
+            path_chapter: path_chapter
+        }
+    }
 
     async getStudentPathChapter(student_id, group_id, path_id){
-        // const path_chapter_list = await this.app.mysql.query(`select cn.path_chapter_name,
-        //  sp.chapter_index, sp.node_index from student_path sp inner join , 
-        //  chapter_node cn where sp.student_id = ? and sp.group_id = ? 
-        //  and sp.path_id = ? and sp.path_chapter_id = cn.path_chapter_id`,
-        //     [student_id, group_id, path_id]);
         const path_chapter_list = await this.app.mysql.query(`select * from path_chapter p 
             where p.path_id = ? order by p.chapter_index asc;`,[path_id]);
         const stu_path = await this.app.mysql.query(`select p.path_chapter_id,s.*,u.realname,
         pa.path_name ,sg.group_name from student_path s,path_chapter p,users u,path pa,school_group sg 
         where s.path_id = p.path_id and s.path_chapter_index = p.chapter_index and 
         u.userid=s.student_id and pa.path_id = s.path_id and sg.stu_group_id = s.stu_group_id 
-        and s.student_id = ? and s.stu_group_id = ? and s.path_id = ?;
-            `,[student_id,group_id,path_id]);
+        and s.student_id = ? and s.stu_group_id = ? and s.path_id = ?;`,[student_id,group_id,path_id]);
        
         return {
                     path_chapter_list:path_chapter_list,
@@ -51,8 +70,8 @@ class PathService extends Service {
         chapter_node cn left join student_node sn on cn.node_id = sn.node_id and sn.student_id = ?
         where nt.node_id = cn.node_id and cn.path_chapter_id = ?
         order by cn.node_index`,
-         [student_id, student_id, path_chapter_id]);
-        
+        [student_id, student_id, path_chapter_id]);        
+
         let chapter_node_list = []
         for(let i = 0; i < test_logs.length; i++){
             if(!test_logs[i].invisble){
@@ -74,13 +93,15 @@ class PathService extends Service {
             }
         }
 
-        let pre_node_id = "", index = -1
+        let pre_node_id = "", index = -1, current_task_count = 0
         //merge node_tasks into node_list
         for(let i = 0; i < task_logs.length; i++){
             let log = task_logs[i]
             //debug
-            log.visible = 1;
-            
+            //log.visible = 1;
+            if(log.invisble || !log.visible || log.verify_state == 2){
+                current_task_count++
+            }
             if(!log.invisble && log.visible){
                 if(log.node_id != pre_node_id){
                     index++
@@ -107,9 +128,11 @@ class PathService extends Service {
                 })
             }
         }
-        console.log("chapter_node_list:",JSON.stringify(chapter_node_list));
-        // console.log("result:",JSON.stringify(chapter_node_list[0].pre_test));
-        return chapter_node_list
+        return {
+            chapter_node_list: chapter_node_list,
+            task_count: task_logs.length,
+            current_task_count: current_task_count
+        }
     }
 
     //临时使用，之后数据存入test_log后弃用

@@ -1153,6 +1153,32 @@
       "GET"
     ],
     "paramNames": [],
+    "path": "/api/getStudentPath",
+    "regexp": "/^\\/api\\/getStudentPath(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getStudentPathChapter2",
+    "regexp": "/^\\/api\\/getStudentPathChapter2(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/api/finishNodeTask",
     "regexp": "/^\\/api\\/finishNodeTask(?:\\/(?=$))?$/",
     "stack": [

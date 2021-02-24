@@ -9,7 +9,7 @@ class PathService extends Service {
         inner join chapter_node cn on pc.path_chapter_id = cn.path_chapter_id and cn.node_index = sp.node_index`, [student_id]);
     }
 
-    async getStudentPathChapter2(){
+    async getStudentPathChapter2(student_id, path_id){
         const student_path = await await this.app.mysql.queryOne(`select pc.path_chapter_name as current_path_name,
         cn.node_name as current_node_name, sp.chapter_index, sp.node_index, pc.path_name, p.kp_count, p.task_count 
         from student_path sp inner join path p on pc.path_id = p.path_id and pc.path_id = ? and sp.student_id = ? 
@@ -47,7 +47,7 @@ class PathService extends Service {
                 };
     }
 
-    async getStudentChapterNode(student_id, group_id, path_chapter_id){
+    async getStudentChapterNode(student_id, path_chapter_id){
         // console.log("student_id:",student_id);
         // console.log("group_id:",group_id);
         // console.log("path_chapter_id:",path_chapter_id);

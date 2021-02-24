@@ -415,6 +415,24 @@ class StudentController extends Controller {
         }   
     }
 
+    async getStudentPathChapter() {
+        const { ctx,service } = this;
+        const { query } = ctx.request;
+        if(query.student_id && query.path_id){
+            const result = await service.path.getStudentPathChapter2(query.student_id, query.path_id);
+            this.ctx.body = result;
+        }  
+    }
+
+    async getStudentPath() {
+        const { ctx,service } = this;
+        const { query } = ctx.request;
+        if(query.student_id){
+            const result = await service.path.getStudentPath(query.student_id);
+            this.ctx.body = result;
+        }
+    }
+
 }
 
 module.exports = StudentController;

@@ -2,24 +2,24 @@ const Service = require('egg').Service;
 
 class PathService extends Service {
     async getStudentPath(student_id){
-        return await this.app.mysql.queryOne(`select pc.path_chapter_name as current_path_name,
-        cn.node_name as current_node_name, sp.chapter_index, sp.node_index, pc.path_name, p.kp_count, p.task_count 
-        from student_path sp inner join path p on pc.path_id = p.path_id and sp.student_id = ?
+        return await this.app.mysql.query(`select pc.path_chapter_name, cn.node_name,
+         sp.path_chapter_index, sp.node_index, p.path_name, sp.path_id
+        from student_path sp inner join path p on sp.path_id = p.path_id and sp.student_id = ?
         inner join path_chapter pc on sp.path_id = pc.path_id and sp.path_chapter_index = pc.chapter_index
         inner join chapter_node cn on pc.path_chapter_id = cn.path_chapter_id and cn.node_index = sp.node_index`, [student_id]);
     }
 
     async getStudentPathChapter2(student_id, path_id){
-        const student_path = await await this.app.mysql.queryOne(`select pc.path_chapter_name as current_path_name,
-        cn.node_name as current_node_name, sp.chapter_index, sp.node_index, pc.path_name, p.kp_count, p.task_count 
-        from student_path sp inner join path p on pc.path_id = p.path_id and pc.path_id = ? and sp.student_id = ? 
+        const student_path = await await this.app.mysql.queryOne(`select pc.path_chapter_id, pc.path_chapter_name,
+        cn.node_name, sp.path_chapter_index, sp.node_index, p.path_name, pc.kp_count, pc.task_count 
+        from student_path sp inner join path p on sp.path_id = p.path_id and sp.path_id = ? and sp.student_id = ? 
         inner join path_chapter pc on sp.path_id = pc.path_id and sp.path_chapter_index = pc.chapter_index
         inner join chapter_node cn on pc.path_chapter_id = cn.path_chapter_id and cn.node_index = sp.node_index`,
-        [student_id, path_id]);
+        [path_id, student_id]);
 
         const path_chapter = await this.app.mysql.query(`select pc.path_chapter_name, 
-        pc.path_chapter_index, pc.task_count, pc.kp_count
-        from path_chapter pc order by p.chapter_index asc;`, [path_id])
+        pc.chapter_index, pc.task_count, pc.kp_count
+        from path_chapter pc order by pc.chapter_index asc;`, [path_id])
 
         return {
             student_path: student_path,

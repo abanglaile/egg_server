@@ -11,7 +11,7 @@ class PathService extends Service {
 
     async getStudentPathChapter2(student_id, path_id){
         const student_path = await await this.app.mysql.queryOne(`select pc.path_chapter_id, pc.path_chapter_name,
-        cn.node_name, sp.path_chapter_index, sp.node_index, p.path_name, pc.kp_count, pc.task_count 
+        cn.node_name, sp.path_chapter_index, sp.node_index, p.path_name 
         from student_path sp inner join path p on sp.path_id = p.path_id and sp.path_id = ? and sp.student_id = ? 
         inner join path_chapter pc on sp.path_id = pc.path_id and sp.path_chapter_index = pc.chapter_index
         inner join chapter_node cn on pc.path_chapter_id = cn.path_chapter_id and cn.node_index = sp.node_index`,
@@ -21,6 +21,15 @@ class PathService extends Service {
         pc.chapter_index, pc.task_count, pc.kp_count
         from path_chapter pc order by pc.chapter_index asc;`, [path_id])
 
+        let task_count = 0, kp_count = 0
+        for(let i = 0; i < path_chapter.length; i++){
+            task_count += path_chapter[i].task_count
+            kp_count += path_chapter[i].kp_count
+        }
+        //temp
+        student_path.user_count = 5
+        student_path.task_count = task_count
+        student_path.kp_count = kp_count
         return {
             student_path: student_path,
             path_chapter: path_chapter

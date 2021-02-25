@@ -73,7 +73,7 @@ class PathService extends Service {
              [student_id, student_id, student_id, path_chapter_id]);
 
         const test_logs = await this.app.mysql.query(`select nt.test_id, nt.test_desc, nt.test_index,
-        cn.node_index, cn.node_name, cn.node_id, tt.total_exercise, tl.correct_exercise, tl.result 
+        cn.node_index, cn.node_name, cn.node_id, tt.total_exercise, tl.finish_time, tl.result, tl.start_time 
         from node_test nt inner join teacher_test tt on nt.test_id = tt.test_id
         left join test_log tl on nt.test_id = tl.test_id and tl.student_id = ?,
         chapter_node cn left join student_node sn on cn.node_id = sn.node_id and sn.student_id = ?
@@ -81,15 +81,19 @@ class PathService extends Service {
         order by cn.node_index`,
         [student_id, student_id, path_chapter_id]);        
 
+        const path_chapter = await await this.app.mysql.queryOne(`select path_chapter_name from path_chapter
+        where path_chapter_id = ?`,
+        [path_chapter_id]);
+
         let chapter_node_list = []
         for(let i = 0; i < test_logs.length; i++){
             if(!test_logs[i].invisble){
                 if(test_logs[i].test_index == 0){
                     //pre_test
-                    test_logs[i].result = test_logs[i].result ? JSON.parse(test_logs[i].result) : null
-                    // if(test_logs[i].correct_exercise){
-                    //     test_logs[i].result = await this.getPreTestResult(student_id, test_logs[i].test_id)
-                    // }
+                    // test_logs[i].result = test_logs[i].result ? JSON.parse(test_logs[i].result) : null
+                    if(test_logs[i].finish_time){
+                        test_logs[i].result = await this.getPreTestResult(student_id, test_logs[i].test_id)
+                    }
                     let node = {
                         node_id: test_logs[i].node_id,
                         node_name: test_logs[i].node_name,
@@ -102,13 +106,16 @@ class PathService extends Service {
             }
         }
 
-        let pre_node_id = "", index = -1, current_task_count = 0
+        let pre_node_id = "", index = -1, current_task_count = 0, before = true
         //merge node_tasks into node_list
         for(let i = 0; i < task_logs.length; i++){
             let log = task_logs[i]
             //debug
             //log.visible = 1;
-            if(log.invisble || !log.visible || log.verify_state == 2){
+            if(log.verify_state == 0){
+                before = false
+            }
+            if((log.invisble || !log.visible || log.verify_state == 2) && before){
                 current_task_count++
             }
             if(!log.invisble && log.visible){
@@ -139,8 +146,11 @@ class PathService extends Service {
         }
         return {
             chapter_node_list: chapter_node_list,
-            task_count: task_logs.length,
-            current_task_count: current_task_count
+            chapter_progress: {
+                path_chapter_name: path_chapter.path_chapter_name,
+                task_count: task_logs.length,
+                current_task_count: current_task_count
+            }
         }
     }
 
@@ -158,6 +168,7 @@ class PathService extends Service {
         let log0 = breakdown_log[0]
         let pre_test = {
             chapter_name: log0.chaptername,
+            kpname: log0.kpname,
             mean: log0.mean ? log0.mean : 500,
             variance: log0.variance ? log0.variance : 130,
             kp_new_rating: log0.kp_old_rating,

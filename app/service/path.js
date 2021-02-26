@@ -255,7 +255,7 @@ class PathService extends Service {
 
     //未考虑group_id重复参加情况
     async finishPreTest(student_id, test_id){
-        const node_tasks = await this.app.mysql.query(`select nt.task_id from breakdown_log bl, 
+        const node_tasks = await this.app.mysql.query(`select nt.task_id, nt.node_id from breakdown_log bl, 
             node_task nt inner join node_test ntt on ntt.test_id = ? and ntt.node_id = nt.node_id
             where bl.student_id = ? and bl.test_id = ? and bl.kp_tag_id = nt.kp_tag_id
             and bl.sn_state = 0 group by nt.task_id order by nt.task_index`, [test_id, student_id, test_id])
@@ -273,13 +273,17 @@ class PathService extends Service {
                 inner join student_path sp on sp.student_id = ? and sp.path_id = pc.path_id
                 inner join teacher_group tg on tg.stu_group_id = sp.stu_group_id and tg.role = 1`, [test_id, student_id])
             
-            await this.service.task.addTaskLog({
+            //解锁第一个任务
+            return await this.service.task.addTaskLog({
                 student_id: student_id,
                 task_id: node_tasks[0].task_id,
                 verify_user: node_test.teacher_id,
                 start_time: new Date(),
             })
         }
+        //解锁下一个测试
+        let next_node = await this.findNextNode(student_id, path_id)
+        await enableNodePreTest(student_id, path_id, next_node)
         return
     }
     
@@ -300,8 +304,9 @@ class PathService extends Service {
         
         if(next_task){
             if(next_task.node_id != node_task.node_id){
-                await this.app.mysql.query(`update student_path set node_index = ? where student_id = ? and path_id = ?`
-                , [next_task.node_index, student_id, node_task.path_id])
+                //解锁同章节next node测评
+                next_task.chapter_index = node_task
+                await this.enableNodePreTest(student_id, node_task.path_id, next_task)
             }else {
                 await this.service.task.addTaskLog({
                     student_id: student_id,
@@ -313,17 +318,54 @@ class PathService extends Service {
             return next_task
         }
         //next_chapter
-        let next_node = await this.app.mysql.query(`select cn.node_index, pc.path_chapter_name, pc.chapter_index 
-        from chapter_node cn left join student_node sn on cn.node_id = sn.node_id and sn.student_id = ?
-        inner join path_chapter pc on pc.chapter_index > ? and pc.path_chapter_id = cn.path_chapter_id
-        where sn.invisible is null
-        order by cn.node_index, pc.chapter_index LIMIT 1`,
-        [nt.student_id, nt.path_chapter_index])
+        let next_node = await this.findNextNode(student_id, node_task.path_id)
+        return await this.enableNodePreTest(student_id, node_task.path_id, next_node)
+    }
 
-        await this.app.mysql.query(`update student_path set node_index = ?, chapter_index = ?
-        where student_id = ? and path_id = ?`, 
-        [next_node.node_index, next_node.chapter_index, student_id, node_task.path_id])
-        
+    async getCurrentPathChapterByTest(student_id, test_id) {
+        return await this.app.mysql.queryOne(`select path_chapter_id from path_chapter 
+        where chapter_index = (select sp.path_chapter_index
+        from node_test nt inner join chapter_node cn on nt.test_id = ? and cn.node_id = nt.node_id
+        inner join path_chapter pc on pc.path_chapter_id = cn.path_chapter_id
+        inner join student_path sp on pc.path_id = sp.path_id and student_id = ?)`, [test_id, student_id])
+    }
+
+    async initStudentPath(student_id, path_id, stu_group_id, path_type){
+        if(path_type){
+            //预留订制化路径
+        }
+        //同步路径
+        await this.app.mysql.insert(student_path, {
+            student_id: student_id,
+            path_id: path_id,
+            stu_group_id: stu_group_id,
+            node_index: 0,
+            chapter_index: 0,
+            update_time: new Date()
+        })
+        let test_log = await this.app.mysql.queryOne(`select test_id 
+        from node_test nt inner join chapter_node cn on nt.node_id = cn.node_id and node_index = 0
+        inner join path_chapter pc on cn.path_chapter_id = pc.path_chapter_id and pc.path_id = ?`, [path_id])
+        test_log.student_id = student_id
+        await this.app.mysql.insert('test_log', test_log);
+    }
+
+    async enableNodePreTest(student_id, path_id, node) {
+        let test_log = await this.app.mysql.queryOne(`select test_id from node_test where node_id = ?`, [node.node_id])
+        test_log.student_id = student_id
+        await this.app.mysql.insert('test_log', test_log);
+        await this.app.mysql.query(`update student_path set node_index = ?, chapter_index = ? where student_id = ? and path_id = ?`
+        , [node.node_index, node.chapter_index, student_id, path_id])
+    }
+
+    async findNextNode(student_id, path_id) {
+        let student_path = await this.app.mysql.queryOne(`select sp.path_chapter_index, sp.node_index,
+        from student_path where sp.path_id = ? and sp.student_id = ?`, [student_id, path_id])
+        return await this.app.mysql.queryOne(`select cn.node_id, cn.node_index, pc.chapter_index 
+        from chapter_node cn inner join path_chapter pc on cn.path_chapter_id = cn.path_chapter_id
+        left join student_node sn on cn.student_id = sn.student_id and cn.node_id = sn.node_id
+        where cn.node_index > ? or pc.chapter_index > ? and sn.invisible is null
+        order by cn.node_index, pc.chapter_index limit 1`, [student_path.node_index, student_path.chapter_index])
     }
 
     async updateStudentPathProgress(chapter_index, task_id){

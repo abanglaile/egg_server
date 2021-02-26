@@ -409,8 +409,8 @@ class StudentController extends Controller {
     async finishNodeTask() {
         const { ctx,service } = this;
         const { query } = ctx.request;
-        if(query.student_id && query.task_id){
-            const result = await service.path.finishNodeTask(query.student_id, query.task_id, query.path_id, query.verify_user);
+        if(query.student_id && query.path_id){
+            const result = await service.path.findNextNode(query.student_id, query.path_id);
             this.ctx.body = result;
         }   
     }

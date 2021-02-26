@@ -298,9 +298,9 @@ class PathService extends Service {
         left join student_node_task snt on nt.task_id = snt.task_id and snt.student_id = ?
         , chapter_node cn left join student_node sn on cn.node_id = sn.node_id and sn.student_id = ?
         where nt.node_id = cn.node_id and cn.path_chapter_id = ? and sn.invisible is null and snt.visible = 1
-        and (nt.task_index > ? or cn.node_index > ?)
+        and ((nt.task_index > ? and cn.node_index = ?) or cn.node_index > ?)
         order by cn.node_index, nt.task_index LIMIT 1`,
-        [student_id, student_id, node_task.path_chapter_id, node_task.task_index, node_task.node_index])
+        [student_id, student_id, node_task.path_chapter_id, node_task.task_index, node_task.node_index, node_task.node_index])
         
         if(next_task){
             if(next_task.node_id != node_task.node_id){
@@ -359,13 +359,14 @@ class PathService extends Service {
     }
 
     async findNextNode(student_id, path_id) {
-        let student_path = await this.app.mysql.queryOne(`select sp.path_chapter_index, sp.node_index,
-        from student_path where sp.path_id = ? and sp.student_id = ?`, [student_id, path_id])
+        let student_path = await this.app.mysql.queryOne(`select sp.path_chapter_index, sp.node_index
+        from student_path sp where sp.student_id = ? and sp.path_id = ?`, [student_id, path_id])
         return await this.app.mysql.queryOne(`select cn.node_id, cn.node_index, pc.chapter_index 
-        from chapter_node cn inner join path_chapter pc on cn.path_chapter_id = cn.path_chapter_id
-        left join student_node sn on cn.student_id = sn.student_id and cn.node_id = sn.node_id
-        where cn.node_index > ? or pc.chapter_index > ? and sn.invisible is null
-        order by cn.node_index, pc.chapter_index limit 1`, [student_path.node_index, student_path.chapter_index])
+        from chapter_node cn inner join path_chapter pc on cn.path_chapter_id = pc.path_chapter_id
+        left join student_node sn on sn.student_id = ? and cn.node_id = sn.node_id
+        where ((cn.node_index > ? and pc.chapter_index = ?) or pc.chapter_index > ?) and sn.invisible is null
+        order by pc.chapter_index, cn.node_index limit 1`, 
+        [student_id, student_path.node_index, student_path.path_chapter_index, student_path.path_chapter_index])
     }
 
     async updateStudentPathProgress(chapter_index, task_id){

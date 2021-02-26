@@ -145,7 +145,7 @@ module.exports = app => {
   router.get('/api/getStudentPathChapter2', controller.student.getStudentPathChapter);
 
   //测试接口
-  router.get('/api/finishNodeTask', controller.student.finishNodeTask)
+  router.get('/api/findNextNode', controller.student.finishNodeTask)
 
   router.get('/api/getClassGroup', controller.teacher.getClassGroup);
   router.get('/api/getSchool', controller.teacher.getSchool);

@@ -1179,8 +1179,8 @@
       "GET"
     ],
     "paramNames": [],
-    "path": "/api/finishNodeTask",
-    "regexp": "/^\\/api\\/finishNodeTask(?:\\/(?=$))?$/",
+    "path": "/api/findNextNode",
+    "regexp": "/^\\/api\\/findNextNode(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

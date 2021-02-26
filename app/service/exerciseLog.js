@@ -222,7 +222,7 @@ class ExerciseLogService extends Service {
         }
         let result = await this.getTestExerciseResult(student_id, test_id)
         let status = await this.service.rating.getCourseStatus(student_id, test.course_id)
-        result.path_chapter_id = path_chapter.path_chapter_id
+        result.path_chapter_id = path_chapter ? path_chapter.path_chapter_id : null
         result.rating_ranking = status.rating_ranking
         result.kp_log = await this.getTestKpResult(student_id, test_id)
         result.test_time = this.formatTime((test.finish_time.getTime() - test.start_time.getTime())/1000)

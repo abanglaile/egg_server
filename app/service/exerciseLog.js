@@ -215,9 +215,10 @@ class ExerciseLogService extends Service {
 
     async getTestResult(student_id, test_id){
         let test = await this.service.testLog.getTestLog(student_id, test_id)
+        let path_chapter = null
         if(test.is_eval >=2){
             //路径关联测试
-            const path_chapter = await this.service.path.getCurrentPathChapterByTest(student_id, test_id)
+            path_chapter = await this.service.path.getCurrentPathChapterByTest(student_id, test_id)
         }
         let result = await this.getTestExerciseResult(student_id, test_id)
         let status = await this.service.rating.getCourseStatus(student_id, test.course_id)

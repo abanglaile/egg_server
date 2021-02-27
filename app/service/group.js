@@ -181,6 +181,11 @@ class GroupService extends Service {
                 student_id: userid
             });
             output.msg = result.affectedRows === 1 ? '绑定成功' : '绑定失败';
+            //若班级分组为路径学习班组
+            const path = await this.app.mysql.get('group_path',{ stu_group_id : group_id }); 
+            if(path){
+                await this.service.path.initStudentPath(userid, path.path_id, group_id);
+            }
         }
         return output;
     }

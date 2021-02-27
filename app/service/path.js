@@ -61,7 +61,7 @@ class PathService extends Service {
         // console.log("group_id:",group_id);
         // console.log("path_chapter_id:",path_chapter_id);
         const task_logs = await this.app.mysql.query(`select cn.node_id, cn.node_name, cn.node_index, 
-            nt.task_index, nt.task_desc, t.task_count, snt.visible, kt.kp_tag_name, sn.invisible,
+            nt.task_index, nt.task_desc, t.task_count,t.content,snt.visible, kt.kp_tag_name, sn.invisible,
             tl.total_ex, tl.wrong_ex, tl.correct_rate, tl.verify_state, tl.start_time, nt.task_id
             from node_task nt inner join kp_tag kt on nt.kp_tag_id = kt.kp_tag_id
             inner join task t on nt.task_id = t.task_id
@@ -135,11 +135,12 @@ class PathService extends Service {
                 chapter_node_list[index].node_tasks.push({
                     task_desc: log.task_desc,
                     task_count: log.task_count,
+                    content:log.content,
                     verify_state: log.verify_state,
                     task_id: log.task_id,
                     start_time: log.start_time,
                     total_ex: log.total_ex,
-                    wrong_ex: log.total_ex,
+                    wrong_ex: log.wrong_ex,
                     correct_rate: log.correct_rate
                 })
             }
@@ -330,10 +331,10 @@ class PathService extends Service {
         inner join student_path sp on pc.path_id = sp.path_id and student_id = ?)`, [test_id, student_id])
     }
 
-    async initStudentPath(student_id, path_id, stu_group_id, path_type){
-        if(path_type){
-            //预留订制化路径
-        }
+    async initStudentPath(student_id, path_id, stu_group_id){
+        // if(path_type){
+        //     //预留订制化路径
+        // }
         //同步路径
         await this.app.mysql.insert(student_path, {
             student_id: student_id,
@@ -344,9 +345,12 @@ class PathService extends Service {
             update_time: new Date()
         })
         let test_log = await this.app.mysql.queryOne(`select test_id 
-        from node_test nt inner join chapter_node cn on nt.node_id = cn.node_id and node_index = 0
-        inner join path_chapter pc on cn.path_chapter_id = pc.path_chapter_id and pc.path_id = ?`, [path_id])
-        test_log.student_id = student_id
+        from node_test nt inner join chapter_node cn on nt.node_id = cn.node_id and cn.node_index = 0
+        inner join path_chapter pc on cn.path_chapter_id = pc.path_chapter_id 
+        where pc.chapter_index = 0 and pc.path_id = ?;`, [path_id])
+        let teacher_test = await this.app.mysql.get('teacher_test',{ test_id : test_log.test_id });
+        test_log.student_id = student_id;
+        test_log.total_exercise = teacher_test.total_exercise;
         await this.app.mysql.insert('test_log', test_log);
     }
 

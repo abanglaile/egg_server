@@ -256,7 +256,7 @@ class PathService extends Service {
 
     //未考虑group_id重复参加情况
     async finishPreTest(student_id, test_id){
-        const node_tasks = await this.app.mysql.query(`select nt.task_id, nt.node_id from breakdown_log bl, 
+        const node_tasks = await this.app.mysql.query(`select nt.task_id from breakdown_log bl, 
             node_task nt inner join node_test ntt on ntt.test_id = ? and ntt.node_id = nt.node_id
             where bl.student_id = ? and bl.test_id = ? and bl.kp_tag_id = nt.kp_tag_id
             and bl.sn_state = 0 group by nt.task_id order by nt.task_index`, [test_id, student_id, test_id])
@@ -265,7 +265,9 @@ class PathService extends Service {
             node_tasks[i].student_id = student_id
             node_tasks[i].visible = 1
         }
-        await this.app.mysql.insert('student_node_task', node_tasks);
+        if(node_tasks.length > 0){
+            await this.app.mysql.insert('student_node_task', node_tasks);
+        }
 
         if(node_tasks[0]){
             let node_test = await this.app.mysql.queryOne(`select tg.teacher_id
@@ -341,7 +343,7 @@ class PathService extends Service {
             path_id: path_id,
             stu_group_id: stu_group_id,
             node_index: 0,
-            chapter_index: 0,
+            path_chapter_index: 0,
             update_time: new Date()
         })
         let test_log = await this.app.mysql.queryOne(`select test_id 

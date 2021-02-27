@@ -146,9 +146,13 @@ class PathService extends Service {
                 })
             }
 
+            let before = true
+            if((chapter_node_list[index] && !chapter_node_list[index].pre_test.result) || log.verify_state == 0){
+                before = false
+            }
             if(log.node_index < student_path.node_index || 
-                (log.node_index == student_path.node_index && (!log.visible || log.verify_state >=2))){
-                current_task_count++
+                (log.node_index == student_path.node_index && before)){
+                    current_task_count++
             }
         }
         return {
@@ -291,8 +295,9 @@ class PathService extends Service {
             })
         }
         //解锁下一个测试
-        let next_node = await this.findNextNode(student_id, path_id)
-        await enableNodePreTest(student_id, path_id, next_node)
+        let path_chapter = await this.getCurrentPathChapterByTest(student_id, test_id);
+        let next_node = await this.findNextNode(student_id, path_chapter.path_id)
+        await this.enableNodePreTest(student_id, path_id, next_node)
         return
     }
     
@@ -332,7 +337,7 @@ class PathService extends Service {
     }
 
     async getCurrentPathChapterByTest(student_id, test_id) {
-        return await this.app.mysql.queryOne(`select path_chapter_id from path_chapter 
+        return await this.app.mysql.queryOne(`select path_chapter_id, path_id from path_chapter 
         where chapter_index = (select sp.path_chapter_index
         from node_test nt inner join chapter_node cn on nt.test_id = ? and cn.node_id = nt.node_id
         inner join path_chapter pc on pc.path_chapter_id = cn.path_chapter_id

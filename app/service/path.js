@@ -336,7 +336,7 @@ class PathService extends Service {
         //     //预留订制化路径
         // }
         //同步路径
-        await this.app.mysql.insert(student_path, {
+        await this.app.mysql.insert('student_path', {
             student_id: student_id,
             path_id: path_id,
             stu_group_id: stu_group_id,

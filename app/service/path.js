@@ -97,10 +97,10 @@ class PathService extends Service {
             if(!test_logs[i].invisble){
                 if(test_logs[i].test_index == 0){
                     //pre_test
-                    // test_logs[i].result = test_logs[i].result ? JSON.parse(test_logs[i].result) : null
-                    if(test_logs[i].finish_time){
-                        test_logs[i].result = await this.getPreTestResult(student_id, test_logs[i].test_id)
-                    }
+                    test_logs[i].result = test_logs[i].result ? JSON.parse(test_logs[i].result) : null
+                    // if(test_logs[i].finish_time){
+                    //     test_logs[i].result = await this.getPreTestResult(student_id, test_logs[i].test_id)
+                    // }
                     let node = {
                         node_id: test_logs[i].node_id,
                         node_name: test_logs[i].node_name,
@@ -182,7 +182,7 @@ class PathService extends Service {
             chapter_name: log0.chaptername,
             kpname: log0.kpname,
             mean: log0.mean ? log0.mean : 500,
-            variance: log0.variance ? log0.variance : 130,
+            variance: log0.variance ? log0.variance : 100,
             kp_new_rating: log0.kp_old_rating,
             weak_kp_tags: []
         }

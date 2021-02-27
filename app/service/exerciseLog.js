@@ -18,7 +18,7 @@ class ExerciseLogService extends Service {
     }
 
     async updateKpRating(breakdown_sn){
-        const K = 64;
+        const K = 128;
         for(var j = 0; j < breakdown_sn.length; j++){
             var log = breakdown_sn[j];
             //只记录已评估的知识点

@@ -148,8 +148,8 @@ class PathService extends Service {
             }
 
             let before = true
-            if(chapter_node_list[index].pre_test.result || log.verify_state == 0){
-
+            if((chapter_node_list[index] && !chapter_node_list[index].pre_test.result) || log.verify_state == 0){
+                before = false
             }
             if(log.node_index < student_path.node_index || 
                 (log.node_index == student_path.node_index && before)){
@@ -298,7 +298,7 @@ class PathService extends Service {
         //解锁下一个测试
         let path_chapter = await this.getCurrentPathChapterByTest(student_id, test_id);
         let next_node = await this.findNextNode(student_id, path_chapter.path_id)
-        await enableNodePreTest(student_id, path_chapter.path_id, next_node)
+        await this.enableNodePreTest(student_id, path_chapter.path_id, next_node)
         return
     }
     
@@ -372,7 +372,7 @@ class PathService extends Service {
         let test_log = await this.app.mysql.queryOne(`select test_id from node_test where node_id = ?`, [node.node_id])
         test_log.student_id = student_id
         await this.app.mysql.insert('test_log', test_log);
-        await this.app.mysql.query(`update student_path set node_index = ?, chapter_index = ? where student_id = ? and path_id = ?`
+        await this.app.mysql.query(`update student_path set node_index = ?, path_chapter_index = ? where student_id = ? and path_id = ?`
         , [node.node_index, node.chapter_index, student_id, path_id])
     }
 

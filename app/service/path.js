@@ -140,6 +140,7 @@ class PathService extends Service {
                         task_count: log.task_count,
                         content:log.content,
                         verify_state: log.verify_state,
+                        submit_url: log.submit_url,
                         task_id: log.task_id,
                         start_time: log.start_time,
                         total_ex: log.total_ex,

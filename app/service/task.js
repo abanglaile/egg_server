@@ -190,7 +190,7 @@ class TaskService extends Service {
             inner join task_source ts on t.source_id = ts.source_id 
             inner join course_label cl on cl.course_label = ts.course_label
             where tl.student_id = ? `;
-        sql += online ? 'and (tl.verify_state < 3 or tl.verify_state is null)' : 'and tl.verify_state = 3';
+        sql += online ? 'and (tl.verify_state < 2 or tl.verify_state is null)' : 'and tl.verify_state = 3';
         let params = [student_id];
         if(submit_time){
             sql += ' and tl.submit_time >= ?';

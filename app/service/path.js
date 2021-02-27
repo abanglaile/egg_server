@@ -81,9 +81,16 @@ class PathService extends Service {
         order by cn.node_index`,
         [student_id, student_id, path_chapter_id]);        
 
-        const path_chapter = await await this.app.mysql.queryOne(`select path_chapter_name from path_chapter
-        where path_chapter_id = ?`,
-        [path_chapter_id]);
+        // const path_chapter = await await this.app.mysql.queryOne(`select path_chapter_name from path_chapter
+        // where path_chapter_id = ?`,
+        // [path_chapter_id]);
+
+        const student_path = await await this.app.mysql.queryOne(`select pc.path_chapter_id, pc.path_chapter_name,
+        sp.path_chapter_index, sp.node_index 
+        from student_path sp inner join path_chapter pc on sp.student_id = ? and pc.chapter_index = sp.path_chapter_index 
+        and pc.path_id = sp.path_id 
+        inner join chapter_node cn on pc.path_chapter_id = cn.path_chapter_id and cn.node_index = sp.node_index`,
+        [student_id]);
 
         let chapter_node_list = []
         for(let i = 0; i < test_logs.length; i++){
@@ -112,12 +119,6 @@ class PathService extends Service {
             let log = task_logs[i]
             //debug
             //log.visible = 1;
-            if(log.verify_state == 0){
-                before = false
-            }
-            if((log.invisble || !log.visible || log.verify_state == 2) && before){
-                current_task_count++
-            }
             if(!log.invisble && log.visible){
                 if(log.node_id != pre_node_id){
                     index++
@@ -144,11 +145,16 @@ class PathService extends Service {
                     correct_rate: log.correct_rate
                 })
             }
+
+            if(log.node_index < student_path.node_index || 
+                (log.node_index = student_path.node_index && log.task_index < student_path.task_index)){
+                    current_task_count++
+            }
         }
         return {
             chapter_node_list: chapter_node_list,
             chapter_progress: {
-                path_chapter_name: path_chapter.path_chapter_name,
+                path_chapter_name: student_path.path_chapter_name,
                 task_count: task_logs.length,
                 current_task_count: current_task_count
             }

@@ -373,7 +373,8 @@ class PathService extends Service {
         let test_log = await this.app.mysql.queryOne(`select test_id from node_test where node_id = ?`, [node.node_id])
         test_log.student_id = student_id
         await this.app.mysql.insert('test_log', test_log);
-        await this.app.mysql.query(`update student_path set node_index = ?, path_chapter_index = ? where student_id = ? and path_id = ?`
+        await this.app.mysql.query(`update student_path set node_index = ?, path_chapter_index = ? ,update_time = (SELECT now()) 
+            where student_id = ? and path_id = ?`
         , [node.node_index, node.chapter_index, student_id, path_id])
     }
 
@@ -386,12 +387,6 @@ class PathService extends Service {
         where ((cn.node_index > ? and pc.chapter_index = ?) or pc.chapter_index > ?) and sn.invisible is null
         order by pc.chapter_index, cn.node_index limit 1`, 
         [student_id, student_path.node_index, student_path.path_chapter_index, student_path.path_chapter_index])
-    }
-
-    async updateStudentPathProgress(chapter_index, task_id){
-        
-
-        next_task.pre_node_id = nt.node_id
     }
 
     async getPathTable(teacher_id){

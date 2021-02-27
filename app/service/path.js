@@ -360,7 +360,7 @@ class PathService extends Service {
         let test_log = await this.app.mysql.queryOne(`select test_id from node_test where node_id = ?`, [node.node_id])
         test_log.student_id = student_id
         await this.app.mysql.insert('test_log', test_log);
-        await this.app.mysql.query(`update student_path set node_index = ?, chapter_index = ? where student_id = ? and path_id = ?`
+        await this.app.mysql.query(`update student_path set node_index = ?, path_chapter_index = ? where student_id = ? and path_id = ?`
         , [node.node_index, node.chapter_index, student_id, path_id])
     }
 

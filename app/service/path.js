@@ -296,7 +296,7 @@ class PathService extends Service {
             })
         }
         //解锁下一个测试
-        let path_chapter = await this.getCurrentPathChapterByTest(student_id, test_id)
+        let path_chapter = await this.getCurrentPathChapterByTest(student_id, test_id);
         let next_node = await this.findNextNode(student_id, path_chapter.path_id)
         await enableNodePreTest(student_id, path_chapter.path_id, next_node)
         return

@@ -119,7 +119,7 @@ class PathService extends Service {
             let log = task_logs[i]
             //debug
             //log.visible = 1;
-            if(!log.invisble && log.visible){
+            if(!log.invisble){
                 if(log.node_id != pre_node_id){
                     index++
                     pre_node_id = log.node_id
@@ -134,22 +134,22 @@ class PathService extends Service {
                         }
                     }
                 }
-                chapter_node_list[index].node_tasks.push({
-                    task_desc: log.task_desc,
-                    task_count: log.task_count,
-                    content:log.content,
-                    verify_state: log.verify_state,
-                    task_id: log.task_id,
-                    start_time: log.start_time,
-                    total_ex: log.total_ex,
-                    wrong_ex: log.wrong_ex,
-                    correct_rate: log.correct_rate
-                })
-            }
-
-            let before = true
-            if((chapter_node_list[index] && !chapter_node_list[index].pre_test.result) || log.verify_state == 0){
-                before = false
+                if(log.visible){
+                    chapter_node_list[index].node_tasks.push({
+                        task_desc: log.task_desc,
+                        task_count: log.task_count,
+                        content:log.content,
+                        verify_state: log.verify_state,
+                        task_id: log.task_id,
+                        start_time: log.start_time,
+                        total_ex: log.total_ex,
+                        wrong_ex: log.wrong_ex,
+                        correct_rate: log.correct_rate
+                    })
+                }
+                if(!chapter_node_list[index].pre_test.result || log.verify_state == 0){
+                    before = false
+                }
             }
             if(log.node_index < student_path.node_index || 
                 (log.node_index == student_path.node_index && before)){

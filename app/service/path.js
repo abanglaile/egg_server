@@ -134,7 +134,6 @@ class PathService extends Service {
                         }
                     }
                 }
-<<<<<<< HEAD
                 if(log.visible){
                     chapter_node_list[index].node_tasks.push({
                         task_desc: log.task_desc,
@@ -151,25 +150,6 @@ class PathService extends Service {
                 if(!chapter_node_list[index].pre_test.result || log.verify_state == 0){
                     before = false
                 }
-=======
-                chapter_node_list[index].node_tasks.push({
-                    task_desc: log.task_desc,
-                    task_count: log.task_count,
-                    content:log.content,
-                    verify_state: log.verify_state,
-                    submit_url: log.submit_url,
-                    task_id: log.task_id,
-                    start_time: log.start_time,
-                    total_ex: log.total_ex,
-                    wrong_ex: log.wrong_ex,
-                    correct_rate: log.correct_rate
-                })
-            }
-
-            let before = true
-            if((chapter_node_list[index] && !chapter_node_list[index].pre_test.result) || log.verify_state == 0){
-                before = false
->>>>>>> origin/master
             }
             if(log.node_index < student_path.node_index || 
                 (log.node_index == student_path.node_index && before)){

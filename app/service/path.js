@@ -62,7 +62,7 @@ class PathService extends Service {
         // console.log("path_chapter_id:",path_chapter_id);
         const task_logs = await this.app.mysql.query(`select cn.node_id, cn.node_name, cn.node_index, 
             nt.task_index, nt.task_desc, t.task_count,t.content,snt.visible, kt.kp_tag_name, sn.invisible,
-            tl.total_ex, tl.wrong_ex, tl.correct_rate, tl.verify_state, tl.start_time, nt.task_id
+            tl.total_ex, tl.wrong_ex, tl.correct_rate,tl.submit_url,tl.verify_state, tl.start_time, nt.task_id
             from node_task nt inner join kp_tag kt on nt.kp_tag_id = kt.kp_tag_id
             inner join task t on nt.task_id = t.task_id
             left join student_node_task snt on nt.task_id = snt.task_id and snt.student_id = ?
@@ -139,6 +139,7 @@ class PathService extends Service {
                     task_count: log.task_count,
                     content:log.content,
                     verify_state: log.verify_state,
+                    submit_url: log.submit_url,
                     task_id: log.task_id,
                     start_time: log.start_time,
                     total_ex: log.total_ex,

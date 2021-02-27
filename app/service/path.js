@@ -147,7 +147,7 @@ class PathService extends Service {
             }
 
             if(log.node_index < student_path.node_index || 
-                (log.node_index = student_path.node_index && log.task_index < student_path.task_index)){
+                (log.node_index == student_path.node_index && (!log.visible || log.verify_state >=2))){
                     current_task_count++
             }
         }

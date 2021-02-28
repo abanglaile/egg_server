@@ -148,7 +148,7 @@ class PathService extends Service {
                         correct_rate: log.correct_rate
                     })
                 }
-                if(!chapter_node_list[index].pre_test.result || log.verify_state == 0){
+                if(!chapter_node_list[index].pre_test.result || log.verify_state == 0 || log.verify_state == 1){
                     before = false
                 }
             }

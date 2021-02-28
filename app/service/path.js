@@ -98,9 +98,9 @@ class PathService extends Service {
                 if(test_logs[i].test_index == 0){
                     //pre_test
                     test_logs[i].result = test_logs[i].result ? JSON.parse(test_logs[i].result) : null
-                    // if(test_logs[i].finish_time){
-                    //     test_logs[i].result = await this.getPreTestResult(student_id, test_logs[i].test_id)
-                    // }
+                    if(test_logs[i].finish_time){
+                        test_logs[i].result = await this.getPreTestResult(student_id, test_logs[i].test_id)
+                    }
                     let node = {
                         node_id: test_logs[i].node_id,
                         node_name: test_logs[i].node_name,
@@ -148,7 +148,7 @@ class PathService extends Service {
                         correct_rate: log.correct_rate
                     })
                 }
-                if(!chapter_node_list[index].pre_test.result || log.verify_state == 0){
+                if(!chapter_node_list[index].pre_test.result || log.verify_state < 2){
                     before = false
                 }
             }

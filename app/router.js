@@ -232,9 +232,10 @@ module.exports = app => {
   router.get('/api/getTeacherList',controller.school.getTeacherList);
   // router.get('/api/getStuEvalBytest',controller.student.getStuEvalBytest);
 
-  /****学校管理端：班级配置管理、合同管理**********/
+  /****学校管理端：班级配置管理、合同管理、学生管理**********/
   router.get('/api/getTeacherList',controller.school.getTeacherList);
   router.get('/api/getGroupTable',controller.school.getGroupTable);
+  router.get('/api/getStudentDataBySchoolid',controller.school.getStudentDataBySchoolid);
   router.get('/api/getMyStuGroupData2',controller.student.getMyStuGroupData2);
   router.get('/api/getGroupOptionData',controller.school.getGroupOptionData);
   router.post('/api/updateGroupTeacher',controller.school.updateGroupTeacher);

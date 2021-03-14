@@ -17,6 +17,13 @@ class SchoolController extends Controller {
         ctx.body = results;
     }
 
+    async getStudentDataBySchoolid(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.group.getStudentDataBySchoolid(query.schoolId);
+        ctx.body = results;
+    }
+
     async getContractTable(){
         const { ctx, service } = this;
         const {query} = ctx.request;

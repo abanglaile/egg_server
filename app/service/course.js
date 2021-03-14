@@ -6,12 +6,12 @@ class CourseService extends Service {
     return res;
   }
 
-  async getStuCourse() {
-    const course_list = await this.app.mysql.query('select course from course inneer join teacher_test tt ', {});
-    course_list.map({
+  // async getStuCourse() {
+  //   const course_list = await this.app.mysql.query('select course from course inneer join teacher_test tt ', {});
+  //   course_list.map({
 
-    })
-  }
+  //   })
+  // }
 
   async getCourseLabel() {
     const res = await this.app.mysql.select('course_label');
@@ -23,7 +23,7 @@ class CourseService extends Service {
     cl.course_label_name from group_student gs
     left join school_group sg on sg.stu_group_id = gs.stu_group_id
     left join course_label cl on cl.course_label = sg.course_label
-    where gs.student_id = ?;`, [student_id]);
+    where gs.student_id = ? and sg.disable = 0 group by cl.course_label;`, [student_id]);
 
     return results;
   }

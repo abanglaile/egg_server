@@ -368,6 +368,42 @@ class GroupService extends Service {
         return group_list;
     }
 
+    async getStudentDataBySchoolid(school_id){
+        const results = await this.app.mysql.query(`select g.student_id,u.realname,
+        u.avatar,sg.group_name from school_group sg 
+        LEFT JOIN group_student g on g.stu_group_id = sg.stu_group_id 
+        LEFT JOIN users u on u.userid = g.student_id 
+        where sg.school_id = ? and sg.disable = 0;`, [school_id]);
+
+        var group_list = [];
+        var group_index = [];
+        var list_index = 0;
+        for(var i = 0; i < results.length; i++){
+            var e = results[i];
+            const index = group_index[e.student_id];
+            if(index >= 0){
+                group_list[index].group_info.push({
+                    group_name: e.group_name,
+                });
+            }else{
+                var group_info = [];
+                group_info.push({
+                    group_name: e.group_name,
+                });
+                var group = {
+                    student_id : e.student_id,
+                    realname : e.realname,
+                    avatar : e.avatar,
+                    group_info : group_info,
+                };
+                group_list[list_index] = group;
+                group_index[e.student_id] = list_index;
+                list_index++;
+            }
+        }
+        return group_list;
+    }
+
     async getGroupStudent(student_id){
         return await this.app.mysql.query(`select (gs.guide_min - gs.consume_guide_min) as remain_guide_min 
             (gs.class_min - gs.consume_class_min) as remain_class_min, sg.group_name, sg.course_label 

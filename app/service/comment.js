@@ -34,6 +34,51 @@ class CommentService extends Service {
             from pf_label p where p.label_name like ?`, '%'+input+'%');
     }
 
+    async getPfLabelOptions() {
+        const label_list = await this.app.mysql.query(`select p.pf_label_id, p.group_id, p.label_name, eg.group_name, eg.eff_type
+            from pf_label p inner join efficiency_group eg on p.group_id = eg.group_id
+            order by eg.eff_type, eg.group_id`, [])
+        const options = [
+            {
+                label: '学习习惯',
+                value: 1,
+                children: [],
+            },
+            {
+                label: '学习动机',
+                value: 2,
+                children: [],   
+            },
+            {
+                label: '学习适应性',
+                value: 3,
+                children: [],   
+            },
+        ];
+        let now_group_id = 0
+        for(let i = 0; i < label_list.length; i++){
+            const l = label_list[i]
+            if(l.group_id != now_group_id){
+                let child = {
+                    label: l.group_name,
+                    value: l.group_id,
+                    children: [{
+                        label: l.label_name,
+                        value: l.pf_label_id,
+                    }]
+                }
+                options[l.eff_type - 1].children.push(child)
+            }else{
+                options[l.eff_type - 1].children[l.group_id - 1].push({
+                    label: l.label_name,
+                    value: l.pf_label_id,
+                })
+            }
+        }
+        console.log(options)
+        return options
+    }
+
     async getStuPfCommentList(student_id){
         const results = await this.app.mysql.query(`select pc.*,u.realname,u.avatar,
             cl.course_label,cl.course_label_name from pf_comment pc

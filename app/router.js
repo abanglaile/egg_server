@@ -158,6 +158,7 @@ module.exports = app => {
 
   router.get('/api/getBookChapter', controller.teacher.getBookChapter);
   router.get('/api/getChapterKp', controller.teacher.getChapterKp);
+  router.get('/api/getPfLabelOptions', controller.teacher.getPfLabelOptions);
 
   router.get('/api/getLessonSlide', controller.slide.getLessonSlide);
   router.get('/api/getLessonSlideFeedback', controller.slide.getLessonSlideFeedback);
@@ -176,6 +177,7 @@ module.exports = app => {
   router.get('/api/getStudentOneLesson', controller.teacher.getStudentOneLesson);
   router.get('/api/getLessonStudent', controller.teacher.getLessonStudent);
   router.get('/api/accLessonAward', controller.teacher.accLessonAward);
+  router.get('/api/getTeacherLessonNotComment', controller.teacher.getTeacherLessonNotComment);
   
   router.post('/api/addLessonAward', controller.teacher.addLessonAward);
   router.post('/api/getTeacherLesson', controller.teacher.getTeacherLesson);

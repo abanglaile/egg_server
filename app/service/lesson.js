@@ -50,6 +50,20 @@ class LessonService extends Service {
         return lesson_list;
     }
 
+    async getTeacherLessonNotComment(teacher_id) {
+        // teacher_id = "1927560040d911e9ad2ca1607a4b5d90"
+        return await this.app.mysql.query(`select distinct(l.lesson_id), l.start_time, l.end_time, l.is_sign, 
+        g.group_name, g.course_label, lc.course_label_name, ll.label_name from lesson l
+        left join kp_comment kc on kc.comment_source = l.lesson_id
+        left join pf_comment pf on pf.comment_source = l.lesson_id,
+        course_label lc, school_group g, lesson_label ll where 
+        lc.course_label = g.course_label and DATE_SUB(CURDATE(), INTERVAL 7 DAY) <= date(l.start_time) and
+        CURDATE() >= date(l.start_time) and
+        l.stu_group_id = g.stu_group_id and l.label_id = ll.label_id and l.teacher_id = ? and
+        (kc.comment_id is null and pf.comment_id is null) group by lesson_id
+        order by l.start_time`, [teacher_id]);
+    }
+
     async getTeacherLesson(teacher_id, filter_option){
         console.log("filter_option:",JSON.stringify(filter_option));
         let {select_teacher, start_time, end_time, group_id, course_label, label_id} = filter_option;

@@ -251,10 +251,24 @@ class TeacherController extends Controller {
         this.ctx.body = results;
     }
 
+    async getTeacherLessonNotComment(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.lesson.getTeacherLessonNotComment(query.teacher_id);
+        this.ctx.body = results;
+    }
+
     async getOptionData(){
         const { ctx, service } = this;
         const {query} = ctx.request;
         const results = await service.teacher.getOptionData(query.teacher_id);
+        this.ctx.body = results;
+    }
+
+    async getPfLabelOptions(){
+        const { ctx, service } = this;
+        const {query} = ctx.request;
+        const results = await service.comment.getPfLabelOptions();
         this.ctx.body = results;
     }
     

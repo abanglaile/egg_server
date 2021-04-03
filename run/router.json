@@ -1318,6 +1318,19 @@
       "GET"
     ],
     "paramNames": [],
+    "path": "/api/getPfLabelOptions",
+    "regexp": "/^\\/api\\/getPfLabelOptions(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/api/getLessonSlide",
     "regexp": "/^\\/api\\/getLessonSlide(?:\\/(?=$))?$/",
     "stack": [
@@ -1488,6 +1501,19 @@
     "paramNames": [],
     "path": "/api/accLessonAward",
     "regexp": "/^\\/api\\/accLessonAward(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/getTeacherLessonNotComment",
+    "regexp": "/^\\/api\\/getTeacherLessonNotComment(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

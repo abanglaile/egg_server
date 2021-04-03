@@ -84,12 +84,12 @@ class TaskService extends Service {
         //     where  t.create_user = ? order by t.create_time desc;
         //     `, [teacher_id]);
 
-        const results = await this.app.mysql.query(`select t.task_id,l.verify_state,
-            count(*) as num,t.update_time,t.task_type,t.assign_type,s.source_name,s.sub_name,
+        const results = await this.app.mysql.query(`select t.task_id,l.verify_state,l.start_time,
+            count(*) as num,t.create_time,t.task_type,t.assign_type,t.content,s.source_name,s.sub_name,
             s.version from task t INNER JOIN task_log l on t.task_id = l.task_id
             INNER JOIN task_source s on t.source_id = s.source_id
             where  l.verify_user = ? GROUP BY l.task_id,l.verify_state 
-            order by t.update_time desc ;
+            order by l.start_time desc ;
             `, [teacher_id]);
 
         var task_data = [];
@@ -106,8 +106,10 @@ class TaskService extends Service {
               
                 var group = {
                     task_id: e.task_id, 
-                    update_time: e.update_time, 
+                    create_time: e.create_time,
+                    start_time : e.start_time,
                     task_type : e.task_type,
+                    content : e.content,
                     assign_type : e.assign_type,
                     source_name : e.source_name,
                     sub_name : e.sub_name,

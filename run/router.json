@@ -2016,6 +2016,19 @@
       "GET"
     ],
     "paramNames": [],
+    "path": "/api/getStudentDataBySchoolid",
+    "regexp": "/^\\/api\\/getStudentDataBySchoolid(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/api/getMyStuGroupData2",
     "regexp": "/^\\/api\\/getMyStuGroupData2(?:\\/(?=$))?$/",
     "stack": [

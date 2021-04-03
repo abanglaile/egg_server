@@ -87,7 +87,7 @@ class CommentService extends Service {
             left join lesson l on l.lesson_id = pc.comment_source
             left join school_group sg on sg.stu_group_id = l.stu_group_id
             left join course_label cl on cl.course_label = sg.course_label
-            where sp.student_id = ? order by pc.comment_time desc;`, [student_id]);
+            where sp.student_id = ? order by pc.comment_time desc limit 200;;`, [student_id]);
 
         return results;
     }
@@ -111,7 +111,7 @@ class CommentService extends Service {
             params.push(side);
         }
 
-        query += ' order by kc.comment_time desc;';
+        query += ' order by kc.comment_time desc limit 300;';
         console.log("query:",query);
         const results = await this.app.mysql.query(query, params);
         console.log("results:",JSON.stringify(results));

@@ -67,9 +67,11 @@ class CommentService extends Service {
                         value: l.pf_label_id,
                     }]
                 }
-                options[l.eff_type - 1].children.push(child)
+                options[l.eff_type - 1].children.push(child);
+                now_group_id = l.group_id;
             }else{
-                options[l.eff_type - 1].children[l.group_id - 1].push({
+                let index = options[l.eff_type - 1].children.length - 1
+                options[l.eff_type - 1].children[index].children.push({
                     label: l.label_name,
                     value: l.pf_label_id,
                 })

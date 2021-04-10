@@ -81,17 +81,29 @@ class CommentService extends Service {
         return options
     }
 
-    async getStuPfCommentList(student_id){
-        const results = await this.app.mysql.query(`select pc.*,u.realname,u.avatar,
+    async getStuPfCommentList(student_id, filter_option){
+        let { pf_label, side } = filter_option;
+        let query = `select pc.*,u.realname,u.avatar,
             cl.course_label,cl.course_label_name from pf_comment pc
             inner join student_pf_comment sp on sp.comment_id = pc.comment_id
             left join users u on u.userid =  pc.teacher_id 
             left join lesson l on l.lesson_id = pc.comment_source
             left join school_group sg on sg.stu_group_id = l.stu_group_id
             left join course_label cl on cl.course_label = sg.course_label
-            where sp.student_id = ? order by pc.comment_time desc limit 200;;`, [student_id]);
+            where sp.student_id = ?`;
+        let params = [student_id];
+        if(pf_label){
+            query += ` and pc.label_id in (select pl.pf_label_id from efficiency_group eg 
+                INNER JOIN pf_label pl on eg.group_id=pl.group_id where eg.eff_type = ?)`;
+            params.push(pf_label);
+        }
+        if(side != null){
+            query += ' and pc.side = ?';
+            params.push(side);
+        }
 
-        return results;
+        query += ' order by pc.comment_time desc limit 200;';
+        return await this.app.mysql.query(query, params);
     }
 
     async getStuKpCommentList(student_id, filter_option){
@@ -103,7 +115,7 @@ class CommentService extends Service {
             left join school_group sg on sg.stu_group_id = l.stu_group_id
             left join course_label cl on cl.course_label = sg.course_label
             where sk.student_id = ?`;
-            let params = [student_id];
+        let params = [student_id];
         if(course_label){
             query += ' and sg.course_label = ?';
             params.push(course_label);
@@ -112,14 +124,8 @@ class CommentService extends Service {
             query += ' and kc.side = ?';
             params.push(side);
         }
-
         query += ' order by kc.comment_time desc limit 300;';
-        console.log("query:",query);
-        const results = await this.app.mysql.query(query, params);
-        console.log("results:",JSON.stringify(results));
-        console.log("params:",JSON.stringify(params));
-        return results;
-
+        return await this.app.mysql.query(query, params);
     }   
 
 }

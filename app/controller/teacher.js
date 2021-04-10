@@ -589,11 +589,9 @@ class TeacherController extends Controller {
 
     async getStuPfCommentList(){
         const {ctx, service } = this;
-        const {query} = ctx.request;
-        if(query.student_id){
-            const results = await service.comment.getStuPfCommentList(query.student_id);
-            this.ctx.body=results;
-        }
+        const {body} = ctx.request;
+        const results = await service.comment.getStuPfCommentList(body.student_id, body.filter_option);
+        this.ctx.body = results;
     }
 
     async getStuKpCommentList(){

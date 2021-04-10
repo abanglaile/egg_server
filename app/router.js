@@ -127,7 +127,7 @@ module.exports = app => {
 
   router.get('/api/getStudentList', controller.teacher.getStudentList);
   router.get('/api/getStuCourse', controller.teacher.getStuCourse);
-  router.get('/api/getStuPfCommentList', controller.teacher.getStuPfCommentList);
+  router.post('/api/getStuPfCommentList', controller.teacher.getStuPfCommentList);
   router.post('/api/getStuKpCommentList', controller.teacher.getStuKpCommentList);
 
   router.get('/api/getClassHourTable', controller.teacher.getClassHourTable);
